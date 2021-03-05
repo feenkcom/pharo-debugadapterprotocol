@@ -62,7 +62,7 @@ DAPClient >> checkResponse: response [
 { #category : #initialization }
 DAPClient >> connectTo: host port: portNumber debugger: aDAPDebugger [
 
-	socketStream := SocketStream openConnectionToHost: host port: portNumber.
+	socketStream := DAPSocketStream openConnectionToHost: host port: portNumber.
 	"Messages are presumed to be UTF-8 encoded text, which appears as binary to the Socket"
 	socketStream 
 		binary;
