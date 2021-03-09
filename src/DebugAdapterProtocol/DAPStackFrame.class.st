@@ -5,6 +5,7 @@ Class {
 	#name : #DAPStackFrame,
 	#superclass : #DAPObject,
 	#instVars : [
+		'scopes',
 		'instructionPointerReference',
 		'moduleId',
 		'name',
@@ -13,11 +14,10 @@ Class {
 		'line',
 		'endLine',
 		'endColumn',
+		'ordinal',
 		'column',
 		'presentationHint',
-		'id',
-		'scopes',
-		'ordinal'
+		'id'
 	],
 	#category : #'DebugAdapterProtocol-Protocol'
 }

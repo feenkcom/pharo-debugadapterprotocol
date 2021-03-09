@@ -12,16 +12,17 @@ Class {
 	#name : #DAPModule,
 	#superclass : #DAPObject,
 	#instVars : [
-		'symbolFilePath',
-		'addressRange',
-		'isOptimized',
-		'id',
-		'path',
-		'isUserCode',
-		'dateTimeStamp',
-		'symbolStatus',
 		'version',
-		'name'
+		'dateTimeStamp',
+		'addressRange',
+		'path',
+		'name',
+		'symbolStatus',
+		'isOptimized',
+		'package',
+		'isUserCode',
+		'symbolFilePath',
+		'id'
 	],
 	#category : #'DebugAdapterProtocol-Protocol'
 }
@@ -31,8 +32,8 @@ DAPModule class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
 	aNeoJSONMapper for: self do: [ :mapping |
-		mapping mapAccessor: #symbolFilePath to: #symbolFilePath.
 		mapping mapAccessor: #addressRange to: #addressRange.
+		mapping mapAccessor: #symbolFilePath to: #symbolFilePath.
 		mapping mapAccessor: #symbolStatus to: #symbolStatus.
 		mapping mapAccessor: #version to: #version.
 		mapping mapAccessor: #path to: #path.
@@ -40,6 +41,7 @@ DAPModule class >> dapJsonMappingFor: aNeoJSONMapper [
 		mapping mapAccessor: #name to: #name.
 		mapping mapAccessor: #isUserCode to: #isUserCode.
 		mapping mapAccessor: #isOptimized to: #isOptimized.
+		mapping mapAccessor: #package to: #package.
 		mapping mapAccessor: #dateTimeStamp to: #dateTimeStamp.
 		].
 
@@ -181,6 +183,25 @@ DAPModule >> name: anObject [
 ]
 
 { #category : #accessing }
+DAPModule >> package [
+	"The package that owns the module.
+	string
+	Auto-generated method"
+
+	^ package
+]
+
+{ #category : #accessing }
+DAPModule >> package: anObject [
+	"The package that owns the module.
+	string
+	Auto-generated method"
+
+	package := anObject
+
+]
+
+{ #category : #accessing }
 DAPModule >> path [
 	"optional but recommended attributes.
 always try to use these first before introducing additional attributes.
@@ -209,7 +230,7 @@ Logical full path to the module. The exact definition is implementation defined,
 DAPModule >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
-	^ #(dateTimeStamp addressRange symbolStatus version path name id isUserCode isOptimized symbolFilePath )
+	^ #(dateTimeStamp addressRange symbolStatus version path name id isUserCode isOptimized package symbolFilePath )
 ]
 
 { #category : #accessing }

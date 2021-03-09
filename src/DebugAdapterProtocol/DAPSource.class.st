@@ -12,9 +12,9 @@ Class {
 		'origin',
 		'sourceReference',
 		'path',
+		'sourceCode',
 		'name',
-		'adapterData',
-		'sourceCode'
+		'adapterData'
 	],
 	#category : #'DebugAdapterProtocol-Protocol'
 }

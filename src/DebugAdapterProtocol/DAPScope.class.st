@@ -12,11 +12,11 @@ Class {
 		'source',
 		'line',
 		'endLine',
+		'variables',
 		'variablesReference',
 		'presentationHint',
 		'namedVariables',
-		'column',
-		'variables'
+		'column'
 	],
 	#category : #'DebugAdapterProtocol-Protocol'
 }
