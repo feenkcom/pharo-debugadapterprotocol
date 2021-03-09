@@ -5,11 +5,11 @@ Class {
 	#name : #DAPResponse,
 	#superclass : #DAPProtocolMessage,
 	#instVars : [
-		'request_seq',
 		'body',
+		'command',
 		'message',
-		'success',
-		'command'
+		'request_seq',
+		'success'
 	],
 	#category : #'DebugAdapterProtocol-Protocol'
 }
@@ -121,7 +121,7 @@ DAPResponse >> printOn: aStream [
 DAPResponse >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
-	^ #(command body message success type request_seq )
+	^ #(body command message request_seq success type )
 ]
 
 { #category : #accessing }

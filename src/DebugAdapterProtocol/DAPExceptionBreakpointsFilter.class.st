@@ -5,12 +5,12 @@ Class {
 	#name : #DAPExceptionBreakpointsFilter,
 	#superclass : #DAPObject,
 	#instVars : [
-		'description',
+		'conditionDescription',
 		'default',
-		'supportsCondition',
+		'description',
 		'filter',
 		'label',
-		'conditionDescription'
+		'supportsCondition'
 	],
 	#category : #'DebugAdapterProtocol-Protocol'
 }
@@ -135,7 +135,7 @@ DAPExceptionBreakpointsFilter >> label: anObject [
 DAPExceptionBreakpointsFilter >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
-	^ #(description default supportsCondition filter label conditionDescription )
+	^ #(conditionDescription default description filter label supportsCondition )
 ]
 
 { #category : #accessing }

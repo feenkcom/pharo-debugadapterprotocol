@@ -208,7 +208,7 @@ DebugAdapterProtocolDefinitionImporter >> definePropertyNamesMethodFrom: propert
 			tab; << '"Answer the names of all the receiver''s interesting properties"'; cr;
 			cr;
 			tab; << '^ #('.
-		propertyNames do: [ :property |
+		propertyNames sorted do: [ :property |
 			stream
 				<< property;
 				<< ' ' ].
@@ -313,7 +313,7 @@ DebugAdapterProtocolDefinitionImporter >> getSuperclassOf: className message: me
 				instanceVariableNames addAll: cls instVarNames ] ].
 
 		(superClass subclass: className
-			instanceVariableNames: (' ' join: instanceVariableNames)
+			instanceVariableNames: (' ' join: instanceVariableNames sorted)
 			classVariableNames: ''
 			package: 'DebugAdapterProtocol-Protocol')
 			comment: (localClassDictionary at: #description);

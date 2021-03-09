@@ -7,11 +7,11 @@ Class {
 	#name : #DAPColumnDescriptor,
 	#superclass : #DAPObject,
 	#instVars : [
-		'width',
-		'format',
 		'attributeName',
+		'format',
+		'label',
 		'type',
-		'label'
+		'width'
 	],
 	#category : #'DebugAdapterProtocol-Protocol'
 }
@@ -104,7 +104,7 @@ DAPColumnDescriptor >> label: anObject [
 DAPColumnDescriptor >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
-	^ #(format attributeName type label width )
+	^ #(attributeName format label type width )
 ]
 
 { #category : #accessing }

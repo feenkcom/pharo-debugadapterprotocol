@@ -112,7 +112,7 @@ DAPSetExpressionResponse >> presentationHint: anObject [
 DAPSetExpressionResponse >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
-	^ #(body value presentationHint indexedVariables variablesReference namedVariables type )
+	^ #(body indexedVariables namedVariables presentationHint type value variablesReference )
 ]
 
 { #category : #accessing }

@@ -70,5 +70,5 @@ DAPThread >> name: anObject [
 DAPThread >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
-	^ #(name id )
+	^ #(id name )
 ]

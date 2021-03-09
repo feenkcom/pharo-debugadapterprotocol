@@ -5,10 +5,10 @@ Class {
 	#name : #DAPDataBreakpoint,
 	#superclass : #DAPObject,
 	#instVars : [
-		'hitCondition',
 		'accessType',
+		'condition',
 		'dataId',
-		'condition'
+		'hitCondition'
 	],
 	#category : #'DebugAdapterProtocol-Protocol'
 }
@@ -117,5 +117,5 @@ The backend is expected to interpret the expression as needed.
 DAPDataBreakpoint >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
-	^ #(condition hitCondition accessType dataId )
+	^ #(accessType condition dataId hitCondition )
 ]

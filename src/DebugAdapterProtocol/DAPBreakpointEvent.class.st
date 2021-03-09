@@ -89,7 +89,7 @@ DAPBreakpointEvent >> event: anObject [
 DAPBreakpointEvent >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
-	^ #(event body reason breakpoint )
+	^ #(body breakpoint event reason )
 ]
 
 { #category : #accessing }

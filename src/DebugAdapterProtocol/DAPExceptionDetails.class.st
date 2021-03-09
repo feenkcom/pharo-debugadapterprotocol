@@ -5,11 +5,11 @@ Class {
 	#name : #DAPExceptionDetails,
 	#superclass : #DAPObject,
 	#instVars : [
-		'stackTrace',
-		'message',
+		'evaluateName',
 		'fullTypeName',
 		'innerException',
-		'evaluateName',
+		'message',
+		'stackTrace',
 		'typeName'
 	],
 	#category : #'DebugAdapterProtocol-Protocol'
@@ -116,7 +116,7 @@ DAPExceptionDetails >> message: anObject [
 DAPExceptionDetails >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
-	^ #(stackTrace message fullTypeName innerException evaluateName typeName )
+	^ #(evaluateName fullTypeName innerException message stackTrace typeName )
 ]
 
 { #category : #accessing }

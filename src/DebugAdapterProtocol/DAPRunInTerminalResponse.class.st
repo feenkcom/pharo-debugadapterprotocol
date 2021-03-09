@@ -62,7 +62,7 @@ DAPRunInTerminalResponse >> processId: anObject [
 DAPRunInTerminalResponse >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
-	^ #(body shellProcessId processId )
+	^ #(body processId shellProcessId )
 ]
 
 { #category : #accessing }

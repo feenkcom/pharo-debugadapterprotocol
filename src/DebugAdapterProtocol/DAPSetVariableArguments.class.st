@@ -5,10 +5,10 @@ Class {
 	#name : #DAPSetVariableArguments,
 	#superclass : #DAPObject,
 	#instVars : [
-		'value',
 		'format',
-		'variablesReference',
-		'name'
+		'name',
+		'value',
+		'variablesReference'
 	],
 	#category : #'DebugAdapterProtocol-Protocol'
 }
@@ -77,7 +77,7 @@ DAPSetVariableArguments >> name: anObject [
 DAPSetVariableArguments >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
-	^ #(name value variablesReference format )
+	^ #(format name value variablesReference )
 ]
 
 { #category : #accessing }

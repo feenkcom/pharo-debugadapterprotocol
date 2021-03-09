@@ -67,7 +67,7 @@ DAPThreadEvent >> event: anObject [
 DAPThreadEvent >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
-	^ #(event body threadId reason )
+	^ #(body event reason threadId )
 ]
 
 { #category : #accessing }

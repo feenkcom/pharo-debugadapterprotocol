@@ -5,9 +5,9 @@ Class {
 	#name : #DAPInstructionBreakpoint,
 	#superclass : #DAPObject,
 	#instVars : [
+		'condition',
 		'hitCondition',
 		'instructionReference',
-		'condition',
 		'offset'
 	],
 	#category : #'DebugAdapterProtocol-Protocol'
@@ -122,5 +122,5 @@ This can be negative.
 DAPInstructionBreakpoint >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
-	^ #(instructionReference condition offset hitCondition )
+	^ #(condition hitCondition instructionReference offset )
 ]

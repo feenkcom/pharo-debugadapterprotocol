@@ -5,9 +5,9 @@ Class {
 	#name : #DAPReadMemoryArguments,
 	#superclass : #DAPObject,
 	#instVars : [
-		'offset',
 		'count',
-		'memoryReference'
+		'memoryReference',
+		'offset'
 	],
 	#category : #'DebugAdapterProtocol-Protocol'
 }
@@ -91,5 +91,5 @@ DAPReadMemoryArguments >> offset: anObject [
 DAPReadMemoryArguments >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
-	^ #(memoryReference count offset )
+	^ #(count memoryReference offset )
 ]

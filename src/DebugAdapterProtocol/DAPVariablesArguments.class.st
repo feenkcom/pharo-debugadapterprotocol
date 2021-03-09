@@ -5,11 +5,11 @@ Class {
 	#name : #DAPVariablesArguments,
 	#superclass : #DAPObject,
 	#instVars : [
+		'count',
 		'filter',
 		'format',
-		'variablesReference',
 		'start',
-		'count'
+		'variablesReference'
 	],
 	#category : #'DebugAdapterProtocol-Protocol'
 }
@@ -111,7 +111,7 @@ The attribute is only honored by a debug adapter if the capability 'supportsValu
 DAPVariablesArguments >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
-	^ #(format count filter variablesReference start )
+	^ #(count filter format start variablesReference )
 ]
 
 { #category : #accessing }

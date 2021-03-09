@@ -129,5 +129,5 @@ DAPProgressUpdateEvent >> progressId: anObject [
 DAPProgressUpdateEvent >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
-	^ #(event body percentage message progressId )
+	^ #(body event message percentage progressId )
 ]

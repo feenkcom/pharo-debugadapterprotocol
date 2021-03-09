@@ -5,8 +5,8 @@ Class {
 	#name : #DAPDataBreakpointInfoArguments,
 	#superclass : #DAPObject,
 	#instVars : [
-		'variablesReference',
-		'name'
+		'name',
+		'variablesReference'
 	],
 	#category : #'DebugAdapterProtocol-Protocol'
 }

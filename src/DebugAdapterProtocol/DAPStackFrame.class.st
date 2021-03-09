@@ -5,19 +5,19 @@ Class {
 	#name : #DAPStackFrame,
 	#superclass : #DAPObject,
 	#instVars : [
-		'scopes',
+		'canRestart',
+		'column',
+		'endColumn',
+		'endLine',
+		'id',
 		'instructionPointerReference',
+		'line',
 		'moduleId',
 		'name',
-		'canRestart',
-		'source',
-		'line',
-		'endLine',
-		'endColumn',
 		'ordinal',
-		'column',
 		'presentationHint',
-		'id'
+		'scopes',
+		'source'
 	],
 	#category : #'DebugAdapterProtocol-Protocol'
 }
@@ -326,7 +326,7 @@ DAPStackFrame >> printOn: aStream [
 DAPStackFrame >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
-	^ #(instructionPointerReference moduleId column line name canRestart id endLine presentationHint source endColumn )
+	^ #(canRestart column endColumn endLine id instructionPointerReference line moduleId name presentationHint source )
 ]
 
 { #category : #accessing }

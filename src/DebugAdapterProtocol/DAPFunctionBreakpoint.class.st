@@ -5,9 +5,9 @@ Class {
 	#name : #DAPFunctionBreakpoint,
 	#superclass : #DAPObject,
 	#instVars : [
+		'condition',
 		'hitCondition',
-		'name',
-		'condition'
+		'name'
 	],
 	#category : #'DebugAdapterProtocol-Protocol'
 }
@@ -97,5 +97,5 @@ DAPFunctionBreakpoint >> name: anObject [
 DAPFunctionBreakpoint >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
-	^ #(name condition hitCondition )
+	^ #(condition hitCondition name )
 ]

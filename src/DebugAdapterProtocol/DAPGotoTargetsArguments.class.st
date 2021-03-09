@@ -5,9 +5,9 @@ Class {
 	#name : #DAPGotoTargetsArguments,
 	#superclass : #DAPObject,
 	#instVars : [
-		'source',
+		'column',
 		'line',
-		'column'
+		'source'
 	],
 	#category : #'DebugAdapterProtocol-Protocol'
 }
@@ -72,7 +72,7 @@ DAPGotoTargetsArguments >> line: anObject [
 DAPGotoTargetsArguments >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
-	^ #(source column line )
+	^ #(column line source )
 ]
 
 { #category : #accessing }

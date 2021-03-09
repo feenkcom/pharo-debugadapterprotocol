@@ -5,14 +5,14 @@ Class {
 	#name : #DAPDisassembledInstruction,
 	#superclass : #DAPObject,
 	#instVars : [
-		'column',
-		'line',
-		'endColumn',
 		'address',
-		'location',
-		'instructionBytes',
+		'column',
+		'endColumn',
 		'endLine',
 		'instruction',
+		'instructionBytes',
+		'line',
+		'location',
 		'symbol'
 	],
 	#category : #'DebugAdapterProtocol-Protocol'
@@ -205,7 +205,7 @@ but can be omitted afterwards if this instruction maps to the same source file a
 DAPDisassembledInstruction >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
-	^ #(symbol endColumn instruction instructionBytes line address column endLine location )
+	^ #(address column endColumn endLine instruction instructionBytes line location symbol )
 ]
 
 { #category : #accessing }

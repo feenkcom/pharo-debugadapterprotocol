@@ -71,5 +71,5 @@ DAPRestartRequest >> command: anObject [
 DAPRestartRequest >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
-	^ #(command arguments )
+	^ #(arguments command )
 ]

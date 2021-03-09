@@ -126,5 +126,5 @@ DAPExceptionInfoResponse >> exceptionId: anObject [
 DAPExceptionInfoResponse >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
-	^ #(body breakMode exceptionId description details )
+	^ #(body breakMode description details exceptionId )
 ]

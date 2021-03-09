@@ -87,5 +87,5 @@ DAPExitedEvent >> exitCode: anObject [
 DAPExitedEvent >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
-	^ #(event body exitCode )
+	^ #(body event exitCode )
 ]

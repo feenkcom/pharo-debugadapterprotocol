@@ -5,11 +5,11 @@ Class {
 	#name : #DAPDisassembleArguments,
 	#superclass : #DAPObject,
 	#instVars : [
-		'instructionOffset',
 		'instructionCount',
-		'resolveSymbols',
+		'instructionOffset',
+		'memoryReference',
 		'offset',
-		'memoryReference'
+		'resolveSymbols'
 	],
 	#category : #'DebugAdapterProtocol-Protocol'
 }
@@ -116,7 +116,7 @@ DAPDisassembleArguments >> offset: anObject [
 DAPDisassembleArguments >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
-	^ #(memoryReference offset instructionOffset instructionCount resolveSymbols )
+	^ #(instructionCount instructionOffset memoryReference offset resolveSymbols )
 ]
 
 { #category : #accessing }

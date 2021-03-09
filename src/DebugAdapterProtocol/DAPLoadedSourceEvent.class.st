@@ -67,7 +67,7 @@ DAPLoadedSourceEvent >> event: anObject [
 DAPLoadedSourceEvent >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
-	^ #(event body source reason )
+	^ #(body event reason source )
 ]
 
 { #category : #accessing }

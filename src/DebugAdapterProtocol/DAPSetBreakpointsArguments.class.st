@@ -5,10 +5,10 @@ Class {
 	#name : #DAPSetBreakpointsArguments,
 	#superclass : #DAPObject,
 	#instVars : [
-		'source',
+		'breakpoints',
 		'lines',
-		'sourceModified',
-		'breakpoints'
+		'source',
+		'sourceModified'
 	],
 	#category : #'DebugAdapterProtocol-Protocol'
 }
@@ -74,7 +74,7 @@ DAPSetBreakpointsArguments >> lines: anObject [
 DAPSetBreakpointsArguments >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
-	^ #(source lines breakpoints sourceModified )
+	^ #(breakpoints lines source sourceModified )
 ]
 
 { #category : #accessing }

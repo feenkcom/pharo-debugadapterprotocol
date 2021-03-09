@@ -84,7 +84,7 @@ DAPReadMemoryResponse >> data: anObject [
 DAPReadMemoryResponse >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
-	^ #(body unreadableBytes data address )
+	^ #(address body data unreadableBytes )
 ]
 
 { #category : #accessing }

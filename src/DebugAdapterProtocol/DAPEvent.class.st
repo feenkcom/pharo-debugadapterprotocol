@@ -5,8 +5,8 @@ Class {
 	#name : #DAPEvent,
 	#superclass : #DAPProtocolMessage,
 	#instVars : [
-		'event',
-		'body'
+		'body',
+		'event'
 	],
 	#category : #'DebugAdapterProtocol-Protocol'
 }

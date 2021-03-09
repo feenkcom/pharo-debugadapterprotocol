@@ -89,7 +89,7 @@ DAPModuleEvent >> module: anObject [
 DAPModuleEvent >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
-	^ #(event body reason module )
+	^ #(body event module reason )
 ]
 
 { #category : #accessing }

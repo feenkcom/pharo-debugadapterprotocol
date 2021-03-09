@@ -5,13 +5,13 @@ Class {
 	#name : #DAPStackFrameFormat,
 	#superclass : #DAPValueFormat,
 	#instVars : [
-		'parameterValues',
-		'parameters',
-		'module',
-		'line',
-		'parameterTypes',
 		'includeAll',
-		'parameterNames'
+		'line',
+		'module',
+		'parameterNames',
+		'parameterTypes',
+		'parameterValues',
+		'parameters'
 	],
 	#category : #'DebugAdapterProtocol-Protocol'
 }
@@ -175,5 +175,5 @@ DAPStackFrameFormat >> parameters: anObject [
 DAPStackFrameFormat >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
-	^ #(parameterValues parameters module line parameterTypes includeAll parameterNames )
+	^ #(includeAll line module parameterNames parameterTypes parameterValues parameters )
 ]

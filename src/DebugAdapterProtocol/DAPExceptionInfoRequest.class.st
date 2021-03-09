@@ -71,5 +71,5 @@ DAPExceptionInfoRequest >> command: anObject [
 DAPExceptionInfoRequest >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
-	^ #(command arguments )
+	^ #(arguments command )
 ]

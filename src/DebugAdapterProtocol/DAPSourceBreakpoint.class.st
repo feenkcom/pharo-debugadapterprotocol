@@ -5,11 +5,11 @@ Class {
 	#name : #DAPSourceBreakpoint,
 	#superclass : #DAPObject,
 	#instVars : [
+		'column',
+		'condition',
 		'hitCondition',
 		'line',
-		'column',
-		'logMessage',
-		'condition'
+		'logMessage'
 	],
 	#category : #'DebugAdapterProtocol-Protocol'
 }
@@ -143,5 +143,5 @@ The attribute is only honored by a debug adapter if the capability 'supportsLogP
 DAPSourceBreakpoint >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
-	^ #(logMessage hitCondition line column condition )
+	^ #(column condition hitCondition line logMessage )
 ]

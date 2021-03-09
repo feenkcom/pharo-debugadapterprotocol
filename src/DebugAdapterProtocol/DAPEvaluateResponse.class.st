@@ -136,7 +136,7 @@ DAPEvaluateResponse >> presentationHint: anObject [
 DAPEvaluateResponse >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
-	^ #(body indexedVariables presentationHint result memoryReference variablesReference namedVariables type )
+	^ #(body indexedVariables memoryReference namedVariables presentationHint result type variablesReference )
 ]
 
 { #category : #accessing }

@@ -5,8 +5,8 @@ Class {
 	#name : #DAPEvaluateArguments,
 	#superclass : #DAPObject,
 	#instVars : [
-		'expression',
 		'context',
+		'expression',
 		'format',
 		'frameId'
 	],
@@ -117,5 +117,5 @@ DAPEvaluateArguments >> frameId: anObject [
 DAPEvaluateArguments >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
-	^ #(context format expression frameId )
+	^ #(context expression format frameId )
 ]

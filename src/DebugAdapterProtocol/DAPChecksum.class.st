@@ -5,8 +5,8 @@ Class {
 	#name : #DAPChecksum,
 	#superclass : #DAPObject,
 	#instVars : [
-		'checksum',
-		'algorithm'
+		'algorithm',
+		'checksum'
 	],
 	#category : #'DebugAdapterProtocol-Protocol'
 }
@@ -73,5 +73,5 @@ DAPChecksum >> checksum: anObject [
 DAPChecksum >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
-	^ #(checksum algorithm )
+	^ #(algorithm checksum )
 ]

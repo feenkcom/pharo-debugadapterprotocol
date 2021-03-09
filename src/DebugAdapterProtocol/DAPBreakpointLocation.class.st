@@ -5,10 +5,10 @@ Class {
 	#name : #DAPBreakpointLocation,
 	#superclass : #DAPObject,
 	#instVars : [
-		'line',
 		'column',
 		'endColumn',
-		'endLine'
+		'endLine',
+		'line'
 	],
 	#category : #'DebugAdapterProtocol-Protocol'
 }
@@ -112,5 +112,5 @@ DAPBreakpointLocation >> line: anObject [
 DAPBreakpointLocation >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
-	^ #(column endLine line endColumn )
+	^ #(column endColumn endLine line )
 ]

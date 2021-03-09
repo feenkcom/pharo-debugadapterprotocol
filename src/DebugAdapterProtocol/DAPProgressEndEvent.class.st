@@ -108,5 +108,5 @@ DAPProgressEndEvent >> progressId: anObject [
 DAPProgressEndEvent >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
-	^ #(event body message progressId )
+	^ #(body event message progressId )
 ]

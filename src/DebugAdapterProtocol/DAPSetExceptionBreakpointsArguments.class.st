@@ -5,9 +5,9 @@ Class {
 	#name : #DAPSetExceptionBreakpointsArguments,
 	#superclass : #DAPObject,
 	#instVars : [
-		'filters',
 		'exceptionOptions',
-		'filterOptions'
+		'filterOptions',
+		'filters'
 	],
 	#category : #'DebugAdapterProtocol-Protocol'
 }

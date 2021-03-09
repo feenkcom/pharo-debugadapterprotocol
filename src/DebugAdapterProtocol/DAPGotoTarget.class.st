@@ -6,13 +6,13 @@ Class {
 	#name : #DAPGotoTarget,
 	#superclass : #DAPObject,
 	#instVars : [
-		'endColumn',
-		'line',
 		'column',
+		'endColumn',
 		'endLine',
 		'id',
+		'instructionPointerReference',
 		'label',
-		'instructionPointerReference'
+		'line'
 	],
 	#category : #'DebugAdapterProtocol-Protocol'
 }
@@ -176,5 +176,5 @@ DAPGotoTarget >> line: anObject [
 DAPGotoTarget >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
-	^ #(endColumn line column endLine id label instructionPointerReference )
+	^ #(column endColumn endLine id instructionPointerReference label line )
 ]

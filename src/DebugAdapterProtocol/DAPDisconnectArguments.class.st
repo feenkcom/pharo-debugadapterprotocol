@@ -32,7 +32,7 @@ DAPDisconnectArguments >> acceptVisitor: aVisitor [
 DAPDisconnectArguments >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
-	^ #(terminateDebuggee restart )
+	^ #(restart terminateDebuggee )
 ]
 
 { #category : #accessing }

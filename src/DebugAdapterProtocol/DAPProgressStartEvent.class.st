@@ -156,7 +156,7 @@ IDs must be unique within a debug session.
 DAPProgressStartEvent >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
-	^ #(event body cancellable message requestId progressId title percentage )
+	^ #(body cancellable event message percentage progressId requestId title )
 ]
 
 { #category : #accessing }

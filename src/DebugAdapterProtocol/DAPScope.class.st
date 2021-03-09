@@ -5,18 +5,18 @@ Class {
 	#name : #DAPScope,
 	#superclass : #DAPObject,
 	#instVars : [
+		'column',
+		'endColumn',
+		'endLine',
 		'expensive',
 		'indexedVariables',
-		'endColumn',
-		'name',
-		'source',
 		'line',
-		'endLine',
-		'variables',
-		'variablesReference',
-		'presentationHint',
+		'name',
 		'namedVariables',
-		'column'
+		'presentationHint',
+		'source',
+		'variables',
+		'variablesReference'
 	],
 	#category : #'DebugAdapterProtocol-Protocol'
 }
@@ -246,7 +246,7 @@ DAPScope >> printOn: aStream [
 DAPScope >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
-	^ #(endColumn expensive line variablesReference name indexedVariables endLine presentationHint namedVariables source column )
+	^ #(column endColumn endLine expensive indexedVariables line name namedVariables presentationHint source variablesReference )
 ]
 
 { #category : #accessing }

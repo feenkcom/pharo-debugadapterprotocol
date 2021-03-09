@@ -89,7 +89,7 @@ DAPInvalidatedEvent >> event: anObject [
 DAPInvalidatedEvent >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
-	^ #(event body stackFrameId threadId areas )
+	^ #(areas body event stackFrameId threadId )
 ]
 
 { #category : #accessing }

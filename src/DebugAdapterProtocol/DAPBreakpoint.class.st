@@ -6,15 +6,15 @@ Class {
 	#superclass : #DAPObject,
 	#instVars : [
 		'column',
-		'message',
-		'line',
-		'source',
-		'id',
 		'endColumn',
-		'instructionReference',
-		'verified',
 		'endLine',
-		'offset'
+		'id',
+		'instructionReference',
+		'line',
+		'message',
+		'offset',
+		'source',
+		'verified'
 	],
 	#category : #'DebugAdapterProtocol-Protocol'
 }
@@ -206,7 +206,7 @@ This can be negative.
 DAPBreakpoint >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
-	^ #(column line id endLine instructionReference offset message verified source endColumn )
+	^ #(column endColumn endLine id instructionReference line message offset source verified )
 ]
 
 { #category : #accessing }

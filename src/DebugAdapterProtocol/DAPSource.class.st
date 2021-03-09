@@ -6,15 +6,15 @@ Class {
 	#name : #DAPSource,
 	#superclass : #DAPObject,
 	#instVars : [
+		'adapterData',
 		'checksums',
-		'presentationHint',
-		'sources',
-		'origin',
-		'sourceReference',
-		'path',
-		'sourceCode',
 		'name',
-		'adapterData'
+		'origin',
+		'path',
+		'presentationHint',
+		'sourceCode',
+		'sourceReference',
+		'sources'
 	],
 	#category : #'DebugAdapterProtocol-Protocol'
 }
@@ -196,7 +196,7 @@ A value of 'deemphasize' can be used to indicate that the source is not availabl
 DAPSource >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
-	^ #(adapterData presentationHint sources checksums sourceReference path name origin )
+	^ #(adapterData checksums name origin path presentationHint sourceReference sources )
 ]
 
 { #category : #accessing }

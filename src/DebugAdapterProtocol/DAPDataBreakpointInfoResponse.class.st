@@ -122,5 +122,5 @@ DAPDataBreakpointInfoResponse >> description: anObject [
 DAPDataBreakpointInfoResponse >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
-	^ #(body accessTypes description canPersist dataId )
+	^ #(accessTypes body canPersist dataId description )
 ]

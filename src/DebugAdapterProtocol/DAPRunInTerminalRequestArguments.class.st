@@ -6,10 +6,10 @@ Class {
 	#superclass : #DAPObject,
 	#instVars : [
 		'args',
-		'kind',
 		'cwd',
-		'title',
-		'env'
+		'env',
+		'kind',
+		'title'
 	],
 	#category : #'DebugAdapterProtocol-Protocol'
 }

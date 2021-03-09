@@ -64,5 +64,5 @@ DAPContinueResponse >> body: anObject [
 DAPContinueResponse >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
-	^ #(body allThreadsContinued )
+	^ #(allThreadsContinued body )
 ]

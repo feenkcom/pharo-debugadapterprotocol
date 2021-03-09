@@ -5,14 +5,14 @@ Class {
 	#name : #DAPCompletionItem,
 	#superclass : #DAPObject,
 	#instVars : [
-		'selectionLength',
+		'label',
 		'length',
+		'selectionLength',
 		'selectionStart',
 		'sortText',
+		'start',
 		'text',
-		'type',
-		'label',
-		'start'
+		'type'
 	],
 	#category : #'DebugAdapterProtocol-Protocol'
 }
@@ -84,7 +84,7 @@ If missing the value 0 is assumed which results in the completion text being ins
 DAPCompletionItem >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
-	^ #(label start length selectionStart selectionLength type sortText text )
+	^ #(label length selectionLength selectionStart sortText start text type )
 ]
 
 { #category : #accessing }

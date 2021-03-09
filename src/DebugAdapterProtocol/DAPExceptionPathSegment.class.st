@@ -7,8 +7,8 @@ Class {
 	#name : #DAPExceptionPathSegment,
 	#superclass : #DAPObject,
 	#instVars : [
-		'negate',
-		'names'
+		'names',
+		'negate'
 	],
 	#category : #'DebugAdapterProtocol-Protocol'
 }
@@ -72,5 +72,5 @@ DAPExceptionPathSegment >> negate: anObject [
 DAPExceptionPathSegment >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
-	^ #(negate names )
+	^ #(names negate )
 ]

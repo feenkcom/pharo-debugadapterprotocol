@@ -127,7 +127,7 @@ DAPProcessEvent >> pointerSize: anObject [
 DAPProcessEvent >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
-	^ #(event body systemProcessId startMethod name isLocalProcess pointerSize )
+	^ #(body event isLocalProcess name pointerSize startMethod systemProcessId )
 ]
 
 { #category : #accessing }

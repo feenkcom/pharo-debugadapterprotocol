@@ -5,8 +5,8 @@ Class {
 	#name : #DAPStackTraceArguments,
 	#superclass : #DAPObject,
 	#instVars : [
-		'levels',
 		'format',
+		'levels',
 		'startFrame',
 		'threadId'
 	],
@@ -79,7 +79,7 @@ DAPStackTraceArguments >> levels: anObject [
 DAPStackTraceArguments >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
-	^ #(threadId startFrame levels format )
+	^ #(format levels startFrame threadId )
 ]
 
 { #category : #accessing }

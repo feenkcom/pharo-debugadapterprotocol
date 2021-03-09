@@ -5,8 +5,8 @@ Class {
 	#name : #DAPProtocolMessage,
 	#superclass : #DAPObject,
 	#instVars : [
-		'type',
-		'seq'
+		'seq',
+		'type'
 	],
 	#category : #'DebugAdapterProtocol-Protocol'
 }

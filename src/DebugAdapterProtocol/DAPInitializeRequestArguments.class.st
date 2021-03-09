@@ -5,19 +5,19 @@ Class {
 	#name : #DAPInitializeRequestArguments,
 	#superclass : #DAPObject,
 	#instVars : [
-		'supportsVariablePaging',
+		'adapterID',
 		'clientID',
+		'clientName',
 		'columnsStartAt1',
 		'linesStartAt1',
+		'locale',
 		'pathFormat',
 		'supportsInvalidatedEvent',
-		'clientName',
-		'supportsVariableType',
+		'supportsMemoryReferences',
 		'supportsProgressReporting',
 		'supportsRunInTerminalRequest',
-		'supportsMemoryReferences',
-		'adapterID',
-		'locale'
+		'supportsVariablePaging',
+		'supportsVariableType'
 	],
 	#category : #'DebugAdapterProtocol-Protocol'
 }
@@ -187,7 +187,7 @@ DAPInitializeRequestArguments >> pathFormat: anObject [
 DAPInitializeRequestArguments >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
-	^ #(supportsMemoryReferences supportsRunInTerminalRequest supportsVariablePaging adapterID supportsProgressReporting columnsStartAt1 clientName locale clientID linesStartAt1 supportsVariableType pathFormat supportsInvalidatedEvent )
+	^ #(adapterID clientID clientName columnsStartAt1 linesStartAt1 locale pathFormat supportsInvalidatedEvent supportsMemoryReferences supportsProgressReporting supportsRunInTerminalRequest supportsVariablePaging supportsVariableType )
 ]
 
 { #category : #accessing }

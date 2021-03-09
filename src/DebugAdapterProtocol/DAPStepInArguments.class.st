@@ -56,7 +56,7 @@ DAPStepInArguments >> granularity: anObject [
 DAPStepInArguments >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
-	^ #(targetId threadId granularity )
+	^ #(granularity targetId threadId )
 ]
 
 { #category : #accessing }

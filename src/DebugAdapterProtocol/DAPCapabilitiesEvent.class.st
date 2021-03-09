@@ -92,5 +92,5 @@ DAPCapabilitiesEvent >> event: anObject [
 DAPCapabilitiesEvent >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
-	^ #(event body capabilities )
+	^ #(body capabilities event )
 ]

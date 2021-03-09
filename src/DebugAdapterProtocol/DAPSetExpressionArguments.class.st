@@ -7,8 +7,8 @@ Class {
 	#instVars : [
 		'expression',
 		'format',
-		'value',
-		'frameId'
+		'frameId',
+		'value'
 	],
 	#category : #'DebugAdapterProtocol-Protocol'
 }
@@ -96,7 +96,7 @@ DAPSetExpressionArguments >> frameId: anObject [
 DAPSetExpressionArguments >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
-	^ #(format expression value frameId )
+	^ #(expression format frameId value )
 ]
 
 { #category : #accessing }

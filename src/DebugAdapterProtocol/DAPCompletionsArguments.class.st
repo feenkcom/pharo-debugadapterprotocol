@@ -5,10 +5,10 @@ Class {
 	#name : #DAPCompletionsArguments,
 	#superclass : #DAPObject,
 	#instVars : [
-		'line',
 		'column',
-		'text',
-		'frameId'
+		'frameId',
+		'line',
+		'text'
 	],
 	#category : #'DebugAdapterProtocol-Protocol'
 }
@@ -93,7 +93,7 @@ DAPCompletionsArguments >> line: anObject [
 DAPCompletionsArguments >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
-	^ #(column text line frameId )
+	^ #(column frameId line text )
 ]
 
 { #category : #accessing }

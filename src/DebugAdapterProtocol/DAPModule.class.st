@@ -12,17 +12,17 @@ Class {
 	#name : #DAPModule,
 	#superclass : #DAPObject,
 	#instVars : [
-		'version',
-		'dateTimeStamp',
 		'addressRange',
-		'path',
-		'name',
-		'symbolStatus',
+		'dateTimeStamp',
+		'id',
 		'isOptimized',
-		'package',
 		'isUserCode',
+		'name',
+		'package',
+		'path',
 		'symbolFilePath',
-		'id'
+		'symbolStatus',
+		'version'
 	],
 	#category : #'DebugAdapterProtocol-Protocol'
 }
@@ -230,7 +230,7 @@ Logical full path to the module. The exact definition is implementation defined,
 DAPModule >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
-	^ #(dateTimeStamp addressRange symbolStatus version path name id isUserCode isOptimized package symbolFilePath )
+	^ #(addressRange dateTimeStamp id isOptimized isUserCode name package path symbolFilePath symbolStatus version )
 ]
 
 { #category : #accessing }

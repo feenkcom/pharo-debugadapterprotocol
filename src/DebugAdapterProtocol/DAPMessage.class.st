@@ -6,12 +6,12 @@ Class {
 	#superclass : #DAPObject,
 	#instVars : [
 		'format',
-		'url',
-		'showUser',
-		'urlLabel',
-		'variables',
 		'id',
-		'sendTelemetry'
+		'sendTelemetry',
+		'showUser',
+		'url',
+		'urlLabel',
+		'variables'
 	],
 	#category : #'DebugAdapterProtocol-Protocol'
 }
@@ -82,7 +82,7 @@ DAPMessage >> id: anObject [
 DAPMessage >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
-	^ #(format url showUser urlLabel variables id sendTelemetry )
+	^ #(format id sendTelemetry showUser url urlLabel variables )
 ]
 
 { #category : #accessing }

@@ -201,7 +201,7 @@ DAPOutputEvent >> output: anObject [
 DAPOutputEvent >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
-	^ #(event body source group category line variablesReference column output data )
+	^ #(body category column data event group line output source variablesReference )
 ]
 
 { #category : #accessing }

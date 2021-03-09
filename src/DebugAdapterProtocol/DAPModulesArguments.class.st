@@ -51,7 +51,7 @@ DAPModulesArguments >> moduleCount: anObject [
 DAPModulesArguments >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
-	^ #(startModule moduleCount )
+	^ #(moduleCount startModule )
 ]
 
 { #category : #accessing }

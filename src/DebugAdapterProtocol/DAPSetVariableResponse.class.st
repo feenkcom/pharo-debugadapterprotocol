@@ -90,7 +90,7 @@ The value should be less than or equal to 2147483647 (2^31-1).
 DAPSetVariableResponse >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
-	^ #(body indexedVariables value namedVariables variablesReference type )
+	^ #(body indexedVariables namedVariables type value variablesReference )
 ]
 
 { #category : #accessing }

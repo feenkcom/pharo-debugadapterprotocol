@@ -10,15 +10,15 @@ Class {
 	#name : #DAPVariable,
 	#superclass : #DAPObject,
 	#instVars : [
-		'memoryReference',
-		'presentationHint',
-		'variablesReference',
-		'name',
-		'value',
-		'type',
-		'namedVariables',
 		'evaluateName',
-		'indexedVariables'
+		'indexedVariables',
+		'memoryReference',
+		'name',
+		'namedVariables',
+		'presentationHint',
+		'type',
+		'value',
+		'variablesReference'
 	],
 	#category : #'DebugAdapterProtocol-Protocol'
 }
@@ -188,7 +188,7 @@ DAPVariable >> printOn: aStream [
 DAPVariable >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
-	^ #(value presentationHint indexedVariables memoryReference variablesReference namedVariables evaluateName name type )
+	^ #(evaluateName indexedVariables memoryReference name namedVariables presentationHint type value variablesReference )
 ]
 
 { #category : #accessing }

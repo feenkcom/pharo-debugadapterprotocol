@@ -132,7 +132,7 @@ DAPStoppedEvent >> preserveFocusHint: anObject [
 DAPStoppedEvent >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
-	^ #(event body threadId description preserveFocusHint reason allThreadsStopped text )
+	^ #(allThreadsStopped body description event preserveFocusHint reason text threadId )
 ]
 
 { #category : #accessing }

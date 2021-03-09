@@ -5,8 +5,8 @@ Class {
 	#name : #DAPRequest,
 	#superclass : #DAPProtocolMessage,
 	#instVars : [
-		'command',
-		'arguments'
+		'arguments',
+		'command'
 	],
 	#category : #'DebugAdapterProtocol-Protocol'
 }
