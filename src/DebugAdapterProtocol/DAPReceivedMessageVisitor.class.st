@@ -184,7 +184,9 @@ DAPReceivedMessageVisitor >> visitTerminatedEvent: anObject [
 { #category : #visiting }
 DAPReceivedMessageVisitor >> visitThreadEvent: aDAPThreadEvent [
 
-	(client atThreadId: aDAPThreadEvent threadId) latestEvent: aDAPThreadEvent.
+	(client atThreadId: aDAPThreadEvent threadId) 
+		state: aDAPThreadEvent reason;
+		latestEvent: aDAPThreadEvent.
 	^ true
 ]
 

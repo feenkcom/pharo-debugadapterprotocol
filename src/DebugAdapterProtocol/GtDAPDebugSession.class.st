@@ -23,7 +23,7 @@ GtDAPDebugSession >> dapResume [
 	This only instructs the NodeJS server to resume.  Control of the Pharo session is up to the owner of the receiver."
 
 	self signal setWaitAgain.
-	self dapDebugger resume.
+	self dapDebugger stoppedThread continue.
 
 ]
 

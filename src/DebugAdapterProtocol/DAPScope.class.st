@@ -250,6 +250,14 @@ DAPScope >> propertyNames [
 ]
 
 { #category : #accessing }
+DAPScope >> setVariableNamed: aString to: anObject [
+
+	variables detect: [ :each | each name = aString ]
+		ifNone: [ self error: 'Invalid variable name' ].
+	client setVariableNamed: aString reference: variablesReference to: anObject.
+]
+
+{ #category : #accessing }
 DAPScope >> source [
 	"Optional source for this scope.
 	#/definitions/Source
@@ -277,9 +285,11 @@ DAPScope >> variables [
 	The debugger may not be in a state to retrieve the variables, in which case, answer nil"
 
 	^ variables ifNil: [ 
-		variables := [ (client variablesForReference: variablesReference) allVariables ]
+		[ variables := (client variablesForReference: variablesReference) allVariables ]
 			on: DAPBadResponse
-			do: [ nil ] ]
+			do: [ #() ].
+		variables do: [ :variable | variable scope: self ].
+		variables ]
 ]
 
 { #category : #accessing }

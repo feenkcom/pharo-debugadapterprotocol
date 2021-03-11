@@ -85,6 +85,20 @@ DAPModuleEvent >> module: anObject [
 	self body at: #module put: anObject
 ]
 
+{ #category : #printing }
+DAPModuleEvent >> printOn: aStream [
+
+	aStream 
+		<< 'Module ';
+		print: self reason.
+	
+	self module ifNotNil: [ :module |
+		module name ifNotNil: [ :name |
+			aStream
+				<< ': ';
+				<< name ] ]
+]
+
 { #category : #accessing }
 DAPModuleEvent >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"

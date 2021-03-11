@@ -18,7 +18,8 @@ Class {
 		'presentationHint',
 		'type',
 		'value',
-		'variablesReference'
+		'variablesReference',
+		'scope'
 	],
 	#category : #'DebugAdapterProtocol-Protocol'
 }
@@ -181,7 +182,7 @@ DAPVariable >> presentationHint: anObject [
 { #category : #printing }
 DAPVariable >> printOn: aStream [
 
-	aStream print: value
+	aStream << value asString
 ]
 
 { #category : #accessing }
@@ -189,6 +190,24 @@ DAPVariable >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
 	^ #(evaluateName indexedVariables memoryReference name namedVariables presentationHint type value variablesReference )
+]
+
+{ #category : #accessing }
+DAPVariable >> scope [
+	^ scope
+]
+
+{ #category : #accessing }
+DAPVariable >> scope: anObject [
+	scope := anObject
+]
+
+{ #category : #accessing }
+DAPVariable >> setValue: anObject [
+	"Update the receiver's value in the debugger"
+
+	scope setVariableNamed: name to: anObject.
+	self value: anObject
 ]
 
 { #category : #accessing }

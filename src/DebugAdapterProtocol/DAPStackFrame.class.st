@@ -335,6 +335,13 @@ DAPStackFrame >> scopes [
 	^ scopes ifNil: [ scopes := (client scopesForFrameId: id) allScopes ]
 ]
 
+{ #category : #actions }
+DAPStackFrame >> setBreakpointInSourceLines: anArray [ 
+	"Set breakpoints in the receiver's file at the designated  line numbers"
+
+	^ client setBreakpointInSource: self source lines: anArray
+]
+
 { #category : #accessing }
 DAPStackFrame >> source [
 	"The optional source of the frame.

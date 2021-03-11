@@ -18,7 +18,8 @@ Class {
 		'serverProcessDetailsEvent',
 		'threads',
 		'modules',
-		'announcer'
+		'announcer',
+		'breakpoints'
 	],
 	#category : #'DebugAdapterProtocol-Client'
 }
@@ -103,6 +104,37 @@ DAPClient >> disconnectWithRestart: restartBoolean [
 ]
 
 { #category : #ui }
+DAPClient >> gtBreakpointsFor: aView [
+	<gtView>
+
+	(self isConnected not or: [ self isTerminated ]) ifTrue: [ ^ aView empty ].
+	^ aView list 
+		title: 'Breakpoints';
+		priority: 20;
+		items: [ breakpoints ifNil: [ #() ] ];
+		itemText: [ :item | item displayLabel ];
+		actionUpdateButtonTooltip: 'Update Breakpoints'
+
+]
+
+{ #category : #ui }
+DAPClient >> gtModulesFor: aView [
+	<gtView>
+
+	(self isConnected not or: [ self isTerminated ]) ifTrue: [ ^ aView empty ].
+	modules ifEmpty: [ ^ aView empty ].
+	^ aView columnedList 
+		title: 'Modules';
+		priority: 20;
+		items: [ modules associations ];
+		column: 'Name' text: [ :item | item value name ];
+		column: 'Path' text: [ :item | item value path ];
+		send: [ :item | item value ];
+		actionUpdateButtonTooltip: 'Update Modules'
+
+]
+
+{ #category : #ui }
 DAPClient >> gtThreadsFor: aView [
 	<gtView>
 
@@ -113,7 +145,8 @@ DAPClient >> gtThreadsFor: aView [
 		priority: 20;
 		items: [ threads associations sorted: [ :a :b | a key < b key ] ];
 		column: 'Id' text: [ :item | item key asString ];
-		column: 'Name' text: [ :item | item value name ];
+		column: 'Name' text: [ :item | item value displayName ];
+		column: 'State' text: [ :item | item value state asString ];
 		send: [ :item | item value ];
 		actionUpdateButtonTooltip: 'Update Threads'
 
@@ -207,6 +240,16 @@ DAPClient >> nextMessageId [
 	^ messageId := messageId + 1
 ]
 
+{ #category : #printing }
+DAPClient >> printOn: aStream [
+
+	super printOn: aStream.
+	aStream
+		nextPut: $(;
+		<< self statusString;
+		nextPut: $)
+]
+
 { #category : #messages }
 DAPClient >> processMessage: aByteArray [
 	| processors message handled |
@@ -250,6 +293,12 @@ DAPClient >> removeMessageProcessor: aMessageProcessor [
 
 	^ messageProcessorMutex critical: 
 		[ messageProcessors remove: aMessageProcessor ]
+]
+
+{ #category : #accessing }
+DAPClient >> removeThreadId: aNumber [ 
+
+	threads removeKey: aNumber
 ]
 
 { #category : #actions }
@@ -385,6 +434,40 @@ DAPClient >> serverTerminated [
 	socketState := #disconnected.
 ]
 
+{ #category : #actions }
+DAPClient >> setBreakpointInSource: aDAPSource lines: anArray [
+	"Set a breakpoint in the supplied filename at the given line numbers.
+	anArray must be an Array of Integer"
+	| request arguments response |
+
+	arguments := DAPSetBreakpointsArguments new
+		source: aDAPSource;
+		lines: anArray;
+		breakpoints: (anArray collect: [ :lineNumber | { 'line' -> lineNumber } asDictionary ]);
+		sourceModified: false.
+	request := DAPSetBreakpointsRequest new
+		arguments: arguments.
+	response := self sendMessageAndWait: request.
+	breakpoints := response breakpoints collect: [ :breakpoint |
+		DAPBreakpoint fromDictionary: breakpoint client: self ]
+
+]
+
+{ #category : #actions }
+DAPClient >> setVariableNamed: aString reference: variablesReference to: anObject [
+	"Set the specified variable and answer the DAPVariable"
+	| request arguments |
+
+	arguments := DAPSetVariableArguments new
+		name: aString;
+		variablesReference: variablesReference;
+		value: anObject asString.
+	request := DAPSetVariableRequest new
+		arguments: arguments.
+	^ self sendMessageAndWait: request.
+
+]
+
 { #category : #messages }
 DAPClient >> sourceCodeFor: aDAPSource [
 	| request arguments |
@@ -417,6 +500,22 @@ DAPClient >> startQueueProcessor [
 			] forkAt: Processor userSchedulingPriority - 1 named: 'DAP Queue Processor'.
 ]
 
+{ #category : #printing }
+DAPClient >> statusString [
+
+	serverState ifNil: 
+		[ ^ '<unknown>' ].
+
+	self stoppedThread ifNotNil: [ :thread |
+		^ String streamContents: [ :stream |
+			stream
+				<< thread displayName;
+				<< ': ';
+				<< thread state ] ].
+
+	^ serverState
+]
+
 { #category : #actions }
 DAPClient >> stepBackInThreadId: aNumber [
 	"Step back"
@@ -446,6 +545,15 @@ DAPClient >> stepOverInThreadId: aNumber [
 	"Pharo synonym for 'next'"
 
 	^ self nextInThreadId: aNumber
+]
+
+{ #category : #accessing }
+DAPClient >> stoppedThread [
+	"Answer the thread in the stopped state, or nil"
+
+	^ threads
+		detect: #isStopped 
+		ifNone: nil
 ]
 
 { #category : #actions }

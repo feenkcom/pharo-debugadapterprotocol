@@ -7,31 +7,11 @@ Class {
 		'callFramesList',
 		'sourceCode',
 		'currentCallFrame',
-		'currentThread'
+		'currentThread',
+		'debuggerState'
 	],
 	#category : #'DebugAdapterProtocol-UI'
 }
-
-{ #category : #testing }
-GtDAPDebuggerElement class >> availableAutomatically [
-	"The JS debugger should be displayed automatically when opened
-	as the Pharo stack only shows that the server paused signal has been received."
-	
-	^ true
-]
-
-{ #category : #initialization }
-GtDAPDebuggerElement class >> defaultTitle [ 
-
-	^ 'Debug Adapter Protocol'
-]
-
-{ #category : #testing }
-GtDAPDebuggerElement class >> handlesContext: aContext [ 
-
-	^ aContext receiver class = LanguageLinkPromise and: 
-		[ aContext receiver value class = PharoLinkDebuggerPaused ]
-]
 
 { #category : #'instance creation' }
 GtDAPDebuggerElement class >> openOnDebugger: aDAPDebugger [
@@ -40,18 +20,6 @@ GtDAPDebuggerElement class >> openOnDebugger: aDAPDebugger [
 	space := BlSpace new.
 	space root addChild: (self new dapDebugger: aDAPDebugger).
 	space show.
-]
-
-{ #category : #'tools registry' }
-GtDAPDebuggerElement class >> registerToolsOn: registry [
-	"self register"
-	registry registerDebugger: self withRank: 1100.
-]
-
-{ #category : #accessing }
-GtDAPDebuggerElement class >> sessionClass [
-
-	^ GtDAPDebugSession
 ]
 
 { #category : #callbacks }
@@ -88,11 +56,11 @@ GtDAPDebuggerElement >> buildVariablesHeader [
 GtDAPDebuggerElement >> buildVariablesTree [
 	| tree |
 
-	tree := 	BrColumnedTree new
+	tree := BrColumnedTree new
 		rowStencil: (BrGlamorousColumnedTreeSelectableRowElementStencilBuilder new cellSpacing: self cellSpacing);
 		margin: (BlInsets top: 10);
 		addEventHandler: (GtPhlowListToSelectHandler new 
-			transformation: [ :variableNode | variableNode value ]).
+			transformation: [ :variableNode | variableNode value value ]).
 
 	tree column 
 		title: 'Variable';
@@ -172,7 +140,7 @@ GtDAPDebuggerElement >> dapStepOver [
 
 { #category : #initialization }
 GtDAPDebuggerElement >> initialize [
-	| container mainPane leftPane variablesContainer |
+	| container mainPane leftPane rightPane variablesContainer |
 
 	super initialize.
 	self constraintsDo: [ :c |
@@ -186,11 +154,16 @@ GtDAPDebuggerElement >> initialize [
 	leftPane
 		addChild: callFramesList;
 		addChild: sourceCode.
+	rightPane := BrVerticalPane new.
 	variablesContainer := self newVariablesList.
 	variableList := variablesContainer childNamed: #variablesList.
+	debuggerState := self newDebuggerState.
+	rightPane
+		addChild: debuggerState;
+		addChild: variablesContainer.
 	mainPane
 		addChild: leftPane;
-		addChild: variablesContainer.
+		addChild: rightPane.
 	container 
 		addChild: self newToolbar;
 		addChild: mainPane.
@@ -237,6 +210,17 @@ GtDAPDebuggerElement >> newCallFramesList [
 			aCellElement text: aCDTCallFrame printString asRopedText ].
 
 	^ list
+]
+
+{ #category : #'instance creation' }
+GtDAPDebuggerElement >> newDebuggerState [
+
+	^ BrLabel new
+		look: BrGlamorousLabelLook;
+		constraintsDo: [ :c |
+			c horizontal matchParent.
+			c vertical fitContent ].
+
 ]
 
 { #category : #'private - element creation' }
@@ -357,7 +341,7 @@ GtDAPDebuggerElement >> sourceText [
 GtDAPDebuggerElement >> terminateSession [
 
 	super terminateSession.
-	dapDebugger ifNotNil: 
+	self dapDebugger ifNotNil: 
 		[ dapDebugger announcer unsubscribe: self ]
 ]
 
@@ -366,8 +350,13 @@ GtDAPDebuggerElement >> updateUI [
 	"Update the UI to reflect the debugger state."
 
 	StringSignal emit: 'updateUI'.
-	"Hard code thread ID 1 for now"
-	currentThread := self dapDebugger atThreadId: 1.
+	debuggerState text: self dapDebugger statusString asRopedText.
+	"Always display the stopped threads.
+	Currently we only support the threading module, which has green threads, like Pharo.
+	This means that if one thread is stopped, none of the others are actually processing."
+	currentThread := self dapDebugger stoppedThread.
+	currentThread ifNil: 
+		[ ^ self ].
 	currentCallFrame := currentThread stackFrames 
 		ifEmpty: [ nil ]
 		ifNotEmpty: [ :frames | frames first ].
@@ -375,7 +364,7 @@ GtDAPDebuggerElement >> updateUI [
 	variableList 
 		items: (currentCallFrame
 			ifNil: [ #() ]
-			ifNotNil: [ currentCallFrame valuesDictionary associations ])
+			ifNotNil: [ currentCallFrame variablesDictionary associations ])
 		immediate: [ :item | 
 			item value isDictionary
 				ifTrue: [ item value associations ]

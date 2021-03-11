@@ -64,6 +64,14 @@ DAPBreakpoint >> column: anObject [
 ]
 
 { #category : #accessing }
+DAPBreakpoint >> displayLabel [
+
+	^ self source 
+		ifNil: [ '<unknown>:', line asString ]
+		ifNotNil: [ self source path, ':', line asString ]
+]
+
+{ #category : #accessing }
 DAPBreakpoint >> endColumn [
 	"An optional end column of the actual range covered by the breakpoint.
 If no end line is given, then the end column is assumed to be in the start line.
@@ -100,6 +108,26 @@ DAPBreakpoint >> endLine: anObject [
 	Auto-generated method"
 
 	endLine := anObject
+
+]
+
+{ #category : #ui }
+DAPBreakpoint >> gtSourceFor: aView [
+	<gtView>
+
+	^ aView explicit
+		title: 'Source';
+		priority: 10;
+		actionUpdateButtonTooltip: 'Update Source';
+		stencil: [ | editor |
+			editor := BrEditor new
+				text: self sourceText;
+				look: BrGlamorousCodeEditorLook new;
+				styler: PythonParser2 gtStyler.
+			self line > 5 ifTrue:
+				[ editor 	scrollToPosition: self line - 5 ].
+			editor ]
+
 
 ]
 
@@ -203,6 +231,14 @@ This can be negative.
 ]
 
 { #category : #accessing }
+DAPBreakpoint >> printOn: aStream [
+
+	aStream
+		<< 'Breakpoint: ';
+		<< self displayLabel
+]
+
+{ #category : #accessing }
 DAPBreakpoint >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
@@ -229,6 +265,32 @@ DAPBreakpoint >> source: anObject [
 	ifFalse:
 		[ anObject ]
 
+]
+
+{ #category : #ui }
+DAPBreakpoint >> sourceCode [
+
+	source ifNil: [ ^ '' ].
+	^ self source sourceCode
+]
+
+{ #category : #ui }
+DAPBreakpoint >> sourceText [ 
+	"Answer the receiver's source code, with the breakpoint line highlighted"
+	| text indexes lineNumber sourceCode |
+
+	lineNumber := self line.
+	sourceCode := self sourceCode withSqueakLineEndings.
+	text := sourceCode asRopedText.
+	lineNumber = 0 ifTrue: [ ^ text ].
+	indexes := sourceCode gtIndexOfLineNumber: lineNumber.
+	indexes ifNotNil: 
+		[ (text 
+			from: indexes key + (self column ifNil: [ 1 ]) - 1 
+			to: indexes value) 
+			attribute: (BlTextHighlightAttribute paint: BrGlamorousColors errorBackgroundColor)
+				beNotOverwritableByStyler  ].
+	^ text
 ]
 
 { #category : #accessing }

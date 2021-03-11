@@ -63,6 +63,17 @@ DAPThreadEvent >> event: anObject [
 
 ]
 
+{ #category : #printing }
+DAPThreadEvent >> printOn: aStream [
+
+	aStream 
+		<< 'Thread ';
+		print: self threadId;
+		<< ' ';
+		print: self reason.
+
+]
+
 { #category : #accessing }
 DAPThreadEvent >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"

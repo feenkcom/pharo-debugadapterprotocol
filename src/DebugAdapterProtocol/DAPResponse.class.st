@@ -80,6 +80,13 @@ DAPResponse >> command: anObject [
 
 ]
 
+{ #category : #initialization }
+DAPResponse >> initialize [
+
+	super initialize.
+	body := Dictionary new.
+]
+
 { #category : #accessing }
 DAPResponse >> message [
 	"Contains the raw error in short form if 'success' is false.

@@ -90,6 +90,30 @@ DAPDebugger >> disconnect [
 ]
 
 { #category : #ui }
+DAPDebugger >> gtBreakpointsFor: aView [
+	<gtView>
+
+	(client isConnected not or: [ client isTerminated ]) ifTrue: [ ^ aView empty ].
+	^ aView forward 
+		title: 'Breakpoints';
+		priority: 20;
+		object: [ client ];
+		view: #gtBreakpointsFor:
+]
+
+{ #category : #ui }
+DAPDebugger >> gtModulesFor: aView [
+	<gtView>
+
+	(client isConnected not or: [ client isTerminated ]) ifTrue: [ ^ aView empty ].
+	^ aView forward 
+		title: 'Modules';
+		priority: 10;
+		object: [ client ];
+		view: #gtModulesFor:
+]
+
+{ #category : #ui }
 DAPDebugger >> gtThreadsFor: aView [
 	<gtView>
 
@@ -150,6 +174,13 @@ DAPDebugger >> isInitialized [
 ]
 
 { #category : #testing }
+DAPDebugger >> isStopped [
+	"Answer a boolean indicating if the receiver is stopped"
+
+	^ self stoppedThread isNotNil
+]
+
+{ #category : #testing }
 DAPDebugger >> isTerminated [
 
 	^ client isTerminated
@@ -164,6 +195,16 @@ DAPDebugger >> localRoot [
 DAPDebugger >> localRoot: aFileReference [
 
 	localRoot := aFileReference asFileReference
+]
+
+{ #category : #printing }
+DAPDebugger >> printOn: aStream [
+
+	super printOn: aStream.
+	aStream
+		nextPut: $(;
+		<< self statusString;
+		nextPut: $)
 ]
 
 { #category : #initialization }
@@ -190,4 +231,18 @@ DAPDebugger >> setExceptionBreakpoints [
 	request := DAPSetExceptionBreakpointsRequest new
 		arguments: arguments.
 	client sendMessage: request.
+]
+
+{ #category : #accessing }
+DAPDebugger >> statusString [
+	"Answer a one-line string that represents the overall state of the debugger"
+
+	^ client statusString
+]
+
+{ #category : #accessing }
+DAPDebugger >> stoppedThread [
+	"Answer the thread in the stopped state, or nil"
+
+	^ client stoppedThread
 ]

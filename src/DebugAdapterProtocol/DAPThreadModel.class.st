@@ -30,6 +30,13 @@ DAPThreadModel >> continue [
 	^ client continueThreadId: self threadId
 ]
 
+{ #category : #accessing }
+DAPThreadModel >> displayName [
+	"Answer a string which represents the receiver"
+
+	^ self name ifNil: [ 'Thread-', self threadId asString ]
+]
+
 { #category : #ui }
 DAPThreadModel >> gtStackFor: aView [
 	<gtView>
@@ -102,19 +109,19 @@ DAPThreadModel >> gtTopVariablesFor: aView [
 { #category : #testing }
 DAPThreadModel >> isContinued [
 
-	^ state == #continued
+	^ state = #continued
 ]
 
 { #category : #testing }
 DAPThreadModel >> isStopped [
 
-	^ state == #stopped
+	^ state = #stopped
 ]
 
 { #category : #testing }
 DAPThreadModel >> isTerminated [
 
-	^ state == #terminated
+	^ state = #terminated
 ]
 
 { #category : #accessing }
@@ -172,16 +179,18 @@ DAPThreadModel >> stackFrames: aCollection [
 { #category : #accessing }
 DAPThreadModel >> state [
 	"The state of the receiver.
-	One of: nil (no activity), #continued, #stopped, #terminated"
-	<return: #Symbol>
+	One of: nil (no activity), #started, #continued, #stopped, #terminated"
+	<return: #String>
 
 	^ state
 ]
 
 { #category : #accessing }
-DAPThreadModel >> state: aSymbol [
+DAPThreadModel >> state: aString [
 
-	state := aSymbol.
+	state := aString.
+	state = #exited ifTrue:
+		[ client removeThreadId: self threadId ].
 	client announce: (DAPThreadStateChanged new thread: self)
 ]
 

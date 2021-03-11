@@ -755,8 +755,9 @@ TDAPProtocolVisitor >> visitSetBreakpointsRequest: anObject [
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitSetBreakpointsResponse: anObject [
+	"No action required, it is handled by the caller"
 
-	^ false halt
+	^ false
 ]
 
 { #category : #visiting }
@@ -864,7 +865,7 @@ TDAPProtocolVisitor >> visitSetVariableRequest: anObject [
 { #category : #visiting }
 TDAPProtocolVisitor >> visitSetVariableResponse: anObject [
 
-	^ false halt
+	^ false
 ]
 
 { #category : #visiting }
