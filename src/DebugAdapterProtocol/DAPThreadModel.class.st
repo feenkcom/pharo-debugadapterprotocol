@@ -34,8 +34,13 @@ DAPThreadModel >> continue [
 DAPThreadModel >> gtStackFor: aView [
 	<gtView>
 
-	(client isNil or: [ client isTerminated ]) ifTrue: [ ^ aView empty ].
-	(stackFrames isNil or: [ stackFrames isEmpty ]) ifTrue: [ ^ aView empty ].
+	(self isStopped not or: 
+		[ client isNil or: 
+		[ client isTerminated or: 
+		[ stackFrames isNil or: 
+		[ stackFrames isEmpty	]]]]) ifTrue: 
+			[ ^ aView empty ].
+
 	^ aView columnedList
 		title: 'Stack';
 		priority: 10;
@@ -51,8 +56,12 @@ DAPThreadModel >> gtStackFor: aView [
 DAPThreadModel >> gtTopSourceFor: aView [
 	<gtView>
 
-	(client isNil or: [ client isTerminated ]) ifTrue: [ ^ aView empty ].
-	(stackFrames isNil or: [ stackFrames isEmpty ]) ifTrue: [ ^ aView empty ].
+	(self isStopped not or: 
+		[ client isNil or: 
+		[ client isTerminated or: 
+		[ stackFrames isNil or: 
+		[ stackFrames isEmpty	]]]]) ifTrue: 
+			[ ^ aView empty ].
 	^ aView textEditor
 		title: 'Source';
 		priority: 100;
@@ -67,7 +76,12 @@ DAPThreadModel >> gtTopSourceFor: aView [
 DAPThreadModel >> gtTopVariablesFor: aView [
 	<gtView>
 
-	(client isNil or: [ client isTerminated ]) ifTrue: [ ^ aView empty ].
+	(self isStopped not or: 
+		[ client isNil or: 
+		[ client isTerminated or: 
+		[ stackFrames isNil or: 
+		[ stackFrames isEmpty	]]]]) ifTrue: 
+			[ ^ aView empty ].
 	^ aView columnedTree
 		title: 'Variables';
 		priority: 10;

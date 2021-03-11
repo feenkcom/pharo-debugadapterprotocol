@@ -201,8 +201,16 @@ DAPSource >> propertyNames [
 
 { #category : #accessing }
 DAPSource >> sourceCode [ 
+	"Answer the receiver's source code.
+	For now, cheat, if the debug server won't get it and we have access, load directly from the file."
 
-	^ sourceCode ifNil: [ sourceCode := client sourceCodeFor: self ]
+	^ sourceCode ifNil: [ sourceCode := [ client sourceCodeFor: self ]
+		on: DAPBadResponse 
+		do: [ :ex | | fileReference |
+			fileReference := path asFileReference.
+			fileReference isReadable 
+				ifTrue: [ fileReference contents ]
+				ifFalse: [ ex pass ] ] ]
 ]
 
 { #category : #accessing }

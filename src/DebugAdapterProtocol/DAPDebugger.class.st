@@ -2,16 +2,13 @@ Class {
 	#name : #DAPDebugger,
 	#superclass : #Object,
 	#instVars : [
-		'client'
+		'client',
+		'host',
+		'port',
+		'localRoot'
 	],
 	#category : #'DebugAdapterProtocol-Client'
 }
-
-{ #category : #'instance creation' }
-DAPDebugger class >> connectTo: host port: portNumber [
-
-	^ self new connectTo: host port: portNumber
-]
 
 { #category : #accessor }
 DAPDebugger >> announcer [
@@ -35,18 +32,18 @@ DAPDebugger >> attachToDebuggee [
 		type: 'python';
 		request: 'attach';
 		connect: (DAPIPAddress new
- 			host: 'localhost';
-			port: 5678);
+ 			host: self hostName;
+			port: port);
 		pathMappings: {
 			{
- 				'localRoot' -> '/home/alistair/python/conda1'.
-				'remoteRoot' -> '.'.
+ 				'localRoot' -> localRoot fullName.
+				'remoteRoot' -> localRoot fullName.
 			} asDictionary };
 		pythonPath: '/usr/bin/python';
 		debugOptions: { 'RedirectOutput', 'UnixClient', 'ShowReturnValue' };
 		justMyCode: true;
 		showReturnValue: true;
-		workspaceFolder: '/home/alistair/python/conda1';
+		workspaceFolder: localRoot fullName;
 		__sessionId: UUID new asString.
 	request := DAPAttachRequest new 
 		arguments: arguments;
@@ -63,9 +60,14 @@ DAPDebugger >> configurationDone [
 ]
 
 { #category : #initialization }
-DAPDebugger >> connectTo: host port: portNumber [
+DAPDebugger >> connectTo: aHostNameOrNumber port: aPortNumber [
 
-	client := DAPClient connectTo: host port: portNumber debugger: self.
+	localRoot ifNil: 
+		[ self error: 'The localRoot directory must be set before connecting' ].
+
+	host := aHostNameOrNumber.
+	port := aPortNumber.
+	client := DAPClient connectTo: host port: port debugger: self.
 	self initializeRemote.
 	self attachToDebuggee.
 	self setExceptionBreakpoints.
@@ -99,6 +101,19 @@ DAPDebugger >> gtThreadsFor: aView [
 		view: #gtThreadsFor:
 ]
 
+{ #category : #accessing }
+DAPDebugger >> hostName [
+	"Answer the hostName as a string.
+	This can only be called after connection to the debugger has been initiated"
+
+	^ host isString 
+		ifTrue: [ host ]
+		ifFalse: [ String streamContents: [ :stream |
+				host 
+					do: [ :number | stream print: number ] 
+					separatedBy: [ stream nextPut: $. ] ] ]
+]
+
 { #category : #initialization }
 DAPDebugger >> initializeRemote [
 	| arguments request |
@@ -119,7 +134,7 @@ DAPDebugger >> initializeRemote [
 	request := DAPInitializeRequest new 
 		arguments: arguments;
 		command: 'initialize'.
-	client sendMessageAndWait: request.
+	client sendMessage: request.
 ]
 
 { #category : #testing }
@@ -138,6 +153,17 @@ DAPDebugger >> isInitialized [
 DAPDebugger >> isTerminated [
 
 	^ client isTerminated
+]
+
+{ #category : #accessing }
+DAPDebugger >> localRoot [
+	^ localRoot
+]
+
+{ #category : #accessing }
+DAPDebugger >> localRoot: aFileReference [
+
+	localRoot := aFileReference asFileReference
 ]
 
 { #category : #initialization }
@@ -163,5 +189,5 @@ DAPDebugger >> setExceptionBreakpoints [
 		filters: #(uncaught).
 	request := DAPSetExceptionBreakpointsRequest new
 		arguments: arguments.
-	client sendMessageAndWait: request.
+	client sendMessage: request.
 ]

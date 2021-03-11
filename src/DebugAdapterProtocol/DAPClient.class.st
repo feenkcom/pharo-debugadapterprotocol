@@ -55,7 +55,9 @@ DAPClient >> atThreadId: aNumber [
 DAPClient >> checkResponse: response [
 
 	response success ifFalse:
-		[ self error: 'bad response' ].
+		[ DAPBadResponse new
+			response: response;
+			signal ].
 	^true
 ]
 
@@ -403,7 +405,7 @@ DAPClient >> startMessageListener [
 		[ [ messageQueue nextPut: self readNextMessage ]
 			on: ConnectionClosed 
 			do: [ :ex | socketState := #disconnected ] ].
-		] forkAt: 20 named: 'DAP Listener'.
+		] forkAt: Processor userSchedulingPriority - 1 named: 'DAP Listener'.
 ]
 
 { #category : #private }
@@ -412,7 +414,7 @@ DAPClient >> startQueueProcessor [
 
 	queueProcessor := [ [ self isConnected ] whileTrue: 
 		[ self processMessage: messageQueue next ].
-			] forkAt: 20 named: 'DAP Queue Processor'.
+			] forkAt: Processor userSchedulingPriority - 1 named: 'DAP Queue Processor'.
 ]
 
 { #category : #actions }

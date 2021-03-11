@@ -226,6 +226,14 @@ Logical full path to the module. The exact definition is implementation defined,
 
 ]
 
+{ #category : #printing }
+DAPModule >> printOn: aStream [
+
+	aStream
+		<< 'Module: ';
+		print: name
+]
+
 { #category : #accessing }
 DAPModule >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"

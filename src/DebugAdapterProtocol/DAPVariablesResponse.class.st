@@ -72,7 +72,7 @@ DAPVariablesResponse >> variables [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #variables ifAbsent: [ nil ].
+	result := self body ifNotNil: [ :anObject | anObject at: #variables ifAbsent: [ nil ] ].
 	^ result
 ]
 
