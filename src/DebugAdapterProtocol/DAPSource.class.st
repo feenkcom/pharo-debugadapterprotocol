@@ -210,7 +210,7 @@ DAPSource >> sourceCode [
 			fileReference := path asFileReference.
 			fileReference isReadable 
 				ifTrue: [ fileReference contents ]
-				ifFalse: [ ex pass ] ] ]
+				ifFalse: [ 'N/A' ] ] ]
 ]
 
 { #category : #accessing }

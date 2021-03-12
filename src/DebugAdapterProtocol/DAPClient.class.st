@@ -4,11 +4,8 @@ Class {
 	#traits : 'TGtAnnouncer',
 	#classTraits : 'TGtAnnouncer classTrait',
 	#instVars : [
-		'socketStream',
 		'messageQueue',
 		'messageId',
-		'socketState',
-		'messageListener',
 		'queueProcessor',
 		'debugger',
 		'messageProcessorMutex',
@@ -19,7 +16,10 @@ Class {
 		'threads',
 		'modules',
 		'announcer',
-		'breakpoints'
+		'breakpoints',
+		'comms',
+		'stdoutStream',
+		'stderrStream'
 	],
 	#category : #'DebugAdapterProtocol-Client'
 }
@@ -65,14 +65,23 @@ DAPClient >> checkResponse: response [
 { #category : #initialization }
 DAPClient >> connectTo: host port: portNumber debugger: aDAPDebugger [
 
-	socketStream := DAPSocketStream openConnectionToHost: host port: portNumber.
-	"Messages are presumed to be UTF-8 encoded text, which appears as binary to the Socket"
-	socketStream 
-		binary;
-		noTimeout.
-	socketState := #connected.
 	debugger := aDAPDebugger.
-	self startMessageListener.
+	comms := DAPSocketComms new 
+		host: host;
+		port: portNumber;
+		client: self;
+		connect.
+	self startQueueProcessor.
+]
+
+{ #category : #initialization }
+DAPClient >> connectToServerExecutable: aFileReference debugger: aDAPDebugger [
+
+	debugger := aDAPDebugger.
+	comms := DAPSubprocessComms new 
+		serverExecutable: aFileReference;
+		client: self;
+		connect.
 	self startQueueProcessor.
 ]
 
@@ -108,11 +117,12 @@ DAPClient >> gtBreakpointsFor: aView [
 	<gtView>
 
 	(self isConnected not or: [ self isTerminated ]) ifTrue: [ ^ aView empty ].
-	^ aView list 
+	^ aView columnedList
 		title: 'Breakpoints';
 		priority: 20;
-		items: [ breakpoints ifNil: [ #() ] ];
-		itemText: [ :item | item displayLabel ];
+		items: [ breakpoints associations sorted: [ :a :b | a key < b key ] ];
+		column: 'Id' text: [ :item | item key ];
+		column: 'Description' text: [ :item | item value displayLabel ];
 		actionUpdateButtonTooltip: 'Update Breakpoints'
 
 ]
@@ -131,6 +141,30 @@ DAPClient >> gtModulesFor: aView [
 		column: 'Path' text: [ :item | item value path ];
 		send: [ :item | item value ];
 		actionUpdateButtonTooltip: 'Update Modules'
+
+]
+
+{ #category : #ui }
+DAPClient >> gtStderrFor: aView [
+	<gtView>
+
+	^ aView textEditor 
+		title: 'stderr';
+		priority: 20;
+		text: [ stderrStream contents ];
+		actionUpdateButtonTooltip: 'Update stderr'
+
+]
+
+{ #category : #ui }
+DAPClient >> gtStdoutFor: aView [
+	<gtView>
+
+	^ aView textEditor 
+		title: 'stdout';
+		priority: 20;
+		text: [ stdoutStream contents ];
+		actionUpdateButtonTooltip: 'Update stdout'
 
 ]
 
@@ -167,6 +201,9 @@ DAPClient >> initialize [
 	threads := Dictionary new.
 	"Maintain a list of loaded modules. Key = id"
 	modules := Dictionary new.
+	breakpoints := Dictionary new.
+	stdoutStream := (String new: 10240) writeStream.
+	stderrStream := (String new: 10240) writeStream.
 
 	"Always have a general event and response message processors"
 	self addMessageProcessor: (DAPReceivedMessageProcessor new client: self).
@@ -183,14 +220,14 @@ DAPClient >> isAttached [
 DAPClient >> isConnected [
 	"Answer a boolean indicating whether the connection to the remote debugger is open"
 
-	^ socketState = #connected
+	^ comms isConnected
 ]
 
 { #category : #testing }
 DAPClient >> isDisconnected [
 	"Answer a boolean indicating whether the connection to the remote debugger is disconnected"
 
-	^ socketState = #disconnected
+	^ comms isDisconnected
 ]
 
 { #category : #testing }
@@ -221,6 +258,14 @@ DAPClient >> killProcesses [
 		[ self error: 'Unable to kill server process' ]
 ]
 
+{ #category : #actions }
+DAPClient >> launchWithArguments: aDictionary [
+	| request |
+
+	request := DAPLaunchRequest new arguments: aDictionary.
+	^ self sendMessageAndWait: request.
+]
+
 { #category : #accessing }
 DAPClient >> modules [
 	^ modules
@@ -238,6 +283,12 @@ DAPClient >> nextInThreadId: aNumber [
 DAPClient >> nextMessageId [
 
 	^ messageId := messageId + 1
+]
+
+{ #category : #messages }
+DAPClient >> nextPutReceivedMessage: aByteArray [
+
+	messageQueue nextPut: aByteArray
 ]
 
 { #category : #printing }
@@ -272,20 +323,11 @@ DAPClient >> processMessage: aByteArray [
 			on: Error fork: [ :ex | ex pass ] ].
 ]
 
-{ #category : #'private - communication' }
-DAPClient >> readNextMessage [
-	"Read a message from the remote debugger.
-	All messages begin with 'Content-Length: <an Integer><CRLF><CRLF>'"
-	| contentLengthLine contentLength lineEnd |
+{ #category : #private }
+DAPClient >> registerBreakpoint: aDAPBreakpoint [
+	"Add the supplied breakpoint to the receiver's list"
 
-	contentLengthLine := socketStream upToAll: String crlf asByteArray.
-	"We can use #asString here since it should only be digits"
-	contentLength := (contentLengthLine copyFrom: 17 to: contentLengthLine size)  asString trimBoth asNumber.
-	self assert: [ contentLength > 2 ].
-	"The first CRLF has been consumed, grab the second"
-	lineEnd := socketStream next: 2.
-	self assert: [ lineEnd = String crlf asByteArray ].
-	^ socketStream next: contentLength.
+	breakpoints at: aDAPBreakpoint id put: aDAPBreakpoint 
 ]
 
 { #category : #'private - message processor' }
@@ -380,7 +422,7 @@ DAPClient >> sendMessageString: aString [
 			print: aString size;
 			crlf; crlf;
 			<< aString ].
-	socketStream 
+	comms 
 		nextPutAll: wrappedMessage utf8Encoded;
 		flush.
 ]
@@ -408,17 +450,17 @@ DAPClient >> serverProcessDetailsEvent: anObject [
 { #category : #accessing }
 DAPClient >> serverState [
 	"Answer the state of the server.
-	Standard states include: nil (no activity), #attached, #initialized, #terminated.
-	DAP servers may add their own state, e.g. #debugpyWaitingForServer"
-	<return: #Symbol>
+	Known states include: nil (no activity), attached, initialized, exited, terminated.
+	DAP servers may add their own state, e.g. debugpyWaitingForServer"
+	<return: #String>
 
 	^ serverState
 ]
 
 { #category : #accessing }
-DAPClient >> serverState: aSymbol [
+DAPClient >> serverState: aString [
 
-	serverState := aSymbol.
+	serverState := aString.
 	self announce: (DAPDebuggerStateChanged new debugger: debugger)
 ]
 
@@ -430,8 +472,18 @@ DAPClient >> serverTerminated [
 
 	threads valuesDo: [ :thread | thread threadTerminated ].
 	self serverState: #terminated.
-	socketStream close.
-	socketState := #disconnected.
+	comms disconnect.
+]
+
+{ #category : #actions }
+DAPClient >> setBreakpointInFile: aFileReference lines: anArray [ 
+	| source fileReference |
+
+	fileReference := aFileReference asFileReference.
+	source := DAPSource new
+		name: fileReference basename;
+		path: fileReference fullName.
+	^ self setBreakpointInSource: source lines: anArray.
 ]
 
 { #category : #actions }
@@ -448,8 +500,21 @@ DAPClient >> setBreakpointInSource: aDAPSource lines: anArray [
 	request := DAPSetBreakpointsRequest new
 		arguments: arguments.
 	response := self sendMessageAndWait: request.
-	breakpoints := response breakpoints collect: [ :breakpoint |
-		DAPBreakpoint fromDictionary: breakpoint client: self ]
+	response breakpoints do: [ :aDictionary | | breakpoint |
+		breakpoint := DAPBreakpoint fromDictionary: aDictionary client: self.
+		self registerBreakpoint: breakpoint ]
+
+]
+
+{ #category : #actions }
+DAPClient >> setFunctionBreakpoints: requestArguments [
+	| request response |
+
+	request := DAPSetFunctionBreakpointsRequest new arguments: requestArguments.
+	response := self sendMessageAndWait: request.
+	response breakpoints do: [ :aDictionary | | breakpoint |
+		breakpoint := DAPBreakpoint fromDictionary: aDictionary client: self.
+		self registerBreakpoint: breakpoint ]
 
 ]
 
@@ -481,17 +546,6 @@ DAPClient >> sourceCodeFor: aDAPSource [
 ]
 
 { #category : #private }
-DAPClient >> startMessageListener [
-	"Start the process for receiving and processing messages from the remote debugger."
-
-	messageListener := [ [ self isConnected ] whileTrue: 
-		[ [ messageQueue nextPut: self readNextMessage ]
-			on: ConnectionClosed 
-			do: [ :ex | socketState := #disconnected ] ].
-		] forkAt: Processor userSchedulingPriority - 1 named: 'DAP Listener'.
-]
-
-{ #category : #private }
 DAPClient >> startQueueProcessor [
 	"Start the process for processing messages from the remote debugger."
 
@@ -514,6 +568,30 @@ DAPClient >> statusString [
 				<< thread state ] ].
 
 	^ serverState
+]
+
+{ #category : #accessing }
+DAPClient >> stderr [
+
+	^ stderrStream contents
+]
+
+{ #category : #accessing }
+DAPClient >> stderrNextPutAll: aString [
+
+	stderrStream nextPutAll: aString.
+]
+
+{ #category : #accessing }
+DAPClient >> stdout [ 
+
+	^ stdoutStream contents
+]
+
+{ #category : #accessing }
+DAPClient >> stdoutNextPutAll: aString [
+
+	stdoutStream nextPutAll: aString.
 ]
 
 { #category : #actions }

@@ -48,6 +48,10 @@ DAPObject class >> fromJSONDictionary: aDictionary client: client [
 		type = #response ifTrue: 
 			[ aDictionary at: #command ifPresent: [ :response | | cls |
 				cls := self class environment at: ('DAP', response capitalized, 'Response') asSymbol.
+				^ cls fromDictionary: aDictionary client: client ] ].
+		type = #request ifTrue:
+			[ aDictionary at: #command ifPresent: [ :request | | cls |
+				cls := self class environment at: ('DAP', request capitalized, 'Request') asSymbol.
 				^ cls fromDictionary: aDictionary client: client ] ] ].
 	self error: 'Unrecognised message'.
 ]

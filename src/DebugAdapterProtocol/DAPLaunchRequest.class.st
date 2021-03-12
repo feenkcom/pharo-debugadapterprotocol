@@ -43,10 +43,7 @@ DAPLaunchRequest >> arguments [
 DAPLaunchRequest >> arguments: anObject [
 	"Auto-generated method"
 
-	arguments := anObject isDictionary ifTrue:
-		[ DAPLaunchRequestArguments fromDictionary: anObject client: client ]
-	ifFalse:
-		[ anObject ]
+	arguments := anObject
 
 ]
 

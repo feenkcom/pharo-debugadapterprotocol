@@ -22,7 +22,13 @@ Class {
 		'path',
 		'symbolFilePath',
 		'symbolStatus',
-		'version'
+		'version',
+		'vsIs64Bit',
+		'vsModuleSize',
+		'vsLoadAddress',
+		'vsTimestampUTC',
+		'vsPreferredLoadAddress',
+		'vsLoadOrder'
 	],
 	#category : #'DebugAdapterProtocol-Protocol'
 }
@@ -296,4 +302,64 @@ DAPModule >> version: anObject [
 
 	version := anObject
 
+]
+
+{ #category : #accessing }
+DAPModule >> vsIs64Bit [
+	^ vsIs64Bit
+]
+
+{ #category : #accessing }
+DAPModule >> vsIs64Bit: anObject [
+	vsIs64Bit := anObject
+]
+
+{ #category : #accessing }
+DAPModule >> vsLoadAddress [
+	^ vsLoadAddress
+]
+
+{ #category : #accessing }
+DAPModule >> vsLoadAddress: anObject [
+	vsLoadAddress := anObject
+]
+
+{ #category : #accessing }
+DAPModule >> vsLoadOrder [
+	^ vsLoadOrder
+]
+
+{ #category : #accessing }
+DAPModule >> vsLoadOrder: anObject [
+	vsLoadOrder := anObject
+]
+
+{ #category : #accessing }
+DAPModule >> vsModuleSize [
+	^ vsModuleSize
+]
+
+{ #category : #accessing }
+DAPModule >> vsModuleSize: anObject [
+	vsModuleSize := anObject
+]
+
+{ #category : #accessing }
+DAPModule >> vsPreferredLoadAddress [
+	^ vsPreferredLoadAddress
+]
+
+{ #category : #accessing }
+DAPModule >> vsPreferredLoadAddress: anObject [
+	vsPreferredLoadAddress := anObject
+]
+
+{ #category : #accessing }
+DAPModule >> vsTimestampUTC [
+	^ vsTimestampUTC
+]
+
+{ #category : #accessing }
+DAPModule >> vsTimestampUTC: anObject [
+	vsTimestampUTC := anObject
 ]

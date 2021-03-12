@@ -3,8 +3,6 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'client',
-		'host',
-		'port',
 		'localRoot'
 	],
 	#category : #'DebugAdapterProtocol-Client'
@@ -23,57 +21,10 @@ DAPDebugger >> atThreadId: aNumber [
 ]
 
 { #category : #initialization }
-DAPDebugger >> attachToDebuggee [
-	"Send a request to the adapter to attach to a debuggee"
-	| arguments request |
-
-	arguments := DAPPythonAttachRequestArguments new 
-		name: 'Python: Remote Attach';
-		type: 'python';
-		request: 'attach';
-		connect: (DAPIPAddress new
- 			host: self hostName;
-			port: port);
-		pathMappings: {
-			{
- 				'localRoot' -> localRoot fullName.
-				'remoteRoot' -> localRoot fullName.
-			} asDictionary };
-		pythonPath: '/usr/bin/python';
-		debugOptions: { 'RedirectOutput', 'UnixClient', 'ShowReturnValue' };
-		justMyCode: true;
-		showReturnValue: true;
-		workspaceFolder: localRoot fullName;
-		__sessionId: UUID new asString.
-	request := DAPAttachRequest new 
-		arguments: arguments;
-		command: 'attach'.
-	client sendMessage: request.
-
-]
-
-{ #category : #initialization }
 DAPDebugger >> configurationDone [
 	"Let the server know we've finished configuration"
 
 	client sendMessageAndWait: DAPConfigurationDoneRequest new.
-]
-
-{ #category : #initialization }
-DAPDebugger >> connectTo: aHostNameOrNumber port: aPortNumber [
-
-	localRoot ifNil: 
-		[ self error: 'The localRoot directory must be set before connecting' ].
-
-	host := aHostNameOrNumber.
-	port := aPortNumber.
-	client := DAPClient connectTo: host port: port debugger: self.
-	self initializeRemote.
-	self attachToDebuggee.
-	self setExceptionBreakpoints.
-	self configurationDone.
-	self requestAllThreads.
-	self requestAllStackTraces.
 ]
 
 { #category : #actions }
@@ -114,6 +65,28 @@ DAPDebugger >> gtModulesFor: aView [
 ]
 
 { #category : #ui }
+DAPDebugger >> gtStderrFor: aView [
+	<gtView>
+
+	^ aView forward 
+		title: 'stderr';
+		priority: 20;
+		object: [ client ];
+		view: #gtStderrFor:
+]
+
+{ #category : #ui }
+DAPDebugger >> gtStdoutFor: aView [
+	<gtView>
+
+	^ aView forward 
+		title: 'stdout';
+		priority: 20;
+		object: [ client ];
+		view: #gtStdoutFor:
+]
+
+{ #category : #ui }
 DAPDebugger >> gtThreadsFor: aView [
 	<gtView>
 
@@ -123,42 +96,6 @@ DAPDebugger >> gtThreadsFor: aView [
 		priority: 10;
 		object: [ client ];
 		view: #gtThreadsFor:
-]
-
-{ #category : #accessing }
-DAPDebugger >> hostName [
-	"Answer the hostName as a string.
-	This can only be called after connection to the debugger has been initiated"
-
-	^ host isString 
-		ifTrue: [ host ]
-		ifFalse: [ String streamContents: [ :stream |
-				host 
-					do: [ :number | stream print: number ] 
-					separatedBy: [ stream nextPut: $. ] ] ]
-]
-
-{ #category : #initialization }
-DAPDebugger >> initializeRemote [
-	| arguments request |
-
-	arguments := DAPInitializeRequestArguments new 
-		clientID: 'gtoolkit';
-		clientName: 'Gtoolkit Remote Debugger';
-		adapterID: 'python';
-		pathFormat: 'path';
-		linesStartAt1: true;
-		columnsStartAt1: true;
-		supportsVariableType: true;
-		supportsVariablePaging: true;
-		supportsRunInTerminalRequest: true;
-		locale: 'en-us';
-		supportsProgressReporting: true;
-		supportsInvalidatedEvent: true.
-	request := DAPInitializeRequest new 
-		arguments: arguments;
-		command: 'initialize'.
-	client sendMessage: request.
 ]
 
 { #category : #testing }
@@ -222,6 +159,12 @@ DAPDebugger >> requestAllThreads [
 	client sendMessageAndWait: DAPThreadsRequest new.
 ]
 
+{ #category : #actions }
+DAPDebugger >> setBreakpointInFile: aFileReference lines: anArray [ 
+
+	client setBreakpointInFile: aFileReference lines: anArray 
+]
+
 { #category : #initialization }
 DAPDebugger >> setExceptionBreakpoints [
 	| arguments request |
@@ -238,6 +181,12 @@ DAPDebugger >> statusString [
 	"Answer a one-line string that represents the overall state of the debugger"
 
 	^ client statusString
+]
+
+{ #category : #actions }
+DAPDebugger >> stepOver [ 
+
+	self stoppedThread stepOver
 ]
 
 { #category : #accessing }

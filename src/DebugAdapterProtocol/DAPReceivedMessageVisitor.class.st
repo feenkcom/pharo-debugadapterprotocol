@@ -27,6 +27,13 @@ DAPReceivedMessageVisitor >> visitAttachResponse: anObject [
 ]
 
 { #category : #visiting }
+DAPReceivedMessageVisitor >> visitBreakpointEvent: aDAPBreakpointEvent [
+
+	client registerBreakpoint: aDAPBreakpointEvent breakpoint.
+	^ false
+]
+
+{ #category : #visiting }
 DAPReceivedMessageVisitor >> visitConfigurationDoneResponse: anObject [
 	"Answer false to check the status later"
 
@@ -63,6 +70,13 @@ DAPReceivedMessageVisitor >> visitDebugpyWaitingForServerEvent: anObject [
 ]
 
 { #category : #visiting }
+DAPReceivedMessageVisitor >> visitExitedEvent: aDAPExitedEvent [
+
+	client serverState: #exited.
+	^ false
+]
+
+{ #category : #visiting }
 DAPReceivedMessageVisitor >> visitInitializeResponse: anObject [
 
 	client serverAttributes at: #capabilities put: anObject body.
@@ -73,6 +87,12 @@ DAPReceivedMessageVisitor >> visitInitializeResponse: anObject [
 DAPReceivedMessageVisitor >> visitInitializedEvent: anObject [
 
 	client serverState: #initialized
+]
+
+{ #category : #visiting }
+DAPReceivedMessageVisitor >> visitLaunchResponse: anObject [
+
+	^ false
 ]
 
 { #category : #visiting }
@@ -90,12 +110,25 @@ DAPReceivedMessageVisitor >> visitNextResponse: anObject [
 ]
 
 { #category : #visiting }
-DAPReceivedMessageVisitor >> visitOutputEvent: anObject [
-	| clientOutput |
+DAPReceivedMessageVisitor >> visitOutputEvent: aDAPOutputEvent [
+	"Append stdout and stderr to the client's stream.  Just store other output."
+	| clientOutput stream |
+
+	"What is the variablesReference for?"
+	aDAPOutputEvent variablesReference ifNotNil: [ self halt ].
+
+	aDAPOutputEvent category = #stdout ifTrue:
+		[ client stdoutNextPutAll: aDAPOutputEvent output withSqueakLineEndings.
+		^ false ].
+	aDAPOutputEvent category = #stderr ifTrue:
+		[ client stderrNextPutAll: aDAPOutputEvent output withSqueakLineEndings.
+		^ false ].
+
 
 	"Not yet sure what output covers, just append it to the server attributes"
 	clientOutput := client serverAttributes at: #output ifAbsentPut: [ OrderedCollection new ].
-	clientOutput add: anObject body.
+	clientOutput add: aDAPOutputEvent body.
+	^ false.
 ]
 
 { #category : #visiting }
@@ -103,6 +136,13 @@ DAPReceivedMessageVisitor >> visitProcessEvent: anObject [
 
 	client serverProcessDetailsEvent: anObject.
 	^ true
+]
+
+{ #category : #visiting }
+DAPReceivedMessageVisitor >> visitRunInTerminalRequest: aDAPRunInTerminalRequest [
+
+	self error: 'Not supported'.	
+	^ false
 ]
 
 { #category : #visiting }
@@ -115,6 +155,12 @@ DAPReceivedMessageVisitor >> visitScopesResponse: anObject [
 { #category : #visiting }
 DAPReceivedMessageVisitor >> visitSetExceptionBreakpointsResponse: anObject [
 	"Answer false, which will check the status later"
+
+	^ false
+]
+
+{ #category : #visiting }
+DAPReceivedMessageVisitor >> visitSetFunctionBreakpointsResponse: anObject [
 
 	^ false
 ]
