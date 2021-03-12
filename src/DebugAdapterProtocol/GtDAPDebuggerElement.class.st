@@ -227,10 +227,11 @@ GtDAPDebuggerElement >> newDebuggerState [
 GtDAPDebuggerElement >> newInspectButton [
 
 	^ BrButton new 
-		look: BrGlamorousButtonWithLabelLook;
+		look: BrGlamorousButtonWithIconLook;
 		margin: (BlInsets left: 5);
-		label: 'Inspect Me';
-		action: [ :aButton | self inspect ]
+		label: 'Inspect the DAP Debugger';
+		icon: BrGlamorousVectorIcons emphasizedInspect;
+		action: [ :aButton | self dapDebugger inspect ]
 ]
 
 { #category : #'private - element creation' }
@@ -240,6 +241,7 @@ GtDAPDebuggerElement >> newResumeButton [
 		look: BrGlamorousButtonWithIconLook;
 		margin: (BlInsets left: 5);
 		icon: BrGlamorousVectorIcons play;
+		label: 'Resume';
 		action: [ :aButton | self dapResume ]
 ]
 
@@ -257,6 +259,7 @@ GtDAPDebuggerElement >> newStepIntoButton [
 		look: BrGlamorousButtonWithIconLook;
 		margin: (BlInsets left: 5);
 		icon: BrGlamorousIcons into;
+		label: 'Step Into';
 		action: [ :aButton | self dapStepInto ]
 ]
 
@@ -267,6 +270,7 @@ GtDAPDebuggerElement >> newStepOutButton [
 		look: BrGlamorousButtonWithIconLook;
 		margin: (BlInsets left: 5);
 		icon: BrGlamorousIcons down;
+		label: 'Step Out';
 		action: [ :aButton | self dapStepOut ]
 ]
 
@@ -277,6 +281,7 @@ GtDAPDebuggerElement >> newStepOverButton [
 		look: BrGlamorousButtonWithIconLook;
 		margin: (BlInsets left: 5);
 		icon: BrGlamorousIcons over;
+		label: 'Step Over';
 		action: [ :aButton | self dapStepOver ]
 ]
 
@@ -287,7 +292,7 @@ GtDAPDebuggerElement >> newToolbar [
 	toolbar := BrHorizontalPane new 
 		vFitContent;
 		background: BrGlamorousColors defaultHeaderBackgroundColor;
-		padding: (BlInsets top: 5 bottom: 5);
+		padding: (BlInsets top: 5 left: 0 bottom: 5 right: 10);
 		alignCenterRight.
 	toolbar
 		addChild: self newInspectButton;
