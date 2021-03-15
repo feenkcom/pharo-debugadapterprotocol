@@ -27,7 +27,7 @@ DAPPythonDebugger >> attachToDebuggee [
 			} asDictionary };
 		pythonPath: '/usr/bin/python';
 		debugOptions: { 'RedirectOutput', 'UnixClient', 'ShowReturnValue' };
-		justMyCode: true;
+		justMyCode: false;
 		showReturnValue: true;
 		workspaceFolder: localRoot fullName;
 		__sessionId: UUID new asString.

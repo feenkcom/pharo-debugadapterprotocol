@@ -1,5 +1,5 @@
 "
-Arguments for attaching to a Python debugpy server.
+Arguments for attaching to a Python debugpy server.    See https://code.visualstudio.com/docs/python/debugging for additional information.
 "
 Class {
 	#name : #DAPPythonAttachRequestArguments,
@@ -105,7 +105,7 @@ DAPPythonAttachRequestArguments >> debugOptions: anObject [
 
 { #category : #accessing }
 DAPPythonAttachRequestArguments >> justMyCode [
-	"???
+	"When omitted or set to true (the default), restricts debugging to user-written code only. Set to false to also enable debugging of standard library functions.
 	boolean
 	Auto-generated method"
 
@@ -245,7 +245,7 @@ DAPPythonAttachRequestArguments >> subProcessId: anObject [
 
 { #category : #accessing }
 DAPPythonAttachRequestArguments >> type [
-	"???
+	"Identifies the type of debugger to use; leave this set to python for Python code.
 	string
 	Auto-generated method"
 
