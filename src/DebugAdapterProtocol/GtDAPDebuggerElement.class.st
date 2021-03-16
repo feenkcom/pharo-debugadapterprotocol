@@ -156,6 +156,15 @@ GtDAPDebuggerElement >> dapStepOver [
 
 ]
 
+{ #category : #'private - update ui' }
+GtDAPDebuggerElement >> displayStackFrame: aDAPStackFrame [
+	"Set the supplied frame as the current frame and update the rest of the UI"
+
+	currentCallFrame := aDAPStackFrame.
+	toolbar updateUI.
+	self updateDisplay.
+]
+
 { #category : #initialization }
 GtDAPDebuggerElement >> initialize [
 	| container mainPane leftPane rightPane variablesContainer cfContainer |
@@ -211,6 +220,14 @@ GtDAPDebuggerElement >> initialize [
 
 ]
 
+{ #category : #testing }
+GtDAPDebuggerElement >> isDisplayingTopFrame [
+	"Answer a boolean indicating whether the top call frame is being displayed.
+	DAP debuggers only allow stepping and continuing from the top frame."
+
+	^ dapDebugger isStopped and: [ currentCallFrame == dapDebugger stoppedThread stackFrames first ]
+]
+
 { #category : #'private - accessing' }
 GtDAPDebuggerElement >> lineNumber [ 
 
@@ -227,7 +244,7 @@ GtDAPDebuggerElement >> newCallFramesList [
 		margin: (BlInsets top: 10);
 		yourself.
 	list addEventHandler: (GtPhlowListToSelectHandler new 
-		transformation: [ :variableNode | variableNode value ]).
+		transformation: [ :aDAPStackFrame | self displayStackFrame: aDAPStackFrame ]).
 	list rowStencil: (BrGlamorousColumnedListSelectableRowElementStencilBuilder new).
 
 	list column 
@@ -331,6 +348,32 @@ GtDAPDebuggerElement >> terminateSession [
 		[ dapDebugger announcer unsubscribe: self ]
 ]
 
+{ #category : #'private - update ui' }
+GtDAPDebuggerElement >> updateCallFrame [
+
+	callFramesList items: currentThread stackFrames.
+
+]
+
+{ #category : #'private - update ui' }
+GtDAPDebuggerElement >> updateDisplay [ 
+
+	self updateCallFrame.
+	self updateVariables.
+	self updateSource.
+
+]
+
+{ #category : #'private - update ui' }
+GtDAPDebuggerElement >> updateSource [ 
+
+	sourceCode text: self sourceText.
+	self lineNumber > 5 ifTrue:
+		[ StringSignal emit: 'Scrolling to line: ', self lineNumber asString.
+		sourceCode scrollToPosition: self lineNumber + 5 ].
+
+]
+
 { #category : #callbacks }
 GtDAPDebuggerElement >> updateUI [
 	"Update the UI to reflect the debugger state."
@@ -342,12 +385,19 @@ GtDAPDebuggerElement >> updateUI [
 	Currently we only support the threading module, which has green threads, like Pharo.
 	This means that if one thread is stopped, none of the others are actually processing."
 	currentThread := self dapDebugger stoppedThread.
-	currentThread ifNil: 
-		[ ^ self ].
+	currentThread ifNil: [ ^ self ].
+
 	currentCallFrame := currentThread stackFrames 
 		ifEmpty: [ nil ]
 		ifNotEmpty: [ :frames | frames first ].
-	callFramesList items: currentThread stackFrames.
+
+	self updateDisplay.
+
+]
+
+{ #category : #'private - update ui' }
+GtDAPDebuggerElement >> updateVariables [ 
+
 	variableList 
 		items: (currentCallFrame
 			ifNil: [ #() ]
@@ -359,9 +409,5 @@ GtDAPDebuggerElement >> updateUI [
 						ifTrue: [ item value collectWithIndex: [ :x :i | i -> x ] ]
 						ifFalse: [ #() ] ] ].
 	variableList expandAll.
-	sourceCode text: self sourceText.
-	self lineNumber > 5 ifTrue:
-		[ StringSignal emit: 'Scrolling to line: ', self lineNumber asString.
-		sourceCode scrollToPosition: self lineNumber + 5 ].
 
 ]

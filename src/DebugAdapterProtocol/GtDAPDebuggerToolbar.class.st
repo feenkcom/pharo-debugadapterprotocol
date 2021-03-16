@@ -150,14 +150,15 @@ GtDAPDebuggerToolbar >> newStepOverButton [
 
 { #category : #private }
 GtDAPDebuggerToolbar >> updateUI [ 
-	"Update the button state to reflect the current debugger state"
-	| debuggerIsStopped |
+	"Update the button state to reflect the current debugger state.
+	The buttons should only be active if the debugger is stopped and the top call frame is being displayed."
+	| actionsAllowed |
 
-	debuggerIsStopped := self dapDebugger isStopped.
-	restartFrameButton enabled: debuggerIsStopped.
-	resumeButton enabled: debuggerIsStopped.
-	stepBackButton enabled: debuggerIsStopped.
-	stepIntoButton enabled: debuggerIsStopped.
-	stepOverButton enabled: debuggerIsStopped.
-	stepOutButton enabled: debuggerIsStopped.
+	actionsAllowed := dapDebugElement isDisplayingTopFrame.
+	restartFrameButton enabled: actionsAllowed.
+	resumeButton enabled: actionsAllowed.
+	stepBackButton enabled: actionsAllowed.
+	stepIntoButton enabled: actionsAllowed.
+	stepOverButton enabled: actionsAllowed.
+	stepOutButton enabled: actionsAllowed.
 ]
