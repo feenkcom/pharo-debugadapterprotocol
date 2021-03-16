@@ -19,7 +19,8 @@ Class {
 		'breakpoints',
 		'comms',
 		'stdoutStream',
-		'stderrStream'
+		'stderrStream',
+		'capabilities'
 	],
 	#category : #'DebugAdapterProtocol-Client'
 }
@@ -50,6 +51,21 @@ DAPClient >> atThreadId: aNumber [
 		[ DAPThreadModel new 
 			client: self;
 			threadId: aNumber ]
+]
+
+{ #category : #accessing }
+DAPClient >> capabilities [
+	"Answer the server's capabilities.
+	There is a DAPServerCapabilitiesEvent, however the capabilities are sometimes returned as attributes"
+
+	^ capabilities ifNil: 
+		[ serverAttributes at: #capabilities 
+			ifAbsent: [ nil ] ]
+]
+
+{ #category : #accessing }
+DAPClient >> capabilities: anObject [
+	capabilities := anObject
 ]
 
 { #category : #'private - message processor' }

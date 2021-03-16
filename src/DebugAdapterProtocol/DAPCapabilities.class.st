@@ -155,6 +155,15 @@ DAPCapabilities >> exceptionBreakpointFilters: anObject [
 
 ]
 
+{ #category : #initialization }
+DAPCapabilities >> initialize [ 
+
+	super initialize.
+	self propertyNames do: [ :property |
+		(property beginsWith: #supports) ifTrue:
+			[ self perform: (property, ':') withArguments: { false } ] ].
+]
+
 { #category : #accessing }
 DAPCapabilities >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"

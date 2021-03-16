@@ -1,3 +1,6 @@
+"
+GtDAPDebugSessionElement is the main UI for a remote DAP session, when initiated by an remote paused notification.
+"
 Class {
 	#name : #GtDAPDebugSessionElement,
 	#superclass : #GtDAPDebuggerElement,

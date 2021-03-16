@@ -34,6 +34,13 @@ DAPReceivedMessageVisitor >> visitBreakpointEvent: aDAPBreakpointEvent [
 ]
 
 { #category : #visiting }
+DAPReceivedMessageVisitor >> visitCapabilitiesEvent: aDAPCapabilitiesEvent [
+
+	client capabilities: aDAPCapabilitiesEvent capabilities.
+	^ false
+]
+
+{ #category : #visiting }
 DAPReceivedMessageVisitor >> visitConfigurationDoneResponse: anObject [
 	"Answer false to check the status later"
 

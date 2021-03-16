@@ -1,8 +1,14 @@
+"
+GtDAPDebuggerElement is the main display element of the DAP debugger UI.
+
+While this is a subclass of GtDebuggerElement, it is able to act as the UI for a remote DAP debugger without the Pharo debug session present.  For debuggering a remote server resulting from a pharo exception (breakpoint), use ${class:name=GtDAPDebugSessionElement}$.
+"
 Class {
 	#name : #GtDAPDebuggerElement,
 	#superclass : #GtDebuggerElement,
 	#instVars : [
 		'dapDebugger',
+		'toolbar',
 		'variableList',
 		'callFramesList',
 		'sourceCode',
@@ -29,6 +35,7 @@ GtDAPDebuggerElement >> actOnBrowserClosing: ann [
 	"Tell the debugger directly to resume, since we are already closing"
 	(dapDebugger isNotNil and: [ dapDebugger isStopped ]) ifTrue: 
 		[ currentThread continue ].
+	toolbar actOnBrowserClosing: ann.
 	super actOnBrowserClosing: ann
 ]
 
@@ -39,6 +46,7 @@ GtDAPDebuggerElement >> actOnDebugSessionChanged [
 		when: DAPStateChanged 
 		send: #scheduleUpdateUI
 		to: self.
+	toolbar actOnDebugSessionChanged.
 	self scheduleUpdateUI.
 ]
 
@@ -150,24 +158,39 @@ GtDAPDebuggerElement >> dapStepOver [
 
 { #category : #initialization }
 GtDAPDebuggerElement >> initialize [
-	| container mainPane leftPane rightPane variablesContainer |
+	| container mainPane leftPane rightPane variablesContainer cfContainer |
 
 	super initialize.
-	self constraintsDo: [ :c |
-		c vertical matchParent.
-		c horizontal matchParent ].
+	self 
+		constraintsDo: [ :c |
+			c vertical matchParent.
+			c horizontal matchParent ].
 	container := BrVerticalPane new matchParent.
 	mainPane := BrHorizontalPane new.
-	leftPane := BrVerticalPane new.
+	leftPane := BrVerticalPane new
+		constraintsDo: [ :c |
+			c linear weight: 1.0 ].
 	callFramesList := self newCallFramesList.
+	cfContainer := BlElement new 
+		look: BrShadowLook;
+		constraintsDo: [ :c |
+			c vertical matchParent.
+			c horizontal matchParent.
+			c linear weight: 0.3 ];
+		addChild: callFramesList.
 	sourceCode := self newSourceEditor.
+	sourceCode constraintsDo: [ :c |
+		c linear weight: 1.0 ].
 	leftPane
-		addChild: callFramesList;
+		addChild: cfContainer;
 		addChild: sourceCode.
-	rightPane := BrVerticalPane new.
+	rightPane := BrVerticalPane new
+		constraintsDo: [ :c |
+			c linear weight: 0.7 ].
 	variablesContainer := self newVariablesList.
 	variableList := variablesContainer childNamed: #variablesList.
 	debuggerState := self newDebuggerState.
+	toolbar := self newToolbar.
 	rightPane
 		addChild: debuggerState;
 		addChild: variablesContainer.
@@ -175,9 +198,17 @@ GtDAPDebuggerElement >> initialize [
 		addChild: leftPane;
 		addChild: rightPane.
 	container 
-		addChild: self newToolbar;
+		addChild: toolbar;
 		addChild: mainPane.
 	self addChild: container.
+	self addChild: (BlElement new
+				constraintsDo: [ :c | 
+					c ignoreByLayout.
+					c horizontal matchParent.
+					c vertical exact: 5 ];
+				background: BrGlamorousColors errorBackgroundColor;
+				yourself).
+
 ]
 
 { #category : #'private - accessing' }
@@ -192,8 +223,9 @@ GtDAPDebuggerElement >> lineNumber [
 GtDAPDebuggerElement >> newCallFramesList [
 	| list |
 
-	list := BrColumnedList new.
-	list margin: (BlInsets top: 10).
+	list := BrColumnedList new
+		margin: (BlInsets top: 10);
+		yourself.
 	list addEventHandler: (GtPhlowListToSelectHandler new 
 		transformation: [ :variableNode | variableNode value ]).
 	list rowStencil: (BrGlamorousColumnedListSelectableRowElementStencilBuilder new).
@@ -226,7 +258,7 @@ GtDAPDebuggerElement >> newCallFramesList [
 GtDAPDebuggerElement >> newDebuggerState [
 
 	^ BrLabel new
-		look: BrGlamorousLabelLook;
+		look: BrGlamorousLabelLook + BrShadowLook;
 		constraintsDo: [ :c |
 			c horizontal matchParent.
 			c vertical fitContent ].
@@ -234,83 +266,21 @@ GtDAPDebuggerElement >> newDebuggerState [
 ]
 
 { #category : #'private - element creation' }
-GtDAPDebuggerElement >> newInspectButton [
-
-	^ BrButton new 
-		look: BrGlamorousButtonWithIconLook;
-		margin: (BlInsets left: 5);
-		label: 'Inspect the DAP Debugger';
-		icon: BrGlamorousVectorIcons emphasizedInspect;
-		action: [ :aButton | self dapDebugger inspect ]
-]
-
-{ #category : #'private - element creation' }
-GtDAPDebuggerElement >> newResumeButton [
-
-	^ BrButton new 
-		look: BrGlamorousButtonWithIconLook;
-		margin: (BlInsets left: 5);
-		icon: BrGlamorousVectorIcons play;
-		label: 'Resume';
-		action: [ :aButton | self dapResume ]
-]
-
-{ #category : #'private - element creation' }
 GtDAPDebuggerElement >> newSourceEditor [
 
 	^ BrEditor new
-		look: BrGlamorousCodeEditorLook new.
-]
-
-{ #category : #'private - element creation' }
-GtDAPDebuggerElement >> newStepIntoButton [
-
-	^ BrButton new 
-		look: BrGlamorousButtonWithIconLook;
-		margin: (BlInsets left: 5);
-		icon: BrGlamorousIcons into;
-		label: 'Step Into';
-		action: [ :aButton | self dapStepInto ]
-]
-
-{ #category : #'private - element creation' }
-GtDAPDebuggerElement >> newStepOutButton [
-
-	^ BrButton new 
-		look: BrGlamorousButtonWithIconLook;
-		margin: (BlInsets left: 5);
-		icon: BrGlamorousIcons down;
-		label: 'Step Out';
-		action: [ :aButton | self dapStepOut ]
-]
-
-{ #category : #'private - element creation' }
-GtDAPDebuggerElement >> newStepOverButton [
-
-	^ BrButton new 
-		look: BrGlamorousButtonWithIconLook;
-		margin: (BlInsets left: 5);
-		icon: BrGlamorousIcons over;
-		label: 'Step Over';
-		action: [ :aButton | self dapStepOver ]
+		look: BrGlamorousCodeEditorLook new + BrShadowLook new.
 ]
 
 { #category : #'private - element creation' }
 GtDAPDebuggerElement >> newToolbar [ 
-	| toolbar |
 
-	toolbar := BrHorizontalPane new 
-		vFitContent;
+	^ GtDAPDebuggerToolbar new 
+		dapDebugElement: self;
 		background: BrGlamorousColors defaultHeaderBackgroundColor;
-		padding: (BlInsets top: 5 left: 0 bottom: 5 right: 10);
-		alignCenterRight.
-	toolbar
-		addChild: self newInspectButton;
-		addChild: self newResumeButton;
-		addChild: self newStepIntoButton;
-		addChild: self newStepOverButton;
-		addChild: self newStepOutButton.
-	^ toolbar
+		padding: (BlInsets top: 10 left: 0 bottom: 5 right: 10);
+		alignCenterRight;
+		yourself
 ]
 
 { #category : #'instance creation' }
@@ -318,6 +288,7 @@ GtDAPDebuggerElement >> newVariablesList [
 	| container header tree |
 
 	container := BlElement new
+		look: BrShadowLook;
 		constraintsDo: [ :c | 
 			c horizontal matchParent.
 			c vertical matchParent ];
@@ -366,6 +337,7 @@ GtDAPDebuggerElement >> updateUI [
 
 	StringSignal emit: 'updateUI'.
 	debuggerState text: self dapDebugger statusString asRopedText.
+	toolbar updateUI.
 	"Always display the stopped threads.
 	Currently we only support the threading module, which has green threads, like Pharo.
 	This means that if one thread is stopped, none of the others are actually processing."

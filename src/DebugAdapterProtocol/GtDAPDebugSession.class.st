@@ -1,3 +1,7 @@
+"
+GtDAPDebugSession extends ${class:name=DebugSession}$ to also simultaneously manage the remote debugging session.
+
+"
 Class {
 	#name : #GtDAPDebugSession,
 	#superclass : #DebugSession,

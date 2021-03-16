@@ -20,6 +20,13 @@ DAPDebugger >> atThreadId: aNumber [
 	^ client atThreadId: aNumber
 ]
 
+{ #category : #accessing }
+DAPDebugger >> capabilities [ 
+	"Answer the capabilities of the remote server"
+
+	^ client capabilities
+]
+
 { #category : #initialization }
 DAPDebugger >> configurationDone [
 	"Let the server know we've finished configuration"
