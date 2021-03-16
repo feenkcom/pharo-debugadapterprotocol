@@ -393,7 +393,7 @@ GtDAPDebuggerElement >> updateUI [
 		ifNotEmpty: [ :frames | frames first ].
 
 	self updateDisplay.
-
+	callFramesList selectOne: 1.
 ]
 
 { #category : #'private - update ui' }
