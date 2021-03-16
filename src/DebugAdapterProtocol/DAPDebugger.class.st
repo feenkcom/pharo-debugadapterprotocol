@@ -21,6 +21,13 @@ DAPDebugger >> atThreadId: aNumber [
 ]
 
 { #category : #accessing }
+DAPDebugger >> breakpoints [
+	"Answer the dictionary of known breakpoints"
+
+	^ client breakpoints
+]
+
+{ #category : #accessing }
 DAPDebugger >> capabilities [ 
 	"Answer the capabilities of the remote server"
 
@@ -121,7 +128,7 @@ DAPDebugger >> isInitialized [
 DAPDebugger >> isStopped [
 	"Answer a boolean indicating if the receiver is stopped"
 
-	^ self stoppedThread isNotNil
+	^ client isStopped
 ]
 
 { #category : #testing }
@@ -139,6 +146,12 @@ DAPDebugger >> localRoot [
 DAPDebugger >> localRoot: aFileReference [
 
 	localRoot := aFileReference asFileReference
+]
+
+{ #category : #accessing }
+DAPDebugger >> modules [
+
+	^ client modules
 ]
 
 { #category : #printing }
@@ -190,6 +203,18 @@ DAPDebugger >> statusString [
 	^ client 
 		ifNil: [ '<no client>' ]
 		ifNotNil: [ client statusString ]
+]
+
+{ #category : #accessing }
+DAPDebugger >> stderr [
+
+	^ client stderr
+]
+
+{ #category : #accessing }
+DAPDebugger >> stdout [ 
+
+	^ client stdout
 ]
 
 { #category : #actions }

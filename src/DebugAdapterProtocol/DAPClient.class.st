@@ -54,6 +54,13 @@ DAPClient >> atThreadId: aNumber [
 ]
 
 { #category : #accessing }
+DAPClient >> breakpoints [
+	"Answer the dictionary of known breakpoints"
+
+	^ breakpoints
+]
+
+{ #category : #accessing }
 DAPClient >> capabilities [
 	"Answer the server's capabilities.
 	There is a DAPServerCapabilitiesEvent, however the capabilities are sometimes returned as attributes"
@@ -254,6 +261,12 @@ DAPClient >> isInitialized [
 ]
 
 { #category : #testing }
+DAPClient >> isStopped [ 
+
+	^ serverState = #stopped
+]
+
+{ #category : #testing }
 DAPClient >> isTerminated [ 
 	"Answer a boolean indicating whether the server has been terminated"
 
@@ -343,7 +356,8 @@ DAPClient >> processMessage: aByteArray [
 DAPClient >> registerBreakpoint: aDAPBreakpoint [
 	"Add the supplied breakpoint to the receiver's list"
 
-	breakpoints at: aDAPBreakpoint id put: aDAPBreakpoint 
+	breakpoints at: aDAPBreakpoint id put: aDAPBreakpoint.
+	self announce: (DAPBreakpointAdded new breakpoint: aDAPBreakpoint).
 ]
 
 { #category : #'private - message processor' }
@@ -466,7 +480,7 @@ DAPClient >> serverProcessDetailsEvent: anObject [
 { #category : #accessing }
 DAPClient >> serverState [
 	"Answer the state of the server.
-	Known states include: nil (no activity), attached, initialized, exited, terminated.
+	Known states include: nil (no activity), attached, initialized, continued, stopped, exited, terminated.
 	DAP servers may add their own state, e.g. debugpyWaitingForServer"
 	<return: #String>
 
@@ -596,6 +610,7 @@ DAPClient >> stderr [
 DAPClient >> stderrNextPutAll: aString [
 
 	stderrStream nextPutAll: aString.
+	self announce: (DAPStderrUpdated new string: aString).
 ]
 
 { #category : #accessing }
@@ -608,6 +623,7 @@ DAPClient >> stdout [
 DAPClient >> stdoutNextPutAll: aString [
 
 	stdoutStream nextPutAll: aString.
+	self announce: (DAPStdoutUpdated new string: aString).
 ]
 
 { #category : #actions }

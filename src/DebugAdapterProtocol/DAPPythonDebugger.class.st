@@ -26,7 +26,7 @@ DAPPythonDebugger >> attachToDebuggee [
 				'remoteRoot' -> localRoot fullName.
 			} asDictionary };
 		pythonPath: '/usr/bin/python';
-		debugOptions: { 'RedirectOutput', 'UnixClient', 'ShowReturnValue' };
+		debugOptions: { 'RedirectOutput'. 'UnixClient'. 'ShowReturnValue' };
 		justMyCode: false;
 		showReturnValue: true;
 		workspaceFolder: localRoot fullName;

@@ -14,7 +14,12 @@ Class {
 		'sourceCode',
 		'currentCallFrame',
 		'currentThread',
-		'debuggerState'
+		'debuggerState',
+		'stdout',
+		'stderr',
+		'breakpoints',
+		'variablesContainer',
+		'modules'
 	],
 	#category : #'DebugAdapterProtocol-UI'
 }
@@ -46,8 +51,37 @@ GtDAPDebuggerElement >> actOnDebugSessionChanged [
 		when: DAPStateChanged 
 		send: #scheduleUpdateUI
 		to: self.
+	self dapDebugger announcer 
+		when: DAPStdoutUpdated 
+		send: #scheduleUpdateStdout
+		to: self.
+	self dapDebugger announcer 
+		when: DAPStderrUpdated 
+		send: #scheduleUpdateStderr
+		to: self.
+	self dapDebugger announcer 
+		when: DAPBreakpointAdded
+		send: #scheduleUpdateBreakpoints
+		to: self.
 	toolbar actOnDebugSessionChanged.
 	self scheduleUpdateUI.
+	self scheduleUpdateStdout.
+	self scheduleUpdateStderr.
+	self scheduleUpdateBreakpoints.
+	self scheduleUpdateModules.
+]
+
+{ #category : #'private - element creation' }
+GtDAPDebuggerElement >> breakpointsTab [
+
+	^ BrTab new 
+		look: BrGlamorousTabLook;
+		label: 'Breakpoints';
+		stencil: 
+			[ breakpoints ifNil: 
+				[ breakpoints := self newBreakpointsList.
+				self scheduleUpdateBreakpoints.
+				breakpoints ] ]
 ]
 
 { #category : #'private - element creation' }
@@ -167,7 +201,7 @@ GtDAPDebuggerElement >> displayStackFrame: aDAPStackFrame [
 
 { #category : #initialization }
 GtDAPDebuggerElement >> initialize [
-	| container mainPane leftPane rightPane variablesContainer cfContainer |
+	| container mainPane leftPane rightTabGroup rightPane cfContainer |
 
 	super initialize.
 	self 
@@ -196,13 +230,12 @@ GtDAPDebuggerElement >> initialize [
 	rightPane := BrVerticalPane new
 		constraintsDo: [ :c |
 			c linear weight: 0.7 ].
-	variablesContainer := self newVariablesList.
-	variableList := variablesContainer childNamed: #variablesList.
+	rightTabGroup := self newRightTabGroup.
 	debuggerState := self newDebuggerState.
 	toolbar := self newToolbar.
 	rightPane
 		addChild: debuggerState;
-		addChild: variablesContainer.
+		addChild: rightTabGroup.
 	mainPane
 		addChild: leftPane;
 		addChild: rightPane.
@@ -234,6 +267,55 @@ GtDAPDebuggerElement >> lineNumber [
 	^ currentCallFrame
 		ifNil: [ 1 ]
 		ifNotNil: [ currentCallFrame line ]
+]
+
+{ #category : #'private - element creation' }
+GtDAPDebuggerElement >> modulesTab [
+
+	^ BrTab new 
+		look: BrGlamorousTabLook;
+		label: 'Modules';
+		stencil: 
+			[ modules ifNil: 
+				[ modules := self newModulesList.
+				self scheduleUpdateModules.
+				modules ] ]
+]
+
+{ #category : #'instance creation' }
+GtDAPDebuggerElement >> newBreakpointsList [
+	| list |
+
+	list := BrColumnedList new
+		margin: (BlInsets top: 10);
+		yourself.
+	list 
+		rowStencil: (BrGlamorousColumnedListSelectableRowElementStencilBuilder new);
+		addEventHandler: (GtPhlowListToSelectHandler new 
+			transformation: [ :aDAPBreakpoint | aDAPBreakpoint ]).
+
+	list column 
+		title: 'Id';
+		cellStencil: [ 
+			BrLabel new
+				look: (BrGlamorousLabelLook new foreground: Color black);
+				hExact: 30;
+				vFitContent;
+				margin: (BlInsets top: 3 left: 10 bottom: 3 right: 0) ];
+		dataBinder: [ :aCellElement :aDAPBreakpoint |
+			aCellElement text: aDAPBreakpoint id asString asRopedText ].
+	list column 
+		title: 'Breakpoint';
+		cellStencil: [ 
+			BrLabel new
+				look: (BrGlamorousLabelLook new foreground: Color black);
+				hMatchParent;
+				vFitContent;
+				margin: (BlInsets top: 3 left: 10 bottom: 3 right: 0) ];
+		dataBinder: [ :aCellElement :aDAPBreakpoint |
+			aCellElement text: aDAPBreakpoint asString asRopedText ].
+
+	^ list
 ]
 
 { #category : #'instance creation' }
@@ -283,8 +365,70 @@ GtDAPDebuggerElement >> newDebuggerState [
 
 ]
 
+{ #category : #'instance creation' }
+GtDAPDebuggerElement >> newModulesList [
+	| list |
+
+	list := BrColumnedList new
+		margin: (BlInsets top: 10);
+		yourself.
+	list 
+		rowStencil: (BrGlamorousColumnedListSelectableRowElementStencilBuilder new);
+		addEventHandler: (GtPhlowListToSelectHandler new 
+			transformation: [ :aDAPBreakpoint | aDAPBreakpoint ]).
+
+	list column 
+		title: 'Name';
+		cellStencil: [ 
+			BrLabel new
+				look: (BrGlamorousLabelLook new foreground: Color black);
+				hExact: 100;
+				vFitContent;
+				margin: (BlInsets top: 3 left: 10 bottom: 3 right: 0) ];
+		dataBinder: [ :aCellElement :aDAPModule |
+			aCellElement text: aDAPModule name asString asRopedText ].
+	list column 
+		title: 'Path';
+		cellStencil: [ 
+			BrLabel new
+				look: (BrGlamorousLabelLook new foreground: Color black);
+				hMatchParent;
+				vFitContent;
+				margin: (BlInsets top: 3 left: 10 bottom: 3 right: 0) ];
+		dataBinder: [ :aCellElement :aDAPModule |
+			aCellElement text: aDAPModule path asString asRopedText ].
+
+	^ list
+]
+
+{ #category : #'instance creation' }
+GtDAPDebuggerElement >> newRightTabGroup [
+
+	^ BrTabGroup new 
+		look: BrGlamorousTabGroupLook + BrShadowLook;
+		addTab: self variablesTab;
+		addTab: self breakpointsTab;
+		addTab: self stdoutTab;
+		addTab: self stderrTab;
+		addTab: self modulesTab.
+]
+
 { #category : #'private - element creation' }
 GtDAPDebuggerElement >> newSourceEditor [
+
+	^ BrEditor new
+		look: BrGlamorousCodeEditorLook new + BrShadowLook new.
+]
+
+{ #category : #'private - element creation' }
+GtDAPDebuggerElement >> newStderrView [
+
+	^ BrEditor new
+		look: BrGlamorousCodeEditorLook new + BrShadowLook new.
+]
+
+{ #category : #'private - element creation' }
+GtDAPDebuggerElement >> newStdoutView [
 
 	^ BrEditor new
 		look: BrGlamorousCodeEditorLook new + BrShadowLook new.
@@ -320,6 +464,38 @@ GtDAPDebuggerElement >> newVariablesList [
 ]
 
 { #category : #private }
+GtDAPDebuggerElement >> scheduleUpdateBreakpoints [
+
+	breakpoints ifNotNil:
+		[ self enqueueTask: (BlTaskAction new action: [ self updateBreakpoints ]) ].
+
+]
+
+{ #category : #private }
+GtDAPDebuggerElement >> scheduleUpdateModules [
+
+	modules ifNotNil:
+		[ self enqueueTask: (BlTaskAction new action: [ self updateModules ]) ].
+
+]
+
+{ #category : #private }
+GtDAPDebuggerElement >> scheduleUpdateStderr [
+
+	stderr ifNotNil:
+		[ self enqueueTask: (BlTaskAction new action: [ self updateStderr ]) ].
+
+]
+
+{ #category : #private }
+GtDAPDebuggerElement >> scheduleUpdateStdout [
+
+	stdout ifNotNil:
+		[ self enqueueTask: (BlTaskAction new action: [ self updateStdout ]) ].
+
+]
+
+{ #category : #private }
 GtDAPDebuggerElement >> scheduleUpdateUI [
 
 	self enqueueTask: (BlTaskAction new action: [ self updateUI ]).
@@ -341,12 +517,46 @@ GtDAPDebuggerElement >> sourceText [
 		ifNotNil: [ currentCallFrame sourceText ]
 ]
 
+{ #category : #'private - element creation' }
+GtDAPDebuggerElement >> stderrTab [
+
+	^ BrTab new 
+		look: BrGlamorousTabLook;
+		label: 'stderr';
+		stencil: 
+			[ stderr ifNil: 
+				[ stderr := self newStderrView.
+				self scheduleUpdateStderr.
+				stderr ] ]
+]
+
+{ #category : #'private - element creation' }
+GtDAPDebuggerElement >> stdoutTab [
+
+	^ BrTab new 
+		look: BrGlamorousTabLook;
+		label: 'stdout';
+		stencil: 
+			[ stdout ifNil: 
+				[ stdout := self newStdoutView.
+				self scheduleUpdateStdout.
+				stdout ] ]
+]
+
 { #category : #actions }
 GtDAPDebuggerElement >> terminateSession [
 
 	super terminateSession.
 	self dapDebugger ifNotNil: 
 		[ dapDebugger announcer unsubscribe: self ]
+]
+
+{ #category : #'private - update ui' }
+GtDAPDebuggerElement >> updateBreakpoints [
+
+	breakpoints ifNotNil:
+		[ breakpoints items: (self dapDebugger breakpoints values sorted: [ :a :b | a id < b id ]) ]
+
 ]
 
 { #category : #'private - update ui' }
@@ -366,6 +576,14 @@ GtDAPDebuggerElement >> updateDisplay [
 ]
 
 { #category : #'private - update ui' }
+GtDAPDebuggerElement >> updateModules [
+
+	modules ifNotNil:
+		[ modules items: (self dapDebugger modules values sorted: [ :a :b | a name < b name ]) ]
+
+]
+
+{ #category : #'private - update ui' }
 GtDAPDebuggerElement >> updateSource [ 
 
 	sourceCode text: self sourceText.
@@ -373,6 +591,18 @@ GtDAPDebuggerElement >> updateSource [
 		[ StringSignal emit: 'Scrolling to line: ', self lineNumber asString.
 		sourceCode scrollToPosition: self lineNumber + 5 ].
 
+]
+
+{ #category : #callbacks }
+GtDAPDebuggerElement >> updateStderr [
+
+	stderr text: self dapDebugger stderr asRopedText
+]
+
+{ #category : #callbacks }
+GtDAPDebuggerElement >> updateStdout [
+
+	stdout text: self dapDebugger stdout asRopedText
 ]
 
 { #category : #callbacks }
@@ -411,4 +641,17 @@ GtDAPDebuggerElement >> updateVariables [
 						ifFalse: [ #() ] ] ].
 	variableList expandAll.
 
+]
+
+{ #category : #'private - element creation' }
+GtDAPDebuggerElement >> variablesTab [
+
+	^ BrTab new 
+		look: BrGlamorousTabLook;
+		label: 'Variables';
+		stencil: 
+			[ variablesContainer ifNil: 
+				[ variablesContainer := self newVariablesList.
+				variableList := variablesContainer childNamed: #variablesList.
+				variablesContainer ] ]
 ]

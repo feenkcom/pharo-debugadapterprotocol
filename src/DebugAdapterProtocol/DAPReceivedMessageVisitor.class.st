@@ -58,6 +58,7 @@ DAPReceivedMessageVisitor >> visitContinueResponse: anObject [
 DAPReceivedMessageVisitor >> visitContinuedEvent: aDAPContinuedEvent [
 
 	(client atThreadId: aDAPContinuedEvent threadId) state: #continued.
+	client serverState: #continued.
 	^ false
 ]
 
@@ -215,8 +216,10 @@ DAPReceivedMessageVisitor >> visitStoppedEvent: aDAPStoppedEvent [
 	thread
 		latestEvent: aDAPStoppedEvent;
 		updateStack;
-		state: #stopped
-	 ] forkAt: Processor userBackgroundPriority named: 'DAP Thread Update: ', aDAPStoppedEvent threadId asString.
+		state: #stopped.
+	client serverState: #stopped.
+	 ] forkAt: Processor userSchedulingPriority named: 'DAP Thread Update: ', aDAPStoppedEvent threadId asString.
+
 	^ true
 ]
 

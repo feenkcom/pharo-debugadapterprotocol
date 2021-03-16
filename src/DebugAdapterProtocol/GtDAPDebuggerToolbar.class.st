@@ -156,6 +156,7 @@ GtDAPDebuggerToolbar >> updateUI [
 	| actionsAllowed |
 
 	actionsAllowed := dapDebugElement isDisplayingTopFrame.
+	StringSignal emit: 'toolbar: ', actionsAllowed asString.
 	restartFrameButton enabled: actionsAllowed.
 	resumeButton enabled: actionsAllowed.
 	stepBackButton enabled: actionsAllowed.
