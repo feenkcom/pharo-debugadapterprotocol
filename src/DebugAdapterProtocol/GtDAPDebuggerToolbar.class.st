@@ -67,6 +67,7 @@ GtDAPDebuggerToolbar >> initialize [
 	stepIntoButton := self newStepIntoButton.
 	stepOutButton := self newStepOutButton.
 	stepOverButton := self newStepOverButton.
+	self addChild: self newInspectButton.
 	self addChildren: { restartFrameButton. resumeButton. stepBackButton. stepIntoButton. stepOutButton. stepOverButton. }.
 
 ]

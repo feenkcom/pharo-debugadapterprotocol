@@ -243,9 +243,10 @@ GtDAPDebuggerElement >> newCallFramesList [
 	list := BrColumnedList new
 		margin: (BlInsets top: 10);
 		yourself.
-	list addEventHandler: (GtPhlowListToSelectHandler new 
-		transformation: [ :aDAPStackFrame | self displayStackFrame: aDAPStackFrame ]).
-	list rowStencil: (BrGlamorousColumnedListSelectableRowElementStencilBuilder new).
+	list 
+		rowStencil: (BrGlamorousColumnedListSelectableRowElementStencilBuilder new);
+		addEventHandler: (GtPhlowListToSelectHandler new 
+			transformation: [ :aDAPStackFrame | self displayStackFrame: aDAPStackFrame. aDAPStackFrame ]).
 
 	list column 
 		title: 'Depth';
