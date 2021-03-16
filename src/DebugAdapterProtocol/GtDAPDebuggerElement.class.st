@@ -23,6 +23,16 @@ GtDAPDebuggerElement class >> openOnDebugger: aDAPDebugger [
 ]
 
 { #category : #callbacks }
+GtDAPDebuggerElement >> actOnBrowserClosing: ann [
+	"If the remote debugger is stopped, resume it, otherwise the remote is effectively locked up"
+
+	"Tell the debugger directly to resume, since we are already closing"
+	(dapDebugger isNotNil and: [ dapDebugger isStopped ]) ifTrue: 
+		[ currentThread continue ].
+	super actOnBrowserClosing: ann
+]
+
+{ #category : #callbacks }
 GtDAPDebuggerElement >> actOnDebugSessionChanged [
 
 	self dapDebugger announcer 

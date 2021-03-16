@@ -180,7 +180,9 @@ DAPDebugger >> setExceptionBreakpoints [
 DAPDebugger >> statusString [
 	"Answer a one-line string that represents the overall state of the debugger"
 
-	^ client statusString
+	^ client 
+		ifNil: [ '<no client>' ]
+		ifNotNil: [ client statusString ]
 ]
 
 { #category : #actions }
