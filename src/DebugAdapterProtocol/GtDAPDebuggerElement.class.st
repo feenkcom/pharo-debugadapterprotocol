@@ -207,7 +207,7 @@ GtDAPDebuggerElement >> displayStackFrame: aDAPStackFrame [
 
 { #category : #initialization }
 GtDAPDebuggerElement >> initialize [
-	| container mainPane leftPane rightTabGroup rightPane cfContainer |
+	| container mainPane leftPane rightTabGroup rightPane cfContainer sourceContainer |
 
 	super initialize.
 	self 
@@ -229,11 +229,17 @@ GtDAPDebuggerElement >> initialize [
 			c linear weight: 0.3 ];
 		addChild: callFramesList.
 	sourceCode := self newSourceEditor.
-	sourceCode constraintsDo: [ :c |
-		c linear weight: 1.0 ].
+	sourceContainer := BlElement new.
+	sourceContainer
+		constraintsDo: [ :c | 
+			c horizontal matchParent.
+			c vertical matchParent.
+			c linear weight: 1.0 ];
+		look: BrGlamorousWithMaximizerLook;
+		addChild: sourceCode.
 	leftPane
 		addChild: cfContainer;
-		addChild: sourceCode.
+		addChild: sourceContainer.
 	rightPane := BrVerticalPane new
 		constraintsDo: [ :c |
 			c linear weight: 0.7 ].
@@ -413,7 +419,7 @@ GtDAPDebuggerElement >> newModulesList [
 GtDAPDebuggerElement >> newRightTabGroup [
 
 	^ BrTabGroup new 
-		look: BrGlamorousTabGroupLook + BrShadowLook;
+		look: BrGlamorousTabGroupLook + BrShadowLook + BrGlamorousWithMaximizerLook;
 		margin: (BlInsets all: self defaultMargin);
 		addTab: self variablesTab;
 		addTab: self breakpointsTab;
