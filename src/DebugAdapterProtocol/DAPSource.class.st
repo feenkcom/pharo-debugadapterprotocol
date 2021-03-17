@@ -92,16 +92,32 @@ DAPSource >> checksums: anObject [
 { #category : #ui }
 DAPSource >> gtSourceFor: aView [
 	<gtView>
+	| view |
 
 	client ifNil: [ ^ aView empty ].
-	^ aView textEditor
+	view := aView textEditor
 		title: 'Source';
 		priority: 100;
-		styler: PythonParser2 gtStyler;
 		look: BrGlamorousCodeEditorLook;
 		text: [ self sourceCode asRopedText ];
-		actionUpdateButtonTooltip: 'Update Source'
+		actionUpdateButtonTooltip: 'Update Source'.
+	self gtStyler ifNotNil: [ :gtStyler |
+		view styler: gtStyler ].
+	^ view
 
+]
+
+{ #category : #private }
+DAPSource >> gtStyler [ 
+	"Answer the styler to be used for the receiver"
+	| dotExtension parser |
+
+	(self path isNil or: [ self path isEmpty ]) ifTrue: [ ^ nil ].
+	dotExtension := '.' , self path extension.
+	parser := SmaCCParser allSubclasses
+				detect: [ :each | each fileExtensions includes: dotExtension ]
+				ifNone: [ ^ nil ].
+	^ parser ifNotNil: [ parser gtStyler ]
 ]
 
 { #category : #accessing }

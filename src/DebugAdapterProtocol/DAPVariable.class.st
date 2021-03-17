@@ -153,8 +153,8 @@ The client can use this optional information to present the children in a paged 
 DAPVariable >> pharoValue [
 	"Answer the receiver's value converted to the equivalent Pharo object"
 
-	type = #int ifTrue: [ ^ value asNumber ].
-	^ value
+	self type = #int ifTrue: [ ^ self value asNumber ].
+	^ self value
 ]
 
 { #category : #accessing }
@@ -182,7 +182,7 @@ DAPVariable >> presentationHint: anObject [
 { #category : #printing }
 DAPVariable >> printOn: aStream [
 
-	aStream << value asString
+	aStream << self value asString
 ]
 
 { #category : #accessing }

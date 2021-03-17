@@ -16,6 +16,7 @@ DAPDebugger >> announcer [
 
 { #category : #accessing }
 DAPDebugger >> atThreadId: aNumber [
+	<return: #DAPThreadModel>
 
 	^ client atThreadId: aNumber
 ]
@@ -38,7 +39,7 @@ DAPDebugger >> capabilities [
 DAPDebugger >> configurationDone [
 	"Let the server know we've finished configuration"
 
-	client sendMessageAndWait: DAPConfigurationDoneRequest new.
+	client configurationDone
 ]
 
 { #category : #actions }
@@ -176,7 +177,7 @@ DAPDebugger >> requestAllThreads [
 	"Request a list of all the current threads in the server.
 	The response visitor will update the client state."
 
-	client sendMessageAndWait: DAPThreadsRequest new.
+	client requestAllThreads
 ]
 
 { #category : #actions }
@@ -187,13 +188,8 @@ DAPDebugger >> setBreakpointInFile: aFileReference lines: anArray [
 
 { #category : #initialization }
 DAPDebugger >> setExceptionBreakpoints [
-	| arguments request |
 
-	arguments := DAPSetExceptionBreakpointsArguments new 
-		filters: #(uncaught).
-	request := DAPSetExceptionBreakpointsRequest new
-		arguments: arguments.
-	client sendMessage: request.
+	client setExceptionBreakpoints
 ]
 
 { #category : #accessing }

@@ -134,13 +134,8 @@ DAPStackFrame >> endLine: anObject [
 { #category : #ui }
 DAPStackFrame >> gtSourceFor: aView [
 	<gtView>
-	| path fileReference |
 
-	source ifNil: [ ^ aView empty ].
-	path := source path.
-	path ifNil: [ ^ aView empty ].
-	fileReference := path asFileReference.
-	fileReference isReadable ifFalse: [ ^ aView empty ].
+	(self sourceCode isNil or: [ self sourceCode isEmpty]) ifTrue: [ ^ aView empty ].
 	^ aView explicit
 		title: 'Source';
 		priority: 100;
@@ -148,13 +143,12 @@ DAPStackFrame >> gtSourceFor: aView [
 		stencil: [ | editor |
 			editor := BrEditor new
 				text: self sourceText;
-				look: BrGlamorousCodeEditorLook new;
-				styler: PythonParser2 gtStyler.
+				look: BrGlamorousCodeEditorLook new.
+			self source gtStyler ifNotNil: [ :gtStyler |
+				editor styler: gtStyler ].
 			self line > 5 ifTrue:
 				[ editor 	scrollToPosition: self line - 5 ].
 			editor ]
-
-
 ]
 
 { #category : #ui }
@@ -313,13 +307,13 @@ A value of 'label' can be used to indicate that the frame is an artificial frame
 { #category : #printing }
 DAPStackFrame >> printOn: aStream [
 
-	source ifNil: [ ^ super printOn: aStream ].
+	self source ifNil: [ ^ super printOn: aStream ].
 	aStream
-		<< source path;
+		<< self source path;
 		<< ':';
-		print: line;
+		print: self line;
 		<< ':';
-		print: column
+		print: self column
 ]
 
 { #category : #accessing }
@@ -391,23 +385,28 @@ DAPStackFrame >> sourceText [
 { #category : #accessing }
 DAPStackFrame >> valuesDictionary [
 	"Answer a dictionary with key: Scope Name key: Variable Name value: DAPVariable"
-	| dictionary |
+	| dictionary scopeDictionary |
 
-	dictionary := KeyedTree new.
+	"Some debuggers, e.g. Chrome, return the scopes in order"
+	dictionary := OrderedDictionary new.
 	self scopes do: [ :scope |
 		scope variables do: [ :variable |
-			dictionary atPath: { scope name. variable name. } put: variable pharoValue ] ].
+			scopeDictionary := dictionary at: scope name ifAbsentPut: [ OrderedDictionary new ].
+			scopeDictionary at: variable name put: variable pharoValue ] ].
 	^ dictionary
 ]
 
 { #category : #accessing }
 DAPStackFrame >> variablesDictionary [
 	"Answer a dictionary with key: Scope Name key: Variable Name value: DAPVariable"
-	| dictionary |
+	| dictionary scopeDictionary |
 
-	dictionary := KeyedTree new.
+	"Some debuggers, e.g. Chrome, return the scopes in order"
+	dictionary := OrderedDictionary new.
 	self scopes do: [ :scope |
 		scope variables do: [ :variable |
-			dictionary atPath: { scope name. variable name. } put: variable ] ].
-	^ dictionary
+			scopeDictionary := dictionary at: scope name ifAbsentPut: [ OrderedDictionary new ].
+			scopeDictionary at: variable name put: variable ] ].
+	^ dictionary 
+
 ]

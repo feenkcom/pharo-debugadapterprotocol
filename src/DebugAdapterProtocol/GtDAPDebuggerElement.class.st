@@ -627,12 +627,13 @@ GtDAPDebuggerElement >> updateUI [
 
 	StringSignal emit: 'updateUI'.
 	debuggerState text: self dapDebugger statusString asRopedText.
-	toolbar updateUI.
 	"Always display the stopped threads.
 	Currently we only support the threading module, which has green threads, like Pharo.
 	This means that if one thread is stopped, none of the others are actually processing."
 	currentThread := self dapDebugger stoppedThread.
-	currentThread ifNil: [ ^ self ].
+	currentThread ifNil: [ 
+		toolbar updateUI.
+		^ self ].
 
 	currentCallFrame := currentThread stackFrames 
 		ifEmpty: [ nil ]
@@ -640,6 +641,8 @@ GtDAPDebuggerElement >> updateUI [
 
 	self updateDisplay.
 	callFramesList selectOne: 1.
+	toolbar updateUI.
+
 ]
 
 { #category : #'private - update ui' }

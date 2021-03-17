@@ -25,8 +25,8 @@ GtDAPDebugSessionElement class >> defaultTitle [
 GtDAPDebugSessionElement class >> handlesContext: aContext [ 
 	"This is currently determined by checking the class of the receiver and its value, which will be different for each snippet type.  This should be changed to the signalling method having the appropriate pragma (<dapOpenDebugger>)"
 
-	^ aContext receiver class = PBPromise and: 
-		[ aContext receiver value class = PBDebuggerPaused ]
+	^ (aContext method hasPragmaNamed: #dapDebuggerSignal) and:
+		[ aContext receiver value respondsTo: #dapDebugger ]
 ]
 
 { #category : #'tools registry' }

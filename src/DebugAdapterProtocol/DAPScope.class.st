@@ -283,6 +283,7 @@ DAPScope >> source: anObject [
 DAPScope >> variables [ 
 	"Answer the variables for the receiver.
 	The debugger may not be in a state to retrieve the variables, in which case, answer nil"
+	<return: #Array of: #DAPVariable>
 
 	^ variables ifNil: [ 
 		[ variables := (client variablesForReference: variablesReference) allVariables ]

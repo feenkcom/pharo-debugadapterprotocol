@@ -16,7 +16,7 @@ Class {
 GtDAPDebugSession >> dapDebugger [
 	"Answer the debugger client to the NodeJS server"
 
-	^ nodeJSDebugger ifNil: [ nodeJSDebugger := self signal debugger ].
+	^ nodeJSDebugger ifNil: [ nodeJSDebugger := self signal dapDebugger ].
 
 ]
 
@@ -56,12 +56,6 @@ GtDAPDebugSession >> dapStepOver [
 GtDAPDebugSession >> signal [
 	"Answer the signal that triggered the debug session."
 
-	signal ifNotNil: [ ^ signal ].
+	^ signal ifNil: [ signal := self interruptedContext receiver value ].
 
-	"Confirm that the NodeJS server is in fact paused in the debugger"
-	signal := self interruptedContext receiver value.
-	(signal respondsTo: #debugger) ifFalse:
-		[ self error: 'Unable to retrieve JS debugger' ].
-
-	^ signal
 ]

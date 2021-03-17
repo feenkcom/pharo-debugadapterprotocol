@@ -1,25 +1,16 @@
 Class {
 	#name : #DAPClient,
-	#superclass : #Object,
-	#traits : 'TGtAnnouncer',
-	#classTraits : 'TGtAnnouncer classTrait',
+	#superclass : #RemoteDebuggerClient,
 	#instVars : [
 		'messageQueue',
 		'messageId',
 		'queueProcessor',
-		'debugger',
 		'messageProcessorMutex',
 		'messageProcessors',
 		'serverAttributes',
 		'serverState',
 		'serverProcessDetailsEvent',
-		'threads',
-		'modules',
-		'announcer',
-		'breakpoints',
 		'comms',
-		'stdoutStream',
-		'stderrStream',
 		'capabilities'
 	],
 	#category : #'DebugAdapterProtocol-Client'
@@ -36,28 +27,6 @@ DAPClient >> addMessageProcessor: aMessageProcessor [
 
 	^ messageProcessorMutex critical: 
 		[ messageProcessors add: aMessageProcessor ]
-]
-
-{ #category : #accessing }
-DAPClient >> announcer [ 
-
-	^ announcer ifNil: [ announcer := Announcer new ]
-]
-
-{ #category : #accessing }
-DAPClient >> atThreadId: aNumber [ 
-
-	^ threads at: aNumber ifAbsentPut: 
-		[ DAPThreadModel new 
-			client: self;
-			threadId: aNumber ]
-]
-
-{ #category : #accessing }
-DAPClient >> breakpoints [
-	"Answer the dictionary of known breakpoints"
-
-	^ breakpoints
 ]
 
 { #category : #accessing }
@@ -83,6 +52,13 @@ DAPClient >> checkResponse: response [
 			response: response;
 			signal ].
 	^true
+]
+
+{ #category : #actions }
+DAPClient >> configurationDone [
+	"Let the server know we've finished configuration"
+
+	self sendMessageAndWait: DAPConfigurationDoneRequest new.
 ]
 
 { #category : #initialization }
@@ -135,98 +111,16 @@ DAPClient >> disconnectWithRestart: restartBoolean [
 	self sendMessage: request.
 ]
 
-{ #category : #ui }
-DAPClient >> gtBreakpointsFor: aView [
-	<gtView>
-
-	(self isConnected not or: [ self isTerminated ]) ifTrue: [ ^ aView empty ].
-	^ aView columnedList
-		title: 'Breakpoints';
-		priority: 20;
-		items: [ breakpoints associations sorted: [ :a :b | a key < b key ] ];
-		column: 'Id' text: [ :item | item key ];
-		column: 'Description' text: [ :item | item value displayLabel ];
-		actionUpdateButtonTooltip: 'Update Breakpoints'
-
-]
-
-{ #category : #ui }
-DAPClient >> gtModulesFor: aView [
-	<gtView>
-
-	(self isConnected not or: [ self isTerminated ]) ifTrue: [ ^ aView empty ].
-	modules ifEmpty: [ ^ aView empty ].
-	^ aView columnedList 
-		title: 'Modules';
-		priority: 20;
-		items: [ modules associations ];
-		column: 'Name' text: [ :item | item value name ];
-		column: 'Path' text: [ :item | item value path ];
-		send: [ :item | item value ];
-		actionUpdateButtonTooltip: 'Update Modules'
-
-]
-
-{ #category : #ui }
-DAPClient >> gtStderrFor: aView [
-	<gtView>
-
-	^ aView textEditor 
-		title: 'stderr';
-		priority: 20;
-		text: [ stderrStream contents ];
-		actionUpdateButtonTooltip: 'Update stderr'
-
-]
-
-{ #category : #ui }
-DAPClient >> gtStdoutFor: aView [
-	<gtView>
-
-	^ aView textEditor 
-		title: 'stdout';
-		priority: 20;
-		text: [ stdoutStream contents ];
-		actionUpdateButtonTooltip: 'Update stdout'
-
-]
-
-{ #category : #ui }
-DAPClient >> gtThreadsFor: aView [
-	<gtView>
-
-	(self isConnected not or: [ self isTerminated ]) ifTrue: [ ^ aView empty ].
-	threads ifEmpty: [ ^ aView empty ].
-	^ aView columnedList 
-		title: 'Threads';
-		priority: 20;
-		items: [ threads associations sorted: [ :a :b | a key < b key ] ];
-		column: 'Id' text: [ :item | item key asString ];
-		column: 'Name' text: [ :item | item value displayName ];
-		column: 'State' text: [ :item | item value state asString ];
-		send: [ :item | item value ];
-		actionUpdateButtonTooltip: 'Update Threads'
-
-]
-
 { #category : #initialization }
 DAPClient >> initialize [ 
 
 	super initialize.
-	announcer := Announcer new.
 	messageQueue := AtomicSharedQueue new.
 	messageId := 0.
 	messageProcessors := OrderedCollection new.
 	messageProcessorMutex := Mutex new.
 	"Server attributes is a set of information that may be useful for human debugging"
 	serverAttributes := Dictionary new.
-	"Maintain the latest status of any threads that have been started.  Key = threadId"
-	threads := Dictionary new.
-	"Maintain a list of loaded modules. Key = id"
-	modules := Dictionary new.
-	breakpoints := Dictionary new.
-	stdoutStream := (String new: 10240) writeStream.
-	stderrStream := (String new: 10240) writeStream.
 
 	"Always have a general event and response message processors"
 	self addMessageProcessor: (DAPReceivedMessageProcessor new client: self).
@@ -293,11 +187,6 @@ DAPClient >> launchWithArguments: aDictionary [
 
 	request := DAPLaunchRequest new arguments: aDictionary.
 	^ self sendMessageAndWait: request.
-]
-
-{ #category : #accessing }
-DAPClient >> modules [
-	^ modules
 ]
 
 { #category : #actions }
@@ -379,6 +268,14 @@ DAPClient >> requestAllStackTraces [
 
 	self threads keysAndValuesDo: [ :threadId :state |
 		self requestStackTraceForThreadId: threadId startFrame: 0 levels: 20 ]
+]
+
+{ #category : #actions }
+DAPClient >> requestAllThreads [
+	"Request a list of all the current threads in the server.
+	The response visitor will update the client state."
+
+	self sendMessageAndWait: DAPThreadsRequest new.
 ]
 
 { #category : #messages }
@@ -537,6 +434,17 @@ DAPClient >> setBreakpointInSource: aDAPSource lines: anArray [
 ]
 
 { #category : #actions }
+DAPClient >> setExceptionBreakpoints [
+	| arguments request |
+
+	arguments := DAPSetExceptionBreakpointsArguments new 
+		filters: #(uncaught).
+	request := DAPSetExceptionBreakpointsRequest new
+		arguments: arguments.
+	self sendMessage: request.
+]
+
+{ #category : #actions }
 DAPClient >> setFunctionBreakpoints: requestArguments [
 	| request response |
 
@@ -600,32 +508,6 @@ DAPClient >> statusString [
 	^ serverState
 ]
 
-{ #category : #accessing }
-DAPClient >> stderr [
-
-	^ stderrStream contents
-]
-
-{ #category : #accessing }
-DAPClient >> stderrNextPutAll: aString [
-
-	stderrStream nextPutAll: aString.
-	self announce: (DAPStderrUpdated new string: aString).
-]
-
-{ #category : #accessing }
-DAPClient >> stdout [ 
-
-	^ stdoutStream contents
-]
-
-{ #category : #accessing }
-DAPClient >> stdoutNextPutAll: aString [
-
-	stdoutStream nextPutAll: aString.
-	self announce: (DAPStdoutUpdated new string: aString).
-]
-
 { #category : #actions }
 DAPClient >> stepBackInThreadId: aNumber [
 	"Step back"
@@ -648,13 +530,6 @@ DAPClient >> stepOutInThreadId: aNumber [
 
 	^ self sendMessageAndWait: (DAPStepOutRequest new arguments: 
 		(DAPStepOutArguments new threadId: aNumber)).
-]
-
-{ #category : #actions }
-DAPClient >> stepOverInThreadId: aNumber [
-	"Pharo synonym for 'next'"
-
-	^ self nextInThreadId: aNumber
 ]
 
 { #category : #accessing }

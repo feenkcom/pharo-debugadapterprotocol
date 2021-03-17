@@ -44,14 +44,14 @@ DAPThreadModel >> gtStackFor: aView [
 	(self isStopped not or: 
 		[ client isNil or: 
 		[ client isTerminated or: 
-		[ stackFrames isNil or: 
-		[ stackFrames isEmpty	]]]]) ifTrue: 
+		[ self stackFrames isNil or: 
+		[ self stackFrames isEmpty	]]]]) ifTrue: 
 			[ ^ aView empty ].
 
 	^ aView columnedList
 		title: 'Stack';
 		priority: 10;
-		items: [ stackFrames collectWithIndex: [ :each :index | index -> each ] ];
+		items: [ self stackFrames collectWithIndex: [ :each :index | index -> each ] ];
 		column: '#' text: [ :item | item key asString ] width: 50;
 		column: 'Frame' text: [ :item | item value asString ];
 		send: [ :item | item value ];
@@ -66,8 +66,8 @@ DAPThreadModel >> gtTopSourceFor: aView [
 	(self isStopped not or: 
 		[ client isNil or: 
 		[ client isTerminated or: 
-		[ stackFrames isNil or: 
-		[ stackFrames isEmpty	]]]]) ifTrue: 
+		[ self stackFrames isNil or: 
+		[ self stackFrames isEmpty	]]]]) ifTrue: 
 			[ ^ aView empty ].
 	^ aView textEditor
 		title: 'Source';
@@ -86,8 +86,8 @@ DAPThreadModel >> gtTopVariablesFor: aView [
 	(self isStopped not or: 
 		[ client isNil or: 
 		[ client isTerminated or: 
-		[ stackFrames isNil or: 
-		[ stackFrames isEmpty	]]]]) ifTrue: 
+		[ self stackFrames isNil or: 
+		[ self stackFrames isEmpty	]]]]) ifTrue: 
 			[ ^ aView empty ].
 	^ aView columnedTree
 		title: 'Variables';
@@ -109,19 +109,19 @@ DAPThreadModel >> gtTopVariablesFor: aView [
 { #category : #testing }
 DAPThreadModel >> isContinued [
 
-	^ state = #continued
+	^ self state = #continued
 ]
 
 { #category : #testing }
 DAPThreadModel >> isStopped [
 
-	^ state = #stopped
+	^ self state = #stopped
 ]
 
 { #category : #testing }
 DAPThreadModel >> isTerminated [
 
-	^ state = #terminated
+	^ self state = #terminated
 ]
 
 { #category : #accessing }
