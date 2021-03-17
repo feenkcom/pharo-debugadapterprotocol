@@ -190,6 +190,12 @@ GtDAPDebuggerElement >> dapStepOver [
 
 ]
 
+{ #category : #'private - accessing' }
+GtDAPDebuggerElement >> defaultMargin [ 
+
+	^ 3
+]
+
 { #category : #'private - update ui' }
 GtDAPDebuggerElement >> displayStackFrame: aDAPStackFrame [
 	"Set the supplied frame as the current frame and update the rest of the UI"
@@ -216,6 +222,7 @@ GtDAPDebuggerElement >> initialize [
 	callFramesList := self newCallFramesList.
 	cfContainer := BlElement new 
 		look: BrShadowLook;
+		margin: (BlInsets all: self defaultMargin);
 		constraintsDo: [ :c |
 			c vertical matchParent.
 			c horizontal matchParent.
@@ -357,11 +364,12 @@ GtDAPDebuggerElement >> newCallFramesList [
 { #category : #'instance creation' }
 GtDAPDebuggerElement >> newDebuggerState [
 
-	^ BrLabel new
-		look: BrGlamorousLabelLook + BrShadowLook;
-		constraintsDo: [ :c |
-			c horizontal matchParent.
-			c vertical fitContent ].
+	^ BrEditor new
+		look: BrGlamorousEditorLook + BrShadowLook;
+		margin: (BlInsets all: self defaultMargin);
+		hMatchParent;
+		vFitContent;
+		beMode: BrTextEditorReadonlyWithoutSelectionMode new.
 
 ]
 
@@ -406,6 +414,7 @@ GtDAPDebuggerElement >> newRightTabGroup [
 
 	^ BrTabGroup new 
 		look: BrGlamorousTabGroupLook + BrShadowLook;
+		margin: (BlInsets all: self defaultMargin);
 		addTab: self variablesTab;
 		addTab: self breakpointsTab;
 		addTab: self stdoutTab;
@@ -417,7 +426,8 @@ GtDAPDebuggerElement >> newRightTabGroup [
 GtDAPDebuggerElement >> newSourceEditor [
 
 	^ BrEditor new
-		look: BrGlamorousCodeEditorLook new + BrShadowLook new.
+		look: BrGlamorousCodeEditorLook new + BrShadowLook new;
+		margin: (BlInsets all: self defaultMargin).
 ]
 
 { #category : #'private - element creation' }
