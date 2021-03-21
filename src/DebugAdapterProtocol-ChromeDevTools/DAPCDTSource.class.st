@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'locationDictionary'
 	],
-	#category : #'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-ChromeDevTools'
 }
 
 { #category : #private }

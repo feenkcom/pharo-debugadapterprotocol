@@ -7,7 +7,7 @@ Class {
 	#classVars : [
 		'ServerStateMapping'
 	],
-	#category : #'DebugAdapterProtocol-Client'
+	#category : #'DebugAdapterProtocol-ChromeDevTools'
 }
 
 { #category : #'class initialization' }
@@ -81,7 +81,7 @@ CDTDebuggerClient >> continueThreadId: aNumber [
 { #category : #actions }
 CDTDebuggerClient >> disconnect [ 
 
-	self error: 'No mapping yet'
+	cdtDebugger disconnect
 ]
 
 { #category : #private }

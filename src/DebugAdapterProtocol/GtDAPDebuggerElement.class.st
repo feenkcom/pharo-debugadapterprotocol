@@ -279,7 +279,7 @@ GtDAPDebuggerElement >> lineNumber [
 
 	^ currentCallFrame
 		ifNil: [ 1 ]
-		ifNotNil: [ currentCallFrame line ]
+		ifNotNil: [ currentCallFrame line ifNil: [ 1 ] ]
 ]
 
 { #category : #'private - element creation' }

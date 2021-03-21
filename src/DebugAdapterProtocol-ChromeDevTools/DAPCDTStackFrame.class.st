@@ -5,7 +5,7 @@ Class {
 		'cdtCallFrame',
 		'sourceCode'
 	],
-	#category : #'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-ChromeDevTools'
 }
 
 { #category : #accessing }
@@ -21,7 +21,7 @@ DAPCDTStackFrame >> cdtCallFrame: anObject [
 { #category : #accessing }
 DAPCDTStackFrame >> column [ 
 
-	^ cdtCallFrame columnNumber
+	^ cdtCallFrame columnNumber + 1
 ]
 
 { #category : #private }
@@ -50,7 +50,7 @@ DAPCDTStackFrame >> initialize [
 { #category : #accessing }
 DAPCDTStackFrame >> line [ 
 
-	^ cdtCallFrame lineNumber
+	^ cdtCallFrame lineNumber + 1
 ]
 
 { #category : #accessing }

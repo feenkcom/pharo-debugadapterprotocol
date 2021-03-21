@@ -162,7 +162,6 @@ DebugAdapterProtocolDefinitionImporter >> defineMessage: message named: key [
 		required: (classDictionary at: #required ifAbsent: [ #() ])
 		jsonDictionary: jsonDictionary.
 	self defineVisitor: key in: newClass.
-	"The JSON mapping has to include all properties defined here, including inherited attributes"
 	properties keysDo: [ :property |
 		jsonDictionary
 			at: property

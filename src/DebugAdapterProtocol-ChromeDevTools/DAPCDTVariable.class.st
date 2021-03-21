@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'cdtPropertyDescription'
 	],
-	#category : #'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-ChromeDevTools'
 }
 
 { #category : #accessing }
