@@ -143,7 +143,7 @@ DAPStackFrame >> gtSourceFor: aView [
 		stencil: [ | editor |
 			editor := BrEditor new
 				text: self sourceText;
-				look: BrGlamorousCodeEditorLook new.
+				aptitude: BrGlamorousCodeEditorAptitude new.
 			self source gtStyler ifNotNil: [ :gtStyler |
 				editor styler: gtStyler ].
 			self line > 5 ifTrue:

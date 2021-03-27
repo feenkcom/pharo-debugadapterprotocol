@@ -122,7 +122,7 @@ DAPBreakpoint >> gtSourceFor: aView [
 		stencil: [ | editor |
 			editor := BrEditor new
 				text: self sourceText;
-				look: BrGlamorousCodeEditorLook new;
+				aptitude: BrGlamorousCodeEditorAptitude new;
 				styler: PythonParser2 gtStyler.
 			self line > 5 ifTrue:
 				[ editor 	scrollToPosition: self line - 5 ].

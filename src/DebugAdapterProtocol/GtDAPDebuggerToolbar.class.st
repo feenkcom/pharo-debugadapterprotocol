@@ -76,7 +76,7 @@ GtDAPDebuggerToolbar >> initialize [
 GtDAPDebuggerToolbar >> newInspectButton [
 
 	^ BrButton new 
-		look: BrGlamorousButtonWithIconLook;
+		aptitude: BrGlamorousButtonWithIconAptitude;
 		margin: (BlInsets left: 5);
 		label: 'Inspect the DAP Debugger';
 		icon: BrGlamorousVectorIcons emphasizedInspect;
@@ -87,7 +87,7 @@ GtDAPDebuggerToolbar >> newInspectButton [
 GtDAPDebuggerToolbar >> newRestartFrameButton [
 
 	^ BrButton new 
-		look: BrGlamorousButtonWithIconLook;
+		aptitude: BrGlamorousButtonWithIconAptitude;
 		margin: (BlInsets left: 5);
 		icon: BrGlamorousIcons restart;
 		label: 'Restart Frame';
@@ -98,7 +98,7 @@ GtDAPDebuggerToolbar >> newRestartFrameButton [
 GtDAPDebuggerToolbar >> newResumeButton [
 
 	^ BrButton new 
-		look: BrGlamorousButtonWithIconLook;
+		aptitude: BrGlamorousButtonWithIconAptitude;
 		margin: (BlInsets left: 5);
 		icon: BrGlamorousVectorIcons play;
 		label: 'Resume';
@@ -109,7 +109,7 @@ GtDAPDebuggerToolbar >> newResumeButton [
 GtDAPDebuggerToolbar >> newStepBackButton [
 
 	^ BrButton new 
-		look: BrGlamorousButtonWithIconLook;
+		aptitude: BrGlamorousButtonWithIconAptitude;
 		margin: (BlInsets left: 5);
 		icon: BrGlamorousIcons down;
 		label: 'Step Back';
@@ -120,7 +120,7 @@ GtDAPDebuggerToolbar >> newStepBackButton [
 GtDAPDebuggerToolbar >> newStepIntoButton [
 
 	^ BrButton new 
-		look: BrGlamorousButtonWithIconLook;
+		aptitude: BrGlamorousButtonWithIconAptitude;
 		margin: (BlInsets left: 5);
 		icon: BrGlamorousIcons into;
 		label: 'Step Into';
@@ -131,7 +131,7 @@ GtDAPDebuggerToolbar >> newStepIntoButton [
 GtDAPDebuggerToolbar >> newStepOutButton [
 
 	^ BrButton new 
-		look: BrGlamorousButtonWithIconLook;
+		aptitude: BrGlamorousButtonWithIconAptitude;
 		margin: (BlInsets left: 5);
 		icon: BrGlamorousIcons down;
 		label: 'Step Out';
@@ -142,7 +142,7 @@ GtDAPDebuggerToolbar >> newStepOutButton [
 GtDAPDebuggerToolbar >> newStepOverButton [
 
 	^ BrButton new 
-		look: BrGlamorousButtonWithIconLook;
+		aptitude: BrGlamorousButtonWithIconAptitude;
 		margin: (BlInsets left: 5);
 		icon: BrGlamorousIcons over;
 		label: 'Step Over';
