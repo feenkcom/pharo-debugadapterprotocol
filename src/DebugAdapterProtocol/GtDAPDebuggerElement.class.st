@@ -75,7 +75,7 @@ GtDAPDebuggerElement >> actOnDebugSessionChanged [
 GtDAPDebuggerElement >> breakpointsTab [
 
 	^ BrTab new 
-		look: BrGlamorousTabLook;
+		aptitude: BrGlamorousTabAptitude;
 		label: 'Breakpoints';
 		stencil: 
 			[ breakpoints ifNil: 
@@ -97,7 +97,7 @@ GtDAPDebuggerElement >> buildVariablesHeader [
 			c vertical fitContent ].
 	#(Name Value) do: [ :label |
 		header addChild: (BrLabel new
-			look: BrGlamorousLabelLook;
+			aptitude: BrGlamorousLabelAptitude;
 			alignCenterLeft;
 			text: (label asRopedText foreground: BrGlamorousColors defaultButtonTextColor)) ].
 	header children first padding: (BlInsets left: 20).
@@ -118,7 +118,7 @@ GtDAPDebuggerElement >> buildVariablesTree [
 		title: 'Variable';
 		cellStencil: [ 
 			BrLabel new
-				look: (BrGlamorousLabelLook new foreground: Color black);
+				aptitude: (BrGlamorousLabelAptitude new foreground: Color black);
 				hMatchParent;
 				vFitContent;
 				margin: (BlInsets top: 3 left: 10 bottom: 3 right: 0) ];
@@ -128,7 +128,7 @@ GtDAPDebuggerElement >> buildVariablesTree [
 		title: 'Value';
 		cellStencil: [
 			BrLabel new
-				look: BrGlamorousLabelLook new;
+				aptitude: BrGlamorousLabelAptitude new;
 				hMatchParent;
 				vFitContent;
 				margin: (BlInsets top: 3 left: 10 bottom: 3 right: 0) ];
@@ -221,7 +221,7 @@ GtDAPDebuggerElement >> initialize [
 			c linear weight: 1.0 ].
 	callFramesList := self newCallFramesList.
 	cfContainer := BlElement new 
-		look: BrShadowLook;
+		aptitude: BrShadowAptitude;
 		margin: (BlInsets all: self defaultMargin);
 		constraintsDo: [ :c |
 			c vertical matchParent.
@@ -235,7 +235,7 @@ GtDAPDebuggerElement >> initialize [
 			c horizontal matchParent.
 			c vertical matchParent.
 			c linear weight: 1.0 ];
-		look: BrGlamorousWithMaximizerLook;
+		aptitude: BrGlamorousWithMaximizerLook;
 		addChild: sourceCode.
 	leftPane
 		addChild: cfContainer;
@@ -286,7 +286,7 @@ GtDAPDebuggerElement >> lineNumber [
 GtDAPDebuggerElement >> modulesTab [
 
 	^ BrTab new 
-		look: BrGlamorousTabLook;
+		aptitude: BrGlamorousTabAptitude;
 		label: 'Modules';
 		stencil: 
 			[ modules ifNil: 
@@ -311,7 +311,7 @@ GtDAPDebuggerElement >> newBreakpointsList [
 		title: 'Id';
 		cellStencil: [ 
 			BrLabel new
-				look: (BrGlamorousLabelLook new foreground: Color black);
+				aptitude: (BrGlamorousLabelAptitude new foreground: Color black);
 				hExact: 30;
 				vFitContent;
 				margin: (BlInsets top: 3 left: 10 bottom: 3 right: 0) ];
@@ -321,7 +321,7 @@ GtDAPDebuggerElement >> newBreakpointsList [
 		title: 'Breakpoint';
 		cellStencil: [ 
 			BrLabel new
-				look: (BrGlamorousLabelLook new foreground: Color black);
+				aptitude: (BrGlamorousLabelAptitude new foreground: Color black);
 				hMatchParent;
 				vFitContent;
 				margin: (BlInsets top: 3 left: 10 bottom: 3 right: 0) ];
@@ -347,7 +347,7 @@ GtDAPDebuggerElement >> newCallFramesList [
 		title: 'Depth';
 		cellStencil: [ 
 			BrLabel new
-				look: (BrGlamorousLabelLook new foreground: Color black);
+				aptitude: (BrGlamorousLabelAptitude new foreground: Color black);
 				hExact: 30;
 				vFitContent;
 				margin: (BlInsets top: 3 left: 10 bottom: 3 right: 0) ];
@@ -357,7 +357,7 @@ GtDAPDebuggerElement >> newCallFramesList [
 		title: 'Frame';
 		cellStencil: [
 			BrLabel new
-				look: BrGlamorousLabelLook new;
+				aptitude: BrGlamorousLabelAptitude new;
 				hMatchParent;
 				vFitContent;
 				margin: (BlInsets top: 3 left: 10 bottom: 3 right: 0) ];
@@ -371,7 +371,7 @@ GtDAPDebuggerElement >> newCallFramesList [
 GtDAPDebuggerElement >> newDebuggerState [
 
 	^ BrEditor new
-		look: BrGlamorousEditorLook + BrShadowLook;
+		aptitude: BrGlamorousEditorAptitude + BrShadowAptitude;
 		margin: (BlInsets all: self defaultMargin);
 		hMatchParent;
 		vFitContent;
@@ -395,7 +395,7 @@ GtDAPDebuggerElement >> newModulesList [
 		title: 'Name';
 		cellStencil: [ 
 			BrLabel new
-				look: (BrGlamorousLabelLook new foreground: Color black);
+				aptitude: (BrGlamorousLabelAptitude new foreground: Color black);
 				hExact: 100;
 				vFitContent;
 				margin: (BlInsets top: 3 left: 10 bottom: 3 right: 0) ];
@@ -405,7 +405,7 @@ GtDAPDebuggerElement >> newModulesList [
 		title: 'Path';
 		cellStencil: [ 
 			BrLabel new
-				look: (BrGlamorousLabelLook new foreground: Color black);
+				aptitude: (BrGlamorousLabelAptitude new foreground: Color black);
 				hMatchParent;
 				vFitContent;
 				margin: (BlInsets top: 3 left: 10 bottom: 3 right: 0) ];
@@ -419,7 +419,7 @@ GtDAPDebuggerElement >> newModulesList [
 GtDAPDebuggerElement >> newRightTabGroup [
 
 	^ BrTabGroup new 
-		look: BrGlamorousTabGroupLook + BrShadowLook + BrGlamorousWithMaximizerLook;
+		aptitude: BrGlamorousTabGroupAptitude + BrShadowAptitude + BrGlamorousWithMaximizerLook;
 		margin: (BlInsets all: self defaultMargin);
 		addTab: self variablesTab;
 		addTab: self breakpointsTab;
@@ -432,7 +432,7 @@ GtDAPDebuggerElement >> newRightTabGroup [
 GtDAPDebuggerElement >> newSourceEditor [
 
 	^ BrEditor new
-		look: BrGlamorousCodeEditorLook new + BrShadowLook new;
+		aptitude: BrGlamorousCodeEditorAptitude new + BrShadowAptitude new;
 		margin: (BlInsets all: self defaultMargin).
 ]
 
@@ -440,14 +440,14 @@ GtDAPDebuggerElement >> newSourceEditor [
 GtDAPDebuggerElement >> newStderrView [
 
 	^ BrEditor new
-		look: BrGlamorousCodeEditorLook new + BrShadowLook new.
+		aptitude: BrGlamorousCodeEditorAptitude new + BrShadowAptitude new.
 ]
 
 { #category : #'private - element creation' }
 GtDAPDebuggerElement >> newStdoutView [
 
 	^ BrEditor new
-		look: BrGlamorousCodeEditorLook new + BrShadowLook new.
+		aptitude: BrGlamorousCodeEditorAptitude new + BrShadowAptitude new.
 ]
 
 { #category : #'private - element creation' }
@@ -466,7 +466,7 @@ GtDAPDebuggerElement >> newVariablesList [
 	| container header tree |
 
 	container := BlElement new
-		look: BrShadowLook;
+		aptitude: BrShadowAptitude;
 		constraintsDo: [ :c | 
 			c horizontal matchParent.
 			c vertical matchParent ];
@@ -537,7 +537,7 @@ GtDAPDebuggerElement >> sourceText [
 GtDAPDebuggerElement >> stderrTab [
 
 	^ BrTab new 
-		look: BrGlamorousTabLook;
+		aptitude: BrGlamorousTabAptitude;
 		label: 'stderr';
 		stencil: 
 			[ stderr ifNil: 
@@ -550,7 +550,7 @@ GtDAPDebuggerElement >> stderrTab [
 GtDAPDebuggerElement >> stdoutTab [
 
 	^ BrTab new 
-		look: BrGlamorousTabLook;
+		aptitude: BrGlamorousTabAptitude;
 		label: 'stdout';
 		stencil: 
 			[ stdout ifNil: 
@@ -666,7 +666,7 @@ GtDAPDebuggerElement >> updateVariables [
 GtDAPDebuggerElement >> variablesTab [
 
 	^ BrTab new 
-		look: BrGlamorousTabLook;
+		aptitude: BrGlamorousTabAptitude;
 		label: 'Variables';
 		stencil: 
 			[ variablesContainer ifNil: 

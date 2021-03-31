@@ -73,7 +73,7 @@ DAPThreadModel >> gtTopSourceFor: aView [
 		title: 'Source';
 		priority: 100;
 		styler: PythonParser2 gtStyler;
-		look: BrGlamorousCodeEditorLook;
+		aptitude: BrGlamorousCodeEditorAptitude;
 		text: [ self stackFrames first sourceText ];
 		actionUpdateButtonTooltip: 'Update Source'
 

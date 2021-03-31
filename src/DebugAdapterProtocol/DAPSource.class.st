@@ -98,7 +98,7 @@ DAPSource >> gtSourceFor: aView [
 	view := aView textEditor
 		title: 'Source';
 		priority: 100;
-		look: BrGlamorousCodeEditorLook;
+		aptitude: BrGlamorousCodeEditorAptitude;
 		text: [ self sourceCode asRopedText ];
 		actionUpdateButtonTooltip: 'Update Source'.
 	self gtStyler ifNotNil: [ :gtStyler |
