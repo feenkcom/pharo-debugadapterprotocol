@@ -92,6 +92,7 @@ GtDAPDebuggerElement >> buildVariablesHeader [
 		layout: (BlLinearLayout horizontal alignCenterLeft cellSpacing: self cellSpacing);
 		padding: (BlInsets top: 5 bottom: 5);
 		labeled: 'Columned Header';
+		background: Color white;
 		constraintsDo: [ :c |
 			c horizontal matchParent.
 			c vertical fitContent ].
@@ -111,6 +112,7 @@ GtDAPDebuggerElement >> buildVariablesTree [
 	tree := BrColumnedTree new
 		rowStencil: (BrGlamorousColumnedTreeSelectableRowElementStencilBuilder new cellSpacing: self cellSpacing);
 		margin: (BlInsets top: 10);
+		background: Color white;
 		addEventHandler: (GtPhlowListToSelectHandler new 
 			transformation: [ :variableNode | variableNode value value ]).
 
@@ -193,7 +195,7 @@ GtDAPDebuggerElement >> dapStepOver [
 { #category : #'private - accessing' }
 GtDAPDebuggerElement >> defaultMargin [ 
 
-	^ 3
+	^ 5
 ]
 
 { #category : #'private - update ui' }
@@ -302,11 +304,11 @@ GtDAPDebuggerElement >> newBreakpointsList [
 
 	list := BrColumnedList new
 		margin: (BlInsets top: 10);
-		yourself.
-	list 
+		background: Color white;
 		rowStencil: (BrGlamorousColumnedListSelectableRowElementStencilBuilder new);
 		addEventHandler: (GtPhlowListToSelectHandler new 
-			transformation: [ :aDAPBreakpoint | aDAPBreakpoint ]).
+			transformation: [ :aDAPBreakpoint | aDAPBreakpoint ]);
+		yourself.
 
 	list column 
 		title: 'Id';
@@ -338,11 +340,11 @@ GtDAPDebuggerElement >> newCallFramesList [
 
 	list := BrColumnedList new
 		margin: (BlInsets top: 10);
-		yourself.
-	list 
+		background: Color white;
 		rowStencil: (BrGlamorousColumnedListSelectableRowElementStencilBuilder new);
 		addEventHandler: (GtPhlowListToSelectHandler new 
-			transformation: [ :aDAPStackFrame | self displayStackFrame: aDAPStackFrame. aDAPStackFrame ]).
+			transformation: [ :aDAPStackFrame | self displayStackFrame: aDAPStackFrame. aDAPStackFrame ]);
+		yourself.
 
 	list column 
 		title: 'Depth';
@@ -374,6 +376,7 @@ GtDAPDebuggerElement >> newDebuggerState [
 	^ BrEditor new
 		aptitude: BrGlamorousEditorAptitude + BrShadowAptitude;
 		margin: (BlInsets all: self defaultMargin);
+		background: Color white;
 		hMatchParent;
 		vFitContent;
 		beMode: BrTextEditorReadonlyWithoutSelectionMode new.
@@ -386,11 +389,11 @@ GtDAPDebuggerElement >> newModulesList [
 
 	list := BrColumnedList new
 		margin: (BlInsets top: 10);
-		yourself.
-	list 
+		background: Color white;
 		rowStencil: (BrGlamorousColumnedListSelectableRowElementStencilBuilder new);
 		addEventHandler: (GtPhlowListToSelectHandler new 
-			transformation: [ :aDAPBreakpoint | aDAPBreakpoint ]).
+			transformation: [ :aDAPBreakpoint | aDAPBreakpoint ]);
+		yourself.
 
 	list column 
 		title: 'Name';
@@ -422,6 +425,7 @@ GtDAPDebuggerElement >> newRightTabGroup [
 	^ BrTabGroup new 
 		aptitude: BrGlamorousTabGroupAptitude + BrShadowAptitude;
 		margin: (BlInsets all: self defaultMargin);
+		background: Color white;
 		addTab: self variablesTab;
 		addTab: self breakpointsTab;
 		addTab: self stdoutTab;
@@ -434,21 +438,24 @@ GtDAPDebuggerElement >> newSourceEditor [
 
 	^ BrEditor new
 		aptitude: BrGlamorousCodeEditorAptitude new + BrShadowAptitude new;
-		margin: (BlInsets all: self defaultMargin).
+		margin: (BlInsets all: self defaultMargin);
+		background: Color white.
 ]
 
 { #category : #'private - element creation' }
 GtDAPDebuggerElement >> newStderrView [
 
 	^ BrEditor new
-		aptitude: BrGlamorousCodeEditorAptitude new + BrShadowAptitude new.
+		aptitude: BrGlamorousCodeEditorAptitude new + BrShadowAptitude new;
+		background: Color white.
 ]
 
 { #category : #'private - element creation' }
 GtDAPDebuggerElement >> newStdoutView [
 
 	^ BrEditor new
-		aptitude: BrGlamorousCodeEditorAptitude new + BrShadowAptitude new.
+		aptitude: BrGlamorousCodeEditorAptitude new + BrShadowAptitude new;
+		background: Color white.
 ]
 
 { #category : #'private - element creation' }
@@ -470,6 +477,7 @@ GtDAPDebuggerElement >> newVariablesList [
 
 	container := BlElement new
 		aptitude: BrShadowAptitude;
+		background: Color white;
 		constraintsDo: [ :c | 
 			c horizontal matchParent.
 			c vertical matchParent ];
