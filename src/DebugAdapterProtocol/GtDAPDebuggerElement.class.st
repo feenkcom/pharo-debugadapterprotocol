@@ -235,7 +235,7 @@ GtDAPDebuggerElement >> initialize [
 			c horizontal matchParent.
 			c vertical matchParent.
 			c linear weight: 1.0 ];
-		aptitude: BrGlamorousWithMaximizerLook;
+		aptitude: BrGlamorousWithMaximizerAptitude;
 		addChild: sourceCode.
 	leftPane
 		addChild: cfContainer;
@@ -419,7 +419,7 @@ GtDAPDebuggerElement >> newModulesList [
 GtDAPDebuggerElement >> newRightTabGroup [
 
 	^ BrTabGroup new 
-		aptitude: BrGlamorousTabGroupAptitude + BrShadowAptitude + BrGlamorousWithMaximizerLook;
+		aptitude: BrGlamorousTabGroupAptitude + BrShadowAptitude + BrGlamorousWithMaximizerAptitude;
 		margin: (BlInsets all: self defaultMargin);
 		addTab: self variablesTab;
 		addTab: self breakpointsTab;
