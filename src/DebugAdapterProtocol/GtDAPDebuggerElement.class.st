@@ -215,8 +215,9 @@ GtDAPDebuggerElement >> initialize [
 			c vertical matchParent.
 			c horizontal matchParent ].
 	container := BrVerticalPane new matchParent.
-	mainPane := BrHorizontalPane new.
+	mainPane := BrHorizontalPane new matchParent.
 	leftPane := BrVerticalPane new
+		matchParent;
 		constraintsDo: [ :c |
 			c linear weight: 1.0 ].
 	callFramesList := self newCallFramesList.
@@ -235,12 +236,12 @@ GtDAPDebuggerElement >> initialize [
 			c horizontal matchParent.
 			c vertical matchParent.
 			c linear weight: 1.0 ];
-		aptitude: BrGlamorousWithMaximizerLook;
 		addChild: sourceCode.
 	leftPane
 		addChild: cfContainer;
 		addChild: sourceContainer.
 	rightPane := BrVerticalPane new
+		matchParent;
 		constraintsDo: [ :c |
 			c linear weight: 0.7 ].
 	rightTabGroup := self newRightTabGroup.
@@ -419,7 +420,7 @@ GtDAPDebuggerElement >> newModulesList [
 GtDAPDebuggerElement >> newRightTabGroup [
 
 	^ BrTabGroup new 
-		aptitude: BrGlamorousTabGroupAptitude + BrShadowAptitude + BrGlamorousWithMaximizerLook;
+		aptitude: BrGlamorousTabGroupAptitude + BrShadowAptitude;
 		margin: (BlInsets all: self defaultMargin);
 		addTab: self variablesTab;
 		addTab: self breakpointsTab;
@@ -455,6 +456,7 @@ GtDAPDebuggerElement >> newToolbar [
 
 	^ GtDAPDebuggerToolbar new 
 		dapDebugElement: self;
+		matchParent;
 		background: BrGlamorousColors defaultHeaderBackgroundColor;
 		padding: (BlInsets top: 10 left: 0 bottom: 5 right: 10);
 		alignCenterRight;
