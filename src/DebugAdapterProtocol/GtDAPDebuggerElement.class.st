@@ -456,7 +456,8 @@ GtDAPDebuggerElement >> newToolbar [
 
 	^ GtDAPDebuggerToolbar new 
 		dapDebugElement: self;
-		matchParent;
+		hMatchParent;
+		vFitContent;
 		background: BrGlamorousColors defaultHeaderBackgroundColor;
 		padding: (BlInsets top: 10 left: 0 bottom: 5 right: 10);
 		alignCenterRight;
