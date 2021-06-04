@@ -1,7 +1,8 @@
 "
-RemoteDebuggerClient is an abstract class that defines the API for ${class:name=DAPDebugger}$s.
+RemoteDebuggerClient is an abstract class that defines the API for {{gtClass:name=DAPDebugger}}s.
 
-Subclasses are responsible for performing the communications with the remote server.  Subclasses of ${class:name=DAPDebugger}$ take care of the differences between the various servers.
+Subclasses are responsible for performing the communications with the remote server.  Subclasses of {{gtClass:name=DAPDebugger}} take care of the differences between the various servers.
+
 "
 Class {
 	#name : #RemoteDebuggerClient,

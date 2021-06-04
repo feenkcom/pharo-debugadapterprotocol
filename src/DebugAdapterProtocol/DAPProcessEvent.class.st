@@ -1,5 +1,6 @@
 "
 The event indicates that the debugger has begun debugging a new process. Either one that it has launched, or one that it has attached to.
+
 "
 Class {
 	#name : #DAPProcessEvent,

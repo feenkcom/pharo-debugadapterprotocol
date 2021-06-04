@@ -1,5 +1,6 @@
 "
 The request returns the variable scopes for a given stackframe ID.
+
 "
 Class {
 	#name : #DAPScopesRequest,

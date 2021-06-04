@@ -1,5 +1,6 @@
 "
 Response to 'threads' request.
+
 "
 Class {
 	#name : #DAPThreadsResponse,

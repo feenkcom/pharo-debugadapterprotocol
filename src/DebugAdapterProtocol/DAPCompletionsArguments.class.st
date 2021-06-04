@@ -1,5 +1,6 @@
 "
 Arguments for 'completions' request.
+
 "
 Class {
 	#name : #DAPCompletionsArguments,

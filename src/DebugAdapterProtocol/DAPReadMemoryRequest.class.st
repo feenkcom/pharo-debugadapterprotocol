@@ -1,6 +1,7 @@
 "
 Reads bytes from memory at the provided location.
 Clients should only call this request if the capability 'supportsReadMemoryRequest' is true.
+
 "
 Class {
 	#name : #DAPReadMemoryRequest,

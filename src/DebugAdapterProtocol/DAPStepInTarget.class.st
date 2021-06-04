@@ -1,5 +1,6 @@
 "
 A StepInTarget can be used in the 'stepIn' request and determines into which single target the stepIn request should step.
+
 "
 Class {
 	#name : #DAPStepInTarget,

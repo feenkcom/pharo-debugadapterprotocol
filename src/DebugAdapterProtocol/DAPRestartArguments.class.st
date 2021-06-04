@@ -1,5 +1,6 @@
 "
 Arguments for 'restart' request.
+
 "
 Class {
 	#name : #DAPRestartArguments,

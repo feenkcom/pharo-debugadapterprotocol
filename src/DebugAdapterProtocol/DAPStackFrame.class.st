@@ -1,5 +1,6 @@
 "
 A Stackframe contains the source location.
+
 "
 Class {
 	#name : #DAPStackFrame,

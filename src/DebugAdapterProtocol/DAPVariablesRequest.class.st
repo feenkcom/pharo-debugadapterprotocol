@@ -1,6 +1,7 @@
 "
 Retrieves all child variables for the given variable reference.
 An optional filter can be used to limit the fetched children to either named or indexed children.
+
 "
 Class {
 	#name : #DAPVariablesRequest,

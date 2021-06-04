@@ -1,6 +1,7 @@
 "
 The 'breakpointLocations' request returns all possible locations for source breakpoints in a given range.
 Clients should only call this request if the capability 'supportsBreakpointLocationsRequest' is true.
+
 "
 Class {
 	#name : #DAPBreakpointLocationsRequest,

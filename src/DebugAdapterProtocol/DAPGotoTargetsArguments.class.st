@@ -1,5 +1,6 @@
 "
 Arguments for 'gotoTargets' request.
+
 "
 Class {
 	#name : #DAPGotoTargetsArguments,

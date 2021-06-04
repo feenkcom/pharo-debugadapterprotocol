@@ -1,5 +1,6 @@
 "
 Properties of a breakpoint passed to the setInstructionBreakpoints request
+
 "
 Class {
 	#name : #DAPInstructionBreakpoint,

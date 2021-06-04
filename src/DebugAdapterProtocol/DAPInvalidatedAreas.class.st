@@ -1,5 +1,6 @@
 "
 Logical areas that can be invalidated by the 'invalidated' event.
+
 "
 Class {
 	#name : #DAPInvalidatedAreas,

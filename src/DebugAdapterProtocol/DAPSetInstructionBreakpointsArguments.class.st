@@ -1,5 +1,6 @@
 "
 Arguments for 'setInstructionBreakpoints' request
+
 "
 Class {
 	#name : #DAPSetInstructionBreakpointsArguments,

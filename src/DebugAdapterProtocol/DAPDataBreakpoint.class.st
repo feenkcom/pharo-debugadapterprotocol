@@ -1,5 +1,6 @@
 "
 Properties of a data breakpoint passed to the setDataBreakpoints request.
+
 "
 Class {
 	#name : #DAPDataBreakpoint,

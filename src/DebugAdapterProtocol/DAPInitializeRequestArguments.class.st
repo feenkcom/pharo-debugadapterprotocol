@@ -1,5 +1,6 @@
 "
 Arguments for 'initialize' request.
+
 "
 Class {
 	#name : #DAPInitializeRequestArguments,

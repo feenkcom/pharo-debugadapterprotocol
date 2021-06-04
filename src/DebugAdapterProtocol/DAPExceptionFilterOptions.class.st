@@ -1,5 +1,6 @@
 "
 An ExceptionFilterOptions is used to specify an exception filter together with a condition for the setExceptionsFilter request.
+
 "
 Class {
 	#name : #DAPExceptionFilterOptions,

@@ -1,5 +1,6 @@
 "
 Detailed information about an exception that has occurred.
+
 "
 Class {
 	#name : #DAPExceptionDetails,

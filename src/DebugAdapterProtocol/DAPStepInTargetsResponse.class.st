@@ -1,5 +1,6 @@
 "
 Response to 'stepInTargets' request.
+
 "
 Class {
 	#name : #DAPStepInTargetsResponse,

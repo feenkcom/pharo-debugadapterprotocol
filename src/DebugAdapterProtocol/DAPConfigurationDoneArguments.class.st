@@ -1,5 +1,6 @@
 "
 Arguments for 'configurationDone' request.
+
 "
 Class {
 	#name : #DAPConfigurationDoneArguments,

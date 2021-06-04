@@ -2,6 +2,7 @@
 An ExceptionPathSegment represents a segment in a path that is used to match leafs or nodes in a tree of exceptions.
 If a segment consists of more than one name, it matches the names provided if 'negate' is false or missing or
 it matches anything except the names provided if 'negate' is true.
+
 "
 Class {
 	#name : #DAPExceptionPathSegment,

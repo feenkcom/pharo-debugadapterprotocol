@@ -4,6 +4,7 @@ It asks the debug adapter to disconnect from the debuggee and to terminate the d
 If the debuggee has been started with the 'launch' request, the 'disconnect' request terminates the debuggee.
 If the 'attach' request was used to connect to the debuggee, 'disconnect' does not terminate the debuggee.
 This behavior can be controlled with the 'terminateDebuggee' argument (if supported by the debug adapter).
+
 "
 Class {
 	#name : #DAPDisconnectRequest,

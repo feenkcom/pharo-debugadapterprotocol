@@ -1,5 +1,6 @@
 "
 Arguments for 'stepInTargets' request.
+
 "
 Class {
 	#name : #DAPStepInTargetsArguments,

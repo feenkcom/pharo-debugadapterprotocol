@@ -1,5 +1,6 @@
 "
 Response to 'readMemory' request.
+
 "
 Class {
 	#name : #DAPReadMemoryResponse,

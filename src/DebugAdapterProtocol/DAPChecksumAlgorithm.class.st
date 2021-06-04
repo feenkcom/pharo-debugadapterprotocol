@@ -1,5 +1,6 @@
 "
 Names of checksum algorithms that may be supported by a debug adapter.
+
 "
 Class {
 	#name : #DAPChecksumAlgorithm,

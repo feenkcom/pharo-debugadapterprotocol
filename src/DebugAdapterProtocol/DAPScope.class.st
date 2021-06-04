@@ -1,5 +1,6 @@
 "
 A Scope is a named container for variables. Optionally a scope can map to a source or a range within a source.
+
 "
 Class {
 	#name : #DAPScope,

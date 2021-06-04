@@ -3,6 +3,7 @@ Replaces all existing instruction breakpoints. Typically, instruction breakpoint
 To clear all instruction breakpoints, specify an empty array.
 When an instruction breakpoint is hit, a 'stopped' event (with reason 'instruction breakpoint') is generated.
 Clients should only call this request if the capability 'supportsInstructionBreakpoints' is true.
+
 "
 Class {
 	#name : #DAPSetInstructionBreakpointsRequest,

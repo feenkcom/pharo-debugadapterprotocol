@@ -1,5 +1,6 @@
 "
 An ExceptionOptions assigns configuration options to a set of exceptions.
+
 "
 Class {
 	#name : #DAPExceptionOptions,

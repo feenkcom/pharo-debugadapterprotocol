@@ -1,5 +1,6 @@
 "
 Response to 'completions' request.
+
 "
 Class {
 	#name : #DAPCompletionsResponse,

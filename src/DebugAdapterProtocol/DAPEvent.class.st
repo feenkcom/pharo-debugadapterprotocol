@@ -1,5 +1,6 @@
 "
 A debug adapter initiated event.
+
 "
 Class {
 	#name : #DAPEvent,

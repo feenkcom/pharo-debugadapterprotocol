@@ -1,5 +1,6 @@
 "
 Response to 'gotoTargets' request.
+
 "
 Class {
 	#name : #DAPGotoTargetsResponse,

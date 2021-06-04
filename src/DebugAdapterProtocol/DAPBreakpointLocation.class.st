@@ -1,5 +1,6 @@
 "
 Properties of a breakpoint location returned from the 'breakpointLocations' request.
+
 "
 Class {
 	#name : #DAPBreakpointLocation,

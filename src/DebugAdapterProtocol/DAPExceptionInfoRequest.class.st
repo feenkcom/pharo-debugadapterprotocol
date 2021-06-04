@@ -1,6 +1,7 @@
 "
 Retrieves the details of the exception that caused this event to be raised.
 Clients should only call this request if the capability 'supportsExceptionInfoRequest' is true.
+
 "
 Class {
 	#name : #DAPExceptionInfoRequest,

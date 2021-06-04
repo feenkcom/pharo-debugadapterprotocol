@@ -1,5 +1,6 @@
 "
 Response to 'disassemble' request.
+
 "
 Class {
 	#name : #DAPDisassembleResponse,

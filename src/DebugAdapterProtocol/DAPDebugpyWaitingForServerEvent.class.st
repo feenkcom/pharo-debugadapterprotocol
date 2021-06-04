@@ -1,5 +1,6 @@
 "
 Notification that the remote debugpy server is waiting.
+
 "
 Class {
 	#name : #DAPDebugpyWaitingForServerEvent,

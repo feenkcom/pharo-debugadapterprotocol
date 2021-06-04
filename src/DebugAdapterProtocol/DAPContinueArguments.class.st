@@ -1,5 +1,6 @@
 "
 Arguments for 'continue' request.
+
 "
 Class {
 	#name : #DAPContinueArguments,

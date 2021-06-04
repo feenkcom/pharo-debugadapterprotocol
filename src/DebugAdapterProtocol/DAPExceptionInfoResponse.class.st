@@ -1,5 +1,6 @@
 "
 Response to 'exceptionInfo' request.
+
 "
 Class {
 	#name : #DAPExceptionInfoResponse,

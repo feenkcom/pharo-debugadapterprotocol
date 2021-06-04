@@ -1,5 +1,6 @@
 "
 Arguments for 'breakpointLocations' request.
+
 "
 Class {
 	#name : #DAPBreakpointLocationsArguments,

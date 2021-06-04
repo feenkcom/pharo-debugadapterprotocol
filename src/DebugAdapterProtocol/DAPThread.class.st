@@ -1,5 +1,6 @@
 "
 A Thread
+
 "
 Class {
 	#name : #DAPThread,

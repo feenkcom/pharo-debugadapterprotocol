@@ -1,5 +1,6 @@
 "
 A host name and port to connect to
+
 "
 Class {
 	#name : #DAPIPAddress,

@@ -1,5 +1,6 @@
 "
 The event indicates that the target has produced some output.
+
 "
 Class {
 	#name : #DAPOutputEvent,

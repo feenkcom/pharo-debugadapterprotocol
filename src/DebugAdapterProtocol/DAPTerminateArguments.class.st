@@ -1,5 +1,6 @@
 "
 Arguments for 'terminate' request.
+
 "
 Class {
 	#name : #DAPTerminateArguments,

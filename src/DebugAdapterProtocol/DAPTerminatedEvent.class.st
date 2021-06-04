@@ -1,5 +1,6 @@
 "
-The event indicates that debugging of the debuggee has terminated. This does **not** mean that the debuggee itself has exited.
+The event indicates that debugging of the debuggee has terminated. This does ** mean that the debuggee itself has exited.
+
 "
 Class {
 	#name : #DAPTerminatedEvent,

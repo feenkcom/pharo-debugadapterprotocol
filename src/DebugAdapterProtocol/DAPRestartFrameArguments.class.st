@@ -1,5 +1,6 @@
 "
 Arguments for 'restartFrame' request.
+
 "
 Class {
 	#name : #DAPRestartFrameArguments,

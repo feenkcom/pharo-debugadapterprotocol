@@ -1,5 +1,6 @@
 "
 Response to 'scopes' request.
+
 "
 Class {
 	#name : #DAPScopesResponse,

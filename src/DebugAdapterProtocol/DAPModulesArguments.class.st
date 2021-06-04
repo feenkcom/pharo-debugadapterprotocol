@@ -1,5 +1,6 @@
 "
 Arguments for 'modules' request.
+
 "
 Class {
 	#name : #DAPModulesArguments,

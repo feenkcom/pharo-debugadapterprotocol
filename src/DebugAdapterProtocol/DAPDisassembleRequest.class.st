@@ -1,6 +1,7 @@
 "
 Disassembles code stored at the provided location.
 Clients should only call this request if the capability 'supportsDisassembleRequest' is true.
+
 "
 Class {
 	#name : #DAPDisassembleRequest,

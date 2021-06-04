@@ -1,5 +1,6 @@
 "
 Arguments for 'terminateThreads' request.
+
 "
 Class {
 	#name : #DAPTerminateThreadsArguments,

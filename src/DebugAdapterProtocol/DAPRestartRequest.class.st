@@ -1,6 +1,7 @@
 "
 Restarts a debug session. Clients should only call this request if the capability 'supportsRestartRequest' is true.
 If the capability is missing or has the value false, a typical client will emulate 'restart' by terminating the debug adapter first and then launching it anew.
+
 "
 Class {
 	#name : #DAPRestartRequest,

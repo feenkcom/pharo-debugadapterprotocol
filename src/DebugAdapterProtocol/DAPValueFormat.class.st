@@ -1,5 +1,6 @@
 "
 Provides formatting information for a value.
+
 "
 Class {
 	#name : #DAPValueFormat,

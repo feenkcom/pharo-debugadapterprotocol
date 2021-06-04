@@ -1,5 +1,6 @@
 "
 Response to 'setVariable' request.
+
 "
 Class {
 	#name : #DAPSetVariableResponse,

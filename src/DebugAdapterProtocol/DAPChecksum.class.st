@@ -1,5 +1,6 @@
 "
 The checksum of an item calculated by the specified algorithm.
+
 "
 Class {
 	#name : #DAPChecksum,

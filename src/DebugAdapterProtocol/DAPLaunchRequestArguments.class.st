@@ -1,5 +1,6 @@
 "
 Arguments for 'launch' request. Additional attributes are implementation specific.
+
 "
 Class {
 	#name : #DAPLaunchRequestArguments,

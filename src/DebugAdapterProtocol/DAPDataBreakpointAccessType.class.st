@@ -1,5 +1,6 @@
 "
 This enumeration defines all possible access types for data breakpoints.
+
 "
 Class {
 	#name : #DAPDataBreakpointAccessType,

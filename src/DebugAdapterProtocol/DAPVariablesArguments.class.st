@@ -1,5 +1,6 @@
 "
 Arguments for 'variables' request.
+
 "
 Class {
 	#name : #DAPVariablesArguments,

@@ -1,5 +1,6 @@
 "
 Arguments for 'next' request.
+
 "
 Class {
 	#name : #DAPNextArguments,

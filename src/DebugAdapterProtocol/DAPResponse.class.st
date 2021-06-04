@@ -1,5 +1,6 @@
 "
 Response for a request.
+
 "
 Class {
 	#name : #DAPResponse,

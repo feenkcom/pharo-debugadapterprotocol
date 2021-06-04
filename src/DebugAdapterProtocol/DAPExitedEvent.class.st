@@ -1,5 +1,6 @@
 "
 The event indicates that the debuggee has exited and returns its exit code.
+
 "
 Class {
 	#name : #DAPExitedEvent,

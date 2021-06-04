@@ -1,6 +1,7 @@
 "
 The request suspends the debuggee.
 The debug adapter first sends the response and then a 'stopped' event (with reason 'pause') after the thread has been paused successfully.
+
 "
 Class {
 	#name : #DAPPauseRequest,

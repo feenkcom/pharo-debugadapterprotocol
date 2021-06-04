@@ -1,6 +1,7 @@
 "
 The request terminates the threads with the given ids.
 Clients should only call this request if the capability 'supportsTerminateThreadsRequest' is true.
+
 "
 Class {
 	#name : #DAPTerminateThreadsRequest,

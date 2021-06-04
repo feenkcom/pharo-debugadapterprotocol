@@ -1,5 +1,6 @@
 "
 Arguments for 'attach' request. Additional attributes are implementation specific.
+
 "
 Class {
 	#name : #DAPAttachRequestArguments,
