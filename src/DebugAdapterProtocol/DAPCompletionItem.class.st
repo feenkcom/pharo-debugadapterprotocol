@@ -1,5 +1,6 @@
 "
 CompletionItems are the suggestions returned from the CompletionsRequest.
+
 "
 Class {
 	#name : #DAPCompletionItem,

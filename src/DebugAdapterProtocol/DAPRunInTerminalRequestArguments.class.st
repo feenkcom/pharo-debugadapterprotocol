@@ -1,5 +1,6 @@
 "
 Arguments for 'runInTerminal' request.
+
 "
 Class {
 	#name : #DAPRunInTerminalRequestArguments,

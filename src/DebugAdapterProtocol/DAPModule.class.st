@@ -7,6 +7,7 @@ Additional attributes can be added to the module. They will show up in the modul
 
 To avoid an unnecessary proliferation of additional attributes with similar semantics but different names
 we recommend to re-use attributes from the 'recommended' list below first, and only introduce new attributes if nothing appropriate could be found.
+
 "
 Class {
 	#name : #DAPModule,

@@ -1,5 +1,6 @@
 "
 Arguments for 'setVariable' request.
+
 "
 Class {
 	#name : #DAPSetVariableArguments,

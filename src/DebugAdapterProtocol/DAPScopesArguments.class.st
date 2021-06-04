@@ -1,5 +1,6 @@
 "
 Arguments for 'scopes' request.
+
 "
 Class {
 	#name : #DAPScopesArguments,

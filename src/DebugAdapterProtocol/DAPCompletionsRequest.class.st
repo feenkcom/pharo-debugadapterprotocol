@@ -1,6 +1,7 @@
 "
 Returns a list of possible completions for a given caret position and text.
 Clients should only call this request if the capability 'supportsCompletionsRequest' is true.
+
 "
 Class {
 	#name : #DAPCompletionsRequest,

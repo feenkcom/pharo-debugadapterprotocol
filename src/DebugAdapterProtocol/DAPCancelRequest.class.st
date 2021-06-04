@@ -10,6 +10,7 @@ or an error response ('success' attribute false and the 'message' set to 'cancel
 Returning partial results from a cancelled request is possible but please note that a frontend client has no generic way for detecting that a response is partial or not.
  The progress that got cancelled still needs to send a 'progressEnd' event back.
  A client should not assume that progress just got cancelled after sending the 'cancel' request.
+
 "
 Class {
 	#name : #DAPCancelRequest,

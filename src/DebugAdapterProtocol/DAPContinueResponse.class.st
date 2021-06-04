@@ -1,5 +1,6 @@
 "
 Response to 'continue' request.
+
 "
 Class {
 	#name : #DAPContinueResponse,

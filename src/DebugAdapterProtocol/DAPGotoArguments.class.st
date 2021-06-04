@@ -1,5 +1,6 @@
 "
 Arguments for 'goto' request.
+
 "
 Class {
 	#name : #DAPGotoArguments,

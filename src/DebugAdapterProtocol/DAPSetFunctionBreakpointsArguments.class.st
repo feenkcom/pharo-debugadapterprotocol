@@ -1,5 +1,6 @@
 "
 Arguments for 'setFunctionBreakpoints' request.
+
 "
 Class {
 	#name : #DAPSetFunctionBreakpointsArguments,

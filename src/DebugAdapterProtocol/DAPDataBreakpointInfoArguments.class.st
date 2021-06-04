@@ -1,5 +1,6 @@
 "
 Arguments for 'dataBreakpointInfo' request.
+
 "
 Class {
 	#name : #DAPDataBreakpointInfoArguments,

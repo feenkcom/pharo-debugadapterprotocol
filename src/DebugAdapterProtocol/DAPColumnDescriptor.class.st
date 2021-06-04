@@ -2,6 +2,7 @@
 A ColumnDescriptor specifies what module attribute to show in a column of the ModulesView, how to format it,
 and what the column's label should be.
 It is only used if the underlying UI actually supports this level of customization.
+
 "
 Class {
 	#name : #DAPColumnDescriptor,

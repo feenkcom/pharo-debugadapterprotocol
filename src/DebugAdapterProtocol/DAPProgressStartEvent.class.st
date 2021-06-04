@@ -3,6 +3,7 @@ The event signals that a long running operation is about to start and
 provides additional information for the client to set up a corresponding progress and cancellation UI.
 The client is free to delay the showing of the UI in order to reduce flicker.
 This event should only be sent if the client has passed the value true for the 'supportsProgressReporting' capability of the 'initialize' request.
+
 "
 Class {
 	#name : #DAPProgressStartEvent,

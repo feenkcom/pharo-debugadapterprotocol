@@ -1,5 +1,6 @@
 "
 Properties of a breakpoint passed to the setFunctionBreakpoints request.
+
 "
 Class {
 	#name : #DAPFunctionBreakpoint,

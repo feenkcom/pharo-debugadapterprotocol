@@ -1,5 +1,6 @@
 "
 Base class of requests, responses, and events.
+
 "
 Class {
 	#name : #DAPProtocolMessage,

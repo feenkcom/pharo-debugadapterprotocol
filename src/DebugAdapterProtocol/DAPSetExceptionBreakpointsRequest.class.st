@@ -3,6 +3,7 @@ The request configures the debuggers response to thrown exceptions.
 If an exception is configured to break, a 'stopped' event is fired (with reason 'exception').
 Clients should only call this request if the capability 'exceptionBreakpointFilters' returns one or more filters.
 If a filter or filter option is invalid (e.g. due to an invalid 'condition'), the request should fail with an 'ErrorResponse' explaining the problem(s).
+
 "
 Class {
 	#name : #DAPSetExceptionBreakpointsRequest,

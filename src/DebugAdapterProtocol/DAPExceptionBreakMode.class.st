@@ -4,6 +4,7 @@ never: never breaks,
 always: always breaks,
 unhandled: breaks when exception unhandled,
 userUnhandled: breaks if the exception is not handled by user code.
+
 "
 Class {
 	#name : #DAPExceptionBreakMode,

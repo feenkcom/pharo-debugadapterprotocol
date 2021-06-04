@@ -1,6 +1,7 @@
 "
 This launch request is sent from the client to the debug adapter to start the debuggee with or without debugging (if 'noDebug' is true).
 Since launching is debugger/runtime specific, the arguments for this request are not part of this specification.
+
 "
 Class {
 	#name : #DAPLaunchRequest,

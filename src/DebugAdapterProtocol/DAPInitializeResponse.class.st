@@ -1,5 +1,6 @@
 "
 Response to 'initialize' request.
+
 "
 Class {
 	#name : #DAPInitializeResponse,

@@ -1,5 +1,6 @@
 "
 Optional properties of a variable that can be used to determine how to render the variable in the UI.
+
 "
 Class {
 	#name : #DAPVariablePresentationHint,

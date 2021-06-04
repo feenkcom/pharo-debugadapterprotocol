@@ -1,9 +1,10 @@
 "
 DAPServerComms subclasses are responisble for low level communications with the remote server, sending and receiving DAP packets, which are of the format:
 
-==Content-Length: <length><CRLF><CRLF>{ <JSON encoded object }==
+`Content-Length: <length><CRLF><CRLF>{ <JSON encoded object }`
 
 It is up to the debugger to configure the server comms object appropriately and pass it to the client.  The client will then send #run to start the comms.
+
 "
 Class {
 	#name : #DAPServerComms,

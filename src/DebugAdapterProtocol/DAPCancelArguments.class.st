@@ -1,5 +1,6 @@
 "
 Arguments for 'cancel' request.
+
 "
 Class {
 	#name : #DAPCancelArguments,

@@ -1,5 +1,6 @@
 "
 A client or debug adapter initiated request.
+
 "
 Class {
 	#name : #DAPRequest,

@@ -1,5 +1,6 @@
 "
 Set the variable with the given name in the variable container to a new value. Clients should only call this request if the capability 'supportsSetVariable' is true.
+
 "
 Class {
 	#name : #DAPSetVariableRequest,

@@ -1,5 +1,6 @@
 "
 Information about the capabilities of a debug adapter.
+
 "
 Class {
 	#name : #DAPCapabilities,

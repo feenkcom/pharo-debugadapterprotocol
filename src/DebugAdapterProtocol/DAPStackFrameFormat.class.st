@@ -1,5 +1,6 @@
 "
 Provides formatting information for a stack frame.
+
 "
 Class {
 	#name : #DAPStackFrameFormat,

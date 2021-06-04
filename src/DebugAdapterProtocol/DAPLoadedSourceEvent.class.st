@@ -1,5 +1,6 @@
 "
 The event indicates that some source has been added, changed, or removed from the set of all loaded sources.
+
 "
 Class {
 	#name : #DAPLoadedSourceEvent,

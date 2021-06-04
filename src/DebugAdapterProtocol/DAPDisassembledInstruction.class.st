@@ -1,5 +1,6 @@
 "
 Represents a single disassembled instruction.
+
 "
 Class {
 	#name : #DAPDisassembledInstruction,

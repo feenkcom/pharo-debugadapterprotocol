@@ -1,5 +1,6 @@
 "
 Information about a Breakpoint created in setBreakpoints, setFunctionBreakpoints, setInstructionBreakpoints, or setDataBreakpoints.
+
 "
 Class {
 	#name : #DAPBreakpoint,

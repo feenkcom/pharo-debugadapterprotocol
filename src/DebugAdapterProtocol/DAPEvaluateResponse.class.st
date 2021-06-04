@@ -1,5 +1,6 @@
 "
 Response to 'evaluate' request.
+
 "
 Class {
 	#name : #DAPEvaluateResponse,

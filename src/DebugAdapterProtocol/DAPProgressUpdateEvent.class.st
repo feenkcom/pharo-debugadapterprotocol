@@ -2,6 +2,7 @@
 The event signals that the progress reporting needs to updated with a new message and/or percentage.
 The client does not have to update the UI immediately, but the clients needs to keep track of the message and/or percentage values.
 This event should only be sent if the client has passed the value true for the 'supportsProgressReporting' capability of the 'initialize' request.
+
 "
 Class {
 	#name : #DAPProgressUpdateEvent,

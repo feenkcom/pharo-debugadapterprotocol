@@ -1,5 +1,6 @@
 "
 Response to 'dataBreakpointInfo' request.
+
 "
 Class {
 	#name : #DAPDataBreakpointInfoResponse,

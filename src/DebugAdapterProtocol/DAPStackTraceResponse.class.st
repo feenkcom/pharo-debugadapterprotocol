@@ -1,5 +1,6 @@
 "
 Response to 'stackTrace' request.
+
 "
 Class {
 	#name : #DAPStackTraceResponse,

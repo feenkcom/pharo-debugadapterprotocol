@@ -1,6 +1,7 @@
 "
 The attach request is sent from the client to the debug adapter to attach to a debuggee that is already running.
 Since attaching is debugger/runtime specific, the arguments for this request are not part of this specification.
+
 "
 Class {
 	#name : #DAPAttachRequest,

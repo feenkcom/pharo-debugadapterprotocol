@@ -1,5 +1,6 @@
 "
 Arguments for 'setDataBreakpoints' request.
+
 "
 Class {
 	#name : #DAPSetDataBreakpointsArguments,

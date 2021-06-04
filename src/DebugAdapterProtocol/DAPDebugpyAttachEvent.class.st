@@ -1,5 +1,6 @@
 "
 Notification by debugpy that the debuggee(?) is attached.
+
 "
 Class {
 	#name : #DAPDebugpyAttachEvent,

@@ -1,6 +1,7 @@
 "
 The request starts the debuggee to run backward.
 Clients should only call this request if the capability 'supportsStepBack' is true.
+
 "
 Class {
 	#name : #DAPReverseContinueRequest,

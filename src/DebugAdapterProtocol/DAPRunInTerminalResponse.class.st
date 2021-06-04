@@ -1,5 +1,6 @@
 "
 Response to 'runInTerminal' request.
+
 "
 Class {
 	#name : #DAPRunInTerminalResponse,

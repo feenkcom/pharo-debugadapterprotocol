@@ -1,5 +1,6 @@
 "
 Arguments for 'reverseContinue' request.
+
 "
 Class {
 	#name : #DAPReverseContinueArguments,

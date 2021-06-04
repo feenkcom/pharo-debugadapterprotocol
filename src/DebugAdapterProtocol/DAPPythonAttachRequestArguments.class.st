@@ -1,5 +1,6 @@
 "
 Arguments for attaching to a Python debugpy server.    See https://code.visualstudio.com/docs/python/debugging for additional information.
+
 "
 Class {
 	#name : #DAPPythonAttachRequestArguments,

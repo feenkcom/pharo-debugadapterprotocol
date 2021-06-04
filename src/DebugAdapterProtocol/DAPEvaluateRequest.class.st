@@ -1,6 +1,7 @@
 "
 Evaluates the given expression in the context of the top most stack frame.
 The expression has access to any variables and arguments that are in scope.
+
 "
 Class {
 	#name : #DAPEvaluateRequest,

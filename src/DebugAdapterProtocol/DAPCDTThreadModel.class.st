@@ -1,5 +1,6 @@
 "
 DAPCDTThreadModel maps information from the CDTDebuggerClient on to the DAPThreadModel
+
 "
 Class {
 	#name : #DAPCDTThreadModel,

@@ -1,6 +1,7 @@
 "
 A GotoTarget describes a code location that can be used as a target in the 'goto' request.
 The possible goto targets can be determined via the 'gotoTargets' request.
+
 "
 Class {
 	#name : #DAPGotoTarget,

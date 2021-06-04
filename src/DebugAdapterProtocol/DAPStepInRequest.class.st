@@ -5,6 +5,7 @@ The debug adapter first sends the response and then a 'stopped' event (with reas
 If there are multiple function/method calls (or other targets) on the source line,
 the optional argument 'targetId' can be used to control into which target the 'stepIn' should occur.
 The list of possible targets for a given source line can be retrieved via the 'stepInTargets' request.
+
 "
 Class {
 	#name : #DAPStepInRequest,

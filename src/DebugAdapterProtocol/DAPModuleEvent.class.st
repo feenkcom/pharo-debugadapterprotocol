@@ -1,5 +1,6 @@
 "
 The event indicates that some information about a module has changed.
+
 "
 Class {
 	#name : #DAPModuleEvent,

@@ -1,5 +1,6 @@
 "
 An ExceptionBreakpointsFilter is shown in the UI as an filter option for configuring how exceptions are dealt with.
+
 "
 Class {
 	#name : #DAPExceptionBreakpointsFilter,

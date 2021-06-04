@@ -1,5 +1,6 @@
 "
 Arguments for 'stepOut' request.
+
 "
 Class {
 	#name : #DAPStepOutArguments,

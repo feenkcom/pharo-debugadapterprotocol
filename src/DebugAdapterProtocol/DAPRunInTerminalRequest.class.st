@@ -2,6 +2,7 @@
 This optional request is sent from the debug adapter to the client to run a command in a terminal.
 This is typically used to launch the debuggee in a terminal provided by the client.
 This request should only be called if the client has passed the value true for the 'supportsRunInTerminalRequest' capability of the 'initialize' request.
+
 "
 Class {
 	#name : #DAPRunInTerminalRequest,

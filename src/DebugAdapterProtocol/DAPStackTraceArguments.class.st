@@ -1,5 +1,6 @@
 "
 Arguments for 'stackTrace' request.
+
 "
 Class {
 	#name : #DAPStackTraceArguments,

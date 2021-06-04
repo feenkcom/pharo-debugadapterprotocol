@@ -5,6 +5,7 @@ An optional 'kind' is used to render additional properties of the variable, e.g.
 If the value is structured (has children), a handle is provided to retrieve the children with the VariablesRequest.
 If the number of named or indexed children is large, the numbers should be returned via the optional 'namedVariables' and 'indexedVariables' attributes.
 The client can use this optional information to present the children in a paged UI and fetch them in chunks.
+
 "
 Class {
 	#name : #DAPVariable,

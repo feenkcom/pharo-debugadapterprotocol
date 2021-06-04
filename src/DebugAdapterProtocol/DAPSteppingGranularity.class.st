@@ -1,5 +1,6 @@
 "
 The granularity of one 'step' in the stepping requests 'next', 'stepIn', 'stepOut', and 'stepBack'.
+
 "
 Class {
 	#name : #DAPSteppingGranularity,

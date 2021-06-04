@@ -1,5 +1,6 @@
 "
 The event indicates that a thread has started or exited.
+
 "
 Class {
 	#name : #DAPThreadEvent,

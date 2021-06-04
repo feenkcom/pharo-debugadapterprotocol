@@ -6,6 +6,7 @@ The actions supported by DAP are: restart frame, resume, step back, step into, s
 The debugger's capabilities indicate whether the restart and step back actions are supported for the current back end.
 
 The buttons are only enabled while the debugger is stopped.
+
 "
 Class {
 	#name : #GtDAPDebuggerToolbar,

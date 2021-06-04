@@ -1,7 +1,8 @@
 "
 GtDAPDebuggerElement is the main display element of the DAP debugger UI.
 
-While this is a subclass of GtDebuggerElement, it is able to act as the UI for a remote DAP debugger without the Pharo debug session present.  For debuggering a remote server resulting from a pharo exception (breakpoint), use ${class:name=GtDAPDebugSessionElement}$.
+While this is a subclass of GtDebuggerElement, it is able to act as the UI for a remote DAP debugger without the Pharo debug session present.  For debuggering a remote server resulting from a pharo exception (breakpoint), use {{gtClass:name=GtDAPDebugSessionElement}}.
+
 "
 Class {
 	#name : #GtDAPDebuggerElement,

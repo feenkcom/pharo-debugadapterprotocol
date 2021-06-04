@@ -1,5 +1,6 @@
 "
 Arguments for 'disconnect' request.
+
 "
 Class {
 	#name : #DAPDisconnectArguments,

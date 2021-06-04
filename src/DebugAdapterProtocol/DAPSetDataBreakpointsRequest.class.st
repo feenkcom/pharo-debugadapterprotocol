@@ -3,6 +3,7 @@ Replaces all existing data breakpoints with new data breakpoints.
 To clear all data breakpoints, specify an empty array.
 When a data breakpoint is hit, a 'stopped' event (with reason 'data breakpoint') is generated.
 Clients should only call this request if the capability 'supportsDataBreakpoints' is true.
+
 "
 Class {
 	#name : #DAPSetDataBreakpointsRequest,

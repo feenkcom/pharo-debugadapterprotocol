@@ -1,5 +1,6 @@
 "
 Arguments for 'exceptionInfo' request.
+
 "
 Class {
 	#name : #DAPExceptionInfoArguments,

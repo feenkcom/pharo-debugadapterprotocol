@@ -1,5 +1,6 @@
 "
 Arguments for 'stepIn' request.
+
 "
 Class {
 	#name : #DAPStepInArguments,

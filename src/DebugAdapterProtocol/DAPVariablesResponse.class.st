@@ -1,5 +1,6 @@
 "
 Response to 'variables' request.
+
 "
 Class {
 	#name : #DAPVariablesResponse,

@@ -1,6 +1,7 @@
 "
 Response to 'setDataBreakpoints' request.
 Returned is information about each breakpoint created by this request.
+
 "
 Class {
 	#name : #DAPSetDataBreakpointsResponse,

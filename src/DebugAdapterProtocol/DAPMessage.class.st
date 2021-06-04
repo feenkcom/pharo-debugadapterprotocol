@@ -1,5 +1,6 @@
 "
 A structured message object. Used to return errors from requests.
+
 "
 Class {
 	#name : #DAPMessage,

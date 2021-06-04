@@ -1,5 +1,6 @@
 "
 Response to 'modules' request.
+
 "
 Class {
 	#name : #DAPModulesResponse,

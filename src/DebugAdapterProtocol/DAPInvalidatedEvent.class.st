@@ -2,6 +2,7 @@
 This event signals that some state in the debug adapter has changed and requires that the client needs to re-render the data snapshot previously requested.
 Debug adapters do not have to emit this event for runtime changes like stopped or thread events because in that case the client refetches the new state anyway. But the event can be used for example to refresh the UI after rendering formatting has changed in the debug adapter.
 This event should only be sent if the debug adapter has received a value true for the 'supportsInvalidatedEvent' capability of the 'initialize' request.
+
 "
 Class {
 	#name : #DAPInvalidatedEvent,

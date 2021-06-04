@@ -1,5 +1,6 @@
 "
 Arguments for 'pause' request.
+
 "
 Class {
 	#name : #DAPPauseArguments,

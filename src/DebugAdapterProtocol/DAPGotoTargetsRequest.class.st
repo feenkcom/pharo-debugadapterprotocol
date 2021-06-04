@@ -2,6 +2,7 @@
 This request retrieves the possible goto targets for the specified source location.
 These targets can be used in the 'goto' request.
 Clients should only call this request if the capability 'supportsGotoTargetsRequest' is true.
+
 "
 Class {
 	#name : #DAPGotoTargetsRequest,

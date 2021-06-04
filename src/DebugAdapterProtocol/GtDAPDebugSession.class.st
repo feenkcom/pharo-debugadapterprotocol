@@ -1,5 +1,6 @@
 "
-GtDAPDebugSession extends ${class:name=DebugSession}$ to also simultaneously manage the remote debugging session.
+GtDAPDebugSession extends {{gtClass:name=DebugSession}} to also simultaneously manage the remote debugging session.
+
 
 "
 Class {

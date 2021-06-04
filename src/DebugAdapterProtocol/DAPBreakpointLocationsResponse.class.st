@@ -1,6 +1,7 @@
 "
 Response to 'breakpointLocations' request.
 Contains possible locations for source breakpoints.
+
 "
 Class {
 	#name : #DAPBreakpointLocationsResponse,

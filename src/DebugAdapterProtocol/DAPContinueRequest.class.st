@@ -1,5 +1,6 @@
 "
 The request starts the debuggee to run again.
+
 "
 Class {
 	#name : #DAPContinueRequest,

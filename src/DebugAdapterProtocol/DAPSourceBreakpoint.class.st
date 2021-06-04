@@ -1,5 +1,6 @@
 "
 Properties of a breakpoint or logpoint passed to the setBreakpoints request.
+
 "
 Class {
 	#name : #DAPSourceBreakpoint,
