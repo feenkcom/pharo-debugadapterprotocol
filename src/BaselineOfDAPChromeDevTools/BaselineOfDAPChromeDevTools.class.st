@@ -1,16 +1,16 @@
 Class {
-	#name : #BaselineOfDAPChromeDevTools,
-	#superclass : #BaselineOf,
-	#category : #BaselineOfDAPChromeDevTools
+	#name : 'BaselineOfDAPChromeDevTools',
+	#superclass : 'BaselineOf',
+	#category : 'BaselineOfDAPChromeDevTools'
 }
 
-{ #category : #baseline }
+{ #category : 'baseline' }
 BaselineOfDAPChromeDevTools >> baseline: spec [
 	<baseline>
 	spec for: #'common' do: [
 		spec 
 			baseline: 'DebugAdapterProtocol' with: [
-				spec repository: 'github://feenkcom/pharo-debugadapterprotocol:v0.5.153/src' ];
+				spec repository: 'github://feenkcom/pharo-debugadapterprotocol:v0.5.154/src' ];
 			baseline: 'Chrome' with: [
 				spec repository: 'github://feenkcom/Pharo-Chrome:v0.5.132/repository' ].
 		spec package: 'DebugAdapterProtocol-ChromeDevTools' with: [
