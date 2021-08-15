@@ -5,19 +5,19 @@ Clients should only call this request if the capability 'supportsStepBack' is tr
 
 "
 Class {
-	#name : #DAPStepBackRequest,
-	#superclass : #DAPRequest,
-	#category : #'DebugAdapterProtocol-Protocol'
+	#name : 'DAPStepBackRequest',
+	#superclass : 'DAPRequest',
+	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPStepBackRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
 	^ #(stepBack )
 ]
 
-{ #category : #'json - configuration' }
+{ #category : 'json - configuration' }
 DAPStepBackRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -28,20 +28,20 @@ DAPStepBackRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DAPStepBackRequest >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitStepBackRequest: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPStepBackRequest >> arguments [
 	"Auto-generated method"
 
 	^ arguments
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPStepBackRequest >> arguments: anObject [
 	"Auto-generated method"
 
@@ -52,7 +52,7 @@ DAPStepBackRequest >> arguments: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPStepBackRequest >> command [
 	"stepBack: 
 	Auto-generated method"
@@ -60,7 +60,7 @@ DAPStepBackRequest >> command [
 	^ command ifNil: [ 'stepBack' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPStepBackRequest >> command: anObject [
 	"stepBack: 
 	Auto-generated method"
@@ -69,7 +69,7 @@ DAPStepBackRequest >> command: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPStepBackRequest >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

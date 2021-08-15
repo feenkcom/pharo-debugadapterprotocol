@@ -4,8 +4,8 @@ It is returned from the debug adapter as part of a StackFrame and it is used by 
 
 "
 Class {
-	#name : #DAPSource,
-	#superclass : #DAPObject,
+	#name : 'DAPSource',
+	#superclass : 'DAPObject',
 	#instVars : [
 		'adapterData',
 		'checksums',
@@ -17,10 +17,10 @@ Class {
 		'sourceReference',
 		'sources'
 	],
-	#category : #'DebugAdapterProtocol-Protocol'
+	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : #'json - configuration' }
+{ #category : 'json - configuration' }
 DAPSource class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -37,20 +37,20 @@ DAPSource class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSource class >> presentationHintEnums [
 	"Enumerated types for the associated attribute"
 
 	^ #(normal emphasize deemphasize )
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DAPSource >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitSource: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSource >> adapterData [
 	"Optional data that a debug adapter might want to loop through the client.
 The client should leave the data intact and persist it across sessions. The client should not interpret the data.
@@ -60,7 +60,7 @@ The client should leave the data intact and persist it across sessions. The clie
 	^ adapterData
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSource >> adapterData: anObject [
 	"Optional data that a debug adapter might want to loop through the client.
 The client should leave the data intact and persist it across sessions. The client should not interpret the data.
@@ -71,7 +71,7 @@ The client should leave the data intact and persist it across sessions. The clie
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSource >> checksums [
 	"The checksums associated with this file.
 	array
@@ -80,7 +80,7 @@ DAPSource >> checksums [
 	^ checksums
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSource >> checksums: anObject [
 	"The checksums associated with this file.
 	array
@@ -90,7 +90,7 @@ DAPSource >> checksums: anObject [
 
 ]
 
-{ #category : #ui }
+{ #category : 'ui' }
 DAPSource >> gtSourceFor: aView [
 	<gtView>
 	| view |
@@ -108,7 +108,7 @@ DAPSource >> gtSourceFor: aView [
 
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 DAPSource >> gtStyler [ 
 	"Answer the styler to be used for the receiver"
 	| dotExtension parser |
@@ -121,7 +121,7 @@ DAPSource >> gtStyler [
 	^ parser ifNotNil: [ parser gtStyler ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSource >> name [
 	"The short name of the source. Every source returned from the debug adapter has a name.
 When sending a source to the debug adapter this name is optional.
@@ -131,7 +131,7 @@ When sending a source to the debug adapter this name is optional.
 	^ name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSource >> name: anObject [
 	"The short name of the source. Every source returned from the debug adapter has a name.
 When sending a source to the debug adapter this name is optional.
@@ -142,7 +142,7 @@ When sending a source to the debug adapter this name is optional.
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSource >> origin [
 	"The (optional) origin of this source: possible values 'internal module', 'inlined content from source map', etc.
 	string
@@ -151,7 +151,7 @@ DAPSource >> origin [
 	^ origin
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSource >> origin: anObject [
 	"The (optional) origin of this source: possible values 'internal module', 'inlined content from source map', etc.
 	string
@@ -161,7 +161,7 @@ DAPSource >> origin: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSource >> path [
 	"The path of the source to be shown in the UI.
 It is only used to locate and load the content of the source if no sourceReference is specified (or its value is 0).
@@ -171,7 +171,7 @@ It is only used to locate and load the content of the source if no sourceReferen
 	^ path
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSource >> path: anObject [
 	"The path of the source to be shown in the UI.
 It is only used to locate and load the content of the source if no sourceReference is specified (or its value is 0).
@@ -182,7 +182,7 @@ It is only used to locate and load the content of the source if no sourceReferen
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSource >> presentationHint [
 	"An optional hint for how to present the source in the UI.
 A value of 'deemphasize' can be used to indicate that the source is not available or that it is skipped on stepping.
@@ -195,7 +195,7 @@ A value of 'deemphasize' can be used to indicate that the source is not availabl
 	^ presentationHint ifNil: [ 'normal' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSource >> presentationHint: anObject [
 	"An optional hint for how to present the source in the UI.
 A value of 'deemphasize' can be used to indicate that the source is not available or that it is skipped on stepping.
@@ -209,14 +209,14 @@ A value of 'deemphasize' can be used to indicate that the source is not availabl
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSource >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
 	^ #(adapterData checksums name origin path presentationHint sourceReference sources )
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSource >> sourceCode [ 
 	"Answer the receiver's source code.
 	For now, cheat, if the debug server won't get it and we have access, load directly from the file."
@@ -230,7 +230,7 @@ DAPSource >> sourceCode [
 				ifFalse: [ 'N/A' ] ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSource >> sourceReference [
 	"If sourceReference > 0 the contents of the source must be retrieved through the SourceRequest (even if a path is specified).
 A sourceReference is only valid for a session, so it must not be used to persist a source.
@@ -241,7 +241,7 @@ The value should be less than or equal to 2147483647 (2^31-1).
 	^ sourceReference
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSource >> sourceReference: anObject [
 	"If sourceReference > 0 the contents of the source must be retrieved through the SourceRequest (even if a path is specified).
 A sourceReference is only valid for a session, so it must not be used to persist a source.
@@ -253,7 +253,7 @@ The value should be less than or equal to 2147483647 (2^31-1).
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSource >> sources [
 	"An optional list of sources that are related to this source. These may be the source that generated this source.
 	array
@@ -262,7 +262,7 @@ DAPSource >> sources [
 	^ sources
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSource >> sources: anObject [
 	"An optional list of sources that are related to this source. These may be the source that generated this source.
 	array

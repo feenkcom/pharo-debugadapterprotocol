@@ -1,6 +1,6 @@
 Class {
-	#name : #DAPSubprocessComms,
-	#superclass : #DAPServerComms,
+	#name : 'DAPSubprocessComms',
+	#superclass : 'DAPServerComms',
 	#instVars : [
 		'serverExecutable',
 		'subprocess',
@@ -12,10 +12,10 @@ Class {
 		'stderr',
 		'readDelay'
 	],
-	#category : #'DebugAdapterProtocol-Client'
+	#category : 'DebugAdapterProtocol-Client'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 DAPSubprocessComms >> connect [
 
 	"Streams are named from the debugger process' perspective"
@@ -36,7 +36,7 @@ DAPSubprocessComms >> connect [
 	readProcess := [ self readFromSubprocess ] forkAt: Processor userSchedulingPriority - 1.
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 DAPSubprocessComms >> disconnect [ 
 
 
@@ -45,13 +45,13 @@ DAPSubprocessComms >> disconnect [
 	readProcess terminate.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSubprocessComms >> flush [ 
 
 	inStream flush.
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 DAPSubprocessComms >> initialize [ 
 
 	super initialize.
@@ -61,25 +61,25 @@ DAPSubprocessComms >> initialize [
 	readDelay := 100 milliSeconds.
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 DAPSubprocessComms >> isConnected [ 
 
 	^ subprocess isRunning
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 DAPSubprocessComms >> isDisconnected [
 
 	^ subprocess isTerminated
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSubprocessComms >> nextPutAll: aBuffer [
 
 	inStream nextPutAll: aBuffer
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 DAPSubprocessComms >> processStdout [
 	| index contentLength contentLengthLine start end content |
 
@@ -97,7 +97,7 @@ DAPSubprocessComms >> processStdout [
 	client nextPutReceivedMessage: content asByteArray.
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 DAPSubprocessComms >> readFromOutput [
 	| buf read |
 
@@ -115,7 +115,7 @@ DAPSubprocessComms >> readFromOutput [
 	read > 0 ] whileTrue.
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 DAPSubprocessComms >> readFromSubprocess [
 
 	[ subprocess isRunning ] whileTrue:
@@ -123,12 +123,12 @@ DAPSubprocessComms >> readFromSubprocess [
 		readDelay wait. ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSubprocessComms >> serverExecutable [
 	^ serverExecutable
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSubprocessComms >> serverExecutable: aFileReference [
 
 	serverExecutable := aFileReference asFileReference

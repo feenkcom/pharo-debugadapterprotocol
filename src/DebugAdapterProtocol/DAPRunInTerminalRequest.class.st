@@ -5,19 +5,19 @@ This request should only be called if the client has passed the value true for t
 
 "
 Class {
-	#name : #DAPRunInTerminalRequest,
-	#superclass : #DAPRequest,
-	#category : #'DebugAdapterProtocol-Protocol'
+	#name : 'DAPRunInTerminalRequest',
+	#superclass : 'DAPRequest',
+	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPRunInTerminalRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
 	^ #(runInTerminal )
 ]
 
-{ #category : #'json - configuration' }
+{ #category : 'json - configuration' }
 DAPRunInTerminalRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -28,20 +28,20 @@ DAPRunInTerminalRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DAPRunInTerminalRequest >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitRunInTerminalRequest: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPRunInTerminalRequest >> arguments [
 	"Auto-generated method"
 
 	^ arguments
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPRunInTerminalRequest >> arguments: anObject [
 	"Auto-generated method"
 
@@ -52,7 +52,7 @@ DAPRunInTerminalRequest >> arguments: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPRunInTerminalRequest >> command [
 	"runInTerminal: 
 	Auto-generated method"
@@ -60,7 +60,7 @@ DAPRunInTerminalRequest >> command [
 	^ command ifNil: [ 'runInTerminal' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPRunInTerminalRequest >> command: anObject [
 	"runInTerminal: 
 	Auto-generated method"
@@ -69,7 +69,7 @@ DAPRunInTerminalRequest >> command: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPRunInTerminalRequest >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

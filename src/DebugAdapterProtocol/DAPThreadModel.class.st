@@ -1,6 +1,6 @@
 Class {
-	#name : #DAPThreadModel,
-	#superclass : #Object,
+	#name : 'DAPThreadModel',
+	#superclass : 'Object',
 	#instVars : [
 		'client',
 		'threadId',
@@ -10,34 +10,34 @@ Class {
 		'totalStackFrames',
 		'state'
 	],
-	#category : #'DebugAdapterProtocol-Model'
+	#category : 'DebugAdapterProtocol-Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPThreadModel >> client [
 	^ client
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPThreadModel >> client: anObject [
 	client := anObject
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 DAPThreadModel >> continue [ 
 	"Continue execution of the receiver's thread"
 
 	^ client continueThreadId: self threadId
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPThreadModel >> displayName [
 	"Answer a string which represents the receiver"
 
 	^ self name ifNil: [ 'Thread-', self threadId asString ]
 ]
 
-{ #category : #ui }
+{ #category : 'ui' }
 DAPThreadModel >> gtStackFor: aView [
 	<gtView>
 
@@ -59,7 +59,7 @@ DAPThreadModel >> gtStackFor: aView [
 
 ]
 
-{ #category : #ui }
+{ #category : 'ui' }
 DAPThreadModel >> gtTopSourceFor: aView [
 	<gtView>
 
@@ -72,14 +72,14 @@ DAPThreadModel >> gtTopSourceFor: aView [
 	^ aView textEditor
 		title: 'Source';
 		priority: 100;
-		styler: PythonParser2 gtStyler;
+		styler: PythonParser gtStyler;
 		aptitude: BrGlamorousCodeEditorAptitude;
 		text: [ self stackFrames first sourceText ];
 		actionUpdateButtonTooltip: 'Update Source'
 
 ]
 
-{ #category : #ui }
+{ #category : 'ui' }
 DAPThreadModel >> gtTopVariablesFor: aView [
 	<gtView>
 
@@ -106,52 +106,52 @@ DAPThreadModel >> gtTopVariablesFor: aView [
 
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 DAPThreadModel >> isContinued [
 
 	^ self state = #continued
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 DAPThreadModel >> isStopped [
 
 	^ self state = #stopped
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 DAPThreadModel >> isTerminated [
 
 	^ self state = #terminated
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPThreadModel >> latestEvent [
 	^ latestEvent
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPThreadModel >> latestEvent: anObject [
 	latestEvent := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPThreadModel >> name [
 	^ name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPThreadModel >> name: anObject [
 	name := anObject
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 DAPThreadModel >> next [
 	"Step over the next statement"
 
 	^ client nextInThreadId: self threadId
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 DAPThreadModel >> printOn: aStream [
 
 	aStream
@@ -164,19 +164,19 @@ DAPThreadModel >> printOn: aStream [
 		<< ')'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPThreadModel >> stackFrames [
 	^ stackFrames
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPThreadModel >> stackFrames: aCollection [ 
 
 	stackFrames := aCollection.
 	stackFrames doWithIndex: [ :frame :index | frame ordinal: index ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPThreadModel >> state [
 	"The state of the receiver.
 	One of: nil (no activity), #started, #continued, #stopped, #terminated"
@@ -185,7 +185,7 @@ DAPThreadModel >> state [
 	^ state
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPThreadModel >> state: aString [
 
 	state := aString.
@@ -194,45 +194,45 @@ DAPThreadModel >> state: aString [
 	client announce: (DAPThreadStateChanged new thread: self)
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 DAPThreadModel >> stepBack [
 	"Step over the next statement"
 
 	^ client stepBackInThreadId: self threadId
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 DAPThreadModel >> stepInto [
 	"Step over the next statement"
 
 	^ client stepIntoInThreadId: self threadId
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 DAPThreadModel >> stepOut [
 	"Step over the next statement"
 
 	^ client stepOutInThreadId: self threadId
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 DAPThreadModel >> stepOver [
 	"Step over the next statement"
 
 	^ client stepOverInThreadId: self threadId
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPThreadModel >> threadId [
 	^ threadId
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPThreadModel >> threadId: anObject [
 	threadId := anObject
 ]
 
-{ #category : #events }
+{ #category : 'events' }
 DAPThreadModel >> threadTerminated [
 	"Notification that the thread has been terminated"
 
@@ -241,17 +241,17 @@ DAPThreadModel >> threadTerminated [
 	totalStackFrames := 0.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPThreadModel >> totalStackFrames [
 	^ totalStackFrames
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPThreadModel >> totalStackFrames: anObject [
 	totalStackFrames := anObject
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 DAPThreadModel >> updateStack [
 
 	client requestStackTraceForThreadId: self threadId startFrame: 0 levels: 20

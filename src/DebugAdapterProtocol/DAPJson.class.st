@@ -1,17 +1,17 @@
 Class {
-	#name : #DAPJson,
-	#superclass : #Object,
-	#category : #'DebugAdapterProtocol-JSON'
+	#name : 'DAPJson',
+	#superclass : 'Object',
+	#category : 'DebugAdapterProtocol-JSON'
 }
 
-{ #category : #private }
+{ #category : 'private' }
 DAPJson >> dapMappingFor: aNeoJSONMapper [
 
 	DAPObject allSubclassesDo: [ :cls |
 		cls dapJsonMappingFor: aNeoJSONMapper ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 DAPJson >> writerOn: aStream [
 	"Answer a NewJSONWriter configured for the DAP protocol"
 	| writer |

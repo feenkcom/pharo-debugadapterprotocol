@@ -3,16 +3,16 @@ A StepInTarget can be used in the 'stepIn' request and determines into which sin
 
 "
 Class {
-	#name : #DAPStepInTarget,
-	#superclass : #DAPObject,
+	#name : 'DAPStepInTarget',
+	#superclass : 'DAPObject',
 	#instVars : [
 		'id',
 		'label'
 	],
-	#category : #'DebugAdapterProtocol-Protocol'
+	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : #'json - configuration' }
+{ #category : 'json - configuration' }
 DAPStepInTarget class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -23,13 +23,13 @@ DAPStepInTarget class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DAPStepInTarget >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitStepInTarget: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPStepInTarget >> id [
 	"Unique identifier for a stepIn target.
 	integer
@@ -38,7 +38,7 @@ DAPStepInTarget >> id [
 	^ id
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPStepInTarget >> id: anObject [
 	"Unique identifier for a stepIn target.
 	integer
@@ -48,7 +48,7 @@ DAPStepInTarget >> id: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPStepInTarget >> label [
 	"The name of the stepIn target (shown in the UI).
 	string
@@ -57,7 +57,7 @@ DAPStepInTarget >> label [
 	^ label
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPStepInTarget >> label: anObject [
 	"The name of the stepIn target (shown in the UI).
 	string
@@ -67,7 +67,7 @@ DAPStepInTarget >> label: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPStepInTarget >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

@@ -1,61 +1,61 @@
 Class {
-	#name : #DAPDebugger,
-	#superclass : #Object,
+	#name : 'DAPDebugger',
+	#superclass : 'Object',
 	#instVars : [
 		'client',
 		'localRoot'
 	],
-	#category : #'DebugAdapterProtocol-Client'
+	#category : 'DebugAdapterProtocol-Client'
 }
 
-{ #category : #accessor }
+{ #category : 'accessor' }
 DAPDebugger >> announcer [
 
 	^ client announcer
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPDebugger >> atThreadId: aNumber [
 	<return: #DAPThreadModel>
 
 	^ client atThreadId: aNumber
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPDebugger >> breakpoints [
 	"Answer the dictionary of known breakpoints"
 
 	^ client breakpoints
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPDebugger >> capabilities [ 
 	"Answer the capabilities of the remote server"
 
 	^ client capabilities
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 DAPDebugger >> configurationDone [
 	"Let the server know we've finished configuration"
 
 	client configurationDone
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 DAPDebugger >> continueThreadId: aNumber [
 	"Instruct the debugger to continue execution"
 
 	^ client continueThreadId: aNumber
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 DAPDebugger >> disconnect [ 
 
 	client disconnect
 ]
 
-{ #category : #ui }
+{ #category : 'ui' }
 DAPDebugger >> gtBreakpointsFor: aView [
 	<gtView>
 
@@ -67,7 +67,7 @@ DAPDebugger >> gtBreakpointsFor: aView [
 		view: #gtBreakpointsFor:
 ]
 
-{ #category : #ui }
+{ #category : 'ui' }
 DAPDebugger >> gtModulesFor: aView [
 	<gtView>
 
@@ -79,7 +79,7 @@ DAPDebugger >> gtModulesFor: aView [
 		view: #gtModulesFor:
 ]
 
-{ #category : #ui }
+{ #category : 'ui' }
 DAPDebugger >> gtStderrFor: aView [
 	<gtView>
 
@@ -90,7 +90,7 @@ DAPDebugger >> gtStderrFor: aView [
 		view: #gtStderrFor:
 ]
 
-{ #category : #ui }
+{ #category : 'ui' }
 DAPDebugger >> gtStdoutFor: aView [
 	<gtView>
 
@@ -101,7 +101,7 @@ DAPDebugger >> gtStdoutFor: aView [
 		view: #gtStdoutFor:
 ]
 
-{ #category : #ui }
+{ #category : 'ui' }
 DAPDebugger >> gtThreadsFor: aView [
 	<gtView>
 
@@ -113,49 +113,49 @@ DAPDebugger >> gtThreadsFor: aView [
 		view: #gtThreadsFor:
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 DAPDebugger >> isAttached [ 
 
 	^ client isAttached
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 DAPDebugger >> isInitialized [
 
 	^ client isInitialized
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 DAPDebugger >> isStopped [
 	"Answer a boolean indicating if the receiver is stopped"
 
 	^ client isStopped
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 DAPDebugger >> isTerminated [
 
 	^ client isTerminated
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPDebugger >> localRoot [
 	^ localRoot
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPDebugger >> localRoot: aFileReference [
 
 	localRoot := aFileReference asFileReference
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPDebugger >> modules [
 
 	^ client modules
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 DAPDebugger >> printOn: aStream [
 
 	super printOn: aStream.
@@ -165,14 +165,14 @@ DAPDebugger >> printOn: aStream [
 		nextPut: $)
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 DAPDebugger >> requestAllStackTraces [
 	"Request stack traces for the existing threads"
 
 	client requestAllStackTraces 
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 DAPDebugger >> requestAllThreads [
 	"Request a list of all the current threads in the server.
 	The response visitor will update the client state."
@@ -180,19 +180,19 @@ DAPDebugger >> requestAllThreads [
 	client requestAllThreads
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 DAPDebugger >> setBreakpointInFile: aFileReference lines: anArray [ 
 
 	client setBreakpointInFile: aFileReference lines: anArray 
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 DAPDebugger >> setExceptionBreakpoints [
 
 	client setExceptionBreakpoints
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPDebugger >> statusString [
 	"Answer a one-line string that represents the overall state of the debugger"
 
@@ -201,25 +201,25 @@ DAPDebugger >> statusString [
 		ifNotNil: [ client statusString ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPDebugger >> stderr [
 
 	^ client stderr
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPDebugger >> stdout [ 
 
 	^ client stdout
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 DAPDebugger >> stepOver [ 
 
 	self stoppedThread stepOver
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPDebugger >> stoppedThread [
 	"Answer the thread in the stopped state, or nil"
 

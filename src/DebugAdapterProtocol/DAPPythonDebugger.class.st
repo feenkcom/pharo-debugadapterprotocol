@@ -1,14 +1,14 @@
 Class {
-	#name : #DAPPythonDebugger,
-	#superclass : #DAPDebugger,
+	#name : 'DAPPythonDebugger',
+	#superclass : 'DAPDebugger',
 	#instVars : [
 		'host',
 		'port'
 	],
-	#category : #'DebugAdapterProtocol-Client'
+	#category : 'DebugAdapterProtocol-Client'
 }
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 DAPPythonDebugger >> attachToDebuggee [
 	"Send a request to the adapter to attach to a debuggee"
 	| arguments request |
@@ -38,7 +38,7 @@ DAPPythonDebugger >> attachToDebuggee [
 
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 DAPPythonDebugger >> connectTo: aHostNameOrNumber port: aPortNumber [
 
 	localRoot ifNil: 
@@ -55,7 +55,7 @@ DAPPythonDebugger >> connectTo: aHostNameOrNumber port: aPortNumber [
 	self requestAllStackTraces.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPPythonDebugger >> hostName [
 	"Answer the hostName as a string.
 	This can only be called after connection to the debugger has been initiated"
@@ -68,7 +68,7 @@ DAPPythonDebugger >> hostName [
 					separatedBy: [ stream nextPut: $. ] ] ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 DAPPythonDebugger >> initializeRemote [
 	| arguments request |
 

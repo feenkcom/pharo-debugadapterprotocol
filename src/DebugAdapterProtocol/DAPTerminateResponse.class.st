@@ -3,12 +3,12 @@ Response to 'terminate' request. This is just an acknowledgement, so no body fie
 
 "
 Class {
-	#name : #DAPTerminateResponse,
-	#superclass : #DAPResponse,
-	#category : #'DebugAdapterProtocol-Protocol'
+	#name : 'DAPTerminateResponse',
+	#superclass : 'DAPResponse',
+	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : #'json - configuration' }
+{ #category : 'json - configuration' }
 DAPTerminateResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -17,13 +17,13 @@ DAPTerminateResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DAPTerminateResponse >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitTerminateResponse: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPTerminateResponse >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

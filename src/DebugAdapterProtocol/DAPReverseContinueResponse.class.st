@@ -3,12 +3,12 @@ Response to 'reverseContinue' request. This is just an acknowledgement, so no bo
 
 "
 Class {
-	#name : #DAPReverseContinueResponse,
-	#superclass : #DAPResponse,
-	#category : #'DebugAdapterProtocol-Protocol'
+	#name : 'DAPReverseContinueResponse',
+	#superclass : 'DAPResponse',
+	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : #'json - configuration' }
+{ #category : 'json - configuration' }
 DAPReverseContinueResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -17,13 +17,13 @@ DAPReverseContinueResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DAPReverseContinueResponse >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitReverseContinueResponse: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPReverseContinueResponse >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

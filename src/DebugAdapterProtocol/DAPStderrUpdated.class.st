@@ -1,5 +1,5 @@
 Class {
-	#name : #DAPStderrUpdated,
-	#superclass : #DAPStdioUpdated,
-	#category : #'DebugAdapterProtocol-Announcments'
+	#name : 'DAPStderrUpdated',
+	#superclass : 'DAPStdioUpdated',
+	#category : 'DebugAdapterProtocol-Announcments'
 }

@@ -3,8 +3,8 @@ A structured message object. Used to return errors from requests.
 
 "
 Class {
-	#name : #DAPMessage,
-	#superclass : #DAPObject,
+	#name : 'DAPMessage',
+	#superclass : 'DAPObject',
 	#instVars : [
 		'format',
 		'id',
@@ -14,10 +14,10 @@ Class {
 		'urlLabel',
 		'variables'
 	],
-	#category : #'DebugAdapterProtocol-Protocol'
+	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : #'json - configuration' }
+{ #category : 'json - configuration' }
 DAPMessage class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -33,13 +33,13 @@ DAPMessage class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DAPMessage >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitMessage: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPMessage >> format [
 	"A format string for the message. Embedded variables have the form '{name}'.
 If variable name starts with an underscore character, the variable does not contain user data (PII) and can be safely used for telemetry purposes.
@@ -49,7 +49,7 @@ If variable name starts with an underscore character, the variable does not cont
 	^ format
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPMessage >> format: anObject [
 	"A format string for the message. Embedded variables have the form '{name}'.
 If variable name starts with an underscore character, the variable does not contain user data (PII) and can be safely used for telemetry purposes.
@@ -60,7 +60,7 @@ If variable name starts with an underscore character, the variable does not cont
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPMessage >> id [
 	"Unique identifier for the message.
 	integer
@@ -69,7 +69,7 @@ DAPMessage >> id [
 	^ id
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPMessage >> id: anObject [
 	"Unique identifier for the message.
 	integer
@@ -79,14 +79,14 @@ DAPMessage >> id: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPMessage >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
 	^ #(format id sendTelemetry showUser url urlLabel variables )
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPMessage >> sendTelemetry [
 	"If true send to telemetry.
 	boolean
@@ -95,7 +95,7 @@ DAPMessage >> sendTelemetry [
 	^ sendTelemetry
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPMessage >> sendTelemetry: anObject [
 	"If true send to telemetry.
 	boolean
@@ -105,7 +105,7 @@ DAPMessage >> sendTelemetry: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPMessage >> showUser [
 	"If true show user.
 	boolean
@@ -114,7 +114,7 @@ DAPMessage >> showUser [
 	^ showUser
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPMessage >> showUser: anObject [
 	"If true show user.
 	boolean
@@ -124,7 +124,7 @@ DAPMessage >> showUser: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPMessage >> url [
 	"An optional url where additional information about this message can be found.
 	string
@@ -133,7 +133,7 @@ DAPMessage >> url [
 	^ url
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPMessage >> url: anObject [
 	"An optional url where additional information about this message can be found.
 	string
@@ -143,7 +143,7 @@ DAPMessage >> url: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPMessage >> urlLabel [
 	"An optional label that is presented to the user as the UI for opening the url.
 	string
@@ -152,7 +152,7 @@ DAPMessage >> urlLabel [
 	^ urlLabel
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPMessage >> urlLabel: anObject [
 	"An optional label that is presented to the user as the UI for opening the url.
 	string
@@ -162,7 +162,7 @@ DAPMessage >> urlLabel: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPMessage >> variables [
 	"An object used as a dictionary for looking up the variables in the format string.
 	object
@@ -171,7 +171,7 @@ DAPMessage >> variables [
 	^ variables
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPMessage >> variables: anObject [
 	"An object used as a dictionary for looking up the variables in the format string.
 	object

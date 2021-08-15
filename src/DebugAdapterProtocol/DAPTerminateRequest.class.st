@@ -4,19 +4,19 @@ Clients should only call this request if the capability 'supportsTerminateReques
 
 "
 Class {
-	#name : #DAPTerminateRequest,
-	#superclass : #DAPRequest,
-	#category : #'DebugAdapterProtocol-Protocol'
+	#name : 'DAPTerminateRequest',
+	#superclass : 'DAPRequest',
+	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPTerminateRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
 	^ #(terminate )
 ]
 
-{ #category : #'json - configuration' }
+{ #category : 'json - configuration' }
 DAPTerminateRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -27,20 +27,20 @@ DAPTerminateRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DAPTerminateRequest >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitTerminateRequest: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPTerminateRequest >> arguments [
 	"Auto-generated method"
 
 	^ arguments
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPTerminateRequest >> arguments: anObject [
 	"Auto-generated method"
 
@@ -51,7 +51,7 @@ DAPTerminateRequest >> arguments: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPTerminateRequest >> command [
 	"terminate: 
 	Auto-generated method"
@@ -59,7 +59,7 @@ DAPTerminateRequest >> command [
 	^ command ifNil: [ 'terminate' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPTerminateRequest >> command: anObject [
 	"terminate: 
 	Auto-generated method"
@@ -68,7 +68,7 @@ DAPTerminateRequest >> command: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPTerminateRequest >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

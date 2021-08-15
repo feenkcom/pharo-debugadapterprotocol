@@ -3,12 +3,12 @@ Arguments for 'loadedSources' request.
 
 "
 Class {
-	#name : #DAPLoadedSourcesArguments,
-	#superclass : #DAPObject,
-	#category : #'DebugAdapterProtocol-Protocol'
+	#name : 'DAPLoadedSourcesArguments',
+	#superclass : 'DAPObject',
+	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : #'json - configuration' }
+{ #category : 'json - configuration' }
 DAPLoadedSourcesArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -17,13 +17,13 @@ DAPLoadedSourcesArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DAPLoadedSourcesArguments >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitLoadedSourcesArguments: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPLoadedSourcesArguments >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

@@ -3,18 +3,18 @@ Arguments for 'setVariable' request.
 
 "
 Class {
-	#name : #DAPSetVariableArguments,
-	#superclass : #DAPObject,
+	#name : 'DAPSetVariableArguments',
+	#superclass : 'DAPObject',
 	#instVars : [
 		'format',
 		'name',
 		'value',
 		'variablesReference'
 	],
-	#category : #'DebugAdapterProtocol-Protocol'
+	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : #'json - configuration' }
+{ #category : 'json - configuration' }
 DAPSetVariableArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -27,13 +27,13 @@ DAPSetVariableArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DAPSetVariableArguments >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitSetVariableArguments: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSetVariableArguments >> format [
 	"Specifies details on how to format the response value.
 	#/definitions/ValueFormat
@@ -42,7 +42,7 @@ DAPSetVariableArguments >> format [
 	^ format
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSetVariableArguments >> format: anObject [
 	"Specifies details on how to format the response value.
 	#/definitions/ValueFormat
@@ -55,7 +55,7 @@ DAPSetVariableArguments >> format: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSetVariableArguments >> name [
 	"The name of the variable in the container.
 	string
@@ -64,7 +64,7 @@ DAPSetVariableArguments >> name [
 	^ name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSetVariableArguments >> name: anObject [
 	"The name of the variable in the container.
 	string
@@ -74,14 +74,14 @@ DAPSetVariableArguments >> name: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSetVariableArguments >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
 	^ #(format name value variablesReference )
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSetVariableArguments >> value [
 	"The value of the variable.
 	string
@@ -90,7 +90,7 @@ DAPSetVariableArguments >> value [
 	^ value
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSetVariableArguments >> value: anObject [
 	"The value of the variable.
 	string
@@ -100,7 +100,7 @@ DAPSetVariableArguments >> value: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSetVariableArguments >> variablesReference [
 	"The reference of the variable container.
 	integer
@@ -109,7 +109,7 @@ DAPSetVariableArguments >> variablesReference [
 	^ variablesReference
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSetVariableArguments >> variablesReference: anObject [
 	"The reference of the variable container.
 	integer

@@ -3,8 +3,8 @@ Detailed information about an exception that has occurred.
 
 "
 Class {
-	#name : #DAPExceptionDetails,
-	#superclass : #DAPObject,
+	#name : 'DAPExceptionDetails',
+	#superclass : 'DAPObject',
 	#instVars : [
 		'evaluateName',
 		'fullTypeName',
@@ -13,10 +13,10 @@ Class {
 		'stackTrace',
 		'typeName'
 	],
-	#category : #'DebugAdapterProtocol-Protocol'
+	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : #'json - configuration' }
+{ #category : 'json - configuration' }
 DAPExceptionDetails class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -31,13 +31,13 @@ DAPExceptionDetails class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DAPExceptionDetails >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitExceptionDetails: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPExceptionDetails >> evaluateName [
 	"Optional expression that can be evaluated in the current scope to obtain the exception object.
 	string
@@ -46,7 +46,7 @@ DAPExceptionDetails >> evaluateName [
 	^ evaluateName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPExceptionDetails >> evaluateName: anObject [
 	"Optional expression that can be evaluated in the current scope to obtain the exception object.
 	string
@@ -56,7 +56,7 @@ DAPExceptionDetails >> evaluateName: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPExceptionDetails >> fullTypeName [
 	"Fully-qualified type name of the exception object.
 	string
@@ -65,7 +65,7 @@ DAPExceptionDetails >> fullTypeName [
 	^ fullTypeName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPExceptionDetails >> fullTypeName: anObject [
 	"Fully-qualified type name of the exception object.
 	string
@@ -75,7 +75,7 @@ DAPExceptionDetails >> fullTypeName: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPExceptionDetails >> innerException [
 	"Details of the exception contained by this exception, if any.
 	array
@@ -84,7 +84,7 @@ DAPExceptionDetails >> innerException [
 	^ innerException
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPExceptionDetails >> innerException: anObject [
 	"Details of the exception contained by this exception, if any.
 	array
@@ -94,7 +94,7 @@ DAPExceptionDetails >> innerException: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPExceptionDetails >> message [
 	"Message contained in the exception.
 	string
@@ -103,7 +103,7 @@ DAPExceptionDetails >> message [
 	^ message
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPExceptionDetails >> message: anObject [
 	"Message contained in the exception.
 	string
@@ -113,14 +113,14 @@ DAPExceptionDetails >> message: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPExceptionDetails >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
 	^ #(evaluateName fullTypeName innerException message stackTrace typeName )
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPExceptionDetails >> stackTrace [
 	"Stack trace at the time the exception was thrown.
 	string
@@ -129,7 +129,7 @@ DAPExceptionDetails >> stackTrace [
 	^ stackTrace
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPExceptionDetails >> stackTrace: anObject [
 	"Stack trace at the time the exception was thrown.
 	string
@@ -139,7 +139,7 @@ DAPExceptionDetails >> stackTrace: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPExceptionDetails >> typeName [
 	"Short type name of the exception object.
 	string
@@ -148,7 +148,7 @@ DAPExceptionDetails >> typeName [
 	^ typeName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPExceptionDetails >> typeName: anObject [
 	"Short type name of the exception object.
 	string

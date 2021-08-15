@@ -4,16 +4,16 @@ GtDAPDebugSession extends {{gtClass:name=DebugSession}} to also simultaneously m
 
 "
 Class {
-	#name : #GtDAPDebugSession,
-	#superclass : #DebugSession,
+	#name : 'GtDAPDebugSession',
+	#superclass : 'DebugSession',
 	#instVars : [
 		'signal',
 		'nodeJSDebugger'
 	],
-	#category : #'DebugAdapterProtocol-UI'
+	#category : 'DebugAdapterProtocol-UI'
 }
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 GtDAPDebugSession >> dapDebugger [
 	"Answer the debugger client to the NodeJS server"
 
@@ -21,7 +21,7 @@ GtDAPDebugSession >> dapDebugger [
 
 ]
 
-{ #category : #'js - actions' }
+{ #category : 'js - actions' }
 GtDAPDebugSession >> dapResume [
 	"Continue execution.
 	Flag the promise to wait again as the value should be returned (or the debugger opened again).
@@ -32,28 +32,28 @@ GtDAPDebugSession >> dapResume [
 
 ]
 
-{ #category : #'js - actions' }
+{ #category : 'js - actions' }
 GtDAPDebugSession >> dapStepInto [
 
 	self dapDebugger stepInto.
 
 ]
 
-{ #category : #'js - actions' }
+{ #category : 'js - actions' }
 GtDAPDebugSession >> dapStepOut [
 
 	self dapDebugger stepOut.
 
 ]
 
-{ #category : #'js - actions' }
+{ #category : 'js - actions' }
 GtDAPDebugSession >> dapStepOver [
 
 	self dapDebugger stepOver.
 
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 GtDAPDebugSession >> signal [
 	"Answer the signal that triggered the debug session."
 

@@ -3,8 +3,8 @@ Arguments for 'variables' request.
 
 "
 Class {
-	#name : #DAPVariablesArguments,
-	#superclass : #DAPObject,
+	#name : 'DAPVariablesArguments',
+	#superclass : 'DAPObject',
 	#instVars : [
 		'count',
 		'filter',
@@ -12,10 +12,10 @@ Class {
 		'start',
 		'variablesReference'
 	],
-	#category : #'DebugAdapterProtocol-Protocol'
+	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : #'json - configuration' }
+{ #category : 'json - configuration' }
 DAPVariablesArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -29,20 +29,20 @@ DAPVariablesArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPVariablesArguments class >> filterEnums [
 	"Enumerated types for the associated attribute"
 
 	^ #(indexed named )
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DAPVariablesArguments >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitVariablesArguments: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPVariablesArguments >> count [
 	"The number of variables to return. If count is missing or 0, all variables are returned.
 	integer
@@ -51,7 +51,7 @@ DAPVariablesArguments >> count [
 	^ count
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPVariablesArguments >> count: anObject [
 	"The number of variables to return. If count is missing or 0, all variables are returned.
 	integer
@@ -61,7 +61,7 @@ DAPVariablesArguments >> count: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPVariablesArguments >> filter [
 	"Optional filter to limit the child variables to either named or indexed. If omitted, both types are fetched.
 	string
@@ -72,7 +72,7 @@ DAPVariablesArguments >> filter [
 	^ filter ifNil: [ 'indexed' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPVariablesArguments >> filter: anObject [
 	"Optional filter to limit the child variables to either named or indexed. If omitted, both types are fetched.
 	string
@@ -84,7 +84,7 @@ DAPVariablesArguments >> filter: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPVariablesArguments >> format [
 	"Specifies details on how to format the Variable values.
 The attribute is only honored by a debug adapter if the capability 'supportsValueFormattingOptions' is true.
@@ -94,7 +94,7 @@ The attribute is only honored by a debug adapter if the capability 'supportsValu
 	^ format
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPVariablesArguments >> format: anObject [
 	"Specifies details on how to format the Variable values.
 The attribute is only honored by a debug adapter if the capability 'supportsValueFormattingOptions' is true.
@@ -108,14 +108,14 @@ The attribute is only honored by a debug adapter if the capability 'supportsValu
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPVariablesArguments >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
 	^ #(count filter format start variablesReference )
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPVariablesArguments >> start [
 	"The index of the first variable to return; if omitted children start at 0.
 	integer
@@ -124,7 +124,7 @@ DAPVariablesArguments >> start [
 	^ start
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPVariablesArguments >> start: anObject [
 	"The index of the first variable to return; if omitted children start at 0.
 	integer
@@ -134,7 +134,7 @@ DAPVariablesArguments >> start: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPVariablesArguments >> variablesReference [
 	"The Variable reference.
 	integer
@@ -143,7 +143,7 @@ DAPVariablesArguments >> variablesReference [
 	^ variablesReference
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPVariablesArguments >> variablesReference: anObject [
 	"The Variable reference.
 	integer

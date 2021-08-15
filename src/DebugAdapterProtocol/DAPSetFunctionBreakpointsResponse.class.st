@@ -4,12 +4,12 @@ Returned is information about each breakpoint created by this request.
 
 "
 Class {
-	#name : #DAPSetFunctionBreakpointsResponse,
-	#superclass : #DAPResponse,
-	#category : #'DebugAdapterProtocol-Protocol'
+	#name : 'DAPSetFunctionBreakpointsResponse',
+	#superclass : 'DAPResponse',
+	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : #'json - configuration' }
+{ #category : 'json - configuration' }
 DAPSetFunctionBreakpointsResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -19,20 +19,20 @@ DAPSetFunctionBreakpointsResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DAPSetFunctionBreakpointsResponse >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitSetFunctionBreakpointsResponse: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSetFunctionBreakpointsResponse >> body [
 	"Auto-generated method"
 
 	^ body
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSetFunctionBreakpointsResponse >> body: anObject [
 	"Auto-generated method"
 
@@ -40,7 +40,7 @@ DAPSetFunctionBreakpointsResponse >> body: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSetFunctionBreakpointsResponse >> breakpoints [
 	"Information about the breakpoints. The array elements correspond to the elements of the 'breakpoints' array.
 	array
@@ -51,7 +51,7 @@ DAPSetFunctionBreakpointsResponse >> breakpoints [
 	^ result
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSetFunctionBreakpointsResponse >> breakpoints: anObject [
 	"Information about the breakpoints. The array elements correspond to the elements of the 'breakpoints' array.
 	array
@@ -60,7 +60,7 @@ DAPSetFunctionBreakpointsResponse >> breakpoints: anObject [
 	self body at: #breakpoints put: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSetFunctionBreakpointsResponse >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

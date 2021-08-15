@@ -1,23 +1,23 @@
 Class {
-	#name : #DAPReceivedMessageProcessor,
-	#superclass : #DAPMessageProcessor,
+	#name : 'DAPReceivedMessageProcessor',
+	#superclass : 'DAPMessageProcessor',
 	#instVars : [
 		'client'
 	],
-	#category : #'DebugAdapterProtocol-Processor'
+	#category : 'DebugAdapterProtocol-Processor'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPReceivedMessageProcessor >> client [
 	^ client
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPReceivedMessageProcessor >> client: anObject [
 	client := anObject
 ]
 
-{ #category : #messages }
+{ #category : 'messages' }
 DAPReceivedMessageProcessor >> processMessage: aMessage [
 	| result |
 

@@ -3,12 +3,12 @@ Response to 'stepOut' request. This is just an acknowledgement, so no body field
 
 "
 Class {
-	#name : #DAPStepOutResponse,
-	#superclass : #DAPResponse,
-	#category : #'DebugAdapterProtocol-Protocol'
+	#name : 'DAPStepOutResponse',
+	#superclass : 'DAPResponse',
+	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : #'json - configuration' }
+{ #category : 'json - configuration' }
 DAPStepOutResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -17,13 +17,13 @@ DAPStepOutResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DAPStepOutResponse >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitStepOutResponse: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPStepOutResponse >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

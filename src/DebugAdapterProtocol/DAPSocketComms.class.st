@@ -1,6 +1,6 @@
 Class {
-	#name : #DAPSocketComms,
-	#superclass : #DAPServerComms,
+	#name : 'DAPSocketComms',
+	#superclass : 'DAPServerComms',
 	#instVars : [
 		'host',
 		'port',
@@ -8,10 +8,10 @@ Class {
 		'socketState',
 		'messageListener'
 	],
-	#category : #'DebugAdapterProtocol-Client'
+	#category : 'DebugAdapterProtocol-Client'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 DAPSocketComms >> connect [ 
 
 	socketStream := DAPSocketStream openConnectionToHost: host port: port.
@@ -23,60 +23,60 @@ DAPSocketComms >> connect [
 	self startMessageListener.
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 DAPSocketComms >> disconnect [ 
 
 	socketStream close.
 	socketState := #disconnected.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSocketComms >> flush [ 
 
 	socketStream flush
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSocketComms >> host [
 	^ host
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSocketComms >> host: anObject [
 	host := anObject
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 DAPSocketComms >> isConnected [
 	"Answer a boolean indicating whether the connection to the remote debugger is open"
 
 	^ socketState = #connected
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 DAPSocketComms >> isDisconnected [
 	"Answer a boolean indicating whether the connection to the remote debugger is disconnected"
 
 	^ socketState = #disconnected
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSocketComms >> nextPutAll: aByteArray [
 
 	socketStream nextPutAll: aByteArray
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSocketComms >> port [
 	^ port
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSocketComms >> port: anObject [
 	port := anObject
 ]
 
-{ #category : #'private - communication' }
+{ #category : 'private - communication' }
 DAPSocketComms >> readNextMessage [
 	"Read a message from the remote debugger.
 	All messages begin with 'Content-Length: <an Integer><CRLF><CRLF>'"
@@ -92,7 +92,7 @@ DAPSocketComms >> readNextMessage [
 	^ socketStream next: contentLength.
 ]
 
-{ #category : #'private - communication' }
+{ #category : 'private - communication' }
 DAPSocketComms >> startMessageListener [
 	"Start the process for receiving and processing messages from the remote debugger."
 

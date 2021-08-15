@@ -3,19 +3,19 @@ The request starts the debuggee to run again.
 
 "
 Class {
-	#name : #DAPContinueRequest,
-	#superclass : #DAPRequest,
-	#category : #'DebugAdapterProtocol-Protocol'
+	#name : 'DAPContinueRequest',
+	#superclass : 'DAPRequest',
+	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPContinueRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
 	^ #(continue )
 ]
 
-{ #category : #'json - configuration' }
+{ #category : 'json - configuration' }
 DAPContinueRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -26,20 +26,20 @@ DAPContinueRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DAPContinueRequest >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitContinueRequest: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPContinueRequest >> arguments [
 	"Auto-generated method"
 
 	^ arguments
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPContinueRequest >> arguments: anObject [
 	"Auto-generated method"
 
@@ -50,7 +50,7 @@ DAPContinueRequest >> arguments: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPContinueRequest >> command [
 	"continue: 
 	Auto-generated method"
@@ -58,7 +58,7 @@ DAPContinueRequest >> command [
 	^ command ifNil: [ 'continue' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPContinueRequest >> command: anObject [
 	"continue: 
 	Auto-generated method"
@@ -67,7 +67,7 @@ DAPContinueRequest >> command: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPContinueRequest >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

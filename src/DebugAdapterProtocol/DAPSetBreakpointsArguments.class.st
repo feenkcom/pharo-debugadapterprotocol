@@ -3,18 +3,18 @@ Arguments for 'setBreakpoints' request.
 
 "
 Class {
-	#name : #DAPSetBreakpointsArguments,
-	#superclass : #DAPObject,
+	#name : 'DAPSetBreakpointsArguments',
+	#superclass : 'DAPObject',
 	#instVars : [
 		'breakpoints',
 		'lines',
 		'source',
 		'sourceModified'
 	],
-	#category : #'DebugAdapterProtocol-Protocol'
+	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : #'json - configuration' }
+{ #category : 'json - configuration' }
 DAPSetBreakpointsArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -27,13 +27,13 @@ DAPSetBreakpointsArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DAPSetBreakpointsArguments >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitSetBreakpointsArguments: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSetBreakpointsArguments >> breakpoints [
 	"The code locations of the breakpoints.
 	array
@@ -42,7 +42,7 @@ DAPSetBreakpointsArguments >> breakpoints [
 	^ breakpoints
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSetBreakpointsArguments >> breakpoints: anObject [
 	"The code locations of the breakpoints.
 	array
@@ -52,7 +52,7 @@ DAPSetBreakpointsArguments >> breakpoints: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSetBreakpointsArguments >> lines [
 	"Deprecated: The code locations of the breakpoints.
 	array
@@ -61,7 +61,7 @@ DAPSetBreakpointsArguments >> lines [
 	^ lines
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSetBreakpointsArguments >> lines: anObject [
 	"Deprecated: The code locations of the breakpoints.
 	array
@@ -71,14 +71,14 @@ DAPSetBreakpointsArguments >> lines: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSetBreakpointsArguments >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
 	^ #(breakpoints lines source sourceModified )
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSetBreakpointsArguments >> source [
 	"The source location of the breakpoints; either 'source.path' or 'source.reference' must be specified.
 	#/definitions/Source
@@ -87,7 +87,7 @@ DAPSetBreakpointsArguments >> source [
 	^ source
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSetBreakpointsArguments >> source: anObject [
 	"The source location of the breakpoints; either 'source.path' or 'source.reference' must be specified.
 	#/definitions/Source
@@ -100,7 +100,7 @@ DAPSetBreakpointsArguments >> source: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSetBreakpointsArguments >> sourceModified [
 	"A value of true indicates that the underlying source has been modified which results in new breakpoint locations.
 	boolean
@@ -109,7 +109,7 @@ DAPSetBreakpointsArguments >> sourceModified [
 	^ sourceModified
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSetBreakpointsArguments >> sourceModified: anObject [
 	"A value of true indicates that the underlying source has been modified which results in new breakpoint locations.
 	boolean

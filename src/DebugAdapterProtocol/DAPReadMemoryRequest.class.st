@@ -4,19 +4,19 @@ Clients should only call this request if the capability 'supportsReadMemoryReque
 
 "
 Class {
-	#name : #DAPReadMemoryRequest,
-	#superclass : #DAPRequest,
-	#category : #'DebugAdapterProtocol-Protocol'
+	#name : 'DAPReadMemoryRequest',
+	#superclass : 'DAPRequest',
+	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPReadMemoryRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
 	^ #(readMemory )
 ]
 
-{ #category : #'json - configuration' }
+{ #category : 'json - configuration' }
 DAPReadMemoryRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -27,20 +27,20 @@ DAPReadMemoryRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DAPReadMemoryRequest >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitReadMemoryRequest: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPReadMemoryRequest >> arguments [
 	"Auto-generated method"
 
 	^ arguments
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPReadMemoryRequest >> arguments: anObject [
 	"Auto-generated method"
 
@@ -51,7 +51,7 @@ DAPReadMemoryRequest >> arguments: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPReadMemoryRequest >> command [
 	"readMemory: 
 	Auto-generated method"
@@ -59,7 +59,7 @@ DAPReadMemoryRequest >> command [
 	^ command ifNil: [ 'readMemory' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPReadMemoryRequest >> command: anObject [
 	"readMemory: 
 	Auto-generated method"
@@ -68,7 +68,7 @@ DAPReadMemoryRequest >> command: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPReadMemoryRequest >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

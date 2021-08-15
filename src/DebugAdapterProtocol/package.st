@@ -1,1 +1,1 @@
-Package { #name : #DebugAdapterProtocol }
+Package { #name : 'DebugAdapterProtocol' }

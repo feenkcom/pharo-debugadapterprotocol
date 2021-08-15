@@ -3,19 +3,19 @@ Set the variable with the given name in the variable container to a new value. C
 
 "
 Class {
-	#name : #DAPSetVariableRequest,
-	#superclass : #DAPRequest,
-	#category : #'DebugAdapterProtocol-Protocol'
+	#name : 'DAPSetVariableRequest',
+	#superclass : 'DAPRequest',
+	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSetVariableRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
 	^ #(setVariable )
 ]
 
-{ #category : #'json - configuration' }
+{ #category : 'json - configuration' }
 DAPSetVariableRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -26,20 +26,20 @@ DAPSetVariableRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DAPSetVariableRequest >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitSetVariableRequest: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSetVariableRequest >> arguments [
 	"Auto-generated method"
 
 	^ arguments
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSetVariableRequest >> arguments: anObject [
 	"Auto-generated method"
 
@@ -50,7 +50,7 @@ DAPSetVariableRequest >> arguments: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSetVariableRequest >> command [
 	"setVariable: 
 	Auto-generated method"
@@ -58,7 +58,7 @@ DAPSetVariableRequest >> command [
 	^ command ifNil: [ 'setVariable' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSetVariableRequest >> command: anObject [
 	"setVariable: 
 	Auto-generated method"
@@ -67,7 +67,7 @@ DAPSetVariableRequest >> command: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSetVariableRequest >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

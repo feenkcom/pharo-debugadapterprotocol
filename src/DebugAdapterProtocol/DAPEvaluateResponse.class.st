@@ -3,12 +3,12 @@ Response to 'evaluate' request.
 
 "
 Class {
-	#name : #DAPEvaluateResponse,
-	#superclass : #DAPResponse,
-	#category : #'DebugAdapterProtocol-Protocol'
+	#name : 'DAPEvaluateResponse',
+	#superclass : 'DAPResponse',
+	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : #'json - configuration' }
+{ #category : 'json - configuration' }
 DAPEvaluateResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -18,20 +18,20 @@ DAPEvaluateResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DAPEvaluateResponse >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitEvaluateResponse: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPEvaluateResponse >> body [
 	"Auto-generated method"
 
 	^ body
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPEvaluateResponse >> body: anObject [
 	"Auto-generated method"
 
@@ -39,7 +39,7 @@ DAPEvaluateResponse >> body: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPEvaluateResponse >> indexedVariables [
 	"The number of indexed child variables.
 The client can use this optional information to present the variables in a paged UI and fetch them in chunks.
@@ -52,7 +52,7 @@ The value should be less than or equal to 2147483647 (2^31-1).
 	^ result
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPEvaluateResponse >> indexedVariables: anObject [
 	"The number of indexed child variables.
 The client can use this optional information to present the variables in a paged UI and fetch them in chunks.
@@ -63,7 +63,7 @@ The value should be less than or equal to 2147483647 (2^31-1).
 	self body at: #indexedVariables put: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPEvaluateResponse >> memoryReference [
 	"Optional memory reference to a location appropriate for this result.
 For pointer type eval results, this is generally a reference to the memory address contained in the pointer.
@@ -76,7 +76,7 @@ This attribute should be returned by a debug adapter if the client has passed th
 	^ result
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPEvaluateResponse >> memoryReference: anObject [
 	"Optional memory reference to a location appropriate for this result.
 For pointer type eval results, this is generally a reference to the memory address contained in the pointer.
@@ -87,7 +87,7 @@ This attribute should be returned by a debug adapter if the client has passed th
 	self body at: #memoryReference put: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPEvaluateResponse >> namedVariables [
 	"The number of named child variables.
 The client can use this optional information to present the variables in a paged UI and fetch them in chunks.
@@ -100,7 +100,7 @@ The value should be less than or equal to 2147483647 (2^31-1).
 	^ result
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPEvaluateResponse >> namedVariables: anObject [
 	"The number of named child variables.
 The client can use this optional information to present the variables in a paged UI and fetch them in chunks.
@@ -111,7 +111,7 @@ The value should be less than or equal to 2147483647 (2^31-1).
 	self body at: #namedVariables put: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPEvaluateResponse >> presentationHint [
 	"Properties of a evaluate result that can be used to determine how to render the result in the UI.
 	#/definitions/VariablePresentationHint
@@ -124,7 +124,7 @@ DAPEvaluateResponse >> presentationHint [
 	^ result
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPEvaluateResponse >> presentationHint: anObject [
 	"Properties of a evaluate result that can be used to determine how to render the result in the UI.
 	#/definitions/VariablePresentationHint
@@ -133,14 +133,14 @@ DAPEvaluateResponse >> presentationHint: anObject [
 	self body at: #presentationHint put: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPEvaluateResponse >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
 	^ #(body indexedVariables memoryReference namedVariables presentationHint result type variablesReference )
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPEvaluateResponse >> result [
 	"The result of the evaluate request.
 	string
@@ -151,7 +151,7 @@ DAPEvaluateResponse >> result [
 	^ result
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPEvaluateResponse >> result: anObject [
 	"The result of the evaluate request.
 	string
@@ -160,7 +160,7 @@ DAPEvaluateResponse >> result: anObject [
 	self body at: #result put: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPEvaluateResponse >> type [
 	"The optional type of the evaluate result.
 This attribute should only be returned by a debug adapter if the client has passed the value true for the 'supportsVariableType' capability of the 'initialize' request.
@@ -172,7 +172,7 @@ This attribute should only be returned by a debug adapter if the client has pass
 	^ result
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPEvaluateResponse >> type: anObject [
 	"The optional type of the evaluate result.
 This attribute should only be returned by a debug adapter if the client has passed the value true for the 'supportsVariableType' capability of the 'initialize' request.
@@ -182,7 +182,7 @@ This attribute should only be returned by a debug adapter if the client has pass
 	self body at: #type put: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPEvaluateResponse >> variablesReference [
 	"If variablesReference is > 0, the evaluate result is structured and its children can be retrieved by passing variablesReference to the VariablesRequest.
 The value should be less than or equal to 2147483647 (2^31-1).
@@ -194,7 +194,7 @@ The value should be less than or equal to 2147483647 (2^31-1).
 	^ result
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPEvaluateResponse >> variablesReference: anObject [
 	"If variablesReference is > 0, the evaluate result is structured and its children can be retrieved by passing variablesReference to the VariablesRequest.
 The value should be less than or equal to 2147483647 (2^31-1).

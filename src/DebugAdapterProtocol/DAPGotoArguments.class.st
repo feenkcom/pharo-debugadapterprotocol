@@ -3,16 +3,16 @@ Arguments for 'goto' request.
 
 "
 Class {
-	#name : #DAPGotoArguments,
-	#superclass : #DAPObject,
+	#name : 'DAPGotoArguments',
+	#superclass : 'DAPObject',
 	#instVars : [
 		'targetId',
 		'threadId'
 	],
-	#category : #'DebugAdapterProtocol-Protocol'
+	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : #'json - configuration' }
+{ #category : 'json - configuration' }
 DAPGotoArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -23,20 +23,20 @@ DAPGotoArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DAPGotoArguments >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitGotoArguments: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPGotoArguments >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
 	^ #(targetId threadId )
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPGotoArguments >> targetId [
 	"The location where the debuggee will continue to run.
 	integer
@@ -45,7 +45,7 @@ DAPGotoArguments >> targetId [
 	^ targetId
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPGotoArguments >> targetId: anObject [
 	"The location where the debuggee will continue to run.
 	integer
@@ -55,7 +55,7 @@ DAPGotoArguments >> targetId: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPGotoArguments >> threadId [
 	"Set the goto target for this thread.
 	integer
@@ -64,7 +64,7 @@ DAPGotoArguments >> threadId [
 	^ threadId
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPGotoArguments >> threadId: anObject [
 	"Set the goto target for this thread.
 	integer

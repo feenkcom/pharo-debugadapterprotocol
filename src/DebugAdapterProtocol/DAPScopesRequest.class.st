@@ -3,19 +3,19 @@ The request returns the variable scopes for a given stackframe ID.
 
 "
 Class {
-	#name : #DAPScopesRequest,
-	#superclass : #DAPRequest,
-	#category : #'DebugAdapterProtocol-Protocol'
+	#name : 'DAPScopesRequest',
+	#superclass : 'DAPRequest',
+	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPScopesRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
 	^ #(scopes )
 ]
 
-{ #category : #'json - configuration' }
+{ #category : 'json - configuration' }
 DAPScopesRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -26,20 +26,20 @@ DAPScopesRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DAPScopesRequest >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitScopesRequest: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPScopesRequest >> arguments [
 	"Auto-generated method"
 
 	^ arguments
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPScopesRequest >> arguments: anObject [
 	"Auto-generated method"
 
@@ -50,7 +50,7 @@ DAPScopesRequest >> arguments: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPScopesRequest >> command [
 	"scopes: 
 	Auto-generated method"
@@ -58,7 +58,7 @@ DAPScopesRequest >> command [
 	^ command ifNil: [ 'scopes' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPScopesRequest >> command: anObject [
 	"scopes: 
 	Auto-generated method"
@@ -67,7 +67,7 @@ DAPScopesRequest >> command: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPScopesRequest >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

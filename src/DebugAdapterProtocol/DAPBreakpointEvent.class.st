@@ -3,12 +3,12 @@ The event indicates that some information about a breakpoint has changed.
 
 "
 Class {
-	#name : #DAPBreakpointEvent,
-	#superclass : #DAPEvent,
-	#category : #'DebugAdapterProtocol-Protocol'
+	#name : 'DAPBreakpointEvent',
+	#superclass : 'DAPEvent',
+	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : #'json - configuration' }
+{ #category : 'json - configuration' }
 DAPBreakpointEvent class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -19,27 +19,27 @@ DAPBreakpointEvent class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPBreakpointEvent class >> eventEnums [
 	"Enumerated types for the associated attribute"
 
 	^ #(breakpoint )
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DAPBreakpointEvent >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitBreakpointEvent: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPBreakpointEvent >> body [
 	"Auto-generated method"
 
 	^ body
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPBreakpointEvent >> body: anObject [
 	"Auto-generated method"
 
@@ -47,7 +47,7 @@ DAPBreakpointEvent >> body: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPBreakpointEvent >> breakpoint [
 	"The 'id' attribute is used to find the target breakpoint and the other attributes are used as the new values.
 	#/definitions/Breakpoint
@@ -60,7 +60,7 @@ DAPBreakpointEvent >> breakpoint [
 	^ result
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPBreakpointEvent >> breakpoint: anObject [
 	"The 'id' attribute is used to find the target breakpoint and the other attributes are used as the new values.
 	#/definitions/Breakpoint
@@ -69,7 +69,7 @@ DAPBreakpointEvent >> breakpoint: anObject [
 	self body at: #breakpoint put: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPBreakpointEvent >> event [
 	"breakpoint: 
 	Auto-generated method"
@@ -77,7 +77,7 @@ DAPBreakpointEvent >> event [
 	^ event ifNil: [ 'breakpoint' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPBreakpointEvent >> event: anObject [
 	"breakpoint: 
 	Auto-generated method"
@@ -86,14 +86,14 @@ DAPBreakpointEvent >> event: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPBreakpointEvent >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
 	^ #(body breakpoint event reason )
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPBreakpointEvent >> reason [
 	"The reason for the event.
 	string
@@ -104,7 +104,7 @@ DAPBreakpointEvent >> reason [
 	^ result
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPBreakpointEvent >> reason: anObject [
 	"The reason for the event.
 	string

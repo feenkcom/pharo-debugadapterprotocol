@@ -3,12 +3,12 @@ Response to 'variables' request.
 
 "
 Class {
-	#name : #DAPVariablesResponse,
-	#superclass : #DAPResponse,
-	#category : #'DebugAdapterProtocol-Protocol'
+	#name : 'DAPVariablesResponse',
+	#superclass : 'DAPResponse',
+	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : #'json - configuration' }
+{ #category : 'json - configuration' }
 DAPVariablesResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -18,27 +18,27 @@ DAPVariablesResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DAPVariablesResponse >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitVariablesResponse: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPVariablesResponse >> allVariables [
 	"Answer an Array of DAPVariable"
 
 	^ self variables collect: [ :each | DAPVariable fromDictionary: each client: client ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPVariablesResponse >> body [
 	"Auto-generated method"
 
 	^ body
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPVariablesResponse >> body: anObject [
 	"Auto-generated method"
 
@@ -46,7 +46,7 @@ DAPVariablesResponse >> body: anObject [
 
 ]
 
-{ #category : #ui }
+{ #category : 'ui' }
 DAPVariablesResponse >> gtVariablesFor: aView [
 	<gtView>
 
@@ -59,14 +59,14 @@ DAPVariablesResponse >> gtVariablesFor: aView [
 		column: 'Value' text: [ :item | item value ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPVariablesResponse >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
 	^ #(body variables )
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPVariablesResponse >> variables [
 	"All (or a range) of variables for the given variable reference.
 	array
@@ -77,7 +77,7 @@ DAPVariablesResponse >> variables [
 	^ result
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPVariablesResponse >> variables: anObject [
 	"All (or a range) of variables for the given variable reference.
 	array

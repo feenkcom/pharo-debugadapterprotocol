@@ -5,12 +5,12 @@ This event should only be sent if the debug adapter has received a value true fo
 
 "
 Class {
-	#name : #DAPInvalidatedEvent,
-	#superclass : #DAPEvent,
-	#category : #'DebugAdapterProtocol-Protocol'
+	#name : 'DAPInvalidatedEvent',
+	#superclass : 'DAPEvent',
+	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : #'json - configuration' }
+{ #category : 'json - configuration' }
 DAPInvalidatedEvent class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -21,20 +21,20 @@ DAPInvalidatedEvent class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPInvalidatedEvent class >> eventEnums [
 	"Enumerated types for the associated attribute"
 
 	^ #(invalidated )
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DAPInvalidatedEvent >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitInvalidatedEvent: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPInvalidatedEvent >> areas [
 	"Optional set of logical areas that got invalidated. This property has a hint characteristic: a client can only be expected to make a 'best effort' in honouring the areas but there are no guarantees. If this property is missing, empty, or if values are not understand the client should assume a single value 'all'.
 	array
@@ -45,7 +45,7 @@ DAPInvalidatedEvent >> areas [
 	^ result
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPInvalidatedEvent >> areas: anObject [
 	"Optional set of logical areas that got invalidated. This property has a hint characteristic: a client can only be expected to make a 'best effort' in honouring the areas but there are no guarantees. If this property is missing, empty, or if values are not understand the client should assume a single value 'all'.
 	array
@@ -54,14 +54,14 @@ DAPInvalidatedEvent >> areas: anObject [
 	self body at: #areas put: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPInvalidatedEvent >> body [
 	"Auto-generated method"
 
 	^ body
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPInvalidatedEvent >> body: anObject [
 	"Auto-generated method"
 
@@ -69,7 +69,7 @@ DAPInvalidatedEvent >> body: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPInvalidatedEvent >> event [
 	"invalidated: 
 	Auto-generated method"
@@ -77,7 +77,7 @@ DAPInvalidatedEvent >> event [
 	^ event ifNil: [ 'invalidated' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPInvalidatedEvent >> event: anObject [
 	"invalidated: 
 	Auto-generated method"
@@ -86,14 +86,14 @@ DAPInvalidatedEvent >> event: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPInvalidatedEvent >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
 	^ #(areas body event stackFrameId threadId )
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPInvalidatedEvent >> stackFrameId [
 	"If specified, the client only needs to refetch data related to this stack frame (and the 'threadId' is ignored).
 	integer
@@ -104,7 +104,7 @@ DAPInvalidatedEvent >> stackFrameId [
 	^ result
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPInvalidatedEvent >> stackFrameId: anObject [
 	"If specified, the client only needs to refetch data related to this stack frame (and the 'threadId' is ignored).
 	integer
@@ -113,7 +113,7 @@ DAPInvalidatedEvent >> stackFrameId: anObject [
 	self body at: #stackFrameId put: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPInvalidatedEvent >> threadId [
 	"If specified, the client only needs to refetch data related to this thread.
 	integer
@@ -124,7 +124,7 @@ DAPInvalidatedEvent >> threadId [
 	^ result
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPInvalidatedEvent >> threadId: anObject [
 	"If specified, the client only needs to refetch data related to this thread.
 	integer

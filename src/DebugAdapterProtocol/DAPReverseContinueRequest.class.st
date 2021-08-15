@@ -4,19 +4,19 @@ Clients should only call this request if the capability 'supportsStepBack' is tr
 
 "
 Class {
-	#name : #DAPReverseContinueRequest,
-	#superclass : #DAPRequest,
-	#category : #'DebugAdapterProtocol-Protocol'
+	#name : 'DAPReverseContinueRequest',
+	#superclass : 'DAPRequest',
+	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPReverseContinueRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
 	^ #(reverseContinue )
 ]
 
-{ #category : #'json - configuration' }
+{ #category : 'json - configuration' }
 DAPReverseContinueRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -27,20 +27,20 @@ DAPReverseContinueRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DAPReverseContinueRequest >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitReverseContinueRequest: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPReverseContinueRequest >> arguments [
 	"Auto-generated method"
 
 	^ arguments
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPReverseContinueRequest >> arguments: anObject [
 	"Auto-generated method"
 
@@ -51,7 +51,7 @@ DAPReverseContinueRequest >> arguments: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPReverseContinueRequest >> command [
 	"reverseContinue: 
 	Auto-generated method"
@@ -59,7 +59,7 @@ DAPReverseContinueRequest >> command [
 	^ command ifNil: [ 'reverseContinue' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPReverseContinueRequest >> command: anObject [
 	"reverseContinue: 
 	Auto-generated method"
@@ -68,7 +68,7 @@ DAPReverseContinueRequest >> command: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPReverseContinueRequest >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

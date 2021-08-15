@@ -3,15 +3,15 @@ Arguments for 'terminate' request.
 
 "
 Class {
-	#name : #DAPTerminateArguments,
-	#superclass : #DAPObject,
+	#name : 'DAPTerminateArguments',
+	#superclass : 'DAPObject',
 	#instVars : [
 		'restart'
 	],
-	#category : #'DebugAdapterProtocol-Protocol'
+	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : #'json - configuration' }
+{ #category : 'json - configuration' }
 DAPTerminateArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -21,20 +21,20 @@ DAPTerminateArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DAPTerminateArguments >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitTerminateArguments: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPTerminateArguments >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
 	^ #(restart )
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPTerminateArguments >> restart [
 	"A value of true indicates that this 'terminate' request is part of a restart sequence.
 	boolean
@@ -43,7 +43,7 @@ DAPTerminateArguments >> restart [
 	^ restart
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPTerminateArguments >> restart: anObject [
 	"A value of true indicates that this 'terminate' request is part of a restart sequence.
 	boolean

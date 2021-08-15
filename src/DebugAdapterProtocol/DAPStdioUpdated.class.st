@@ -1,18 +1,18 @@
 Class {
-	#name : #DAPStdioUpdated,
-	#superclass : #DAPAnnouncement,
+	#name : 'DAPStdioUpdated',
+	#superclass : 'DAPAnnouncement',
 	#instVars : [
 		'string'
 	],
-	#category : #'DebugAdapterProtocol-Announcments'
+	#category : 'DebugAdapterProtocol-Announcments'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPStdioUpdated >> string [
 	^ string
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPStdioUpdated >> string: anObject [
 	string := anObject
 ]

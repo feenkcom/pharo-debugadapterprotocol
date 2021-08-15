@@ -3,18 +3,18 @@ Arguments for 'completions' request.
 
 "
 Class {
-	#name : #DAPCompletionsArguments,
-	#superclass : #DAPObject,
+	#name : 'DAPCompletionsArguments',
+	#superclass : 'DAPObject',
 	#instVars : [
 		'column',
 		'frameId',
 		'line',
 		'text'
 	],
-	#category : #'DebugAdapterProtocol-Protocol'
+	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : #'json - configuration' }
+{ #category : 'json - configuration' }
 DAPCompletionsArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -27,13 +27,13 @@ DAPCompletionsArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DAPCompletionsArguments >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitCompletionsArguments: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPCompletionsArguments >> column [
 	"The character position for which to determine the completion proposals.
 	integer
@@ -42,7 +42,7 @@ DAPCompletionsArguments >> column [
 	^ column
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPCompletionsArguments >> column: anObject [
 	"The character position for which to determine the completion proposals.
 	integer
@@ -52,7 +52,7 @@ DAPCompletionsArguments >> column: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPCompletionsArguments >> frameId [
 	"Returns completions in the scope of this stack frame. If not specified, the completions are returned for the global scope.
 	integer
@@ -61,7 +61,7 @@ DAPCompletionsArguments >> frameId [
 	^ frameId
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPCompletionsArguments >> frameId: anObject [
 	"Returns completions in the scope of this stack frame. If not specified, the completions are returned for the global scope.
 	integer
@@ -71,7 +71,7 @@ DAPCompletionsArguments >> frameId: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPCompletionsArguments >> line [
 	"An optional line for which to determine the completion proposals. If missing the first line of the text is assumed.
 	integer
@@ -80,7 +80,7 @@ DAPCompletionsArguments >> line [
 	^ line
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPCompletionsArguments >> line: anObject [
 	"An optional line for which to determine the completion proposals. If missing the first line of the text is assumed.
 	integer
@@ -90,14 +90,14 @@ DAPCompletionsArguments >> line: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPCompletionsArguments >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
 	^ #(column frameId line text )
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPCompletionsArguments >> text [
 	"One or more source lines. Typically this is the text a user has typed into the debug console before he asked for completion.
 	string
@@ -106,7 +106,7 @@ DAPCompletionsArguments >> text [
 	^ text
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPCompletionsArguments >> text: anObject [
 	"One or more source lines. Typically this is the text a user has typed into the debug console before he asked for completion.
 	string

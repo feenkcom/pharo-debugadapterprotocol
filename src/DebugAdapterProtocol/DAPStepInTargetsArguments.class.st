@@ -3,15 +3,15 @@ Arguments for 'stepInTargets' request.
 
 "
 Class {
-	#name : #DAPStepInTargetsArguments,
-	#superclass : #DAPObject,
+	#name : 'DAPStepInTargetsArguments',
+	#superclass : 'DAPObject',
 	#instVars : [
 		'frameId'
 	],
-	#category : #'DebugAdapterProtocol-Protocol'
+	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : #'json - configuration' }
+{ #category : 'json - configuration' }
 DAPStepInTargetsArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -21,13 +21,13 @@ DAPStepInTargetsArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DAPStepInTargetsArguments >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitStepInTargetsArguments: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPStepInTargetsArguments >> frameId [
 	"The stack frame for which to retrieve the possible stepIn targets.
 	integer
@@ -36,7 +36,7 @@ DAPStepInTargetsArguments >> frameId [
 	^ frameId
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPStepInTargetsArguments >> frameId: anObject [
 	"The stack frame for which to retrieve the possible stepIn targets.
 	integer
@@ -46,7 +46,7 @@ DAPStepInTargetsArguments >> frameId: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPStepInTargetsArguments >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

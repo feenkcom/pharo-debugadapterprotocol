@@ -4,19 +4,19 @@ Clients should only call this request if the capability 'supportsDataBreakpoints
 
 "
 Class {
-	#name : #DAPDataBreakpointInfoRequest,
-	#superclass : #DAPRequest,
-	#category : #'DebugAdapterProtocol-Protocol'
+	#name : 'DAPDataBreakpointInfoRequest',
+	#superclass : 'DAPRequest',
+	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPDataBreakpointInfoRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
 	^ #(dataBreakpointInfo )
 ]
 
-{ #category : #'json - configuration' }
+{ #category : 'json - configuration' }
 DAPDataBreakpointInfoRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -27,20 +27,20 @@ DAPDataBreakpointInfoRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DAPDataBreakpointInfoRequest >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitDataBreakpointInfoRequest: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPDataBreakpointInfoRequest >> arguments [
 	"Auto-generated method"
 
 	^ arguments
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPDataBreakpointInfoRequest >> arguments: anObject [
 	"Auto-generated method"
 
@@ -51,7 +51,7 @@ DAPDataBreakpointInfoRequest >> arguments: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPDataBreakpointInfoRequest >> command [
 	"dataBreakpointInfo: 
 	Auto-generated method"
@@ -59,7 +59,7 @@ DAPDataBreakpointInfoRequest >> command [
 	^ command ifNil: [ 'dataBreakpointInfo' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPDataBreakpointInfoRequest >> command: anObject [
 	"dataBreakpointInfo: 
 	Auto-generated method"
@@ -68,7 +68,7 @@ DAPDataBreakpointInfoRequest >> command: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPDataBreakpointInfoRequest >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

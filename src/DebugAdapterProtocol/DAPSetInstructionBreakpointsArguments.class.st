@@ -3,15 +3,15 @@ Arguments for 'setInstructionBreakpoints' request
 
 "
 Class {
-	#name : #DAPSetInstructionBreakpointsArguments,
-	#superclass : #DAPObject,
+	#name : 'DAPSetInstructionBreakpointsArguments',
+	#superclass : 'DAPObject',
 	#instVars : [
 		'breakpoints'
 	],
-	#category : #'DebugAdapterProtocol-Protocol'
+	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : #'json - configuration' }
+{ #category : 'json - configuration' }
 DAPSetInstructionBreakpointsArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -21,13 +21,13 @@ DAPSetInstructionBreakpointsArguments class >> dapJsonMappingFor: aNeoJSONMapper
 
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DAPSetInstructionBreakpointsArguments >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitSetInstructionBreakpointsArguments: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSetInstructionBreakpointsArguments >> breakpoints [
 	"The instruction references of the breakpoints
 	array
@@ -36,7 +36,7 @@ DAPSetInstructionBreakpointsArguments >> breakpoints [
 	^ breakpoints
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSetInstructionBreakpointsArguments >> breakpoints: anObject [
 	"The instruction references of the breakpoints
 	array
@@ -46,7 +46,7 @@ DAPSetInstructionBreakpointsArguments >> breakpoints: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSetInstructionBreakpointsArguments >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

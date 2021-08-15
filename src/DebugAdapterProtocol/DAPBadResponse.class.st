@@ -1,18 +1,18 @@
 Class {
-	#name : #DAPBadResponse,
-	#superclass : #Error,
+	#name : 'DAPBadResponse',
+	#superclass : 'Error',
 	#instVars : [
 		'response'
 	],
-	#category : #'DebugAdapterProtocol-Exceptions'
+	#category : 'DebugAdapterProtocol-Exceptions'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPBadResponse >> response [
 	^ response
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPBadResponse >> response: aDAPResponse [
 
 	response := aDAPResponse.
