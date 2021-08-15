@@ -4,12 +4,12 @@ This can be caused by a break point previously set, a stepping request has compl
 
 "
 Class {
-	#name : #DAPStoppedEvent,
-	#superclass : #DAPEvent,
-	#category : #'DebugAdapterProtocol-Protocol'
+	#name : 'DAPStoppedEvent',
+	#superclass : 'DAPEvent',
+	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : #'json - configuration' }
+{ #category : 'json - configuration' }
 DAPStoppedEvent class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -20,20 +20,20 @@ DAPStoppedEvent class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPStoppedEvent class >> eventEnums [
 	"Enumerated types for the associated attribute"
 
 	^ #(stopped )
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DAPStoppedEvent >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitStoppedEvent: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPStoppedEvent >> allThreadsStopped [
 	"If 'allThreadsStopped' is true, a debug adapter can announce that all threads have stopped.
 - The client should use this information to enable that all threads can be expanded to access their stacktraces.
@@ -46,7 +46,7 @@ DAPStoppedEvent >> allThreadsStopped [
 	^ result
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPStoppedEvent >> allThreadsStopped: anObject [
 	"If 'allThreadsStopped' is true, a debug adapter can announce that all threads have stopped.
 - The client should use this information to enable that all threads can be expanded to access their stacktraces.
@@ -57,14 +57,14 @@ DAPStoppedEvent >> allThreadsStopped: anObject [
 	self body at: #allThreadsStopped put: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPStoppedEvent >> body [
 	"Auto-generated method"
 
 	^ body
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPStoppedEvent >> body: anObject [
 	"Auto-generated method"
 
@@ -72,7 +72,7 @@ DAPStoppedEvent >> body: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPStoppedEvent >> description [
 	"The full reason for the event, e.g. 'Paused on exception'. This string is shown in the UI as is and must be translated.
 	string
@@ -83,7 +83,7 @@ DAPStoppedEvent >> description [
 	^ result
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPStoppedEvent >> description: anObject [
 	"The full reason for the event, e.g. 'Paused on exception'. This string is shown in the UI as is and must be translated.
 	string
@@ -92,7 +92,7 @@ DAPStoppedEvent >> description: anObject [
 	self body at: #description put: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPStoppedEvent >> event [
 	"stopped: 
 	Auto-generated method"
@@ -100,7 +100,7 @@ DAPStoppedEvent >> event [
 	^ event ifNil: [ 'stopped' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPStoppedEvent >> event: anObject [
 	"stopped: 
 	Auto-generated method"
@@ -109,7 +109,7 @@ DAPStoppedEvent >> event: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPStoppedEvent >> preserveFocusHint [
 	"A value of true hints to the frontend that this event should not change the focus.
 	boolean
@@ -120,7 +120,7 @@ DAPStoppedEvent >> preserveFocusHint [
 	^ result
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPStoppedEvent >> preserveFocusHint: anObject [
 	"A value of true hints to the frontend that this event should not change the focus.
 	boolean
@@ -129,14 +129,14 @@ DAPStoppedEvent >> preserveFocusHint: anObject [
 	self body at: #preserveFocusHint put: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPStoppedEvent >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
 	^ #(allThreadsStopped body description event preserveFocusHint reason text threadId )
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPStoppedEvent >> reason [
 	"The reason for the event.
 For backward compatibility this string is shown in the UI if the 'description' attribute is missing (but it must not be translated).
@@ -148,7 +148,7 @@ For backward compatibility this string is shown in the UI if the 'description' a
 	^ result
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPStoppedEvent >> reason: anObject [
 	"The reason for the event.
 For backward compatibility this string is shown in the UI if the 'description' attribute is missing (but it must not be translated).
@@ -158,7 +158,7 @@ For backward compatibility this string is shown in the UI if the 'description' a
 	self body at: #reason put: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPStoppedEvent >> text [
 	"Additional information. E.g. if reason is 'exception', text contains the exception name. This string is shown in the UI.
 	string
@@ -169,7 +169,7 @@ DAPStoppedEvent >> text [
 	^ result
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPStoppedEvent >> text: anObject [
 	"Additional information. E.g. if reason is 'exception', text contains the exception name. This string is shown in the UI.
 	string
@@ -178,7 +178,7 @@ DAPStoppedEvent >> text: anObject [
 	self body at: #text put: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPStoppedEvent >> threadId [
 	"The thread which was stopped.
 	integer
@@ -189,7 +189,7 @@ DAPStoppedEvent >> threadId [
 	^ result
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPStoppedEvent >> threadId: anObject [
 	"The thread which was stopped.
 	integer

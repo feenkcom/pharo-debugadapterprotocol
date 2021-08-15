@@ -1,5 +1,5 @@
 Class {
-	#name : #DAPAnnouncement,
-	#superclass : #Announcement,
-	#category : #'DebugAdapterProtocol-Announcments'
+	#name : 'DAPAnnouncement',
+	#superclass : 'Announcement',
+	#category : 'DebugAdapterProtocol-Announcments'
 }

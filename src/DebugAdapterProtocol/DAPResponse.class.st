@@ -3,8 +3,8 @@ Response for a request.
 
 "
 Class {
-	#name : #DAPResponse,
-	#superclass : #DAPProtocolMessage,
+	#name : 'DAPResponse',
+	#superclass : 'DAPProtocolMessage',
 	#instVars : [
 		'body',
 		'command',
@@ -12,10 +12,10 @@ Class {
 		'request_seq',
 		'success'
 	],
-	#category : #'DebugAdapterProtocol-Protocol'
+	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : #'json - configuration' }
+{ #category : 'json - configuration' }
 DAPResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -30,20 +30,20 @@ DAPResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPResponse class >> typeEnums [
 	"Enumerated types for the associated attribute"
 
 	^ #(response )
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DAPResponse >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitResponse: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPResponse >> body [
 	"Contains request result if success is true and optional error details if success is false.
 	arraybooleanintegernullnumberobjectstring
@@ -52,7 +52,7 @@ DAPResponse >> body [
 	^ body
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPResponse >> body: anObject [
 	"Contains request result if success is true and optional error details if success is false.
 	arraybooleanintegernullnumberobjectstring
@@ -62,7 +62,7 @@ DAPResponse >> body: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPResponse >> command [
 	"The command requested.
 	string
@@ -71,7 +71,7 @@ DAPResponse >> command [
 	^ command
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPResponse >> command: anObject [
 	"The command requested.
 	string
@@ -81,14 +81,14 @@ DAPResponse >> command: anObject [
 
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 DAPResponse >> initialize [
 
 	super initialize.
 	body := Dictionary new.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPResponse >> message [
 	"Contains the raw error in short form if 'success' is false.
 This raw error might be interpreted by the frontend and is not shown in the UI.
@@ -99,7 +99,7 @@ Some predefined values exist.
 	^ message
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPResponse >> message: anObject [
 	"Contains the raw error in short form if 'success' is false.
 This raw error might be interpreted by the frontend and is not shown in the UI.
@@ -111,7 +111,7 @@ Some predefined values exist.
 
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 DAPResponse >> printOn: aStream [
 
 	super printOn: aStream.
@@ -125,14 +125,14 @@ DAPResponse >> printOn: aStream [
 				<< ')' ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPResponse >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
 	^ #(body command message request_seq success type )
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPResponse >> request_seq [
 	"Sequence number of the corresponding request.
 	integer
@@ -141,7 +141,7 @@ DAPResponse >> request_seq [
 	^ request_seq
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPResponse >> request_seq: anObject [
 	"Sequence number of the corresponding request.
 	integer
@@ -151,7 +151,7 @@ DAPResponse >> request_seq: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPResponse >> success [
 	"Outcome of the request.
 If true, the request was successful and the 'body' attribute may contain the result of the request.
@@ -162,7 +162,7 @@ If the value is false, the attribute 'message' contains the error in short form 
 	^ success
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPResponse >> success: anObject [
 	"Outcome of the request.
 If true, the request was successful and the 'body' attribute may contain the result of the request.
@@ -174,7 +174,7 @@ If the value is false, the attribute 'message' contains the error in short form 
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPResponse >> type [
 	"response: 
 	Auto-generated method"
@@ -182,7 +182,7 @@ DAPResponse >> type [
 	^ type ifNil: [ 'response' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPResponse >> type: anObject [
 	"response: 
 	Auto-generated method"

@@ -3,8 +3,8 @@ Represents a single disassembled instruction.
 
 "
 Class {
-	#name : #DAPDisassembledInstruction,
-	#superclass : #DAPObject,
+	#name : 'DAPDisassembledInstruction',
+	#superclass : 'DAPObject',
 	#instVars : [
 		'address',
 		'column',
@@ -16,10 +16,10 @@ Class {
 		'location',
 		'symbol'
 	],
-	#category : #'DebugAdapterProtocol-Protocol'
+	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : #'json - configuration' }
+{ #category : 'json - configuration' }
 DAPDisassembledInstruction class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -37,13 +37,13 @@ DAPDisassembledInstruction class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DAPDisassembledInstruction >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitDisassembledInstruction: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPDisassembledInstruction >> address [
 	"The address of the instruction. Treated as a hex value if prefixed with '0x', or as a decimal value otherwise.
 	string
@@ -52,7 +52,7 @@ DAPDisassembledInstruction >> address [
 	^ address
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPDisassembledInstruction >> address: anObject [
 	"The address of the instruction. Treated as a hex value if prefixed with '0x', or as a decimal value otherwise.
 	string
@@ -62,7 +62,7 @@ DAPDisassembledInstruction >> address: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPDisassembledInstruction >> column [
 	"The column within the line that corresponds to this instruction, if any.
 	integer
@@ -71,7 +71,7 @@ DAPDisassembledInstruction >> column [
 	^ column
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPDisassembledInstruction >> column: anObject [
 	"The column within the line that corresponds to this instruction, if any.
 	integer
@@ -81,7 +81,7 @@ DAPDisassembledInstruction >> column: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPDisassembledInstruction >> endColumn [
 	"The end column of the range that corresponds to this instruction, if any.
 	integer
@@ -90,7 +90,7 @@ DAPDisassembledInstruction >> endColumn [
 	^ endColumn
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPDisassembledInstruction >> endColumn: anObject [
 	"The end column of the range that corresponds to this instruction, if any.
 	integer
@@ -100,7 +100,7 @@ DAPDisassembledInstruction >> endColumn: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPDisassembledInstruction >> endLine [
 	"The end line of the range that corresponds to this instruction, if any.
 	integer
@@ -109,7 +109,7 @@ DAPDisassembledInstruction >> endLine [
 	^ endLine
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPDisassembledInstruction >> endLine: anObject [
 	"The end line of the range that corresponds to this instruction, if any.
 	integer
@@ -119,7 +119,7 @@ DAPDisassembledInstruction >> endLine: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPDisassembledInstruction >> instruction [
 	"Text representing the instruction and its operands, in an implementation-defined format.
 	string
@@ -128,7 +128,7 @@ DAPDisassembledInstruction >> instruction [
 	^ instruction
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPDisassembledInstruction >> instruction: anObject [
 	"Text representing the instruction and its operands, in an implementation-defined format.
 	string
@@ -138,7 +138,7 @@ DAPDisassembledInstruction >> instruction: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPDisassembledInstruction >> instructionBytes [
 	"Optional raw bytes representing the instruction and its operands, in an implementation-defined format.
 	string
@@ -147,7 +147,7 @@ DAPDisassembledInstruction >> instructionBytes [
 	^ instructionBytes
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPDisassembledInstruction >> instructionBytes: anObject [
 	"Optional raw bytes representing the instruction and its operands, in an implementation-defined format.
 	string
@@ -157,7 +157,7 @@ DAPDisassembledInstruction >> instructionBytes: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPDisassembledInstruction >> line [
 	"The line within the source location that corresponds to this instruction, if any.
 	integer
@@ -166,7 +166,7 @@ DAPDisassembledInstruction >> line [
 	^ line
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPDisassembledInstruction >> line: anObject [
 	"The line within the source location that corresponds to this instruction, if any.
 	integer
@@ -176,7 +176,7 @@ DAPDisassembledInstruction >> line: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPDisassembledInstruction >> location [
 	"Source location that corresponds to this instruction, if any.
 Should always be set (if available) on the first instruction returned,
@@ -187,7 +187,7 @@ but can be omitted afterwards if this instruction maps to the same source file a
 	^ location
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPDisassembledInstruction >> location: anObject [
 	"Source location that corresponds to this instruction, if any.
 Should always be set (if available) on the first instruction returned,
@@ -202,14 +202,14 @@ but can be omitted afterwards if this instruction maps to the same source file a
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPDisassembledInstruction >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
 	^ #(address column endColumn endLine instruction instructionBytes line location symbol )
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPDisassembledInstruction >> symbol [
 	"Name of the symbol that corresponds with the location of this instruction, if any.
 	string
@@ -218,7 +218,7 @@ DAPDisassembledInstruction >> symbol [
 	^ symbol
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPDisassembledInstruction >> symbol: anObject [
 	"Name of the symbol that corresponds with the location of this instruction, if any.
 	string

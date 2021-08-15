@@ -3,18 +3,18 @@ Properties of a breakpoint passed to the setInstructionBreakpoints request
 
 "
 Class {
-	#name : #DAPInstructionBreakpoint,
-	#superclass : #DAPObject,
+	#name : 'DAPInstructionBreakpoint',
+	#superclass : 'DAPObject',
 	#instVars : [
 		'condition',
 		'hitCondition',
 		'instructionReference',
 		'offset'
 	],
-	#category : #'DebugAdapterProtocol-Protocol'
+	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : #'json - configuration' }
+{ #category : 'json - configuration' }
 DAPInstructionBreakpoint class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -27,13 +27,13 @@ DAPInstructionBreakpoint class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DAPInstructionBreakpoint >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitInstructionBreakpoint: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPInstructionBreakpoint >> condition [
 	"An optional expression for conditional breakpoints.
 It is only honored by a debug adapter if the capability 'supportsConditionalBreakpoints' is true.
@@ -43,7 +43,7 @@ It is only honored by a debug adapter if the capability 'supportsConditionalBrea
 	^ condition
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPInstructionBreakpoint >> condition: anObject [
 	"An optional expression for conditional breakpoints.
 It is only honored by a debug adapter if the capability 'supportsConditionalBreakpoints' is true.
@@ -54,7 +54,7 @@ It is only honored by a debug adapter if the capability 'supportsConditionalBrea
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPInstructionBreakpoint >> hitCondition [
 	"An optional expression that controls how many hits of the breakpoint are ignored.
 The backend is expected to interpret the expression as needed.
@@ -65,7 +65,7 @@ The attribute is only honored by a debug adapter if the capability 'supportsHitC
 	^ hitCondition
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPInstructionBreakpoint >> hitCondition: anObject [
 	"An optional expression that controls how many hits of the breakpoint are ignored.
 The backend is expected to interpret the expression as needed.
@@ -77,7 +77,7 @@ The attribute is only honored by a debug adapter if the capability 'supportsHitC
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPInstructionBreakpoint >> instructionReference [
 	"The instruction reference of the breakpoint.
 This should be a memory or instruction pointer reference from an EvaluateResponse, Variable, StackFrame, GotoTarget, or Breakpoint.
@@ -87,7 +87,7 @@ This should be a memory or instruction pointer reference from an EvaluateRespons
 	^ instructionReference
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPInstructionBreakpoint >> instructionReference: anObject [
 	"The instruction reference of the breakpoint.
 This should be a memory or instruction pointer reference from an EvaluateResponse, Variable, StackFrame, GotoTarget, or Breakpoint.
@@ -98,7 +98,7 @@ This should be a memory or instruction pointer reference from an EvaluateRespons
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPInstructionBreakpoint >> offset [
 	"An optional offset from the instruction reference.
 This can be negative.
@@ -108,7 +108,7 @@ This can be negative.
 	^ offset
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPInstructionBreakpoint >> offset: anObject [
 	"An optional offset from the instruction reference.
 This can be negative.
@@ -119,7 +119,7 @@ This can be negative.
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPInstructionBreakpoint >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

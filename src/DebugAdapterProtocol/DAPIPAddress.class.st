@@ -3,16 +3,16 @@ A host name and port to connect to
 
 "
 Class {
-	#name : #DAPIPAddress,
-	#superclass : #DAPObject,
+	#name : 'DAPIPAddress',
+	#superclass : 'DAPObject',
 	#instVars : [
 		'host',
 		'port'
 	],
-	#category : #'DebugAdapterProtocol-Protocol'
+	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : #'json - configuration' }
+{ #category : 'json - configuration' }
 DAPIPAddress class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -23,13 +23,13 @@ DAPIPAddress class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DAPIPAddress >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitIPAddress: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPIPAddress >> host [
 	"The fully qualified domain name
 	string
@@ -38,7 +38,7 @@ DAPIPAddress >> host [
 	^ host
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPIPAddress >> host: anObject [
 	"The fully qualified domain name
 	string
@@ -48,7 +48,7 @@ DAPIPAddress >> host: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPIPAddress >> port [
 	"The port number
 	integer
@@ -57,7 +57,7 @@ DAPIPAddress >> port [
 	^ port
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPIPAddress >> port: anObject [
 	"The port number
 	integer
@@ -67,7 +67,7 @@ DAPIPAddress >> port: anObject [
 
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 DAPIPAddress >> printOn: aStream [
 
 	super printOn: aStream.
@@ -79,7 +79,7 @@ DAPIPAddress >> printOn: aStream [
 		<< ')'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPIPAddress >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

@@ -4,19 +4,19 @@ An optional filter can be used to limit the fetched children to either named or 
 
 "
 Class {
-	#name : #DAPVariablesRequest,
-	#superclass : #DAPRequest,
-	#category : #'DebugAdapterProtocol-Protocol'
+	#name : 'DAPVariablesRequest',
+	#superclass : 'DAPRequest',
+	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPVariablesRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
 	^ #(variables )
 ]
 
-{ #category : #'json - configuration' }
+{ #category : 'json - configuration' }
 DAPVariablesRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -27,20 +27,20 @@ DAPVariablesRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DAPVariablesRequest >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitVariablesRequest: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPVariablesRequest >> arguments [
 	"Auto-generated method"
 
 	^ arguments
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPVariablesRequest >> arguments: anObject [
 	"Auto-generated method"
 
@@ -51,7 +51,7 @@ DAPVariablesRequest >> arguments: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPVariablesRequest >> command [
 	"variables: 
 	Auto-generated method"
@@ -59,7 +59,7 @@ DAPVariablesRequest >> command [
 	^ command ifNil: [ 'variables' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPVariablesRequest >> command: anObject [
 	"variables: 
 	Auto-generated method"
@@ -68,7 +68,7 @@ DAPVariablesRequest >> command: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPVariablesRequest >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

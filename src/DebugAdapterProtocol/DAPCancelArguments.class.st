@@ -3,16 +3,16 @@ Arguments for 'cancel' request.
 
 "
 Class {
-	#name : #DAPCancelArguments,
-	#superclass : #DAPObject,
+	#name : 'DAPCancelArguments',
+	#superclass : 'DAPObject',
 	#instVars : [
 		'progressId',
 		'requestId'
 	],
-	#category : #'DebugAdapterProtocol-Protocol'
+	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : #'json - configuration' }
+{ #category : 'json - configuration' }
 DAPCancelArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -23,13 +23,13 @@ DAPCancelArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DAPCancelArguments >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitCancelArguments: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPCancelArguments >> progressId [
 	"The ID (attribute 'progressId') of the progress to cancel. If missing no progress is cancelled.
 Both a 'requestId' and a 'progressId' can be specified in one request.
@@ -39,7 +39,7 @@ Both a 'requestId' and a 'progressId' can be specified in one request.
 	^ progressId
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPCancelArguments >> progressId: anObject [
 	"The ID (attribute 'progressId') of the progress to cancel. If missing no progress is cancelled.
 Both a 'requestId' and a 'progressId' can be specified in one request.
@@ -50,14 +50,14 @@ Both a 'requestId' and a 'progressId' can be specified in one request.
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPCancelArguments >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
 	^ #(progressId requestId )
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPCancelArguments >> requestId [
 	"The ID (attribute 'seq') of the request to cancel. If missing no request is cancelled.
 Both a 'requestId' and a 'progressId' can be specified in one request.
@@ -67,7 +67,7 @@ Both a 'requestId' and a 'progressId' can be specified in one request.
 	^ requestId
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPCancelArguments >> requestId: anObject [
 	"The ID (attribute 'seq') of the request to cancel. If missing no request is cancelled.
 Both a 'requestId' and a 'progressId' can be specified in one request.

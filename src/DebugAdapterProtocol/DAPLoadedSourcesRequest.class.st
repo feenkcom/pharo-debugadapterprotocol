@@ -4,19 +4,19 @@ Clients should only call this request if the capability 'supportsLoadedSourcesRe
 
 "
 Class {
-	#name : #DAPLoadedSourcesRequest,
-	#superclass : #DAPRequest,
-	#category : #'DebugAdapterProtocol-Protocol'
+	#name : 'DAPLoadedSourcesRequest',
+	#superclass : 'DAPRequest',
+	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPLoadedSourcesRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
 	^ #(loadedSources )
 ]
 
-{ #category : #'json - configuration' }
+{ #category : 'json - configuration' }
 DAPLoadedSourcesRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -27,20 +27,20 @@ DAPLoadedSourcesRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DAPLoadedSourcesRequest >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitLoadedSourcesRequest: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPLoadedSourcesRequest >> arguments [
 	"Auto-generated method"
 
 	^ arguments
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPLoadedSourcesRequest >> arguments: anObject [
 	"Auto-generated method"
 
@@ -51,7 +51,7 @@ DAPLoadedSourcesRequest >> arguments: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPLoadedSourcesRequest >> command [
 	"loadedSources: 
 	Auto-generated method"
@@ -59,7 +59,7 @@ DAPLoadedSourcesRequest >> command [
 	^ command ifNil: [ 'loadedSources' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPLoadedSourcesRequest >> command: anObject [
 	"loadedSources: 
 	Auto-generated method"
@@ -68,7 +68,7 @@ DAPLoadedSourcesRequest >> command: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPLoadedSourcesRequest >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

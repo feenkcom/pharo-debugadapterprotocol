@@ -4,19 +4,19 @@ Clients should only call this request if the capability 'supportsTerminateThread
 
 "
 Class {
-	#name : #DAPTerminateThreadsRequest,
-	#superclass : #DAPRequest,
-	#category : #'DebugAdapterProtocol-Protocol'
+	#name : 'DAPTerminateThreadsRequest',
+	#superclass : 'DAPRequest',
+	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPTerminateThreadsRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
 	^ #(terminateThreads )
 ]
 
-{ #category : #'json - configuration' }
+{ #category : 'json - configuration' }
 DAPTerminateThreadsRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -27,20 +27,20 @@ DAPTerminateThreadsRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DAPTerminateThreadsRequest >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitTerminateThreadsRequest: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPTerminateThreadsRequest >> arguments [
 	"Auto-generated method"
 
 	^ arguments
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPTerminateThreadsRequest >> arguments: anObject [
 	"Auto-generated method"
 
@@ -51,7 +51,7 @@ DAPTerminateThreadsRequest >> arguments: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPTerminateThreadsRequest >> command [
 	"terminateThreads: 
 	Auto-generated method"
@@ -59,7 +59,7 @@ DAPTerminateThreadsRequest >> command [
 	^ command ifNil: [ 'terminateThreads' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPTerminateThreadsRequest >> command: anObject [
 	"terminateThreads: 
 	Auto-generated method"
@@ -68,7 +68,7 @@ DAPTerminateThreadsRequest >> command: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPTerminateThreadsRequest >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

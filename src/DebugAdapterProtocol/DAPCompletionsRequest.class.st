@@ -4,19 +4,19 @@ Clients should only call this request if the capability 'supportsCompletionsRequ
 
 "
 Class {
-	#name : #DAPCompletionsRequest,
-	#superclass : #DAPRequest,
-	#category : #'DebugAdapterProtocol-Protocol'
+	#name : 'DAPCompletionsRequest',
+	#superclass : 'DAPRequest',
+	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPCompletionsRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
 	^ #(completions )
 ]
 
-{ #category : #'json - configuration' }
+{ #category : 'json - configuration' }
 DAPCompletionsRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -27,20 +27,20 @@ DAPCompletionsRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DAPCompletionsRequest >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitCompletionsRequest: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPCompletionsRequest >> arguments [
 	"Auto-generated method"
 
 	^ arguments
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPCompletionsRequest >> arguments: anObject [
 	"Auto-generated method"
 
@@ -51,7 +51,7 @@ DAPCompletionsRequest >> arguments: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPCompletionsRequest >> command [
 	"completions: 
 	Auto-generated method"
@@ -59,7 +59,7 @@ DAPCompletionsRequest >> command [
 	^ command ifNil: [ 'completions' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPCompletionsRequest >> command: anObject [
 	"completions: 
 	Auto-generated method"
@@ -68,7 +68,7 @@ DAPCompletionsRequest >> command: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPCompletionsRequest >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

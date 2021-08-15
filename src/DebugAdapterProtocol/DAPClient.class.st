@@ -1,6 +1,6 @@
 Class {
-	#name : #DAPClient,
-	#superclass : #RemoteDebuggerClient,
+	#name : 'DAPClient',
+	#superclass : 'RemoteDebuggerClient',
 	#instVars : [
 		'messageQueue',
 		'messageId',
@@ -13,23 +13,23 @@ Class {
 		'comms',
 		'capabilities'
 	],
-	#category : #'DebugAdapterProtocol-Client'
+	#category : 'DebugAdapterProtocol-Client'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 DAPClient class >> connectTo: host port: portNumber debugger: aDAPDebugger [
 
 	^ self new connectTo: host port: portNumber debugger: aDAPDebugger
 ]
 
-{ #category : #'private - message processor' }
+{ #category : 'private - message processor' }
 DAPClient >> addMessageProcessor: aMessageProcessor [
 
 	^ messageProcessorMutex critical: 
 		[ messageProcessors add: aMessageProcessor ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPClient >> capabilities [
 	"Answer the server's capabilities.
 	There is a DAPServerCapabilitiesEvent, however the capabilities are sometimes returned as attributes"
@@ -39,12 +39,12 @@ DAPClient >> capabilities [
 			ifAbsent: [ nil ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPClient >> capabilities: anObject [
 	capabilities := anObject
 ]
 
-{ #category : #'private - message processor' }
+{ #category : 'private - message processor' }
 DAPClient >> checkResponse: response [
 
 	response success ifFalse:
@@ -54,14 +54,14 @@ DAPClient >> checkResponse: response [
 	^true
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 DAPClient >> configurationDone [
 	"Let the server know we've finished configuration"
 
 	self sendMessageAndWait: DAPConfigurationDoneRequest new.
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 DAPClient >> connectTo: host port: portNumber debugger: aDAPDebugger [
 
 	debugger := aDAPDebugger.
@@ -73,7 +73,7 @@ DAPClient >> connectTo: host port: portNumber debugger: aDAPDebugger [
 	self startQueueProcessor.
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 DAPClient >> connectToServerExecutable: aFileReference debugger: aDAPDebugger [
 
 	debugger := aDAPDebugger.
@@ -84,7 +84,7 @@ DAPClient >> connectToServerExecutable: aFileReference debugger: aDAPDebugger [
 	self startQueueProcessor.
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 DAPClient >> continueThreadId: aNumber [
 	"Instruct the debugger to continue execution"
 	| arguments request |
@@ -94,13 +94,13 @@ DAPClient >> continueThreadId: aNumber [
 	^ self sendMessageAndWait: request.
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 DAPClient >> disconnect [ 
 
 	self disconnectWithRestart: false.
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 DAPClient >> disconnectWithRestart: restartBoolean [
 	| arguments request |
 
@@ -111,7 +111,7 @@ DAPClient >> disconnectWithRestart: restartBoolean [
 	self sendMessage: request.
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 DAPClient >> initialize [ 
 
 	super initialize.
@@ -126,48 +126,48 @@ DAPClient >> initialize [
 	self addMessageProcessor: (DAPReceivedMessageProcessor new client: self).
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 DAPClient >> isAttached [
 	"Answer a boolean indicating whether the server is attached"
 
 	^ serverState == #attached
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 DAPClient >> isConnected [
 	"Answer a boolean indicating whether the connection to the remote debugger is open"
 
 	^ comms isConnected
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 DAPClient >> isDisconnected [
 	"Answer a boolean indicating whether the connection to the remote debugger is disconnected"
 
 	^ comms isDisconnected
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 DAPClient >> isInitialized [
 	"Answer a boolean indicating whether the server is initialized"
 
 	^ serverState == #initialized
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 DAPClient >> isStopped [ 
 
 	^ serverState = #stopped
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 DAPClient >> isTerminated [ 
 	"Answer a boolean indicating whether the server has been terminated"
 
 	^ serverState == #terminated
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 DAPClient >> killProcesses [
 	"Kill the DAP server processes"
 	| serverPid proc |
@@ -181,7 +181,7 @@ DAPClient >> killProcesses [
 		[ self error: 'Unable to kill server process' ]
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 DAPClient >> launchWithArguments: aDictionary [
 	| request |
 
@@ -189,7 +189,7 @@ DAPClient >> launchWithArguments: aDictionary [
 	^ self sendMessageAndWait: request.
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 DAPClient >> nextInThreadId: aNumber [
 	"Stop over the next statement"
 
@@ -197,19 +197,19 @@ DAPClient >> nextInThreadId: aNumber [
 		(DAPNextArguments new threadId: aNumber)).
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 DAPClient >> nextMessageId [
 
 	^ messageId := messageId + 1
 ]
 
-{ #category : #messages }
+{ #category : 'messages' }
 DAPClient >> nextPutReceivedMessage: aByteArray [
 
 	messageQueue nextPut: aByteArray
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 DAPClient >> printOn: aStream [
 
 	super printOn: aStream.
@@ -219,7 +219,7 @@ DAPClient >> printOn: aStream [
 		nextPut: $)
 ]
 
-{ #category : #messages }
+{ #category : 'messages' }
 DAPClient >> processMessage: aByteArray [
 	| processors message handled |
 
@@ -241,7 +241,7 @@ DAPClient >> processMessage: aByteArray [
 			on: Error fork: [ :ex | ex pass ] ].
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 DAPClient >> registerBreakpoint: aDAPBreakpoint [
 	"Add the supplied breakpoint to the receiver's list"
 
@@ -249,20 +249,20 @@ DAPClient >> registerBreakpoint: aDAPBreakpoint [
 	self announce: (DAPBreakpointAdded new breakpoint: aDAPBreakpoint).
 ]
 
-{ #category : #'private - message processor' }
+{ #category : 'private - message processor' }
 DAPClient >> removeMessageProcessor: aMessageProcessor [
 
 	^ messageProcessorMutex critical: 
 		[ messageProcessors remove: aMessageProcessor ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPClient >> removeThreadId: aNumber [ 
 
 	threads removeKey: aNumber
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 DAPClient >> requestAllStackTraces [
 	"Request stack traces for the existing threads"
 
@@ -270,7 +270,7 @@ DAPClient >> requestAllStackTraces [
 		self requestStackTraceForThreadId: threadId startFrame: 0 levels: 20 ]
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 DAPClient >> requestAllThreads [
 	"Request a list of all the current threads in the server.
 	The response visitor will update the client state."
@@ -278,7 +278,7 @@ DAPClient >> requestAllThreads [
 	self sendMessageAndWait: DAPThreadsRequest new.
 ]
 
-{ #category : #messages }
+{ #category : 'messages' }
 DAPClient >> requestStackTraceForThreadId: threadId startFrame: startFrame levels: levels [
 	| request arguments response |
 
@@ -295,7 +295,7 @@ DAPClient >> requestStackTraceForThreadId: threadId startFrame: startFrame level
 		totalStackFrames: response totalFrames.
 ]
 
-{ #category : #messages }
+{ #category : 'messages' }
 DAPClient >> scopesForFrameId: aNumber [ 
 	| arguments request |
 
@@ -304,7 +304,7 @@ DAPClient >> scopesForFrameId: aNumber [
 	^ self sendMessageAndWait: request.
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 DAPClient >> sendMessage: request [
 	"Send the supplied message."
 
@@ -318,7 +318,7 @@ DAPClient >> sendMessage: request [
 		(DAPJson new writerOn: stream) nextPut: request ])
 ]
 
-{ #category : #messages }
+{ #category : 'messages' }
 DAPClient >> sendMessageAndWait: request [
 	"Send the supplied message to the remote and wait for the response.
 	Raise an exception on failure."
@@ -339,7 +339,7 @@ DAPClient >> sendMessageAndWait: request [
 	^ result
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 DAPClient >> sendMessageString: aString [ 
 	| wrappedMessage |
 
@@ -354,27 +354,27 @@ DAPClient >> sendMessageString: aString [
 		flush.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPClient >> serverAttributes [
 	^ serverAttributes
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPClient >> serverAttributes: anObject [
 	serverAttributes := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPClient >> serverProcessDetailsEvent [
 	^ serverProcessDetailsEvent
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPClient >> serverProcessDetailsEvent: anObject [
 	serverProcessDetailsEvent := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPClient >> serverState [
 	"Answer the state of the server.
 	Known states include: nil (no activity), attached, initialized, continued, stopped, exited, terminated.
@@ -384,14 +384,14 @@ DAPClient >> serverState [
 	^ serverState
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPClient >> serverState: aString [
 
 	serverState := aString.
 	self announce: (DAPDebuggerStateChanged new debugger: debugger)
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 DAPClient >> serverTerminated [
 	"Notification that the server has terminated.
 	Mark everything terminated and close the socket.
@@ -402,7 +402,7 @@ DAPClient >> serverTerminated [
 	comms disconnect.
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 DAPClient >> setBreakpointInFile: aFileReference lines: anArray [ 
 	| source fileReference |
 
@@ -413,7 +413,7 @@ DAPClient >> setBreakpointInFile: aFileReference lines: anArray [
 	^ self setBreakpointInSource: source lines: anArray.
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 DAPClient >> setBreakpointInSource: aDAPSource lines: anArray [
 	"Set a breakpoint in the supplied filename at the given line numbers.
 	anArray must be an Array of Integer"
@@ -433,7 +433,7 @@ DAPClient >> setBreakpointInSource: aDAPSource lines: anArray [
 
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 DAPClient >> setExceptionBreakpoints [
 	| arguments request |
 
@@ -444,7 +444,7 @@ DAPClient >> setExceptionBreakpoints [
 	self sendMessage: request.
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 DAPClient >> setFunctionBreakpoints: requestArguments [
 	| request response |
 
@@ -456,7 +456,7 @@ DAPClient >> setFunctionBreakpoints: requestArguments [
 
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 DAPClient >> setVariableNamed: aString reference: variablesReference to: anObject [
 	"Set the specified variable and answer the DAPVariable"
 	| request arguments |
@@ -471,7 +471,7 @@ DAPClient >> setVariableNamed: aString reference: variablesReference to: anObjec
 
 ]
 
-{ #category : #messages }
+{ #category : 'messages' }
 DAPClient >> sourceCodeFor: aDAPSource [
 	| request arguments |
 
@@ -483,7 +483,7 @@ DAPClient >> sourceCodeFor: aDAPSource [
 	^ (self sendMessageAndWait: request) content.
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 DAPClient >> startQueueProcessor [
 	"Start the process for processing messages from the remote debugger."
 
@@ -492,7 +492,7 @@ DAPClient >> startQueueProcessor [
 			] forkAt: Processor userSchedulingPriority - 1 named: 'DAP Queue Processor'.
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 DAPClient >> statusString [
 
 	serverState ifNil: 
@@ -508,7 +508,7 @@ DAPClient >> statusString [
 	^ serverState
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 DAPClient >> stepBackInThreadId: aNumber [
 	"Step back"
 
@@ -516,7 +516,7 @@ DAPClient >> stepBackInThreadId: aNumber [
 		(DAPStepBackArguments new threadId: aNumber)).
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 DAPClient >> stepIntoInThreadId: aNumber [
 	"Step into the next statement"
 
@@ -524,7 +524,7 @@ DAPClient >> stepIntoInThreadId: aNumber [
 		(DAPStepInArguments new threadId: aNumber)).
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 DAPClient >> stepOutInThreadId: aNumber [
 	"Step out (of somewhere)?"
 
@@ -532,7 +532,7 @@ DAPClient >> stepOutInThreadId: aNumber [
 		(DAPStepOutArguments new threadId: aNumber)).
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPClient >> stoppedThread [
 	"Answer the thread in the stopped state, or nil"
 
@@ -541,7 +541,7 @@ DAPClient >> stoppedThread [
 		ifNone: nil
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 DAPClient >> terminate [
 	| arguments request |
 
@@ -553,7 +553,7 @@ DAPClient >> terminate [
 
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 DAPClient >> terminateAndKillProcesses [
 	"Send a terminate request to the client and then forcefully kill the processes"
 	| retries |
@@ -566,12 +566,12 @@ DAPClient >> terminateAndKillProcesses [
 	self killProcesses.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPClient >> threads [
 	^ threads
 ]
 
-{ #category : #messages }
+{ #category : 'messages' }
 DAPClient >> variablesForReference: aNumber [ 
 	| arguments request |
 

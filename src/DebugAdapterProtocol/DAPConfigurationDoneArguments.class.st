@@ -3,12 +3,12 @@ Arguments for 'configurationDone' request.
 
 "
 Class {
-	#name : #DAPConfigurationDoneArguments,
-	#superclass : #DAPObject,
-	#category : #'DebugAdapterProtocol-Protocol'
+	#name : 'DAPConfigurationDoneArguments',
+	#superclass : 'DAPObject',
+	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : #'json - configuration' }
+{ #category : 'json - configuration' }
 DAPConfigurationDoneArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -17,13 +17,13 @@ DAPConfigurationDoneArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DAPConfigurationDoneArguments >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitConfigurationDoneArguments: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPConfigurationDoneArguments >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

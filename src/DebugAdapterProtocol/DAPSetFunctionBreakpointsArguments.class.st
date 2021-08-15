@@ -3,15 +3,15 @@ Arguments for 'setFunctionBreakpoints' request.
 
 "
 Class {
-	#name : #DAPSetFunctionBreakpointsArguments,
-	#superclass : #DAPObject,
+	#name : 'DAPSetFunctionBreakpointsArguments',
+	#superclass : 'DAPObject',
 	#instVars : [
 		'breakpoints'
 	],
-	#category : #'DebugAdapterProtocol-Protocol'
+	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : #'json - configuration' }
+{ #category : 'json - configuration' }
 DAPSetFunctionBreakpointsArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -21,13 +21,13 @@ DAPSetFunctionBreakpointsArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DAPSetFunctionBreakpointsArguments >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitSetFunctionBreakpointsArguments: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSetFunctionBreakpointsArguments >> breakpoints [
 	"The function names of the breakpoints.
 	array
@@ -36,7 +36,7 @@ DAPSetFunctionBreakpointsArguments >> breakpoints [
 	^ breakpoints
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSetFunctionBreakpointsArguments >> breakpoints: anObject [
 	"The function names of the breakpoints.
 	array
@@ -46,7 +46,7 @@ DAPSetFunctionBreakpointsArguments >> breakpoints: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSetFunctionBreakpointsArguments >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

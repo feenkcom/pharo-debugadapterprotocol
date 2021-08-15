@@ -3,12 +3,12 @@ Response to 'source' request.
 
 "
 Class {
-	#name : #DAPSourceResponse,
-	#superclass : #DAPResponse,
-	#category : #'DebugAdapterProtocol-Protocol'
+	#name : 'DAPSourceResponse',
+	#superclass : 'DAPResponse',
+	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : #'json - configuration' }
+{ #category : 'json - configuration' }
 DAPSourceResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -18,20 +18,20 @@ DAPSourceResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DAPSourceResponse >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitSourceResponse: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSourceResponse >> body [
 	"Auto-generated method"
 
 	^ body
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSourceResponse >> body: anObject [
 	"Auto-generated method"
 
@@ -39,7 +39,7 @@ DAPSourceResponse >> body: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSourceResponse >> content [
 	"Content of the source reference.
 	string
@@ -50,7 +50,7 @@ DAPSourceResponse >> content [
 	^ result
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSourceResponse >> content: anObject [
 	"Content of the source reference.
 	string
@@ -59,7 +59,7 @@ DAPSourceResponse >> content: anObject [
 	self body at: #content put: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSourceResponse >> mimeType [
 	"Optional content type (mime type) of the source.
 	string
@@ -70,7 +70,7 @@ DAPSourceResponse >> mimeType [
 	^ result
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSourceResponse >> mimeType: anObject [
 	"Optional content type (mime type) of the source.
 	string
@@ -79,7 +79,7 @@ DAPSourceResponse >> mimeType: anObject [
 	self body at: #mimeType put: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPSourceResponse >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

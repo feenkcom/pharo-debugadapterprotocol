@@ -3,12 +3,12 @@ Response to 'attach' request. This is just an acknowledgement, so no body field 
 
 "
 Class {
-	#name : #DAPAttachResponse,
-	#superclass : #DAPResponse,
-	#category : #'DebugAdapterProtocol-Protocol'
+	#name : 'DAPAttachResponse',
+	#superclass : 'DAPResponse',
+	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : #'json - configuration' }
+{ #category : 'json - configuration' }
 DAPAttachResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -17,13 +17,13 @@ DAPAttachResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DAPAttachResponse >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitAttachResponse: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPAttachResponse >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

@@ -4,19 +4,19 @@ The debug adapter first sends the response and then a 'stopped' event (with reas
 
 "
 Class {
-	#name : #DAPNextRequest,
-	#superclass : #DAPRequest,
-	#category : #'DebugAdapterProtocol-Protocol'
+	#name : 'DAPNextRequest',
+	#superclass : 'DAPRequest',
+	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPNextRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
 	^ #(next )
 ]
 
-{ #category : #'json - configuration' }
+{ #category : 'json - configuration' }
 DAPNextRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -27,20 +27,20 @@ DAPNextRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DAPNextRequest >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitNextRequest: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPNextRequest >> arguments [
 	"Auto-generated method"
 
 	^ arguments
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPNextRequest >> arguments: anObject [
 	"Auto-generated method"
 
@@ -51,7 +51,7 @@ DAPNextRequest >> arguments: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPNextRequest >> command [
 	"next: 
 	Auto-generated method"
@@ -59,7 +59,7 @@ DAPNextRequest >> command [
 	^ command ifNil: [ 'next' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPNextRequest >> command: anObject [
 	"next: 
 	Auto-generated method"
@@ -68,7 +68,7 @@ DAPNextRequest >> command: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPNextRequest >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

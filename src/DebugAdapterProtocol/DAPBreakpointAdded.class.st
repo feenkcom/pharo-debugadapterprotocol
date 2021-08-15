@@ -1,18 +1,18 @@
 Class {
-	#name : #DAPBreakpointAdded,
-	#superclass : #DAPAnnouncement,
+	#name : 'DAPBreakpointAdded',
+	#superclass : 'DAPAnnouncement',
 	#instVars : [
 		'breakpoint'
 	],
-	#category : #'DebugAdapterProtocol-Announcments'
+	#category : 'DebugAdapterProtocol-Announcments'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPBreakpointAdded >> breakpoint [
 	^ breakpoint
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPBreakpointAdded >> breakpoint: anObject [
 	breakpoint := anObject
 ]

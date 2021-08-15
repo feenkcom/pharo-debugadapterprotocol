@@ -7,12 +7,12 @@ userUnhandled: breaks if the exception is not handled by user code.
 
 "
 Class {
-	#name : #DAPExceptionBreakMode,
-	#superclass : #DAPObject,
-	#category : #'DebugAdapterProtocol-Protocol'
+	#name : 'DAPExceptionBreakMode',
+	#superclass : 'DAPObject',
+	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : #'json - configuration' }
+{ #category : 'json - configuration' }
 DAPExceptionBreakMode class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -21,13 +21,13 @@ DAPExceptionBreakMode class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DAPExceptionBreakMode >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitExceptionBreakMode: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPExceptionBreakMode >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

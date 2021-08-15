@@ -6,19 +6,19 @@ Clients should only call this request if the capability 'supportsStepInTargetsRe
 
 "
 Class {
-	#name : #DAPStepInTargetsRequest,
-	#superclass : #DAPRequest,
-	#category : #'DebugAdapterProtocol-Protocol'
+	#name : 'DAPStepInTargetsRequest',
+	#superclass : 'DAPRequest',
+	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPStepInTargetsRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
 	^ #(stepInTargets )
 ]
 
-{ #category : #'json - configuration' }
+{ #category : 'json - configuration' }
 DAPStepInTargetsRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -29,20 +29,20 @@ DAPStepInTargetsRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DAPStepInTargetsRequest >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitStepInTargetsRequest: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPStepInTargetsRequest >> arguments [
 	"Auto-generated method"
 
 	^ arguments
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPStepInTargetsRequest >> arguments: anObject [
 	"Auto-generated method"
 
@@ -53,7 +53,7 @@ DAPStepInTargetsRequest >> arguments: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPStepInTargetsRequest >> command [
 	"stepInTargets: 
 	Auto-generated method"
@@ -61,7 +61,7 @@ DAPStepInTargetsRequest >> command [
 	^ command ifNil: [ 'stepInTargets' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPStepInTargetsRequest >> command: anObject [
 	"stepInTargets: 
 	Auto-generated method"
@@ -70,7 +70,7 @@ DAPStepInTargetsRequest >> command: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPStepInTargetsRequest >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

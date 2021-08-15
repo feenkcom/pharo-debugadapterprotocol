@@ -4,19 +4,19 @@ Clients should only call this request if the capability 'supportsModulesRequest'
 
 "
 Class {
-	#name : #DAPModulesRequest,
-	#superclass : #DAPRequest,
-	#category : #'DebugAdapterProtocol-Protocol'
+	#name : 'DAPModulesRequest',
+	#superclass : 'DAPRequest',
+	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPModulesRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
 	^ #(modules )
 ]
 
-{ #category : #'json - configuration' }
+{ #category : 'json - configuration' }
 DAPModulesRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -27,20 +27,20 @@ DAPModulesRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DAPModulesRequest >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitModulesRequest: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPModulesRequest >> arguments [
 	"Auto-generated method"
 
 	^ arguments
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPModulesRequest >> arguments: anObject [
 	"Auto-generated method"
 
@@ -51,7 +51,7 @@ DAPModulesRequest >> arguments: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPModulesRequest >> command [
 	"modules: 
 	Auto-generated method"
@@ -59,7 +59,7 @@ DAPModulesRequest >> command [
 	^ command ifNil: [ 'modules' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPModulesRequest >> command: anObject [
 	"modules: 
 	Auto-generated method"
@@ -68,7 +68,7 @@ DAPModulesRequest >> command: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPModulesRequest >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

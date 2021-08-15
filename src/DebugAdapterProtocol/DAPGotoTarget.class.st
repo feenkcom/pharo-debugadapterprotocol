@@ -4,8 +4,8 @@ The possible goto targets can be determined via the 'gotoTargets' request.
 
 "
 Class {
-	#name : #DAPGotoTarget,
-	#superclass : #DAPObject,
+	#name : 'DAPGotoTarget',
+	#superclass : 'DAPObject',
 	#instVars : [
 		'column',
 		'endColumn',
@@ -15,10 +15,10 @@ Class {
 		'label',
 		'line'
 	],
-	#category : #'DebugAdapterProtocol-Protocol'
+	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : #'json - configuration' }
+{ #category : 'json - configuration' }
 DAPGotoTarget class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -34,13 +34,13 @@ DAPGotoTarget class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DAPGotoTarget >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitGotoTarget: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPGotoTarget >> column [
 	"An optional column of the goto target.
 	integer
@@ -49,7 +49,7 @@ DAPGotoTarget >> column [
 	^ column
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPGotoTarget >> column: anObject [
 	"An optional column of the goto target.
 	integer
@@ -59,7 +59,7 @@ DAPGotoTarget >> column: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPGotoTarget >> endColumn [
 	"An optional end column of the range covered by the goto target.
 	integer
@@ -68,7 +68,7 @@ DAPGotoTarget >> endColumn [
 	^ endColumn
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPGotoTarget >> endColumn: anObject [
 	"An optional end column of the range covered by the goto target.
 	integer
@@ -78,7 +78,7 @@ DAPGotoTarget >> endColumn: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPGotoTarget >> endLine [
 	"An optional end line of the range covered by the goto target.
 	integer
@@ -87,7 +87,7 @@ DAPGotoTarget >> endLine [
 	^ endLine
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPGotoTarget >> endLine: anObject [
 	"An optional end line of the range covered by the goto target.
 	integer
@@ -97,7 +97,7 @@ DAPGotoTarget >> endLine: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPGotoTarget >> id [
 	"Unique identifier for a goto target. This is used in the goto request.
 	integer
@@ -106,7 +106,7 @@ DAPGotoTarget >> id [
 	^ id
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPGotoTarget >> id: anObject [
 	"Unique identifier for a goto target. This is used in the goto request.
 	integer
@@ -116,7 +116,7 @@ DAPGotoTarget >> id: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPGotoTarget >> instructionPointerReference [
 	"Optional memory reference for the instruction pointer value represented by this target.
 	string
@@ -125,7 +125,7 @@ DAPGotoTarget >> instructionPointerReference [
 	^ instructionPointerReference
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPGotoTarget >> instructionPointerReference: anObject [
 	"Optional memory reference for the instruction pointer value represented by this target.
 	string
@@ -135,7 +135,7 @@ DAPGotoTarget >> instructionPointerReference: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPGotoTarget >> label [
 	"The name of the goto target (shown in the UI).
 	string
@@ -144,7 +144,7 @@ DAPGotoTarget >> label [
 	^ label
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPGotoTarget >> label: anObject [
 	"The name of the goto target (shown in the UI).
 	string
@@ -154,7 +154,7 @@ DAPGotoTarget >> label: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPGotoTarget >> line [
 	"The line of the goto target.
 	integer
@@ -163,7 +163,7 @@ DAPGotoTarget >> line [
 	^ line
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPGotoTarget >> line: anObject [
 	"The line of the goto target.
 	integer
@@ -173,7 +173,7 @@ DAPGotoTarget >> line: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPGotoTarget >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

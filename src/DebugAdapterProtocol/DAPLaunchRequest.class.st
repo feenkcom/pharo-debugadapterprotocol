@@ -4,19 +4,19 @@ Since launching is debugger/runtime specific, the arguments for this request are
 
 "
 Class {
-	#name : #DAPLaunchRequest,
-	#superclass : #DAPRequest,
-	#category : #'DebugAdapterProtocol-Protocol'
+	#name : 'DAPLaunchRequest',
+	#superclass : 'DAPRequest',
+	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPLaunchRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
 	^ #(launch )
 ]
 
-{ #category : #'json - configuration' }
+{ #category : 'json - configuration' }
 DAPLaunchRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -27,20 +27,20 @@ DAPLaunchRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DAPLaunchRequest >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitLaunchRequest: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPLaunchRequest >> arguments [
 	"Auto-generated method"
 
 	^ arguments
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPLaunchRequest >> arguments: anObject [
 	"Auto-generated method"
 
@@ -48,7 +48,7 @@ DAPLaunchRequest >> arguments: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPLaunchRequest >> command [
 	"launch: 
 	Auto-generated method"
@@ -56,7 +56,7 @@ DAPLaunchRequest >> command [
 	^ command ifNil: [ 'launch' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPLaunchRequest >> command: anObject [
 	"launch: 
 	Auto-generated method"
@@ -65,7 +65,7 @@ DAPLaunchRequest >> command: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPLaunchRequest >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

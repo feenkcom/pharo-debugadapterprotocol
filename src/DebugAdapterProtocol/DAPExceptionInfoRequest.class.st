@@ -4,19 +4,19 @@ Clients should only call this request if the capability 'supportsExceptionInfoRe
 
 "
 Class {
-	#name : #DAPExceptionInfoRequest,
-	#superclass : #DAPRequest,
-	#category : #'DebugAdapterProtocol-Protocol'
+	#name : 'DAPExceptionInfoRequest',
+	#superclass : 'DAPRequest',
+	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPExceptionInfoRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
 	^ #(exceptionInfo )
 ]
 
-{ #category : #'json - configuration' }
+{ #category : 'json - configuration' }
 DAPExceptionInfoRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -27,20 +27,20 @@ DAPExceptionInfoRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DAPExceptionInfoRequest >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitExceptionInfoRequest: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPExceptionInfoRequest >> arguments [
 	"Auto-generated method"
 
 	^ arguments
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPExceptionInfoRequest >> arguments: anObject [
 	"Auto-generated method"
 
@@ -51,7 +51,7 @@ DAPExceptionInfoRequest >> arguments: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPExceptionInfoRequest >> command [
 	"exceptionInfo: 
 	Auto-generated method"
@@ -59,7 +59,7 @@ DAPExceptionInfoRequest >> command [
 	^ command ifNil: [ 'exceptionInfo' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPExceptionInfoRequest >> command: anObject [
 	"exceptionInfo: 
 	Auto-generated method"
@@ -68,7 +68,7 @@ DAPExceptionInfoRequest >> command: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPExceptionInfoRequest >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

@@ -1,30 +1,30 @@
 Class {
-	#name : #DAPObject,
-	#superclass : #Object,
+	#name : 'DAPObject',
+	#superclass : 'Object',
 	#instVars : [
 		'client'
 	],
-	#category : #'DebugAdapterProtocol-Protocol'
+	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : #'json - configuration' }
+{ #category : 'json - configuration' }
 DAPObject class >> dapJsonMappingFor: aNeoJSONMapper [
 ]
 
-{ #category : #requirements }
+{ #category : 'requirements' }
 DAPObject class >> empty [ 
 
 	^ self new dictionary: Dictionary new.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPObject class >> eventEnums [
 	"Enumerated types for the associated attribute"
 
 	^ #()
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 DAPObject class >> fromDictionary: aDictionary client: client [
 	| instance |
 
@@ -37,7 +37,7 @@ DAPObject class >> fromDictionary: aDictionary client: client [
 	^ instance.
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 DAPObject class >> fromJSONDictionary: aDictionary client: client [
 	aDictionary at: #type ifPresent: [ :type |
 		type = #event ifTrue:
@@ -56,24 +56,24 @@ DAPObject class >> fromJSONDictionary: aDictionary client: client [
 	self error: 'Unrecognised message'.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPObject class >> typeEnums [
 	"Enumerated types for the associated attribute"
 
 	^ #()
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPObject >> client [
 	^ client
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPObject >> client: anObject [
 	client := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPObject >> gtPropertiesFor: aView [
 	<gtView>
 
@@ -89,14 +89,14 @@ DAPObject >> gtPropertiesFor: aView [
 		send: [ :item | item second ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPObject >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
 	^ #()
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPObject >> request_seq [ 
 	"Allow any message to answer a request_seq, which removes the need for type testing in the message processors"
 

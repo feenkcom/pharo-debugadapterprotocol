@@ -1,30 +1,30 @@
 Class {
-	#name : #DAPStatusMessageProcessor,
-	#superclass : #DAPMessageProcessor,
+	#name : 'DAPStatusMessageProcessor',
+	#superclass : 'DAPMessageProcessor',
 	#instVars : [
 		'id',
 		'result'
 	],
-	#category : #'DebugAdapterProtocol-Processor'
+	#category : 'DebugAdapterProtocol-Processor'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 DAPStatusMessageProcessor class >> forMessageId: anInteger [
 
 	^self new id: anInteger
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPStatusMessageProcessor >> id [
 	^ id
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPStatusMessageProcessor >> id: anObject [
 	id := anObject
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 DAPStatusMessageProcessor >> printOn: aStream [
 
 	aStream
@@ -35,7 +35,7 @@ DAPStatusMessageProcessor >> printOn: aStream [
 		<< ')'
 ]
 
-{ #category : #messages }
+{ #category : 'messages' }
 DAPStatusMessageProcessor >> processMessage: aMessage [
 
 	aMessage request_seq = id ifFalse: [ ^ false ].
@@ -44,7 +44,7 @@ DAPStatusMessageProcessor >> processMessage: aMessage [
 	^ true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPStatusMessageProcessor >> result [
 	^ result
 ]

@@ -3,16 +3,16 @@ Arguments for 'modules' request.
 
 "
 Class {
-	#name : #DAPModulesArguments,
-	#superclass : #DAPObject,
+	#name : 'DAPModulesArguments',
+	#superclass : 'DAPObject',
 	#instVars : [
 		'moduleCount',
 		'startModule'
 	],
-	#category : #'DebugAdapterProtocol-Protocol'
+	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : #'json - configuration' }
+{ #category : 'json - configuration' }
 DAPModulesArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -23,13 +23,13 @@ DAPModulesArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DAPModulesArguments >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitModulesArguments: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPModulesArguments >> moduleCount [
 	"The number of modules to return. If moduleCount is not specified or 0, all modules are returned.
 	integer
@@ -38,7 +38,7 @@ DAPModulesArguments >> moduleCount [
 	^ moduleCount
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPModulesArguments >> moduleCount: anObject [
 	"The number of modules to return. If moduleCount is not specified or 0, all modules are returned.
 	integer
@@ -48,14 +48,14 @@ DAPModulesArguments >> moduleCount: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPModulesArguments >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
 	^ #(moduleCount startModule )
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPModulesArguments >> startModule [
 	"The index of the first module to return; if omitted modules start at 0.
 	integer
@@ -64,7 +64,7 @@ DAPModulesArguments >> startModule [
 	^ startModule
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPModulesArguments >> startModule: anObject [
 	"The index of the first module to return; if omitted modules start at 0.
 	integer

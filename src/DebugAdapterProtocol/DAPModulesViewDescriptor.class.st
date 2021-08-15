@@ -4,15 +4,15 @@ For now it only specifies the columns to be shown in the modules view.
 
 "
 Class {
-	#name : #DAPModulesViewDescriptor,
-	#superclass : #DAPObject,
+	#name : 'DAPModulesViewDescriptor',
+	#superclass : 'DAPObject',
 	#instVars : [
 		'columns'
 	],
-	#category : #'DebugAdapterProtocol-Protocol'
+	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : #'json - configuration' }
+{ #category : 'json - configuration' }
 DAPModulesViewDescriptor class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -22,20 +22,20 @@ DAPModulesViewDescriptor class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DAPModulesViewDescriptor >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitModulesViewDescriptor: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPModulesViewDescriptor >> columns [
 	"Auto-generated method"
 
 	^ columns
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPModulesViewDescriptor >> columns: anObject [
 	"Auto-generated method"
 
@@ -43,7 +43,7 @@ DAPModulesViewDescriptor >> columns: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPModulesViewDescriptor >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

@@ -3,12 +3,12 @@ The event indicates that debugging of the debuggee has terminated. This does ** 
 
 "
 Class {
-	#name : #DAPTerminatedEvent,
-	#superclass : #DAPEvent,
-	#category : #'DebugAdapterProtocol-Protocol'
+	#name : 'DAPTerminatedEvent',
+	#superclass : 'DAPEvent',
+	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : #'json - configuration' }
+{ #category : 'json - configuration' }
 DAPTerminatedEvent class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -19,27 +19,27 @@ DAPTerminatedEvent class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPTerminatedEvent class >> eventEnums [
 	"Enumerated types for the associated attribute"
 
 	^ #(terminated )
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DAPTerminatedEvent >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitTerminatedEvent: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPTerminatedEvent >> body [
 	"Auto-generated method"
 
 	^ body
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPTerminatedEvent >> body: anObject [
 	"Auto-generated method"
 
@@ -47,7 +47,7 @@ DAPTerminatedEvent >> body: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPTerminatedEvent >> event [
 	"terminated: 
 	Auto-generated method"
@@ -55,7 +55,7 @@ DAPTerminatedEvent >> event [
 	^ event ifNil: [ 'terminated' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPTerminatedEvent >> event: anObject [
 	"terminated: 
 	Auto-generated method"
@@ -64,14 +64,14 @@ DAPTerminatedEvent >> event: anObject [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPTerminatedEvent >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
 	^ #(body event restart )
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPTerminatedEvent >> restart [
 	"A debug adapter may set 'restart' to true (or to an arbitrary object) to request that the front end restarts the session.
 The value is not interpreted by the client and passed unmodified as an attribute '__restart' to the 'launch' and 'attach' requests.
@@ -83,7 +83,7 @@ The value is not interpreted by the client and passed unmodified as an attribute
 	^ result
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPTerminatedEvent >> restart: anObject [
 	"A debug adapter may set 'restart' to true (or to an arbitrary object) to request that the front end restarts the session.
 The value is not interpreted by the client and passed unmodified as an attribute '__restart' to the 'launch' and 'attach' requests.

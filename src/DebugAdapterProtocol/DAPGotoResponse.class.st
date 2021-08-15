@@ -3,12 +3,12 @@ Response to 'goto' request. This is just an acknowledgement, so no body field is
 
 "
 Class {
-	#name : #DAPGotoResponse,
-	#superclass : #DAPResponse,
-	#category : #'DebugAdapterProtocol-Protocol'
+	#name : 'DAPGotoResponse',
+	#superclass : 'DAPResponse',
+	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : #'json - configuration' }
+{ #category : 'json - configuration' }
 DAPGotoResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -17,13 +17,13 @@ DAPGotoResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DAPGotoResponse >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitGotoResponse: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPGotoResponse >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

@@ -1,41 +1,41 @@
 Class {
-	#name : #DAPThreadStateChanged,
-	#superclass : #DAPStateChanged,
+	#name : 'DAPThreadStateChanged',
+	#superclass : 'DAPStateChanged',
 	#instVars : [
 		'thread'
 	],
-	#category : #'DebugAdapterProtocol-Announcments'
+	#category : 'DebugAdapterProtocol-Announcments'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 DAPThreadStateChanged >> isContinued [
 
 	^ thread isContinued
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 DAPThreadStateChanged >> isStopped [
 
 	^ thread isStopped
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 DAPThreadStateChanged >> isTerminated [
 
 	^ thread isTerminated
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPThreadStateChanged >> thread [
 	^ thread
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPThreadStateChanged >> thread: anObject [
 	thread := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPThreadStateChanged >> threadId [ 
 
 	^ thread threadId

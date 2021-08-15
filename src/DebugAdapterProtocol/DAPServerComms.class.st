@@ -7,55 +7,55 @@ It is up to the debugger to configure the server comms object appropriately and 
 
 "
 Class {
-	#name : #DAPServerComms,
-	#superclass : #Object,
+	#name : 'DAPServerComms',
+	#superclass : 'Object',
 	#instVars : [
 		'client'
 	],
-	#category : #'DebugAdapterProtocol-Client'
+	#category : 'DebugAdapterProtocol-Client'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPServerComms >> client [
 	^ client
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPServerComms >> client: anObject [
 	client := anObject
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 DAPServerComms >> connect [
 
 	self subclassResponsibility
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 DAPServerComms >> disconnect [
 
 	self subclassResponsibility
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPServerComms >> flush [ 
 
 	self subclassResponsibility
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 DAPServerComms >> isConnected [ 
 
 	^ self subclassResponsibility 
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 DAPServerComms >> isDisconnected [ 
 
 	^ self subclassResponsibility 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPServerComms >> nextPutAll: aByteArray [
 
 	self subclassResponsibility 
