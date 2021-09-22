@@ -8,12 +8,14 @@ Class {
 BaselineOfDAPChromeDevTools >> baseline: spec [
 	<baseline>
 	spec for: #'common' do: [
-		spec 
+		spec
 			baseline: 'DebugAdapterProtocol' with: [
-				spec repository: 'github://feenkcom/pharo-debugadapterprotocol:v0.5.154/src' ];
+				spec repository: 'github://feenkcom/pharo-debugadapterprotocol:v0.5.155/src' ].
+		spec
 			baseline: 'Chrome' with: [
-				spec repository: 'github://feenkcom/Pharo-Chrome:v0.5.132/repository' ].
-		spec package: 'DebugAdapterProtocol-ChromeDevTools' with: [
-				spec requires: #('DebugAdapterProtocol' 'Chrome' ). ]. ].
+				spec repository: 'github://feenkcom/Pharo-Chrome:v0.5.133/repository' ].
 
+		spec package: 'DebugAdapterProtocol-ChromeDevTools' with: [
+			spec requires: #('DebugAdapterProtocol' 'Chrome') ].
+	]
 ]
