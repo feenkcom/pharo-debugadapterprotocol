@@ -1,23 +1,23 @@
 Class {
-	#name : #DAPCDTScope,
-	#superclass : #DAPScope,
+	#name : 'DAPCDTScope',
+	#superclass : 'DAPScope',
 	#instVars : [
 		'cdtScope'
 	],
-	#category : #'DebugAdapterProtocol-ChromeDevTools'
+	#category : 'DebugAdapterProtocol-ChromeDevTools'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPCDTScope >> cdtScope [
 	^ cdtScope
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPCDTScope >> cdtScope: anObject [
 	cdtScope := anObject
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 DAPCDTScope >> getVariables [
 
 	^ cdtScope properties collect: [ :each |
@@ -27,26 +27,26 @@ DAPCDTScope >> getVariables [
 			scope: self ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 DAPCDTScope >> initialize [
 
 	super initialize.
 	expensive := false.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPCDTScope >> name [ 
 
 	^ name ifNil: [ name := cdtScope displayName ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPCDTScope >> presentationHint [ 
 
 	^ presentationHint ifNil: [ presentationHint := cdtScope typeOrNil ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPCDTScope >> variables [
 
 	^ variables ifNil: [ variables := self getVariables ]

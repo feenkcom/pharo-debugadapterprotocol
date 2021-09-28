@@ -3,8 +3,8 @@ Arguments for 'runInTerminal' request.
 
 "
 Class {
-	#name : 'DAPRunInTerminalRequestArguments',
-	#superclass : 'DAPObject',
+	#name : #DAPRunInTerminalRequestArguments,
+	#superclass : #DAPObject,
 	#instVars : [
 		'args',
 		'cwd',
@@ -12,10 +12,10 @@ Class {
 		'kind',
 		'title'
 	],
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPRunInTerminalRequestArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -29,20 +29,20 @@ DAPRunInTerminalRequestArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPRunInTerminalRequestArguments class >> kindEnums [
 	"Enumerated types for the associated attribute"
 
 	^ #(integrated external )
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPRunInTerminalRequestArguments >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitRunInTerminalRequestArguments: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPRunInTerminalRequestArguments >> args [
 	"List of arguments. The first argument is the command to run.
 	array
@@ -51,7 +51,7 @@ DAPRunInTerminalRequestArguments >> args [
 	^ args
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPRunInTerminalRequestArguments >> args: anObject [
 	"List of arguments. The first argument is the command to run.
 	array
@@ -61,7 +61,7 @@ DAPRunInTerminalRequestArguments >> args: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPRunInTerminalRequestArguments >> cwd [
 	"Working directory for the command. For non-empty, valid paths this typically results in execution of a change directory command.
 	string
@@ -70,7 +70,7 @@ DAPRunInTerminalRequestArguments >> cwd [
 	^ cwd
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPRunInTerminalRequestArguments >> cwd: anObject [
 	"Working directory for the command. For non-empty, valid paths this typically results in execution of a change directory command.
 	string
@@ -80,7 +80,7 @@ DAPRunInTerminalRequestArguments >> cwd: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPRunInTerminalRequestArguments >> env [
 	"Environment key-value pairs that are added to or removed from the default environment.
 	object
@@ -89,7 +89,7 @@ DAPRunInTerminalRequestArguments >> env [
 	^ env
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPRunInTerminalRequestArguments >> env: anObject [
 	"Environment key-value pairs that are added to or removed from the default environment.
 	object
@@ -99,7 +99,7 @@ DAPRunInTerminalRequestArguments >> env: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPRunInTerminalRequestArguments >> kind [
 	"What kind of terminal to launch.
 	string
@@ -110,7 +110,7 @@ DAPRunInTerminalRequestArguments >> kind [
 	^ kind ifNil: [ 'integrated' ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPRunInTerminalRequestArguments >> kind: anObject [
 	"What kind of terminal to launch.
 	string
@@ -122,14 +122,14 @@ DAPRunInTerminalRequestArguments >> kind: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPRunInTerminalRequestArguments >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
 	^ #(args cwd env kind title )
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPRunInTerminalRequestArguments >> title [
 	"Optional title of the terminal.
 	string
@@ -138,7 +138,7 @@ DAPRunInTerminalRequestArguments >> title [
 	^ title
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPRunInTerminalRequestArguments >> title: anObject [
 	"Optional title of the terminal.
 	string

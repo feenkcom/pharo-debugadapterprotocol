@@ -3,12 +3,12 @@ Response to 'restartFrame' request. This is just an acknowledgement, so no body 
 
 "
 Class {
-	#name : 'DAPRestartFrameResponse',
-	#superclass : 'DAPResponse',
-	#category : 'DebugAdapterProtocol-Protocol'
+	#name : #DAPRestartFrameResponse,
+	#superclass : #DAPResponse,
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPRestartFrameResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -17,13 +17,13 @@ DAPRestartFrameResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPRestartFrameResponse >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitRestartFrameResponse: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPRestartFrameResponse >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

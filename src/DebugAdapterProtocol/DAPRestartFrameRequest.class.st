@@ -5,19 +5,19 @@ Clients should only call this request if the capability 'supportsRestartFrame' i
 
 "
 Class {
-	#name : 'DAPRestartFrameRequest',
-	#superclass : 'DAPRequest',
-	#category : 'DebugAdapterProtocol-Protocol'
+	#name : #DAPRestartFrameRequest,
+	#superclass : #DAPRequest,
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPRestartFrameRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
 	^ #(restartFrame )
 ]
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPRestartFrameRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -28,20 +28,20 @@ DAPRestartFrameRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPRestartFrameRequest >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitRestartFrameRequest: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPRestartFrameRequest >> arguments [
 	"Auto-generated method"
 
 	^ arguments
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPRestartFrameRequest >> arguments: anObject [
 	"Auto-generated method"
 
@@ -52,7 +52,7 @@ DAPRestartFrameRequest >> arguments: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPRestartFrameRequest >> command [
 	"restartFrame: 
 	Auto-generated method"
@@ -60,7 +60,7 @@ DAPRestartFrameRequest >> command [
 	^ command ifNil: [ 'restartFrame' ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPRestartFrameRequest >> command: anObject [
 	"restartFrame: 
 	Auto-generated method"
@@ -69,7 +69,7 @@ DAPRestartFrameRequest >> command: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPRestartFrameRequest >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

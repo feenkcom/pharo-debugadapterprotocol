@@ -4,12 +4,12 @@ Contains possible locations for source breakpoints.
 
 "
 Class {
-	#name : 'DAPBreakpointLocationsResponse',
-	#superclass : 'DAPResponse',
-	#category : 'DebugAdapterProtocol-Protocol'
+	#name : #DAPBreakpointLocationsResponse,
+	#superclass : #DAPResponse,
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPBreakpointLocationsResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -19,20 +19,20 @@ DAPBreakpointLocationsResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPBreakpointLocationsResponse >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitBreakpointLocationsResponse: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPBreakpointLocationsResponse >> body [
 	"Auto-generated method"
 
 	^ body
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPBreakpointLocationsResponse >> body: anObject [
 	"Auto-generated method"
 
@@ -40,7 +40,7 @@ DAPBreakpointLocationsResponse >> body: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPBreakpointLocationsResponse >> breakpoints [
 	"Sorted set of possible breakpoint locations.
 	array
@@ -51,7 +51,7 @@ DAPBreakpointLocationsResponse >> breakpoints [
 	^ result
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPBreakpointLocationsResponse >> breakpoints: anObject [
 	"Sorted set of possible breakpoint locations.
 	array
@@ -60,7 +60,7 @@ DAPBreakpointLocationsResponse >> breakpoints: anObject [
 	self body at: #breakpoints put: anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPBreakpointLocationsResponse >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

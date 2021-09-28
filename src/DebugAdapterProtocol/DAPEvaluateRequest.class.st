@@ -4,19 +4,19 @@ The expression has access to any variables and arguments that are in scope.
 
 "
 Class {
-	#name : 'DAPEvaluateRequest',
-	#superclass : 'DAPRequest',
-	#category : 'DebugAdapterProtocol-Protocol'
+	#name : #DAPEvaluateRequest,
+	#superclass : #DAPRequest,
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPEvaluateRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
 	^ #(evaluate )
 ]
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPEvaluateRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -27,20 +27,20 @@ DAPEvaluateRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPEvaluateRequest >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitEvaluateRequest: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPEvaluateRequest >> arguments [
 	"Auto-generated method"
 
 	^ arguments
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPEvaluateRequest >> arguments: anObject [
 	"Auto-generated method"
 
@@ -51,7 +51,7 @@ DAPEvaluateRequest >> arguments: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPEvaluateRequest >> command [
 	"evaluate: 
 	Auto-generated method"
@@ -59,7 +59,7 @@ DAPEvaluateRequest >> command [
 	^ command ifNil: [ 'evaluate' ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPEvaluateRequest >> command: anObject [
 	"evaluate: 
 	Auto-generated method"
@@ -68,7 +68,7 @@ DAPEvaluateRequest >> command: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPEvaluateRequest >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

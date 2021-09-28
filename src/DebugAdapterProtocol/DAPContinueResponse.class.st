@@ -3,12 +3,12 @@ Response to 'continue' request.
 
 "
 Class {
-	#name : 'DAPContinueResponse',
-	#superclass : 'DAPResponse',
-	#category : 'DebugAdapterProtocol-Protocol'
+	#name : #DAPContinueResponse,
+	#superclass : #DAPResponse,
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPContinueResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -18,13 +18,13 @@ DAPContinueResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPContinueResponse >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitContinueResponse: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPContinueResponse >> allThreadsContinued [
 	"If true, the 'continue' request has ignored the specified thread and continued all threads instead.
 If this attribute is missing a value of 'true' is assumed for backward compatibility.
@@ -36,7 +36,7 @@ If this attribute is missing a value of 'true' is assumed for backward compatibi
 	^ result
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPContinueResponse >> allThreadsContinued: anObject [
 	"If true, the 'continue' request has ignored the specified thread and continued all threads instead.
 If this attribute is missing a value of 'true' is assumed for backward compatibility.
@@ -46,14 +46,14 @@ If this attribute is missing a value of 'true' is assumed for backward compatibi
 	self body at: #allThreadsContinued put: anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPContinueResponse >> body [
 	"Auto-generated method"
 
 	^ body
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPContinueResponse >> body: anObject [
 	"Auto-generated method"
 
@@ -61,7 +61,7 @@ DAPContinueResponse >> body: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPContinueResponse >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

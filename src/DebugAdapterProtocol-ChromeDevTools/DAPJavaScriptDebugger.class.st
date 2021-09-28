@@ -1,17 +1,17 @@
 Class {
-	#name : #DAPJavaScriptDebugger,
-	#superclass : #DAPDebugger,
-	#category : #'DebugAdapterProtocol-ChromeDevTools'
+	#name : 'DAPJavaScriptDebugger',
+	#superclass : 'DAPDebugger',
+	#category : 'DebugAdapterProtocol-ChromeDevTools'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPJavaScriptDebugger >> cdtDebugger: aCDTDebugger [ 
 
 	client := CDTDebuggerClient new cdtDebugger: aCDTDebugger debugger: self.
 
 ]
 
-{ #category : #'start-stop' }
+{ #category : 'start-stop' }
 DAPJavaScriptDebugger >> close [ 
 
 	self disconnect

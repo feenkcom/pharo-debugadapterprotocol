@@ -3,12 +3,12 @@ The event indicates that the debugger has begun debugging a new process. Either 
 
 "
 Class {
-	#name : 'DAPProcessEvent',
-	#superclass : 'DAPEvent',
-	#category : 'DebugAdapterProtocol-Protocol'
+	#name : #DAPProcessEvent,
+	#superclass : #DAPEvent,
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPProcessEvent class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -19,27 +19,27 @@ DAPProcessEvent class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPProcessEvent class >> eventEnums [
 	"Enumerated types for the associated attribute"
 
 	^ #(process )
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPProcessEvent >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitProcessEvent: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPProcessEvent >> body [
 	"Auto-generated method"
 
 	^ body
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPProcessEvent >> body: anObject [
 	"Auto-generated method"
 
@@ -47,7 +47,7 @@ DAPProcessEvent >> body: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPProcessEvent >> event [
 	"process: 
 	Auto-generated method"
@@ -55,7 +55,7 @@ DAPProcessEvent >> event [
 	^ event ifNil: [ 'process' ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPProcessEvent >> event: anObject [
 	"process: 
 	Auto-generated method"
@@ -64,7 +64,7 @@ DAPProcessEvent >> event: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPProcessEvent >> isLocalProcess [
 	"If true, the process is running on the same computer as the debug adapter.
 	boolean
@@ -75,7 +75,7 @@ DAPProcessEvent >> isLocalProcess [
 	^ result
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPProcessEvent >> isLocalProcess: anObject [
 	"If true, the process is running on the same computer as the debug adapter.
 	boolean
@@ -84,7 +84,7 @@ DAPProcessEvent >> isLocalProcess: anObject [
 	self body at: #isLocalProcess put: anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPProcessEvent >> name [
 	"The logical name of the process. This is usually the full path to process's executable file. Example: /home/example/myproj/program.js.
 	string
@@ -95,7 +95,7 @@ DAPProcessEvent >> name [
 	^ result
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPProcessEvent >> name: anObject [
 	"The logical name of the process. This is usually the full path to process's executable file. Example: /home/example/myproj/program.js.
 	string
@@ -104,7 +104,7 @@ DAPProcessEvent >> name: anObject [
 	self body at: #name put: anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPProcessEvent >> pointerSize [
 	"The size of a pointer or address for this process, in bits. This value may be used by clients when formatting addresses for display.
 	integer
@@ -115,7 +115,7 @@ DAPProcessEvent >> pointerSize [
 	^ result
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPProcessEvent >> pointerSize: anObject [
 	"The size of a pointer or address for this process, in bits. This value may be used by clients when formatting addresses for display.
 	integer
@@ -124,14 +124,14 @@ DAPProcessEvent >> pointerSize: anObject [
 	self body at: #pointerSize put: anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPProcessEvent >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
 	^ #(body event isLocalProcess name pointerSize startMethod systemProcessId )
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPProcessEvent >> startMethod [
 	"Describes how the debug engine started debugging this process.
 	string
@@ -147,7 +147,7 @@ DAPProcessEvent >> startMethod [
 	^ result
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPProcessEvent >> startMethod: anObject [
 	"Describes how the debug engine started debugging this process.
 	string
@@ -159,7 +159,7 @@ DAPProcessEvent >> startMethod: anObject [
 	self body at: #startMethod put: anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPProcessEvent >> systemProcessId [
 	"The system process id of the debugged process. This property will be missing for non-system processes.
 	integer
@@ -170,7 +170,7 @@ DAPProcessEvent >> systemProcessId [
 	^ result
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPProcessEvent >> systemProcessId: anObject [
 	"The system process id of the debugged process. This property will be missing for non-system processes.
 	integer

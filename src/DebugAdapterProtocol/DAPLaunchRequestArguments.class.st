@@ -3,16 +3,16 @@ Arguments for 'launch' request. Additional attributes are implementation specifi
 
 "
 Class {
-	#name : 'DAPLaunchRequestArguments',
-	#superclass : 'DAPObject',
+	#name : #DAPLaunchRequestArguments,
+	#superclass : #DAPObject,
 	#instVars : [
 		'__restart',
 		'noDebug'
 	],
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPLaunchRequestArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -23,7 +23,7 @@ DAPLaunchRequestArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPLaunchRequestArguments >> __restart [
 	"Optional data from the previous, restarted session.
 The data is sent as the 'restart' attribute of the 'terminated' event.
@@ -34,7 +34,7 @@ The client should leave the data intact.
 	^ __restart
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPLaunchRequestArguments >> __restart: anObject [
 	"Optional data from the previous, restarted session.
 The data is sent as the 'restart' attribute of the 'terminated' event.
@@ -46,13 +46,13 @@ The client should leave the data intact.
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPLaunchRequestArguments >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitLaunchRequestArguments: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPLaunchRequestArguments >> noDebug [
 	"If noDebug is true the launch request should launch the program without enabling debugging.
 	boolean
@@ -61,7 +61,7 @@ DAPLaunchRequestArguments >> noDebug [
 	^ noDebug
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPLaunchRequestArguments >> noDebug: anObject [
 	"If noDebug is true the launch request should launch the program without enabling debugging.
 	boolean
@@ -71,7 +71,7 @@ DAPLaunchRequestArguments >> noDebug: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPLaunchRequestArguments >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

@@ -3,17 +3,17 @@ Properties of a breakpoint passed to the setFunctionBreakpoints request.
 
 "
 Class {
-	#name : 'DAPFunctionBreakpoint',
-	#superclass : 'DAPObject',
+	#name : #DAPFunctionBreakpoint,
+	#superclass : #DAPObject,
 	#instVars : [
 		'condition',
 		'hitCondition',
 		'name'
 	],
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPFunctionBreakpoint class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -25,13 +25,13 @@ DAPFunctionBreakpoint class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPFunctionBreakpoint >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitFunctionBreakpoint: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPFunctionBreakpoint >> condition [
 	"An optional expression for conditional breakpoints.
 It is only honored by a debug adapter if the capability 'supportsConditionalBreakpoints' is true.
@@ -41,7 +41,7 @@ It is only honored by a debug adapter if the capability 'supportsConditionalBrea
 	^ condition
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPFunctionBreakpoint >> condition: anObject [
 	"An optional expression for conditional breakpoints.
 It is only honored by a debug adapter if the capability 'supportsConditionalBreakpoints' is true.
@@ -52,7 +52,7 @@ It is only honored by a debug adapter if the capability 'supportsConditionalBrea
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPFunctionBreakpoint >> hitCondition [
 	"An optional expression that controls how many hits of the breakpoint are ignored.
 The backend is expected to interpret the expression as needed.
@@ -63,7 +63,7 @@ The attribute is only honored by a debug adapter if the capability 'supportsHitC
 	^ hitCondition
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPFunctionBreakpoint >> hitCondition: anObject [
 	"An optional expression that controls how many hits of the breakpoint are ignored.
 The backend is expected to interpret the expression as needed.
@@ -75,7 +75,7 @@ The attribute is only honored by a debug adapter if the capability 'supportsHitC
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPFunctionBreakpoint >> name [
 	"The name of the function.
 	string
@@ -84,7 +84,7 @@ DAPFunctionBreakpoint >> name [
 	^ name
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPFunctionBreakpoint >> name: anObject [
 	"The name of the function.
 	string
@@ -94,7 +94,7 @@ DAPFunctionBreakpoint >> name: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPFunctionBreakpoint >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

@@ -1,6 +1,6 @@
 Class {
-	#name : 'DAPGdbDebugger',
-	#superclass : 'DAPDebugger',
+	#name : #DAPGdbDebugger,
+	#superclass : #DAPDebugger,
 	#instVars : [
 		'serverExecutable',
 		'program',
@@ -9,18 +9,18 @@ Class {
 	#category : 'DebugAdapterProtocol-Client'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPGdbDebugger >> arguments [
 	^ arguments
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPGdbDebugger >> arguments: anArray [ 
 
 	arguments := anArray
 ]
 
-{ #category : 'initialization' }
+{ #category : #initialization }
 DAPGdbDebugger >> connect [
 
 	localRoot ifNil: 
@@ -35,14 +35,14 @@ DAPGdbDebugger >> connect [
 	self requestAllStackTraces.
 ]
 
-{ #category : 'initialization' }
+{ #category : #initialization }
 DAPGdbDebugger >> initialize [ 
 
 	serverExecutable := '/home/alistair/.vscode/extensions/ms-vscode.cpptools-1.2.2/debugAdapters/OpenDebugAD7' asFileReference.
 	arguments := #().
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 DAPGdbDebugger >> initializeRemote [
 	| requestArguments request |
 
@@ -65,7 +65,7 @@ DAPGdbDebugger >> initializeRemote [
 	client sendMessage: request.
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 DAPGdbDebugger >> launchProgram [
 	| requestArguments |
 
@@ -89,29 +89,29 @@ DAPGdbDebugger >> launchProgram [
 	client launchWithArguments: requestArguments.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPGdbDebugger >> program [
 	^ program
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPGdbDebugger >> program: aFileReference [
 
 	program := aFileReference asFileReference 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPGdbDebugger >> serverExecutable [
 	^ serverExecutable
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPGdbDebugger >> serverExecutable: aFileReference [
 
 	serverExecutable := aFileReference asFileReference
 ]
 
-{ #category : 'initialization' }
+{ #category : #initialization }
 DAPGdbDebugger >> setFunctionBreakpoints [
 	| requestArguments |
 

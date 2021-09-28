@@ -5,12 +5,12 @@ This event should only be sent if the client has passed the value true for the '
 
 "
 Class {
-	#name : 'DAPProgressUpdateEvent',
-	#superclass : 'DAPEvent',
-	#category : 'DebugAdapterProtocol-Protocol'
+	#name : #DAPProgressUpdateEvent,
+	#superclass : #DAPEvent,
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPProgressUpdateEvent class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -21,27 +21,27 @@ DAPProgressUpdateEvent class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPProgressUpdateEvent class >> eventEnums [
 	"Enumerated types for the associated attribute"
 
 	^ #(progressUpdate )
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPProgressUpdateEvent >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitProgressUpdateEvent: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPProgressUpdateEvent >> body [
 	"Auto-generated method"
 
 	^ body
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPProgressUpdateEvent >> body: anObject [
 	"Auto-generated method"
 
@@ -49,7 +49,7 @@ DAPProgressUpdateEvent >> body: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPProgressUpdateEvent >> event [
 	"progressUpdate: 
 	Auto-generated method"
@@ -57,7 +57,7 @@ DAPProgressUpdateEvent >> event [
 	^ event ifNil: [ 'progressUpdate' ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPProgressUpdateEvent >> event: anObject [
 	"progressUpdate: 
 	Auto-generated method"
@@ -66,7 +66,7 @@ DAPProgressUpdateEvent >> event: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPProgressUpdateEvent >> message [
 	"Optional, more detailed progress message. If omitted, the previous message (if any) is used.
 	string
@@ -77,7 +77,7 @@ DAPProgressUpdateEvent >> message [
 	^ result
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPProgressUpdateEvent >> message: anObject [
 	"Optional, more detailed progress message. If omitted, the previous message (if any) is used.
 	string
@@ -86,7 +86,7 @@ DAPProgressUpdateEvent >> message: anObject [
 	self body at: #message put: anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPProgressUpdateEvent >> percentage [
 	"Optional progress percentage to display (value range: 0 to 100). If omitted no percentage will be shown.
 	number
@@ -97,7 +97,7 @@ DAPProgressUpdateEvent >> percentage [
 	^ result
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPProgressUpdateEvent >> percentage: anObject [
 	"Optional progress percentage to display (value range: 0 to 100). If omitted no percentage will be shown.
 	number
@@ -106,7 +106,7 @@ DAPProgressUpdateEvent >> percentage: anObject [
 	self body at: #percentage put: anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPProgressUpdateEvent >> progressId [
 	"The ID that was introduced in the initial 'progressStart' event.
 	string
@@ -117,7 +117,7 @@ DAPProgressUpdateEvent >> progressId [
 	^ result
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPProgressUpdateEvent >> progressId: anObject [
 	"The ID that was introduced in the initial 'progressStart' event.
 	string
@@ -126,7 +126,7 @@ DAPProgressUpdateEvent >> progressId: anObject [
 	self body at: #progressId put: anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPProgressUpdateEvent >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

@@ -3,17 +3,17 @@ Arguments for 'readMemory' request.
 
 "
 Class {
-	#name : 'DAPReadMemoryArguments',
-	#superclass : 'DAPObject',
+	#name : #DAPReadMemoryArguments,
+	#superclass : #DAPObject,
 	#instVars : [
 		'count',
 		'memoryReference',
 		'offset'
 	],
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPReadMemoryArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -25,13 +25,13 @@ DAPReadMemoryArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPReadMemoryArguments >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitReadMemoryArguments: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPReadMemoryArguments >> count [
 	"Number of bytes to read at the specified location and offset.
 	integer
@@ -40,7 +40,7 @@ DAPReadMemoryArguments >> count [
 	^ count
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPReadMemoryArguments >> count: anObject [
 	"Number of bytes to read at the specified location and offset.
 	integer
@@ -50,7 +50,7 @@ DAPReadMemoryArguments >> count: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPReadMemoryArguments >> memoryReference [
 	"Memory reference to the base location from which data should be read.
 	string
@@ -59,7 +59,7 @@ DAPReadMemoryArguments >> memoryReference [
 	^ memoryReference
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPReadMemoryArguments >> memoryReference: anObject [
 	"Memory reference to the base location from which data should be read.
 	string
@@ -69,7 +69,7 @@ DAPReadMemoryArguments >> memoryReference: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPReadMemoryArguments >> offset [
 	"Optional offset (in bytes) to be applied to the reference location before reading data. Can be negative.
 	integer
@@ -78,7 +78,7 @@ DAPReadMemoryArguments >> offset [
 	^ offset
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPReadMemoryArguments >> offset: anObject [
 	"Optional offset (in bytes) to be applied to the reference location before reading data. Can be negative.
 	integer
@@ -88,7 +88,7 @@ DAPReadMemoryArguments >> offset: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPReadMemoryArguments >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

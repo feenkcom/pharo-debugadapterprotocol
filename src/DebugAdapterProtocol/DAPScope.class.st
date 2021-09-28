@@ -3,8 +3,8 @@ A Scope is a named container for variables. Optionally a scope can map to a sour
 
 "
 Class {
-	#name : 'DAPScope',
-	#superclass : 'DAPObject',
+	#name : #DAPScope,
+	#superclass : #DAPObject,
 	#instVars : [
 		'column',
 		'endColumn',
@@ -19,10 +19,10 @@ Class {
 		'variables',
 		'variablesReference'
 	],
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPScope class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -42,13 +42,13 @@ DAPScope class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPScope >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitScope: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPScope >> column [
 	"Optional start column of the range covered by this scope.
 	integer
@@ -57,7 +57,7 @@ DAPScope >> column [
 	^ column
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPScope >> column: anObject [
 	"Optional start column of the range covered by this scope.
 	integer
@@ -67,7 +67,7 @@ DAPScope >> column: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPScope >> endColumn [
 	"Optional end column of the range covered by this scope.
 	integer
@@ -76,7 +76,7 @@ DAPScope >> endColumn [
 	^ endColumn
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPScope >> endColumn: anObject [
 	"Optional end column of the range covered by this scope.
 	integer
@@ -86,7 +86,7 @@ DAPScope >> endColumn: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPScope >> endLine [
 	"Optional end line of the range covered by this scope.
 	integer
@@ -95,7 +95,7 @@ DAPScope >> endLine [
 	^ endLine
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPScope >> endLine: anObject [
 	"Optional end line of the range covered by this scope.
 	integer
@@ -105,7 +105,7 @@ DAPScope >> endLine: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPScope >> expensive [
 	"If true, the number of variables in this scope is large or expensive to retrieve.
 	boolean
@@ -114,7 +114,7 @@ DAPScope >> expensive [
 	^ expensive
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPScope >> expensive: anObject [
 	"If true, the number of variables in this scope is large or expensive to retrieve.
 	boolean
@@ -124,7 +124,7 @@ DAPScope >> expensive: anObject [
 
 ]
 
-{ #category : 'ui' }
+{ #category : #ui }
 DAPScope >> gtVariablesFor: aView [
 	<gtView>
 
@@ -137,7 +137,7 @@ DAPScope >> gtVariablesFor: aView [
 		column: 'Value' text: [ :item | item value ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPScope >> indexedVariables [
 	"The number of indexed variables in this scope.
 The client can use this optional information to present the variables in a paged UI and fetch them in chunks.
@@ -147,7 +147,7 @@ The client can use this optional information to present the variables in a paged
 	^ indexedVariables
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPScope >> indexedVariables: anObject [
 	"The number of indexed variables in this scope.
 The client can use this optional information to present the variables in a paged UI and fetch them in chunks.
@@ -158,7 +158,7 @@ The client can use this optional information to present the variables in a paged
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPScope >> line [
 	"Optional start line of the range covered by this scope.
 	integer
@@ -167,7 +167,7 @@ DAPScope >> line [
 	^ line
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPScope >> line: anObject [
 	"Optional start line of the range covered by this scope.
 	integer
@@ -177,7 +177,7 @@ DAPScope >> line: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPScope >> name [
 	"Name of the scope such as 'Arguments', 'Locals', or 'Registers'. This string is shown in the UI as is and can be translated.
 	string
@@ -186,7 +186,7 @@ DAPScope >> name [
 	^ name
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPScope >> name: anObject [
 	"Name of the scope such as 'Arguments', 'Locals', or 'Registers'. This string is shown in the UI as is and can be translated.
 	string
@@ -196,7 +196,7 @@ DAPScope >> name: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPScope >> namedVariables [
 	"The number of named variables in this scope.
 The client can use this optional information to present the variables in a paged UI and fetch them in chunks.
@@ -206,7 +206,7 @@ The client can use this optional information to present the variables in a paged
 	^ namedVariables
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPScope >> namedVariables: anObject [
 	"The number of named variables in this scope.
 The client can use this optional information to present the variables in a paged UI and fetch them in chunks.
@@ -217,7 +217,7 @@ The client can use this optional information to present the variables in a paged
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPScope >> presentationHint [
 	"An optional hint for how to present this scope in the UI. If this attribute is missing, the scope is shown with a generic UI.
 	string
@@ -226,7 +226,7 @@ DAPScope >> presentationHint [
 	^ presentationHint
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPScope >> presentationHint: anObject [
 	"An optional hint for how to present this scope in the UI. If this attribute is missing, the scope is shown with a generic UI.
 	string
@@ -236,21 +236,21 @@ DAPScope >> presentationHint: anObject [
 
 ]
 
-{ #category : 'printing' }
+{ #category : #printing }
 DAPScope >> printOn: aStream [
 
 	name ifNil: [ ^ super printOn: aStream ].
 	aStream << name
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPScope >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
 	^ #(column endColumn endLine expensive indexedVariables line name namedVariables presentationHint source variablesReference )
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPScope >> setVariableNamed: aString to: anObject [
 
 	variables detect: [ :each | each name = aString ]
@@ -258,7 +258,7 @@ DAPScope >> setVariableNamed: aString to: anObject [
 	client setVariableNamed: aString reference: variablesReference to: anObject.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPScope >> source [
 	"Optional source for this scope.
 	#/definitions/Source
@@ -267,7 +267,7 @@ DAPScope >> source [
 	^ source
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPScope >> source: anObject [
 	"Optional source for this scope.
 	#/definitions/Source
@@ -280,7 +280,7 @@ DAPScope >> source: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPScope >> variables [ 
 	"Answer the variables for the receiver.
 	The debugger may not be in a state to retrieve the variables, in which case, answer nil"
@@ -294,7 +294,7 @@ DAPScope >> variables [
 		variables ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPScope >> variablesReference [
 	"The variables of this scope can be retrieved by passing the value of variablesReference to the VariablesRequest.
 	integer
@@ -303,7 +303,7 @@ DAPScope >> variablesReference [
 	^ variablesReference
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPScope >> variablesReference: anObject [
 	"The variables of this scope can be retrieved by passing the value of variablesReference to the VariablesRequest.
 	integer

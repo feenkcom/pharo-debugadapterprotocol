@@ -6,19 +6,19 @@ Clients should only call this request if the capability 'supportsFunctionBreakpo
 
 "
 Class {
-	#name : 'DAPSetFunctionBreakpointsRequest',
-	#superclass : 'DAPRequest',
-	#category : 'DebugAdapterProtocol-Protocol'
+	#name : #DAPSetFunctionBreakpointsRequest,
+	#superclass : #DAPRequest,
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetFunctionBreakpointsRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
 	^ #(setFunctionBreakpoints )
 ]
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPSetFunctionBreakpointsRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -29,20 +29,20 @@ DAPSetFunctionBreakpointsRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPSetFunctionBreakpointsRequest >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitSetFunctionBreakpointsRequest: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetFunctionBreakpointsRequest >> arguments [
 	"Auto-generated method"
 
 	^ arguments
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetFunctionBreakpointsRequest >> arguments: anObject [
 	"Auto-generated method"
 
@@ -53,7 +53,7 @@ DAPSetFunctionBreakpointsRequest >> arguments: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetFunctionBreakpointsRequest >> command [
 	"setFunctionBreakpoints: 
 	Auto-generated method"
@@ -61,7 +61,7 @@ DAPSetFunctionBreakpointsRequest >> command [
 	^ command ifNil: [ 'setFunctionBreakpoints' ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetFunctionBreakpointsRequest >> command: anObject [
 	"setFunctionBreakpoints: 
 	Auto-generated method"
@@ -70,7 +70,7 @@ DAPSetFunctionBreakpointsRequest >> command: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetFunctionBreakpointsRequest >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

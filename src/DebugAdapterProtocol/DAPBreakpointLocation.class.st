@@ -3,18 +3,18 @@ Properties of a breakpoint location returned from the 'breakpointLocations' requ
 
 "
 Class {
-	#name : 'DAPBreakpointLocation',
-	#superclass : 'DAPObject',
+	#name : #DAPBreakpointLocation,
+	#superclass : #DAPObject,
 	#instVars : [
 		'column',
 		'endColumn',
 		'endLine',
 		'line'
 	],
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPBreakpointLocation class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -27,13 +27,13 @@ DAPBreakpointLocation class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPBreakpointLocation >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitBreakpointLocation: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPBreakpointLocation >> column [
 	"Optional start column of breakpoint location.
 	integer
@@ -42,7 +42,7 @@ DAPBreakpointLocation >> column [
 	^ column
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPBreakpointLocation >> column: anObject [
 	"Optional start column of breakpoint location.
 	integer
@@ -52,7 +52,7 @@ DAPBreakpointLocation >> column: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPBreakpointLocation >> endColumn [
 	"Optional end column of breakpoint location if the location covers a range.
 	integer
@@ -61,7 +61,7 @@ DAPBreakpointLocation >> endColumn [
 	^ endColumn
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPBreakpointLocation >> endColumn: anObject [
 	"Optional end column of breakpoint location if the location covers a range.
 	integer
@@ -71,7 +71,7 @@ DAPBreakpointLocation >> endColumn: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPBreakpointLocation >> endLine [
 	"Optional end line of breakpoint location if the location covers a range.
 	integer
@@ -80,7 +80,7 @@ DAPBreakpointLocation >> endLine [
 	^ endLine
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPBreakpointLocation >> endLine: anObject [
 	"Optional end line of breakpoint location if the location covers a range.
 	integer
@@ -90,7 +90,7 @@ DAPBreakpointLocation >> endLine: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPBreakpointLocation >> line [
 	"Start line of breakpoint location.
 	integer
@@ -99,7 +99,7 @@ DAPBreakpointLocation >> line [
 	^ line
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPBreakpointLocation >> line: anObject [
 	"Start line of breakpoint location.
 	integer
@@ -109,7 +109,7 @@ DAPBreakpointLocation >> line: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPBreakpointLocation >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

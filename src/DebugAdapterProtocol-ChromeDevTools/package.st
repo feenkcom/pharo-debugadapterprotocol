@@ -1,1 +1,1 @@
-Package { #name : #'DebugAdapterProtocol-ChromeDevTools' }
+Package { #name : 'DebugAdapterProtocol-ChromeDevTools' }

@@ -8,19 +8,19 @@ The list of possible targets for a given source line can be retrieved via the 's
 
 "
 Class {
-	#name : 'DAPStepInRequest',
-	#superclass : 'DAPRequest',
-	#category : 'DebugAdapterProtocol-Protocol'
+	#name : #DAPStepInRequest,
+	#superclass : #DAPRequest,
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStepInRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
 	^ #(stepIn )
 ]
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPStepInRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -31,20 +31,20 @@ DAPStepInRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPStepInRequest >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitStepInRequest: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStepInRequest >> arguments [
 	"Auto-generated method"
 
 	^ arguments
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStepInRequest >> arguments: anObject [
 	"Auto-generated method"
 
@@ -55,7 +55,7 @@ DAPStepInRequest >> arguments: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStepInRequest >> command [
 	"stepIn: 
 	Auto-generated method"
@@ -63,7 +63,7 @@ DAPStepInRequest >> command [
 	^ command ifNil: [ 'stepIn' ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStepInRequest >> command: anObject [
 	"stepIn: 
 	Auto-generated method"
@@ -72,7 +72,7 @@ DAPStepInRequest >> command: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStepInRequest >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

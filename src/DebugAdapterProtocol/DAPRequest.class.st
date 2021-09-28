@@ -3,16 +3,16 @@ A client or debug adapter initiated request.
 
 "
 Class {
-	#name : 'DAPRequest',
-	#superclass : 'DAPProtocolMessage',
+	#name : #DAPRequest,
+	#superclass : #DAPProtocolMessage,
 	#instVars : [
 		'arguments',
 		'command'
 	],
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -24,20 +24,20 @@ DAPRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPRequest class >> typeEnums [
 	"Enumerated types for the associated attribute"
 
 	^ #(request )
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPRequest >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitRequest: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPRequest >> arguments [
 	"Object containing arguments for the command.
 	arraybooleanintegernullnumberobjectstring
@@ -46,7 +46,7 @@ DAPRequest >> arguments [
 	^ arguments
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPRequest >> arguments: anObject [
 	"Object containing arguments for the command.
 	arraybooleanintegernullnumberobjectstring
@@ -56,7 +56,7 @@ DAPRequest >> arguments: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPRequest >> command [
 	"The command to execute.
 	string
@@ -65,7 +65,7 @@ DAPRequest >> command [
 	^ command
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPRequest >> command: anObject [
 	"The command to execute.
 	string
@@ -75,14 +75,14 @@ DAPRequest >> command: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPRequest >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
 	^ #(arguments command type )
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPRequest >> type [
 	"request: 
 	Auto-generated method"
@@ -90,7 +90,7 @@ DAPRequest >> type [
 	^ type ifNil: [ 'request' ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPRequest >> type: anObject [
 	"request: 
 	Auto-generated method"

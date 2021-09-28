@@ -1,16 +1,16 @@
 Class {
-	#name : #CDTDebuggerClient,
-	#superclass : #RemoteDebuggerClient,
+	#name : 'CDTDebuggerClient',
+	#superclass : 'RemoteDebuggerClient',
 	#instVars : [
 		'cdtDebugger'
 	],
 	#classVars : [
 		'ServerStateMapping'
 	],
-	#category : #'DebugAdapterProtocol-ChromeDevTools'
+	#category : 'DebugAdapterProtocol-ChromeDevTools'
 }
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 CDTDebuggerClient class >> initialize [ 
 
 	ServerStateMapping := { 
@@ -19,7 +19,7 @@ CDTDebuggerClient class >> initialize [
 		 } asDictionary.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CDTDebuggerClient >> capabilities [ 
 	"Answer the capabilities of the remote server"
 	<return: #DAPCapabilities>
@@ -27,12 +27,12 @@ CDTDebuggerClient >> capabilities [
 	^ DAPCapabilities new 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CDTDebuggerClient >> cdtDebugger [
 	^ cdtDebugger
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CDTDebuggerClient >> cdtDebugger: aCDTDebugger [
 
 	cdtDebugger := aCDTDebugger.
@@ -55,21 +55,21 @@ CDTDebuggerClient >> cdtDebugger: aCDTDebugger [
 		to: self
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 CDTDebuggerClient >> cdtDebugger: aCDTDebugger debugger: aDebugger [
 
 	self debugger: aDebugger.
 	self cdtDebugger: aCDTDebugger.
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 CDTDebuggerClient >> configurationDone [
 	"Let the server know we've finished configuration"
 
 	"Nothing to do yet"
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 CDTDebuggerClient >> continueThreadId: aNumber [
 	"Instruct the debugger to continue execution"
 
@@ -78,13 +78,13 @@ CDTDebuggerClient >> continueThreadId: aNumber [
 	cdtDebugger resume.
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 CDTDebuggerClient >> disconnect [ 
 
 	cdtDebugger disconnect
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CDTDebuggerClient >> getStackFrames [
 	"Convert the stack frames from the CDTDebugger to DAPStackFrames"
 	
@@ -94,40 +94,40 @@ CDTDebuggerClient >> getStackFrames [
 			cdtCallFrame: each ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 CDTDebuggerClient >> isAttached [ 
 	"The CDT Debugger doesn't have an equivalent of attached"
 
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 CDTDebuggerClient >> isConnected [
 
 	^ cdtDebugger isOpen
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 CDTDebuggerClient >> isInitialized [ 
 	"The CDT Debugger doesn't have an equivalent state"
 
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 CDTDebuggerClient >> isStopped [ 
 
 	^ cdtDebugger debuggerState = #paused
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 CDTDebuggerClient >> isTerminated [ 
 	"Terminated is the equivalent of disconnected for the CDT debugger"
 
 	^ self isConnected not
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 CDTDebuggerClient >> nextInThreadId: aNumber [
 	"Instruct the debugger to step over the next instruction"
 
@@ -135,66 +135,66 @@ CDTDebuggerClient >> nextInThreadId: aNumber [
 	cdtDebugger stepOver
 ]
 
-{ #category : #'private - cdt announcements' }
+{ #category : 'private - cdt announcements' }
 CDTDebuggerClient >> onConsoleUpdated: aCDTDebuggerConsoleUpdated [
 
 	self announce: (DAPStdoutUpdated new string: aCDTDebuggerConsoleUpdated string)
 ]
 
-{ #category : #'private - cdt announcements' }
+{ #category : 'private - cdt announcements' }
 CDTDebuggerClient >> onDebuggerClosed: aCDTDebuggerClosed [
 
 	self announce: (DAPDebuggerStateChanged new debugger: debugger)
 ]
 
-{ #category : #'private - cdt announcements' }
+{ #category : 'private - cdt announcements' }
 CDTDebuggerClient >> onDebuggerPaused: aCDTDebuggerClosed [
 
 	threads at: 1 put: (DAPCDTThreadModel new client: self).
 	self announce: (DAPDebuggerStateChanged new debugger: debugger).
 ]
 
-{ #category : #'private - cdt announcements' }
+{ #category : 'private - cdt announcements' }
 CDTDebuggerClient >> onDebuggerResumed: aCDTDebuggerClosed [
 
 	self announce: (DAPDebuggerStateChanged new debugger: debugger)
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 CDTDebuggerClient >> requestAllStackTraces [ 
 	"Stack traces are provided as part of the debugger state, so no explicit request is necessary"
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 CDTDebuggerClient >> requestAllThreads [ 
 	"Node.JS is modelled as a single thread, no action required"
 ]
 
-{ #category : #'accessing - cdt' }
+{ #category : 'accessing - cdt' }
 CDTDebuggerClient >> scriptSourceFor: aScriptId [
 
 	^ cdtDebugger scriptSourceFor: aScriptId
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CDTDebuggerClient >> serverState [ 
 
 	^ ServerStateMapping at: cdtDebugger debuggerState ifAbsent: [ cdtDebugger debuggerState ]
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 CDTDebuggerClient >> setBreakpointInFile: aFileReference lines: anArray [ 
 
 	self error: 'Not Yet Implemented'
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 CDTDebuggerClient >> setExceptionBreakpoints [
 
 	cdtDebugger setPauseOnExceptions: #all
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CDTDebuggerClient >> statusString [
 	"Answer a one-line string that represents the overall state of the debugger"
 	<return: #String>
@@ -212,13 +212,13 @@ CDTDebuggerClient >> statusString [
 	^ cdtDebugger debuggerState
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CDTDebuggerClient >> stdout [ 
 
 	^ cdtDebugger console
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 CDTDebuggerClient >> stepIntoInThreadId: aNumber [
 	"Step into the next statement"
 
@@ -226,7 +226,7 @@ CDTDebuggerClient >> stepIntoInThreadId: aNumber [
 	cdtDebugger stepInto
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 CDTDebuggerClient >> stepOutInThreadId: aNumber [
 	"Step out (of somewhere)?"
 
@@ -234,7 +234,7 @@ CDTDebuggerClient >> stepOutInThreadId: aNumber [
 	cdtDebugger stepOut
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CDTDebuggerClient >> stoppedThread [
 	<return: #DAPThreadModel>
 

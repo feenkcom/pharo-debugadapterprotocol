@@ -3,15 +3,15 @@ Arguments for 'terminateThreads' request.
 
 "
 Class {
-	#name : 'DAPTerminateThreadsArguments',
-	#superclass : 'DAPObject',
+	#name : #DAPTerminateThreadsArguments,
+	#superclass : #DAPObject,
 	#instVars : [
 		'threadIds'
 	],
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPTerminateThreadsArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -21,20 +21,20 @@ DAPTerminateThreadsArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPTerminateThreadsArguments >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitTerminateThreadsArguments: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPTerminateThreadsArguments >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
 	^ #(threadIds )
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPTerminateThreadsArguments >> threadIds [
 	"Ids of threads to be terminated.
 	array
@@ -43,7 +43,7 @@ DAPTerminateThreadsArguments >> threadIds [
 	^ threadIds
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPTerminateThreadsArguments >> threadIds: anObject [
 	"Ids of threads to be terminated.
 	array

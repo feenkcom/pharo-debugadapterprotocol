@@ -3,12 +3,12 @@ The event indicates that some source has been added, changed, or removed from th
 
 "
 Class {
-	#name : 'DAPLoadedSourceEvent',
-	#superclass : 'DAPEvent',
-	#category : 'DebugAdapterProtocol-Protocol'
+	#name : #DAPLoadedSourceEvent,
+	#superclass : #DAPEvent,
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPLoadedSourceEvent class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -19,27 +19,27 @@ DAPLoadedSourceEvent class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPLoadedSourceEvent class >> eventEnums [
 	"Enumerated types for the associated attribute"
 
 	^ #(loadedSource )
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPLoadedSourceEvent >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitLoadedSourceEvent: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPLoadedSourceEvent >> body [
 	"Auto-generated method"
 
 	^ body
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPLoadedSourceEvent >> body: anObject [
 	"Auto-generated method"
 
@@ -47,7 +47,7 @@ DAPLoadedSourceEvent >> body: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPLoadedSourceEvent >> event [
 	"loadedSource: 
 	Auto-generated method"
@@ -55,7 +55,7 @@ DAPLoadedSourceEvent >> event [
 	^ event ifNil: [ 'loadedSource' ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPLoadedSourceEvent >> event: anObject [
 	"loadedSource: 
 	Auto-generated method"
@@ -64,14 +64,14 @@ DAPLoadedSourceEvent >> event: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPLoadedSourceEvent >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
 	^ #(body event reason source )
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPLoadedSourceEvent >> reason [
 	"The reason for the event.
 	string
@@ -87,7 +87,7 @@ DAPLoadedSourceEvent >> reason [
 	^ result
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPLoadedSourceEvent >> reason: anObject [
 	"The reason for the event.
 	string
@@ -99,7 +99,7 @@ DAPLoadedSourceEvent >> reason: anObject [
 	self body at: #reason put: anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPLoadedSourceEvent >> source [
 	"The new, changed, or removed source.
 	#/definitions/Source
@@ -112,7 +112,7 @@ DAPLoadedSourceEvent >> source [
 	^ result
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPLoadedSourceEvent >> source: anObject [
 	"The new, changed, or removed source.
 	#/definitions/Source

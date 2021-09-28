@@ -7,12 +7,12 @@ The breakpoints returned are in the same order as the elements of the 'breakpoin
 
 "
 Class {
-	#name : 'DAPSetBreakpointsResponse',
-	#superclass : 'DAPResponse',
-	#category : 'DebugAdapterProtocol-Protocol'
+	#name : #DAPSetBreakpointsResponse,
+	#superclass : #DAPResponse,
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPSetBreakpointsResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -22,20 +22,20 @@ DAPSetBreakpointsResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPSetBreakpointsResponse >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitSetBreakpointsResponse: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetBreakpointsResponse >> body [
 	"Auto-generated method"
 
 	^ body
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetBreakpointsResponse >> body: anObject [
 	"Auto-generated method"
 
@@ -43,7 +43,7 @@ DAPSetBreakpointsResponse >> body: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetBreakpointsResponse >> breakpoints [
 	"Information about the breakpoints.
 The array elements are in the same order as the elements of the 'breakpoints' (or the deprecated 'lines') array in the arguments.
@@ -55,7 +55,7 @@ The array elements are in the same order as the elements of the 'breakpoints' (o
 	^ result
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetBreakpointsResponse >> breakpoints: anObject [
 	"Information about the breakpoints.
 The array elements are in the same order as the elements of the 'breakpoints' (or the deprecated 'lines') array in the arguments.
@@ -65,7 +65,7 @@ The array elements are in the same order as the elements of the 'breakpoints' (o
 	self body at: #breakpoints put: anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetBreakpointsResponse >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

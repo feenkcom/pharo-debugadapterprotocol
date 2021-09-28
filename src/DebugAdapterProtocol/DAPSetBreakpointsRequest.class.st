@@ -5,19 +5,19 @@ When a breakpoint is hit, a 'stopped' event (with reason 'breakpoint') is genera
 
 "
 Class {
-	#name : 'DAPSetBreakpointsRequest',
-	#superclass : 'DAPRequest',
-	#category : 'DebugAdapterProtocol-Protocol'
+	#name : #DAPSetBreakpointsRequest,
+	#superclass : #DAPRequest,
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetBreakpointsRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
 	^ #(setBreakpoints )
 ]
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPSetBreakpointsRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -28,20 +28,20 @@ DAPSetBreakpointsRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPSetBreakpointsRequest >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitSetBreakpointsRequest: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetBreakpointsRequest >> arguments [
 	"Auto-generated method"
 
 	^ arguments
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetBreakpointsRequest >> arguments: anObject [
 	"Auto-generated method"
 
@@ -52,7 +52,7 @@ DAPSetBreakpointsRequest >> arguments: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetBreakpointsRequest >> command [
 	"setBreakpoints: 
 	Auto-generated method"
@@ -60,7 +60,7 @@ DAPSetBreakpointsRequest >> command [
 	^ command ifNil: [ 'setBreakpoints' ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetBreakpointsRequest >> command: anObject [
 	"setBreakpoints: 
 	Auto-generated method"
@@ -69,7 +69,7 @@ DAPSetBreakpointsRequest >> command: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetBreakpointsRequest >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

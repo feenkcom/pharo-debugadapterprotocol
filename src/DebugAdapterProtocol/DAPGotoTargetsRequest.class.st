@@ -5,19 +5,19 @@ Clients should only call this request if the capability 'supportsGotoTargetsRequ
 
 "
 Class {
-	#name : 'DAPGotoTargetsRequest',
-	#superclass : 'DAPRequest',
-	#category : 'DebugAdapterProtocol-Protocol'
+	#name : #DAPGotoTargetsRequest,
+	#superclass : #DAPRequest,
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPGotoTargetsRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
 	^ #(gotoTargets )
 ]
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPGotoTargetsRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -28,20 +28,20 @@ DAPGotoTargetsRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPGotoTargetsRequest >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitGotoTargetsRequest: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPGotoTargetsRequest >> arguments [
 	"Auto-generated method"
 
 	^ arguments
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPGotoTargetsRequest >> arguments: anObject [
 	"Auto-generated method"
 
@@ -52,7 +52,7 @@ DAPGotoTargetsRequest >> arguments: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPGotoTargetsRequest >> command [
 	"gotoTargets: 
 	Auto-generated method"
@@ -60,7 +60,7 @@ DAPGotoTargetsRequest >> command [
 	^ command ifNil: [ 'gotoTargets' ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPGotoTargetsRequest >> command: anObject [
 	"gotoTargets: 
 	Auto-generated method"
@@ -69,7 +69,7 @@ DAPGotoTargetsRequest >> command: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPGotoTargetsRequest >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

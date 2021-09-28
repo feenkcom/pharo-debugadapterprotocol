@@ -1,10 +1,10 @@
 Class {
-	#name : 'DAPSocketStream',
-	#superclass : 'SocketStream',
+	#name : #DAPSocketStream,
+	#superclass : #SocketStream,
 	#category : 'DebugAdapterProtocol-Utilities'
 }
 
-{ #category : 'stream in' }
+{ #category : #'stream in' }
 DAPSocketStream >> upToAll: aStringOrByteArray limit: nBytes [
 	"Answer a subcollection from the current access position to the occurrence (if any, but not inclusive) of aStringOrByteArray. If aCollection is not in the stream, or not found within nBytes answer the available contents of the stream"
 

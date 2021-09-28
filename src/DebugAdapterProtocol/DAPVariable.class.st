@@ -8,8 +8,8 @@ The client can use this optional information to present the children in a paged 
 
 "
 Class {
-	#name : 'DAPVariable',
-	#superclass : 'DAPObject',
+	#name : #DAPVariable,
+	#superclass : #DAPObject,
 	#instVars : [
 		'evaluateName',
 		'indexedVariables',
@@ -22,10 +22,10 @@ Class {
 		'variablesReference',
 		'scope'
 	],
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPVariable class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -43,13 +43,13 @@ DAPVariable class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPVariable >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitVariable: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPVariable >> evaluateName [
 	"Optional evaluatable name of this variable which can be passed to the 'EvaluateRequest' to fetch the variable's value.
 	string
@@ -58,7 +58,7 @@ DAPVariable >> evaluateName [
 	^ evaluateName
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPVariable >> evaluateName: anObject [
 	"Optional evaluatable name of this variable which can be passed to the 'EvaluateRequest' to fetch the variable's value.
 	string
@@ -68,7 +68,7 @@ DAPVariable >> evaluateName: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPVariable >> indexedVariables [
 	"The number of indexed child variables.
 The client can use this optional information to present the children in a paged UI and fetch them in chunks.
@@ -78,7 +78,7 @@ The client can use this optional information to present the children in a paged 
 	^ indexedVariables
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPVariable >> indexedVariables: anObject [
 	"The number of indexed child variables.
 The client can use this optional information to present the children in a paged UI and fetch them in chunks.
@@ -89,7 +89,7 @@ The client can use this optional information to present the children in a paged 
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPVariable >> memoryReference [
 	"Optional memory reference for the variable if the variable represents executable code, such as a function pointer.
 This attribute is only required if the client has passed the value true for the 'supportsMemoryReferences' capability of the 'initialize' request.
@@ -99,7 +99,7 @@ This attribute is only required if the client has passed the value true for the 
 	^ memoryReference
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPVariable >> memoryReference: anObject [
 	"Optional memory reference for the variable if the variable represents executable code, such as a function pointer.
 This attribute is only required if the client has passed the value true for the 'supportsMemoryReferences' capability of the 'initialize' request.
@@ -110,7 +110,7 @@ This attribute is only required if the client has passed the value true for the 
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPVariable >> name [
 	"The variable's name.
 	string
@@ -119,7 +119,7 @@ DAPVariable >> name [
 	^ name
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPVariable >> name: anObject [
 	"The variable's name.
 	string
@@ -129,7 +129,7 @@ DAPVariable >> name: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPVariable >> namedVariables [
 	"The number of named child variables.
 The client can use this optional information to present the children in a paged UI and fetch them in chunks.
@@ -139,7 +139,7 @@ The client can use this optional information to present the children in a paged 
 	^ namedVariables
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPVariable >> namedVariables: anObject [
 	"The number of named child variables.
 The client can use this optional information to present the children in a paged UI and fetch them in chunks.
@@ -150,7 +150,7 @@ The client can use this optional information to present the children in a paged 
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPVariable >> pharoValue [
 	"Answer the receiver's value converted to the equivalent Pharo object"
 
@@ -158,7 +158,7 @@ DAPVariable >> pharoValue [
 	^ self value
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPVariable >> presentationHint [
 	"Properties of a variable that can be used to determine how to render the variable in the UI.
 	#/definitions/VariablePresentationHint
@@ -167,7 +167,7 @@ DAPVariable >> presentationHint [
 	^ presentationHint
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPVariable >> presentationHint: anObject [
 	"Properties of a variable that can be used to determine how to render the variable in the UI.
 	#/definitions/VariablePresentationHint
@@ -180,30 +180,30 @@ DAPVariable >> presentationHint: anObject [
 
 ]
 
-{ #category : 'printing' }
+{ #category : #printing }
 DAPVariable >> printOn: aStream [
 
 	aStream << self value asString
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPVariable >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
 	^ #(evaluateName indexedVariables memoryReference name namedVariables presentationHint type value variablesReference )
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPVariable >> scope [
 	^ scope
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPVariable >> scope: anObject [
 	scope := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPVariable >> setValue: anObject [
 	"Update the receiver's value in the debugger"
 
@@ -211,7 +211,7 @@ DAPVariable >> setValue: anObject [
 	self value: anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPVariable >> type [
 	"The type of the variable's value. Typically shown in the UI when hovering over the value.
 This attribute should only be returned by a debug adapter if the client has passed the value true for the 'supportsVariableType' capability of the 'initialize' request.
@@ -221,7 +221,7 @@ This attribute should only be returned by a debug adapter if the client has pass
 	^ type
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPVariable >> type: anObject [
 	"The type of the variable's value. Typically shown in the UI when hovering over the value.
 This attribute should only be returned by a debug adapter if the client has passed the value true for the 'supportsVariableType' capability of the 'initialize' request.
@@ -232,7 +232,7 @@ This attribute should only be returned by a debug adapter if the client has pass
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPVariable >> value [
 	"The variable's value. This can be a multi-line text, e.g. for a function the body of a function.
 	string
@@ -241,7 +241,7 @@ DAPVariable >> value [
 	^ value
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPVariable >> value: anObject [
 	"The variable's value. This can be a multi-line text, e.g. for a function the body of a function.
 	string
@@ -251,7 +251,7 @@ DAPVariable >> value: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPVariable >> variablesReference [
 	"If variablesReference is > 0, the variable is structured and its children can be retrieved by passing variablesReference to the VariablesRequest.
 	integer
@@ -260,7 +260,7 @@ DAPVariable >> variablesReference [
 	^ variablesReference
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPVariable >> variablesReference: anObject [
 	"If variablesReference is > 0, the variable is structured and its children can be retrieved by passing variablesReference to the VariablesRequest.
 	integer

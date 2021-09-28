@@ -3,12 +3,12 @@ Some predefined types for the CompletionItem. Please note that not all clients h
 
 "
 Class {
-	#name : 'DAPCompletionItemType',
-	#superclass : 'DAPObject',
-	#category : 'DebugAdapterProtocol-Protocol'
+	#name : #DAPCompletionItemType,
+	#superclass : #DAPObject,
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPCompletionItemType class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -17,13 +17,13 @@ DAPCompletionItemType class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPCompletionItemType >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitCompletionItemType: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCompletionItemType >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

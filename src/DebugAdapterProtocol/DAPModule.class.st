@@ -10,8 +10,8 @@ we recommend to re-use attributes from the 'recommended' list below first, and o
 
 "
 Class {
-	#name : 'DAPModule',
-	#superclass : 'DAPObject',
+	#name : #DAPModule,
+	#superclass : #DAPObject,
 	#instVars : [
 		'addressRange',
 		'dateTimeStamp',
@@ -31,10 +31,10 @@ Class {
 		'vsPreferredLoadAddress',
 		'vsLoadOrder'
 	],
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPModule class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -54,13 +54,13 @@ DAPModule class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPModule >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitModule: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPModule >> addressRange [
 	"Address range covered by this module.
 	string
@@ -69,7 +69,7 @@ DAPModule >> addressRange [
 	^ addressRange
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPModule >> addressRange: anObject [
 	"Address range covered by this module.
 	string
@@ -79,7 +79,7 @@ DAPModule >> addressRange: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPModule >> dateTimeStamp [
 	"Module created or modified.
 	string
@@ -88,7 +88,7 @@ DAPModule >> dateTimeStamp [
 	^ dateTimeStamp
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPModule >> dateTimeStamp: anObject [
 	"Module created or modified.
 	string
@@ -98,7 +98,7 @@ DAPModule >> dateTimeStamp: anObject [
 
 ]
 
-{ #category : 'ui' }
+{ #category : #ui }
 DAPModule >> gtSourceFor: aView [
 	<gtView>
 	| fileReference |
@@ -113,7 +113,7 @@ DAPModule >> gtSourceFor: aView [
 		view: #gtStyledCodeFor:.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPModule >> id [
 	"Unique identifier for the module.
 	integerstring
@@ -122,7 +122,7 @@ DAPModule >> id [
 	^ id
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPModule >> id: anObject [
 	"Unique identifier for the module.
 	integerstring
@@ -132,7 +132,7 @@ DAPModule >> id: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPModule >> isOptimized [
 	"True if the module is optimized.
 	boolean
@@ -141,7 +141,7 @@ DAPModule >> isOptimized [
 	^ isOptimized
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPModule >> isOptimized: anObject [
 	"True if the module is optimized.
 	boolean
@@ -151,7 +151,7 @@ DAPModule >> isOptimized: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPModule >> isUserCode [
 	"True if the module is considered 'user code' by a debugger that supports 'Just My Code'.
 	boolean
@@ -160,7 +160,7 @@ DAPModule >> isUserCode [
 	^ isUserCode
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPModule >> isUserCode: anObject [
 	"True if the module is considered 'user code' by a debugger that supports 'Just My Code'.
 	boolean
@@ -170,7 +170,7 @@ DAPModule >> isUserCode: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPModule >> name [
 	"A name of the module.
 	string
@@ -179,7 +179,7 @@ DAPModule >> name [
 	^ name
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPModule >> name: anObject [
 	"A name of the module.
 	string
@@ -189,7 +189,7 @@ DAPModule >> name: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPModule >> package [
 	"The package that owns the module.
 	string
@@ -198,7 +198,7 @@ DAPModule >> package [
 	^ package
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPModule >> package: anObject [
 	"The package that owns the module.
 	string
@@ -208,7 +208,7 @@ DAPModule >> package: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPModule >> path [
 	"optional but recommended attributes.
 always try to use these first before introducing additional attributes.
@@ -220,7 +220,7 @@ Logical full path to the module. The exact definition is implementation defined,
 	^ path
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPModule >> path: anObject [
 	"optional but recommended attributes.
 always try to use these first before introducing additional attributes.
@@ -233,7 +233,7 @@ Logical full path to the module. The exact definition is implementation defined,
 
 ]
 
-{ #category : 'printing' }
+{ #category : #printing }
 DAPModule >> printOn: aStream [
 
 	aStream
@@ -241,14 +241,14 @@ DAPModule >> printOn: aStream [
 		print: name
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPModule >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
 	^ #(addressRange dateTimeStamp id isOptimized isUserCode name package path symbolFilePath symbolStatus version )
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPModule >> symbolFilePath [
 	"Logical full path to the symbol file. The exact definition is implementation defined.
 	string
@@ -257,7 +257,7 @@ DAPModule >> symbolFilePath [
 	^ symbolFilePath
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPModule >> symbolFilePath: anObject [
 	"Logical full path to the symbol file. The exact definition is implementation defined.
 	string
@@ -267,7 +267,7 @@ DAPModule >> symbolFilePath: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPModule >> symbolStatus [
 	"User understandable description of if symbols were found for the module (ex: 'Symbols Loaded', 'Symbols not found', etc.
 	string
@@ -276,7 +276,7 @@ DAPModule >> symbolStatus [
 	^ symbolStatus
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPModule >> symbolStatus: anObject [
 	"User understandable description of if symbols were found for the module (ex: 'Symbols Loaded', 'Symbols not found', etc.
 	string
@@ -286,7 +286,7 @@ DAPModule >> symbolStatus: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPModule >> version [
 	"Version of Module.
 	string
@@ -295,7 +295,7 @@ DAPModule >> version [
 	^ version
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPModule >> version: anObject [
 	"Version of Module.
 	string
@@ -305,62 +305,62 @@ DAPModule >> version: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPModule >> vsIs64Bit [
 	^ vsIs64Bit
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPModule >> vsIs64Bit: anObject [
 	vsIs64Bit := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPModule >> vsLoadAddress [
 	^ vsLoadAddress
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPModule >> vsLoadAddress: anObject [
 	vsLoadAddress := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPModule >> vsLoadOrder [
 	^ vsLoadOrder
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPModule >> vsLoadOrder: anObject [
 	vsLoadOrder := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPModule >> vsModuleSize [
 	^ vsModuleSize
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPModule >> vsModuleSize: anObject [
 	vsModuleSize := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPModule >> vsPreferredLoadAddress [
 	^ vsPreferredLoadAddress
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPModule >> vsPreferredLoadAddress: anObject [
 	vsPreferredLoadAddress := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPModule >> vsTimestampUTC [
 	^ vsTimestampUTC
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPModule >> vsTimestampUTC: anObject [
 	vsTimestampUTC := anObject
 ]

@@ -3,8 +3,8 @@ A Stackframe contains the source location.
 
 "
 Class {
-	#name : 'DAPStackFrame',
-	#superclass : 'DAPObject',
+	#name : #DAPStackFrame,
+	#superclass : #DAPObject,
 	#instVars : [
 		'canRestart',
 		'column',
@@ -20,10 +20,10 @@ Class {
 		'scopes',
 		'source'
 	],
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPStackFrame class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -43,20 +43,20 @@ DAPStackFrame class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStackFrame class >> presentationHintEnums [
 	"Enumerated types for the associated attribute"
 
 	^ #(normal label subtle )
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPStackFrame >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitStackFrame: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStackFrame >> canRestart [
 	"Indicates whether this frame can be restarted with the 'restart' request. Clients should only use this if the debug adapter supports the 'restart' request (capability 'supportsRestartRequest' is true).
 	boolean
@@ -65,7 +65,7 @@ DAPStackFrame >> canRestart [
 	^ canRestart
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStackFrame >> canRestart: anObject [
 	"Indicates whether this frame can be restarted with the 'restart' request. Clients should only use this if the debug adapter supports the 'restart' request (capability 'supportsRestartRequest' is true).
 	boolean
@@ -75,7 +75,7 @@ DAPStackFrame >> canRestart: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStackFrame >> column [
 	"The column within the line. If source is null or doesn't exist, column is 0 and must be ignored.
 	integer
@@ -84,7 +84,7 @@ DAPStackFrame >> column [
 	^ column
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStackFrame >> column: anObject [
 	"The column within the line. If source is null or doesn't exist, column is 0 and must be ignored.
 	integer
@@ -94,7 +94,7 @@ DAPStackFrame >> column: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStackFrame >> endColumn [
 	"An optional end column of the range covered by the stack frame.
 	integer
@@ -103,7 +103,7 @@ DAPStackFrame >> endColumn [
 	^ endColumn
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStackFrame >> endColumn: anObject [
 	"An optional end column of the range covered by the stack frame.
 	integer
@@ -113,7 +113,7 @@ DAPStackFrame >> endColumn: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStackFrame >> endLine [
 	"An optional end line of the range covered by the stack frame.
 	integer
@@ -122,7 +122,7 @@ DAPStackFrame >> endLine [
 	^ endLine
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStackFrame >> endLine: anObject [
 	"An optional end line of the range covered by the stack frame.
 	integer
@@ -132,7 +132,7 @@ DAPStackFrame >> endLine: anObject [
 
 ]
 
-{ #category : 'ui' }
+{ #category : #ui }
 DAPStackFrame >> gtSourceFor: aView [
 	<gtView>
 
@@ -152,7 +152,7 @@ DAPStackFrame >> gtSourceFor: aView [
 			editor ]
 ]
 
-{ #category : 'ui' }
+{ #category : #ui }
 DAPStackFrame >> gtVariablesFor: aView [
 	<gtView>
 
@@ -171,7 +171,7 @@ DAPStackFrame >> gtVariablesFor: aView [
 		send: [ :assoc | assoc value ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStackFrame >> id [
 	"An identifier for the stack frame. It must be unique across all threads.
 This id can be used to retrieve the scopes of the frame with the 'scopesRequest' or to restart the execution of a stackframe.
@@ -181,7 +181,7 @@ This id can be used to retrieve the scopes of the frame with the 'scopesRequest'
 	^ id
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStackFrame >> id: anObject [
 	"An identifier for the stack frame. It must be unique across all threads.
 This id can be used to retrieve the scopes of the frame with the 'scopesRequest' or to restart the execution of a stackframe.
@@ -192,7 +192,7 @@ This id can be used to retrieve the scopes of the frame with the 'scopesRequest'
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStackFrame >> instructionPointerReference [
 	"Optional memory reference for the current instruction pointer in this frame.
 	string
@@ -201,7 +201,7 @@ DAPStackFrame >> instructionPointerReference [
 	^ instructionPointerReference
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStackFrame >> instructionPointerReference: anObject [
 	"Optional memory reference for the current instruction pointer in this frame.
 	string
@@ -211,7 +211,7 @@ DAPStackFrame >> instructionPointerReference: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStackFrame >> line [
 	"The line within the file of the frame. If source is null or doesn't exist, line is 0 and must be ignored.
 	integer
@@ -220,7 +220,7 @@ DAPStackFrame >> line [
 	^ line
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStackFrame >> line: anObject [
 	"The line within the file of the frame. If source is null or doesn't exist, line is 0 and must be ignored.
 	integer
@@ -230,7 +230,7 @@ DAPStackFrame >> line: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStackFrame >> moduleId [
 	"The module associated with this frame, if any.
 	integerstring
@@ -239,7 +239,7 @@ DAPStackFrame >> moduleId [
 	^ moduleId
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStackFrame >> moduleId: anObject [
 	"The module associated with this frame, if any.
 	integerstring
@@ -249,7 +249,7 @@ DAPStackFrame >> moduleId: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStackFrame >> name [
 	"The name of the stack frame, typically a method name.
 	string
@@ -258,7 +258,7 @@ DAPStackFrame >> name [
 	^ name
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStackFrame >> name: anObject [
 	"The name of the stack frame, typically a method name.
 	string
@@ -268,17 +268,17 @@ DAPStackFrame >> name: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStackFrame >> ordinal [
 	^ ordinal
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStackFrame >> ordinal: anObject [
 	ordinal := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStackFrame >> presentationHint [
 	"An optional hint for how to present this frame in the UI.
 A value of 'label' can be used to indicate that the frame is an artificial frame that is used as a visual label or separator. A value of 'subtle' can be used to change the appearance of a frame in a 'subtle' way.
@@ -291,7 +291,7 @@ A value of 'label' can be used to indicate that the frame is an artificial frame
 	^ presentationHint ifNil: [ 'normal' ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStackFrame >> presentationHint: anObject [
 	"An optional hint for how to present this frame in the UI.
 A value of 'label' can be used to indicate that the frame is an artificial frame that is used as a visual label or separator. A value of 'subtle' can be used to change the appearance of a frame in a 'subtle' way.
@@ -305,7 +305,7 @@ A value of 'label' can be used to indicate that the frame is an artificial frame
 
 ]
 
-{ #category : 'printing' }
+{ #category : #printing }
 DAPStackFrame >> printOn: aStream [
 
 	self source ifNil: [ ^ super printOn: aStream ].
@@ -317,27 +317,27 @@ DAPStackFrame >> printOn: aStream [
 		print: self column
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStackFrame >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
 	^ #(canRestart column endColumn endLine id instructionPointerReference line moduleId name presentationHint source )
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStackFrame >> scopes [ 
 
 	^ scopes ifNil: [ scopes := (client scopesForFrameId: id) allScopes ]
 ]
 
-{ #category : 'actions' }
+{ #category : #actions }
 DAPStackFrame >> setBreakpointInSourceLines: anArray [ 
 	"Set breakpoints in the receiver's file at the designated  line numbers"
 
 	^ client setBreakpointInSource: self source lines: anArray
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStackFrame >> source [
 	"The optional source of the frame.
 	#/definitions/Source
@@ -346,7 +346,7 @@ DAPStackFrame >> source [
 	^ source
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStackFrame >> source: anObject [
 	"The optional source of the frame.
 	#/definitions/Source
@@ -359,14 +359,14 @@ DAPStackFrame >> source: anObject [
 
 ]
 
-{ #category : 'ui' }
+{ #category : #ui }
 DAPStackFrame >> sourceCode [
 
 	source ifNil: [ ^ '' ].
 	^ self source sourceCode
 ]
 
-{ #category : 'ui' }
+{ #category : #ui }
 DAPStackFrame >> sourceText [
 
 	"Answer the receiver's source code, with the current line highlighted"
@@ -385,7 +385,7 @@ DAPStackFrame >> sourceText [
 	^ text
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStackFrame >> valuesDictionary [
 	"Answer a dictionary with key: Scope Name key: Variable Name value: DAPVariable"
 	| dictionary scopeDictionary |
@@ -399,7 +399,7 @@ DAPStackFrame >> valuesDictionary [
 	^ dictionary
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStackFrame >> variablesDictionary [
 	"Answer a dictionary with key: Scope Name key: Variable Name value: DAPVariable"
 	| dictionary scopeDictionary |

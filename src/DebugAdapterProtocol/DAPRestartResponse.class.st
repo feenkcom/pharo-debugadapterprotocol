@@ -3,12 +3,12 @@ Response to 'restart' request. This is just an acknowledgement, so no body field
 
 "
 Class {
-	#name : 'DAPRestartResponse',
-	#superclass : 'DAPResponse',
-	#category : 'DebugAdapterProtocol-Protocol'
+	#name : #DAPRestartResponse,
+	#superclass : #DAPResponse,
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPRestartResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -17,13 +17,13 @@ DAPRestartResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPRestartResponse >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitRestartResponse: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPRestartResponse >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

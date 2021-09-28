@@ -7,19 +7,19 @@ This behavior can be controlled with the 'terminateDebuggee' argument (if suppor
 
 "
 Class {
-	#name : 'DAPDisconnectRequest',
-	#superclass : 'DAPRequest',
-	#category : 'DebugAdapterProtocol-Protocol'
+	#name : #DAPDisconnectRequest,
+	#superclass : #DAPRequest,
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPDisconnectRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
 	^ #(disconnect )
 ]
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPDisconnectRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -30,20 +30,20 @@ DAPDisconnectRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPDisconnectRequest >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitDisconnectRequest: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPDisconnectRequest >> arguments [
 	"Auto-generated method"
 
 	^ arguments
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPDisconnectRequest >> arguments: anObject [
 	"Auto-generated method"
 
@@ -54,7 +54,7 @@ DAPDisconnectRequest >> arguments: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPDisconnectRequest >> command [
 	"disconnect: 
 	Auto-generated method"
@@ -62,7 +62,7 @@ DAPDisconnectRequest >> command [
 	^ command ifNil: [ 'disconnect' ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPDisconnectRequest >> command: anObject [
 	"disconnect: 
 	Auto-generated method"
@@ -71,7 +71,7 @@ DAPDisconnectRequest >> command: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPDisconnectRequest >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

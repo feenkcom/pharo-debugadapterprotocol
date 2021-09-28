@@ -3,12 +3,12 @@ Response to 'initialize' request.
 
 "
 Class {
-	#name : 'DAPInitializeResponse',
-	#superclass : 'DAPResponse',
-	#category : 'DebugAdapterProtocol-Protocol'
+	#name : #DAPInitializeResponse,
+	#superclass : #DAPResponse,
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPInitializeResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -18,13 +18,13 @@ DAPInitializeResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPInitializeResponse >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitInitializeResponse: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPInitializeResponse >> body [
 	"The capabilities of this debug adapter.
 	#/definitions/Capabilities
@@ -33,7 +33,7 @@ DAPInitializeResponse >> body [
 	^ body
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPInitializeResponse >> body: anObject [
 	"The capabilities of this debug adapter.
 	#/definitions/Capabilities
@@ -46,7 +46,7 @@ DAPInitializeResponse >> body: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPInitializeResponse >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

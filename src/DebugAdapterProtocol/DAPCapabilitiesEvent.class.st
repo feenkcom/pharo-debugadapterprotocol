@@ -6,12 +6,12 @@ Only changed capabilities need to be included, all other capabilities keep their
 
 "
 Class {
-	#name : 'DAPCapabilitiesEvent',
-	#superclass : 'DAPEvent',
-	#category : 'DebugAdapterProtocol-Protocol'
+	#name : #DAPCapabilitiesEvent,
+	#superclass : #DAPEvent,
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPCapabilitiesEvent class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -22,27 +22,27 @@ DAPCapabilitiesEvent class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilitiesEvent class >> eventEnums [
 	"Enumerated types for the associated attribute"
 
 	^ #(capabilities )
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPCapabilitiesEvent >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitCapabilitiesEvent: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilitiesEvent >> body [
 	"Auto-generated method"
 
 	^ body
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilitiesEvent >> body: anObject [
 	"Auto-generated method"
 
@@ -50,7 +50,7 @@ DAPCapabilitiesEvent >> body: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilitiesEvent >> capabilities [
 	"The set of updated capabilities.
 	#/definitions/Capabilities
@@ -63,7 +63,7 @@ DAPCapabilitiesEvent >> capabilities [
 	^ result
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilitiesEvent >> capabilities: anObject [
 	"The set of updated capabilities.
 	#/definitions/Capabilities
@@ -72,7 +72,7 @@ DAPCapabilitiesEvent >> capabilities: anObject [
 	self body at: #capabilities put: anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilitiesEvent >> event [
 	"capabilities: 
 	Auto-generated method"
@@ -80,7 +80,7 @@ DAPCapabilitiesEvent >> event [
 	^ event ifNil: [ 'capabilities' ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilitiesEvent >> event: anObject [
 	"capabilities: 
 	Auto-generated method"
@@ -89,7 +89,7 @@ DAPCapabilitiesEvent >> event: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilitiesEvent >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

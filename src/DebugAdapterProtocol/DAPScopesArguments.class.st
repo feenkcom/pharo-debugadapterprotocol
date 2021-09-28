@@ -3,15 +3,15 @@ Arguments for 'scopes' request.
 
 "
 Class {
-	#name : 'DAPScopesArguments',
-	#superclass : 'DAPObject',
+	#name : #DAPScopesArguments,
+	#superclass : #DAPObject,
 	#instVars : [
 		'frameId'
 	],
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPScopesArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -21,13 +21,13 @@ DAPScopesArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPScopesArguments >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitScopesArguments: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPScopesArguments >> frameId [
 	"Retrieve the scopes for this stackframe.
 	integer
@@ -36,7 +36,7 @@ DAPScopesArguments >> frameId [
 	^ frameId
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPScopesArguments >> frameId: anObject [
 	"Retrieve the scopes for this stackframe.
 	integer
@@ -46,7 +46,7 @@ DAPScopesArguments >> frameId: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPScopesArguments >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

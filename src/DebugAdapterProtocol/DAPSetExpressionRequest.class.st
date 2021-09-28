@@ -5,19 +5,19 @@ Clients should only call this request if the capability 'supportsSetExpression' 
 
 "
 Class {
-	#name : 'DAPSetExpressionRequest',
-	#superclass : 'DAPRequest',
-	#category : 'DebugAdapterProtocol-Protocol'
+	#name : #DAPSetExpressionRequest,
+	#superclass : #DAPRequest,
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetExpressionRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
 	^ #(setExpression )
 ]
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPSetExpressionRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -28,20 +28,20 @@ DAPSetExpressionRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPSetExpressionRequest >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitSetExpressionRequest: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetExpressionRequest >> arguments [
 	"Auto-generated method"
 
 	^ arguments
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetExpressionRequest >> arguments: anObject [
 	"Auto-generated method"
 
@@ -52,7 +52,7 @@ DAPSetExpressionRequest >> arguments: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetExpressionRequest >> command [
 	"setExpression: 
 	Auto-generated method"
@@ -60,7 +60,7 @@ DAPSetExpressionRequest >> command [
 	^ command ifNil: [ 'setExpression' ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetExpressionRequest >> command: anObject [
 	"setExpression: 
 	Auto-generated method"
@@ -69,7 +69,7 @@ DAPSetExpressionRequest >> command: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetExpressionRequest >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

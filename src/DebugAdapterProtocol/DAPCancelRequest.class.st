@@ -13,19 +13,19 @@ Returning partial results from a cancelled request is possible but please note t
 
 "
 Class {
-	#name : 'DAPCancelRequest',
-	#superclass : 'DAPRequest',
-	#category : 'DebugAdapterProtocol-Protocol'
+	#name : #DAPCancelRequest,
+	#superclass : #DAPRequest,
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCancelRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
 	^ #(cancel )
 ]
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPCancelRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -36,20 +36,20 @@ DAPCancelRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPCancelRequest >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitCancelRequest: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCancelRequest >> arguments [
 	"Auto-generated method"
 
 	^ arguments
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCancelRequest >> arguments: anObject [
 	"Auto-generated method"
 
@@ -60,7 +60,7 @@ DAPCancelRequest >> arguments: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCancelRequest >> command [
 	"cancel: 
 	Auto-generated method"
@@ -68,7 +68,7 @@ DAPCancelRequest >> command [
 	^ command ifNil: [ 'cancel' ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCancelRequest >> command: anObject [
 	"cancel: 
 	Auto-generated method"
@@ -77,7 +77,7 @@ DAPCancelRequest >> command: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCancelRequest >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

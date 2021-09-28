@@ -1,6 +1,6 @@
 Class {
-	#name : 'DAPReceivedMessageVisitor',
-	#superclass : 'Object',
+	#name : #DAPReceivedMessageVisitor,
+	#superclass : #Object,
 	#traits : 'TDAPProtocolVisitor',
 	#classTraits : 'TDAPProtocolVisitor classTrait',
 	#instVars : [
@@ -9,52 +9,52 @@ Class {
 	#category : 'DebugAdapterProtocol-Visitors'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPReceivedMessageVisitor >> client [
 	^ client
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPReceivedMessageVisitor >> client: anObject [
 	client := anObject
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPReceivedMessageVisitor >> visitAttachResponse: anObject [
 
 	client serverState: #attached.
 	^ true
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPReceivedMessageVisitor >> visitBreakpointEvent: aDAPBreakpointEvent [
 
 	client registerBreakpoint: aDAPBreakpointEvent breakpoint.
 	^ false
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPReceivedMessageVisitor >> visitCapabilitiesEvent: aDAPCapabilitiesEvent [
 
 	client capabilities: aDAPCapabilitiesEvent capabilities.
 	^ false
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPReceivedMessageVisitor >> visitConfigurationDoneResponse: anObject [
 	"Answer false to check the status later"
 
 	^ false
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPReceivedMessageVisitor >> visitContinueResponse: anObject [
 	"The answer is returned immediately"
 
 	^ false
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPReceivedMessageVisitor >> visitContinuedEvent: aDAPContinuedEvent [
 
 	(client atThreadId: aDAPContinuedEvent threadId) state: #continued.
@@ -62,14 +62,14 @@ DAPReceivedMessageVisitor >> visitContinuedEvent: aDAPContinuedEvent [
 	^ false
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPReceivedMessageVisitor >> visitDebugpyAttachEvent: anObject [
 
 	client serverAttributes at: #debugpyCapabilities put: anObject body.
 	^ true
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPReceivedMessageVisitor >> visitDebugpyWaitingForServerEvent: anObject [
 	"Mark the server state as waiting for debugpy.
 	The IP address is assumed to be correct"
@@ -77,47 +77,47 @@ DAPReceivedMessageVisitor >> visitDebugpyWaitingForServerEvent: anObject [
 	client serverState: #debugpyWaitingForServer.
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPReceivedMessageVisitor >> visitExitedEvent: aDAPExitedEvent [
 
 	client serverState: #exited.
 	^ false
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPReceivedMessageVisitor >> visitInitializeResponse: anObject [
 
 	client serverAttributes at: #capabilities put: anObject body.
 	^ true
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPReceivedMessageVisitor >> visitInitializedEvent: anObject [
 
 	client serverState: #initialized
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPReceivedMessageVisitor >> visitLaunchResponse: anObject [
 
 	^ false
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPReceivedMessageVisitor >> visitModuleEvent: aDAPModuleEvent [
 
 	client modules at: aDAPModuleEvent module id put: aDAPModuleEvent module.
 	^ true
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPReceivedMessageVisitor >> visitNextResponse: anObject [
 	"The result is handled by the caller"
 
 	^ false
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPReceivedMessageVisitor >> visitOutputEvent: aDAPOutputEvent [
 
 	"Append stdout and stderr to the client's stream.  Just store other output."
@@ -144,76 +144,76 @@ DAPReceivedMessageVisitor >> visitOutputEvent: aDAPOutputEvent [
 	^ false
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPReceivedMessageVisitor >> visitProcessEvent: anObject [
 
 	client serverProcessDetailsEvent: anObject.
 	^ true
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPReceivedMessageVisitor >> visitRunInTerminalRequest: aDAPRunInTerminalRequest [
 
 	self error: 'Not supported'.	
 	^ false
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPReceivedMessageVisitor >> visitScopesResponse: anObject [
 	"Value is returned in confirmation message"
 
 	^ false
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPReceivedMessageVisitor >> visitSetExceptionBreakpointsResponse: anObject [
 	"Answer false, which will check the status later"
 
 	^ false
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPReceivedMessageVisitor >> visitSetFunctionBreakpointsResponse: anObject [
 
 	^ false
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPReceivedMessageVisitor >> visitSourceResponse: anObject [
 	"Do nothing, it is handled by the request initiator"
 
 	^ false
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPReceivedMessageVisitor >> visitStackTraceResponse: anObject [
 	"Stack trace responses are handled by the caller.  Answer false to check response status"
 
 	^ false
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPReceivedMessageVisitor >> visitStepBackResponse: anObject [
 	"The result is handled by the caller"
 
 	^ false
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPReceivedMessageVisitor >> visitStepInResponse: anObject [
 	"The result is handled by the caller"
 
 	^ false
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPReceivedMessageVisitor >> visitStepOutResponse: anObject [
 	"The result is handled by the caller"
 
 	^ false
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPReceivedMessageVisitor >> visitStoppedEvent: aDAPStoppedEvent [
 	| thread |
 
@@ -228,21 +228,21 @@ DAPReceivedMessageVisitor >> visitStoppedEvent: aDAPStoppedEvent [
 	^ true
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPReceivedMessageVisitor >> visitTerminateResponse: aDAPTerminateResponse [
 
 	client serverState: #terminated.
 	^ true
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPReceivedMessageVisitor >> visitTerminatedEvent: anObject [
 
 	client serverTerminated.
 	^ false
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPReceivedMessageVisitor >> visitThreadEvent: aDAPThreadEvent [
 
 	(client atThreadId: aDAPThreadEvent threadId) 
@@ -251,7 +251,7 @@ DAPReceivedMessageVisitor >> visitThreadEvent: aDAPThreadEvent [
 	^ true
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPReceivedMessageVisitor >> visitThreadsResponse: aDAPThreadsResponse [
 
 	aDAPThreadsResponse threads do: [ :thread |
@@ -259,7 +259,7 @@ DAPReceivedMessageVisitor >> visitThreadsResponse: aDAPThreadsResponse [
 	^ true
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPReceivedMessageVisitor >> visitVariablesResponse: anObject [
 	"The response is handled by the requester"
 

@@ -4,19 +4,19 @@ Since attaching is debugger/runtime specific, the arguments for this request are
 
 "
 Class {
-	#name : 'DAPAttachRequest',
-	#superclass : 'DAPRequest',
-	#category : 'DebugAdapterProtocol-Protocol'
+	#name : #DAPAttachRequest,
+	#superclass : #DAPRequest,
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPAttachRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
 	^ #(attach )
 ]
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPAttachRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -27,20 +27,20 @@ DAPAttachRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPAttachRequest >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitAttachRequest: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPAttachRequest >> arguments [
 	"Auto-generated method"
 
 	^ arguments
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPAttachRequest >> arguments: anObject [
 	"Auto-generated method"
 
@@ -51,7 +51,7 @@ DAPAttachRequest >> arguments: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPAttachRequest >> command [
 	"attach: 
 	Auto-generated method"
@@ -59,7 +59,7 @@ DAPAttachRequest >> command [
 	^ command ifNil: [ 'attach' ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPAttachRequest >> command: anObject [
 	"attach: 
 	Auto-generated method"
@@ -68,7 +68,7 @@ DAPAttachRequest >> command: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPAttachRequest >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

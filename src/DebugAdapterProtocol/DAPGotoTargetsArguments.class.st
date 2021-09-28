@@ -3,17 +3,17 @@ Arguments for 'gotoTargets' request.
 
 "
 Class {
-	#name : 'DAPGotoTargetsArguments',
-	#superclass : 'DAPObject',
+	#name : #DAPGotoTargetsArguments,
+	#superclass : #DAPObject,
 	#instVars : [
 		'column',
 		'line',
 		'source'
 	],
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPGotoTargetsArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -25,13 +25,13 @@ DAPGotoTargetsArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPGotoTargetsArguments >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitGotoTargetsArguments: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPGotoTargetsArguments >> column [
 	"An optional column location for which the goto targets are determined.
 	integer
@@ -40,7 +40,7 @@ DAPGotoTargetsArguments >> column [
 	^ column
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPGotoTargetsArguments >> column: anObject [
 	"An optional column location for which the goto targets are determined.
 	integer
@@ -50,7 +50,7 @@ DAPGotoTargetsArguments >> column: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPGotoTargetsArguments >> line [
 	"The line location for which the goto targets are determined.
 	integer
@@ -59,7 +59,7 @@ DAPGotoTargetsArguments >> line [
 	^ line
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPGotoTargetsArguments >> line: anObject [
 	"The line location for which the goto targets are determined.
 	integer
@@ -69,14 +69,14 @@ DAPGotoTargetsArguments >> line: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPGotoTargetsArguments >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
 	^ #(column line source )
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPGotoTargetsArguments >> source [
 	"The source location for which the goto targets are determined.
 	#/definitions/Source
@@ -85,7 +85,7 @@ DAPGotoTargetsArguments >> source [
 	^ source
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPGotoTargetsArguments >> source: anObject [
 	"The source location for which the goto targets are determined.
 	#/definitions/Source

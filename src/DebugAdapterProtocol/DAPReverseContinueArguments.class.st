@@ -3,15 +3,15 @@ Arguments for 'reverseContinue' request.
 
 "
 Class {
-	#name : 'DAPReverseContinueArguments',
-	#superclass : 'DAPObject',
+	#name : #DAPReverseContinueArguments,
+	#superclass : #DAPObject,
 	#instVars : [
 		'threadId'
 	],
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPReverseContinueArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -21,20 +21,20 @@ DAPReverseContinueArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPReverseContinueArguments >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitReverseContinueArguments: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPReverseContinueArguments >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
 	^ #(threadId )
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPReverseContinueArguments >> threadId [
 	"Execute 'reverseContinue' for this thread.
 	integer
@@ -43,7 +43,7 @@ DAPReverseContinueArguments >> threadId [
 	^ threadId
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPReverseContinueArguments >> threadId: anObject [
 	"Execute 'reverseContinue' for this thread.
 	integer

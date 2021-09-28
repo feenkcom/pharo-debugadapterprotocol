@@ -3,12 +3,12 @@ Response to 'scopes' request.
 
 "
 Class {
-	#name : 'DAPScopesResponse',
-	#superclass : 'DAPResponse',
-	#category : 'DebugAdapterProtocol-Protocol'
+	#name : #DAPScopesResponse,
+	#superclass : #DAPResponse,
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPScopesResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -18,27 +18,27 @@ DAPScopesResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPScopesResponse >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitScopesResponse: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPScopesResponse >> allScopes [
 	"Answer an Array of DAPScope"
 
 	^ self scopes collect: [ :each | DAPScope fromDictionary: each client: client ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPScopesResponse >> body [
 	"Auto-generated method"
 
 	^ body
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPScopesResponse >> body: anObject [
 	"Auto-generated method"
 
@@ -46,7 +46,7 @@ DAPScopesResponse >> body: anObject [
 
 ]
 
-{ #category : 'ui' }
+{ #category : #ui }
 DAPScopesResponse >> gtScopesFor: aView [
 	<gtView>
 
@@ -57,14 +57,14 @@ DAPScopesResponse >> gtScopesFor: aView [
 		items: [ self allScopes ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPScopesResponse >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
 	^ #(body scopes )
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPScopesResponse >> scopes [
 	"The scopes of the stackframe. If the array has length zero, there are no scopes available.
 	array
@@ -75,7 +75,7 @@ DAPScopesResponse >> scopes [
 	^ result
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPScopesResponse >> scopes: anObject [
 	"The scopes of the stackframe. If the array has length zero, there are no scopes available.
 	array

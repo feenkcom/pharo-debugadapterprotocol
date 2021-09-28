@@ -3,12 +3,12 @@ Response to 'terminateThreads' request. This is just an acknowledgement, so no b
 
 "
 Class {
-	#name : 'DAPTerminateThreadsResponse',
-	#superclass : 'DAPResponse',
-	#category : 'DebugAdapterProtocol-Protocol'
+	#name : #DAPTerminateThreadsResponse,
+	#superclass : #DAPResponse,
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPTerminateThreadsResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -17,13 +17,13 @@ DAPTerminateThreadsResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPTerminateThreadsResponse >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitTerminateThreadsResponse: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPTerminateThreadsResponse >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

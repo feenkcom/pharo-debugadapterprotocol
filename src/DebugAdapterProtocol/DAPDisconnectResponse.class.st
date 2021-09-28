@@ -3,12 +3,12 @@ Response to 'disconnect' request. This is just an acknowledgement, so no body fi
 
 "
 Class {
-	#name : 'DAPDisconnectResponse',
-	#superclass : 'DAPResponse',
-	#category : 'DebugAdapterProtocol-Protocol'
+	#name : #DAPDisconnectResponse,
+	#superclass : #DAPResponse,
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPDisconnectResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -17,13 +17,13 @@ DAPDisconnectResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPDisconnectResponse >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitDisconnectResponse: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPDisconnectResponse >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

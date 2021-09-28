@@ -3,15 +3,15 @@ Arguments for 'restartFrame' request.
 
 "
 Class {
-	#name : 'DAPRestartFrameArguments',
-	#superclass : 'DAPObject',
+	#name : #DAPRestartFrameArguments,
+	#superclass : #DAPObject,
 	#instVars : [
 		'frameId'
 	],
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPRestartFrameArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -21,13 +21,13 @@ DAPRestartFrameArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPRestartFrameArguments >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitRestartFrameArguments: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPRestartFrameArguments >> frameId [
 	"Restart this stackframe.
 	integer
@@ -36,7 +36,7 @@ DAPRestartFrameArguments >> frameId [
 	^ frameId
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPRestartFrameArguments >> frameId: anObject [
 	"Restart this stackframe.
 	integer
@@ -46,7 +46,7 @@ DAPRestartFrameArguments >> frameId: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPRestartFrameArguments >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

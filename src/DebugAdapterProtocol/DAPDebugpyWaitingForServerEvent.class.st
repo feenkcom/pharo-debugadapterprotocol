@@ -3,12 +3,12 @@ Notification that the remote debugpy server is waiting.
 
 "
 Class {
-	#name : 'DAPDebugpyWaitingForServerEvent',
-	#superclass : 'DAPEvent',
-	#category : 'DebugAdapterProtocol-Protocol'
+	#name : #DAPDebugpyWaitingForServerEvent,
+	#superclass : #DAPEvent,
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPDebugpyWaitingForServerEvent class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -19,27 +19,27 @@ DAPDebugpyWaitingForServerEvent class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPDebugpyWaitingForServerEvent class >> eventEnums [
 	"Enumerated types for the associated attribute"
 
 	^ #(debugpyWaitingForServer )
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPDebugpyWaitingForServerEvent >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitDebugpyWaitingForServerEvent: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPDebugpyWaitingForServerEvent >> body [
 	"Auto-generated method"
 
 	^ body
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPDebugpyWaitingForServerEvent >> body: anObject [
 	"Auto-generated method"
 
@@ -50,7 +50,7 @@ DAPDebugpyWaitingForServerEvent >> body: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPDebugpyWaitingForServerEvent >> event [
 	"debugpyWaitingForServer: 
 	Auto-generated method"
@@ -58,7 +58,7 @@ DAPDebugpyWaitingForServerEvent >> event [
 	^ event ifNil: [ 'debugpyWaitingForServer' ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPDebugpyWaitingForServerEvent >> event: anObject [
 	"debugpyWaitingForServer: 
 	Auto-generated method"
@@ -67,7 +67,7 @@ DAPDebugpyWaitingForServerEvent >> event: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPDebugpyWaitingForServerEvent >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

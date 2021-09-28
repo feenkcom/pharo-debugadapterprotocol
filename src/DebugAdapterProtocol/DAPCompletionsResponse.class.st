@@ -3,12 +3,12 @@ Response to 'completions' request.
 
 "
 Class {
-	#name : 'DAPCompletionsResponse',
-	#superclass : 'DAPResponse',
-	#category : 'DebugAdapterProtocol-Protocol'
+	#name : #DAPCompletionsResponse,
+	#superclass : #DAPResponse,
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPCompletionsResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -18,20 +18,20 @@ DAPCompletionsResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPCompletionsResponse >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitCompletionsResponse: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCompletionsResponse >> body [
 	"Auto-generated method"
 
 	^ body
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCompletionsResponse >> body: anObject [
 	"Auto-generated method"
 
@@ -39,14 +39,14 @@ DAPCompletionsResponse >> body: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCompletionsResponse >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
 	^ #(body targets )
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCompletionsResponse >> targets [
 	"The possible completions for .
 	array
@@ -57,7 +57,7 @@ DAPCompletionsResponse >> targets [
 	^ result
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCompletionsResponse >> targets: anObject [
 	"The possible completions for .
 	array

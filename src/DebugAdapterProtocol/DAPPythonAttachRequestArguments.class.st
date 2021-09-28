@@ -3,8 +3,8 @@ Arguments for attaching to a Python debugpy server.    See https://code.visualst
 
 "
 Class {
-	#name : 'DAPPythonAttachRequestArguments',
-	#superclass : 'DAPObject',
+	#name : #DAPPythonAttachRequestArguments,
+	#superclass : #DAPObject,
 	#instVars : [
 		'pathMappings',
 		'justMyCode',
@@ -19,10 +19,10 @@ Class {
 		'workspaceFolder',
 		'__sessionId'
 	],
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPPythonAttachRequestArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -42,7 +42,7 @@ DAPPythonAttachRequestArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPPythonAttachRequestArguments >> __sessionId [
 	"A UUID
 	string
@@ -51,7 +51,7 @@ DAPPythonAttachRequestArguments >> __sessionId [
 	^ __sessionId
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPPythonAttachRequestArguments >> __sessionId: anObject [
 	"A UUID
 	string
@@ -61,20 +61,20 @@ DAPPythonAttachRequestArguments >> __sessionId: anObject [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPPythonAttachRequestArguments >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitPythonAttachRequestArguments: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPPythonAttachRequestArguments >> connect [
 	"Auto-generated method"
 
 	^ connect
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPPythonAttachRequestArguments >> connect: anObject [
 	"Auto-generated method"
 
@@ -85,7 +85,7 @@ DAPPythonAttachRequestArguments >> connect: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPPythonAttachRequestArguments >> debugOptions [
 	"RedirectOutput, UnixClient, ShowReturnValue and others?
 	array
@@ -94,7 +94,7 @@ DAPPythonAttachRequestArguments >> debugOptions [
 	^ debugOptions
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPPythonAttachRequestArguments >> debugOptions: anObject [
 	"RedirectOutput, UnixClient, ShowReturnValue and others?
 	array
@@ -104,7 +104,7 @@ DAPPythonAttachRequestArguments >> debugOptions: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPPythonAttachRequestArguments >> justMyCode [
 	"When omitted or set to true (the default), restricts debugging to user-written code only. Set to false to also enable debugging of standard library functions.
 	boolean
@@ -113,7 +113,7 @@ DAPPythonAttachRequestArguments >> justMyCode [
 	^ justMyCode
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPPythonAttachRequestArguments >> justMyCode: anObject [
 	"???
 	boolean
@@ -123,7 +123,7 @@ DAPPythonAttachRequestArguments >> justMyCode: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPPythonAttachRequestArguments >> name [
 	"???
 	string
@@ -132,7 +132,7 @@ DAPPythonAttachRequestArguments >> name [
 	^ name
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPPythonAttachRequestArguments >> name: anObject [
 	"???
 	string
@@ -142,7 +142,7 @@ DAPPythonAttachRequestArguments >> name: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPPythonAttachRequestArguments >> pathMappings [
 	"Array with an object with localRoot and remoteRoot attributes
 	array
@@ -151,7 +151,7 @@ DAPPythonAttachRequestArguments >> pathMappings [
 	^ pathMappings
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPPythonAttachRequestArguments >> pathMappings: anObject [
 	"Array with an object with localRoot and remoteRoot attributes
 	array
@@ -161,14 +161,14 @@ DAPPythonAttachRequestArguments >> pathMappings: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPPythonAttachRequestArguments >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
 	^ #(debugOptions justMyCode name pathMappings pythonPath workspaceFolder __sessionId connect type request showReturnValue )
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPPythonAttachRequestArguments >> pythonPath [
 	"The path to the python executable
 	string
@@ -177,7 +177,7 @@ DAPPythonAttachRequestArguments >> pythonPath [
 	^ pythonPath
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPPythonAttachRequestArguments >> pythonPath: anObject [
 	"The path to the python executable
 	string
@@ -187,7 +187,7 @@ DAPPythonAttachRequestArguments >> pythonPath: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPPythonAttachRequestArguments >> request [
 	"???
 	string
@@ -196,7 +196,7 @@ DAPPythonAttachRequestArguments >> request [
 	^ request
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPPythonAttachRequestArguments >> request: anObject [
 	"???
 	string
@@ -206,7 +206,7 @@ DAPPythonAttachRequestArguments >> request: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPPythonAttachRequestArguments >> showReturnValue [
 	"???
 	boolean
@@ -215,7 +215,7 @@ DAPPythonAttachRequestArguments >> showReturnValue [
 	^ showReturnValue
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPPythonAttachRequestArguments >> showReturnValue: anObject [
 	"???
 	boolean
@@ -225,7 +225,7 @@ DAPPythonAttachRequestArguments >> showReturnValue: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPPythonAttachRequestArguments >> subProcessId [
 	"Only used as part of the response
 	integer
@@ -234,7 +234,7 @@ DAPPythonAttachRequestArguments >> subProcessId [
 	^ subProcessId
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPPythonAttachRequestArguments >> subProcessId: anObject [
 	"Only used as part of the response
 	integer
@@ -244,7 +244,7 @@ DAPPythonAttachRequestArguments >> subProcessId: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPPythonAttachRequestArguments >> type [
 	"Identifies the type of debugger to use; leave this set to python for Python code.
 	string
@@ -253,7 +253,7 @@ DAPPythonAttachRequestArguments >> type [
 	^ type
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPPythonAttachRequestArguments >> type: anObject [
 	"???
 	string
@@ -263,7 +263,7 @@ DAPPythonAttachRequestArguments >> type: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPPythonAttachRequestArguments >> workspaceFolder [
 	"The path to the working directory
 	string
@@ -272,7 +272,7 @@ DAPPythonAttachRequestArguments >> workspaceFolder [
 	^ workspaceFolder
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPPythonAttachRequestArguments >> workspaceFolder: anObject [
 	"The path to the working directory
 	string

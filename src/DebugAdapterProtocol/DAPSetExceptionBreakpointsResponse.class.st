@@ -3,12 +3,12 @@ Response to 'setExceptionBreakpoints' request. This is just an acknowledgement, 
 
 "
 Class {
-	#name : 'DAPSetExceptionBreakpointsResponse',
-	#superclass : 'DAPResponse',
-	#category : 'DebugAdapterProtocol-Protocol'
+	#name : #DAPSetExceptionBreakpointsResponse,
+	#superclass : #DAPResponse,
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPSetExceptionBreakpointsResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -17,13 +17,13 @@ DAPSetExceptionBreakpointsResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPSetExceptionBreakpointsResponse >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitSetExceptionBreakpointsResponse: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetExceptionBreakpointsResponse >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

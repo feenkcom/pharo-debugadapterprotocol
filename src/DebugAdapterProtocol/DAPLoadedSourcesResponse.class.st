@@ -3,12 +3,12 @@ Response to 'loadedSources' request.
 
 "
 Class {
-	#name : 'DAPLoadedSourcesResponse',
-	#superclass : 'DAPResponse',
-	#category : 'DebugAdapterProtocol-Protocol'
+	#name : #DAPLoadedSourcesResponse,
+	#superclass : #DAPResponse,
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPLoadedSourcesResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -18,20 +18,20 @@ DAPLoadedSourcesResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPLoadedSourcesResponse >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitLoadedSourcesResponse: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPLoadedSourcesResponse >> body [
 	"Auto-generated method"
 
 	^ body
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPLoadedSourcesResponse >> body: anObject [
 	"Auto-generated method"
 
@@ -39,14 +39,14 @@ DAPLoadedSourcesResponse >> body: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPLoadedSourcesResponse >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
 	^ #(body sources )
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPLoadedSourcesResponse >> sources [
 	"Set of loaded sources.
 	array
@@ -57,7 +57,7 @@ DAPLoadedSourcesResponse >> sources [
 	^ result
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPLoadedSourcesResponse >> sources: anObject [
 	"Set of loaded sources.
 	array

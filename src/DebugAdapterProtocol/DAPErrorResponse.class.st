@@ -3,12 +3,12 @@ On error (whenever 'success' is false), the body can provide more details.
 
 "
 Class {
-	#name : 'DAPErrorResponse',
-	#superclass : 'DAPResponse',
-	#category : 'DebugAdapterProtocol-Protocol'
+	#name : #DAPErrorResponse,
+	#superclass : #DAPResponse,
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPErrorResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -18,20 +18,20 @@ DAPErrorResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPErrorResponse >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitErrorResponse: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPErrorResponse >> body [
 	"Auto-generated method"
 
 	^ body
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPErrorResponse >> body: anObject [
 	"Auto-generated method"
 
@@ -39,7 +39,7 @@ DAPErrorResponse >> body: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPErrorResponse >> error [
 	"An optional, structured error message.
 	#/definitions/Message
@@ -52,7 +52,7 @@ DAPErrorResponse >> error [
 	^ result
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPErrorResponse >> error: anObject [
 	"An optional, structured error message.
 	#/definitions/Message
@@ -61,7 +61,7 @@ DAPErrorResponse >> error: anObject [
 	self body at: #error put: anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPErrorResponse >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

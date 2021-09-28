@@ -3,18 +3,18 @@ Arguments for 'evaluate' request.
 
 "
 Class {
-	#name : 'DAPEvaluateArguments',
-	#superclass : 'DAPObject',
+	#name : #DAPEvaluateArguments,
+	#superclass : #DAPObject,
 	#instVars : [
 		'context',
 		'expression',
 		'format',
 		'frameId'
 	],
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPEvaluateArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -27,13 +27,13 @@ DAPEvaluateArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPEvaluateArguments >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitEvaluateArguments: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPEvaluateArguments >> context [
 	"The context in which the evaluate request is run.
 	string
@@ -42,7 +42,7 @@ DAPEvaluateArguments >> context [
 	^ context
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPEvaluateArguments >> context: anObject [
 	"The context in which the evaluate request is run.
 	string
@@ -52,7 +52,7 @@ DAPEvaluateArguments >> context: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPEvaluateArguments >> expression [
 	"The expression to evaluate.
 	string
@@ -61,7 +61,7 @@ DAPEvaluateArguments >> expression [
 	^ expression
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPEvaluateArguments >> expression: anObject [
 	"The expression to evaluate.
 	string
@@ -71,7 +71,7 @@ DAPEvaluateArguments >> expression: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPEvaluateArguments >> format [
 	"Specifies details on how to format the Evaluate result.
 The attribute is only honored by a debug adapter if the capability 'supportsValueFormattingOptions' is true.
@@ -81,7 +81,7 @@ The attribute is only honored by a debug adapter if the capability 'supportsValu
 	^ format
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPEvaluateArguments >> format: anObject [
 	"Specifies details on how to format the Evaluate result.
 The attribute is only honored by a debug adapter if the capability 'supportsValueFormattingOptions' is true.
@@ -95,7 +95,7 @@ The attribute is only honored by a debug adapter if the capability 'supportsValu
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPEvaluateArguments >> frameId [
 	"Evaluate the expression in the scope of this stack frame. If not specified, the expression is evaluated in the global scope.
 	integer
@@ -104,7 +104,7 @@ DAPEvaluateArguments >> frameId [
 	^ frameId
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPEvaluateArguments >> frameId: anObject [
 	"Evaluate the expression in the scope of this stack frame. If not specified, the expression is evaluated in the global scope.
 	integer
@@ -114,7 +114,7 @@ DAPEvaluateArguments >> frameId: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPEvaluateArguments >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

@@ -4,19 +4,19 @@ The debug adapter first sends the response and then a 'stopped' event (with reas
 
 "
 Class {
-	#name : 'DAPStepOutRequest',
-	#superclass : 'DAPRequest',
-	#category : 'DebugAdapterProtocol-Protocol'
+	#name : #DAPStepOutRequest,
+	#superclass : #DAPRequest,
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStepOutRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
 	^ #(stepOut )
 ]
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPStepOutRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -27,20 +27,20 @@ DAPStepOutRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPStepOutRequest >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitStepOutRequest: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStepOutRequest >> arguments [
 	"Auto-generated method"
 
 	^ arguments
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStepOutRequest >> arguments: anObject [
 	"Auto-generated method"
 
@@ -51,7 +51,7 @@ DAPStepOutRequest >> arguments: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStepOutRequest >> command [
 	"stepOut: 
 	Auto-generated method"
@@ -59,7 +59,7 @@ DAPStepOutRequest >> command [
 	^ command ifNil: [ 'stepOut' ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStepOutRequest >> command: anObject [
 	"stepOut: 
 	Auto-generated method"
@@ -68,7 +68,7 @@ DAPStepOutRequest >> command: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStepOutRequest >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

@@ -1,30 +1,30 @@
 Class {
-	#name : #DAPCDTStackFrame,
-	#superclass : #DAPStackFrame,
+	#name : 'DAPCDTStackFrame',
+	#superclass : 'DAPStackFrame',
 	#instVars : [
 		'cdtCallFrame',
 		'sourceCode'
 	],
-	#category : #'DebugAdapterProtocol-ChromeDevTools'
+	#category : 'DebugAdapterProtocol-ChromeDevTools'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPCDTStackFrame >> cdtCallFrame [
 	^ cdtCallFrame
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPCDTStackFrame >> cdtCallFrame: anObject [
 	cdtCallFrame := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPCDTStackFrame >> column [ 
 
 	^ cdtCallFrame columnNumber + 1
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 DAPCDTStackFrame >> getScopes [
 
 	^ cdtCallFrame scopeChain collect: [ :each |
@@ -33,13 +33,13 @@ DAPCDTStackFrame >> getScopes [
 			client: client ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPCDTStackFrame >> id [ 
 
 	^ cdtCallFrame callFrameId ordinal
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 DAPCDTStackFrame >> initialize [ 
 
 	super initialize.
@@ -47,31 +47,31 @@ DAPCDTStackFrame >> initialize [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPCDTStackFrame >> line [ 
 
 	^ cdtCallFrame lineNumber + 1
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPCDTStackFrame >> name [ 
 
 	^ cdtCallFrame functionName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPCDTStackFrame >> ordinal [ 
 
 	^ cdtCallFrame callFrameId ordinal
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPCDTStackFrame >> scopes [ 
 
 	^ scopes ifNil: [ scopes := self getScopes ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPCDTStackFrame >> source [ 
 
 	^ source ifNil: [ source := DAPCDTSource new 
@@ -80,7 +80,7 @@ DAPCDTStackFrame >> source [
 		locationDictionary: cdtCallFrame location ]
 ]
 
-{ #category : #ui }
+{ #category : 'ui' }
 DAPCDTStackFrame >> sourceCode [ 
 
 	^ sourceCode ifNil: [ sourceCode := cdtCallFrame sourceCode ]

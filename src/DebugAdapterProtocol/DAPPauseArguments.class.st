@@ -3,15 +3,15 @@ Arguments for 'pause' request.
 
 "
 Class {
-	#name : 'DAPPauseArguments',
-	#superclass : 'DAPObject',
+	#name : #DAPPauseArguments,
+	#superclass : #DAPObject,
 	#instVars : [
 		'threadId'
 	],
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPPauseArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -21,20 +21,20 @@ DAPPauseArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPPauseArguments >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitPauseArguments: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPPauseArguments >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
 	^ #(threadId )
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPPauseArguments >> threadId [
 	"Pause execution for this thread.
 	integer
@@ -43,7 +43,7 @@ DAPPauseArguments >> threadId [
 	^ threadId
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPPauseArguments >> threadId: anObject [
 	"Pause execution for this thread.
 	integer

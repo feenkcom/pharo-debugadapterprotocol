@@ -3,15 +3,15 @@ Arguments for 'continue' request.
 
 "
 Class {
-	#name : 'DAPContinueArguments',
-	#superclass : 'DAPObject',
+	#name : #DAPContinueArguments,
+	#superclass : #DAPObject,
 	#instVars : [
 		'threadId'
 	],
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPContinueArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -21,20 +21,20 @@ DAPContinueArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPContinueArguments >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitContinueArguments: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPContinueArguments >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
 	^ #(threadId )
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPContinueArguments >> threadId [
 	"Continue execution for the specified thread (if possible).
 If the backend cannot continue on a single thread but will continue on all threads, it should set the 'allThreadsContinued' attribute in the response to true.
@@ -44,7 +44,7 @@ If the backend cannot continue on a single thread but will continue on all threa
 	^ threadId
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPContinueArguments >> threadId: anObject [
 	"Continue execution for the specified thread (if possible).
 If the backend cannot continue on a single thread but will continue on all threads, it should set the 'allThreadsContinued' attribute in the response to true.

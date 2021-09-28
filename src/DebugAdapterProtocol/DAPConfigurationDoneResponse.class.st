@@ -3,12 +3,12 @@ Response to 'configurationDone' request. This is just an acknowledgement, so no 
 
 "
 Class {
-	#name : 'DAPConfigurationDoneResponse',
-	#superclass : 'DAPResponse',
-	#category : 'DebugAdapterProtocol-Protocol'
+	#name : #DAPConfigurationDoneResponse,
+	#superclass : #DAPResponse,
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPConfigurationDoneResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -17,13 +17,13 @@ DAPConfigurationDoneResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPConfigurationDoneResponse >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitConfigurationDoneResponse: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPConfigurationDoneResponse >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

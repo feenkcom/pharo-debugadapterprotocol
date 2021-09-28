@@ -3,12 +3,12 @@ Response to 'pause' request. This is just an acknowledgement, so no body field i
 
 "
 Class {
-	#name : 'DAPPauseResponse',
-	#superclass : 'DAPResponse',
-	#category : 'DebugAdapterProtocol-Protocol'
+	#name : #DAPPauseResponse,
+	#superclass : #DAPResponse,
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPPauseResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -17,13 +17,13 @@ DAPPauseResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPPauseResponse >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitPauseResponse: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPPauseResponse >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

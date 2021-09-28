@@ -6,19 +6,19 @@ Clients should only call this request if the capability 'supportsInstructionBrea
 
 "
 Class {
-	#name : 'DAPSetInstructionBreakpointsRequest',
-	#superclass : 'DAPRequest',
-	#category : 'DebugAdapterProtocol-Protocol'
+	#name : #DAPSetInstructionBreakpointsRequest,
+	#superclass : #DAPRequest,
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetInstructionBreakpointsRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
 	^ #(setInstructionBreakpoints )
 ]
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPSetInstructionBreakpointsRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -29,20 +29,20 @@ DAPSetInstructionBreakpointsRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPSetInstructionBreakpointsRequest >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitSetInstructionBreakpointsRequest: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetInstructionBreakpointsRequest >> arguments [
 	"Auto-generated method"
 
 	^ arguments
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetInstructionBreakpointsRequest >> arguments: anObject [
 	"Auto-generated method"
 
@@ -53,7 +53,7 @@ DAPSetInstructionBreakpointsRequest >> arguments: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetInstructionBreakpointsRequest >> command [
 	"setInstructionBreakpoints: 
 	Auto-generated method"
@@ -61,7 +61,7 @@ DAPSetInstructionBreakpointsRequest >> command [
 	^ command ifNil: [ 'setInstructionBreakpoints' ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetInstructionBreakpointsRequest >> command: anObject [
 	"setInstructionBreakpoints: 
 	Auto-generated method"
@@ -70,7 +70,7 @@ DAPSetInstructionBreakpointsRequest >> command: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetInstructionBreakpointsRequest >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

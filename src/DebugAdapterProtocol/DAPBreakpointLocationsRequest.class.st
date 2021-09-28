@@ -4,19 +4,19 @@ Clients should only call this request if the capability 'supportsBreakpointLocat
 
 "
 Class {
-	#name : 'DAPBreakpointLocationsRequest',
-	#superclass : 'DAPRequest',
-	#category : 'DebugAdapterProtocol-Protocol'
+	#name : #DAPBreakpointLocationsRequest,
+	#superclass : #DAPRequest,
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPBreakpointLocationsRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
 	^ #(breakpointLocations )
 ]
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPBreakpointLocationsRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -27,20 +27,20 @@ DAPBreakpointLocationsRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPBreakpointLocationsRequest >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitBreakpointLocationsRequest: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPBreakpointLocationsRequest >> arguments [
 	"Auto-generated method"
 
 	^ arguments
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPBreakpointLocationsRequest >> arguments: anObject [
 	"Auto-generated method"
 
@@ -51,7 +51,7 @@ DAPBreakpointLocationsRequest >> arguments: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPBreakpointLocationsRequest >> command [
 	"breakpointLocations: 
 	Auto-generated method"
@@ -59,7 +59,7 @@ DAPBreakpointLocationsRequest >> command [
 	^ command ifNil: [ 'breakpointLocations' ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPBreakpointLocationsRequest >> command: anObject [
 	"breakpointLocations: 
 	Auto-generated method"
@@ -68,7 +68,7 @@ DAPBreakpointLocationsRequest >> command: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPBreakpointLocationsRequest >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

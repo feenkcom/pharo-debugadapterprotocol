@@ -3,12 +3,12 @@ The event indicates that the debuggee has exited and returns its exit code.
 
 "
 Class {
-	#name : 'DAPExitedEvent',
-	#superclass : 'DAPEvent',
-	#category : 'DebugAdapterProtocol-Protocol'
+	#name : #DAPExitedEvent,
+	#superclass : #DAPEvent,
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPExitedEvent class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -19,27 +19,27 @@ DAPExitedEvent class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPExitedEvent class >> eventEnums [
 	"Enumerated types for the associated attribute"
 
 	^ #(exited )
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPExitedEvent >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitExitedEvent: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPExitedEvent >> body [
 	"Auto-generated method"
 
 	^ body
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPExitedEvent >> body: anObject [
 	"Auto-generated method"
 
@@ -47,7 +47,7 @@ DAPExitedEvent >> body: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPExitedEvent >> event [
 	"exited: 
 	Auto-generated method"
@@ -55,7 +55,7 @@ DAPExitedEvent >> event [
 	^ event ifNil: [ 'exited' ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPExitedEvent >> event: anObject [
 	"exited: 
 	Auto-generated method"
@@ -64,7 +64,7 @@ DAPExitedEvent >> event: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPExitedEvent >> exitCode [
 	"The exit code returned from the debuggee.
 	integer
@@ -75,7 +75,7 @@ DAPExitedEvent >> exitCode [
 	^ result
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPExitedEvent >> exitCode: anObject [
 	"The exit code returned from the debuggee.
 	integer
@@ -84,7 +84,7 @@ DAPExitedEvent >> exitCode: anObject [
 	self body at: #exitCode put: anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPExitedEvent >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

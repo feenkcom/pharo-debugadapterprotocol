@@ -3,12 +3,12 @@ Logical areas that can be invalidated by the 'invalidated' event.
 
 "
 Class {
-	#name : 'DAPInvalidatedAreas',
-	#superclass : 'DAPObject',
-	#category : 'DebugAdapterProtocol-Protocol'
+	#name : #DAPInvalidatedAreas,
+	#superclass : #DAPObject,
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPInvalidatedAreas class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -17,13 +17,13 @@ DAPInvalidatedAreas class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPInvalidatedAreas >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitInvalidatedAreas: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPInvalidatedAreas >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

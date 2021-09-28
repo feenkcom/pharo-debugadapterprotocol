@@ -7,19 +7,19 @@ The 'initialize' request may only be sent once.
 
 "
 Class {
-	#name : 'DAPInitializeRequest',
-	#superclass : 'DAPRequest',
-	#category : 'DebugAdapterProtocol-Protocol'
+	#name : #DAPInitializeRequest,
+	#superclass : #DAPRequest,
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPInitializeRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
 	^ #(initialize )
 ]
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPInitializeRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -30,20 +30,20 @@ DAPInitializeRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPInitializeRequest >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitInitializeRequest: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPInitializeRequest >> arguments [
 	"Auto-generated method"
 
 	^ arguments
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPInitializeRequest >> arguments: anObject [
 	"Auto-generated method"
 
@@ -54,7 +54,7 @@ DAPInitializeRequest >> arguments: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPInitializeRequest >> command [
 	"initialize: 
 	Auto-generated method"
@@ -62,7 +62,7 @@ DAPInitializeRequest >> command [
 	^ command ifNil: [ 'initialize' ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPInitializeRequest >> command: anObject [
 	"initialize: 
 	Auto-generated method"
@@ -71,7 +71,7 @@ DAPInitializeRequest >> command: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPInitializeRequest >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

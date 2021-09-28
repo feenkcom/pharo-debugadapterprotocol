@@ -3,16 +3,16 @@ An ExceptionFilterOptions is used to specify an exception filter together with a
 
 "
 Class {
-	#name : 'DAPExceptionFilterOptions',
-	#superclass : 'DAPObject',
+	#name : #DAPExceptionFilterOptions,
+	#superclass : #DAPObject,
 	#instVars : [
 		'condition',
 		'filterId'
 	],
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPExceptionFilterOptions class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -23,13 +23,13 @@ DAPExceptionFilterOptions class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPExceptionFilterOptions >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitExceptionFilterOptions: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPExceptionFilterOptions >> condition [
 	"An optional expression for conditional exceptions.
 The exception will break into the debugger if the result of the condition is true.
@@ -39,7 +39,7 @@ The exception will break into the debugger if the result of the condition is tru
 	^ condition
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPExceptionFilterOptions >> condition: anObject [
 	"An optional expression for conditional exceptions.
 The exception will break into the debugger if the result of the condition is true.
@@ -50,7 +50,7 @@ The exception will break into the debugger if the result of the condition is tru
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPExceptionFilterOptions >> filterId [
 	"ID of an exception filter returned by the 'exceptionBreakpointFilters' capability.
 	string
@@ -59,7 +59,7 @@ DAPExceptionFilterOptions >> filterId [
 	^ filterId
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPExceptionFilterOptions >> filterId: anObject [
 	"ID of an exception filter returned by the 'exceptionBreakpointFilters' capability.
 	string
@@ -69,7 +69,7 @@ DAPExceptionFilterOptions >> filterId: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPExceptionFilterOptions >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

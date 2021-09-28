@@ -1,29 +1,29 @@
 Class {
-	#name : #DAPCDTSource,
-	#superclass : #DAPSource,
+	#name : 'DAPCDTSource',
+	#superclass : 'DAPSource',
 	#instVars : [
 		'locationDictionary'
 	],
-	#category : #'DebugAdapterProtocol-ChromeDevTools'
+	#category : 'DebugAdapterProtocol-ChromeDevTools'
 }
 
-{ #category : #private }
+{ #category : 'private' }
 DAPCDTSource >> gtStyler [ 
 
 	^ JSParser gtStyler
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPCDTSource >> locationDictionary [
 	^ locationDictionary
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPCDTSource >> locationDictionary: anObject [
 	locationDictionary := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DAPCDTSource >> sourceCode [ 
 
 	^ sourceCode ifNil: [ sourceCode := client scriptSourceFor: (locationDictionary at: #scriptId) ]

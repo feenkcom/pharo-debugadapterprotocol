@@ -11,12 +11,12 @@ The sequence of events/requests is as follows:
 
 "
 Class {
-	#name : 'DAPInitializedEvent',
-	#superclass : 'DAPEvent',
-	#category : 'DebugAdapterProtocol-Protocol'
+	#name : #DAPInitializedEvent,
+	#superclass : #DAPEvent,
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPInitializedEvent class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -26,20 +26,20 @@ DAPInitializedEvent class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPInitializedEvent class >> eventEnums [
 	"Enumerated types for the associated attribute"
 
 	^ #(initialized )
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPInitializedEvent >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitInitializedEvent: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPInitializedEvent >> event [
 	"initialized: 
 	Auto-generated method"
@@ -47,7 +47,7 @@ DAPInitializedEvent >> event [
 	^ event ifNil: [ 'initialized' ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPInitializedEvent >> event: anObject [
 	"initialized: 
 	Auto-generated method"
@@ -56,7 +56,7 @@ DAPInitializedEvent >> event: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPInitializedEvent >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

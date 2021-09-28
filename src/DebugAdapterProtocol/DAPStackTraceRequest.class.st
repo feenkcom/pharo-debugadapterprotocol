@@ -4,19 +4,19 @@ A client can request all stack frames by omitting the startFrame and levels argu
 
 "
 Class {
-	#name : 'DAPStackTraceRequest',
-	#superclass : 'DAPRequest',
-	#category : 'DebugAdapterProtocol-Protocol'
+	#name : #DAPStackTraceRequest,
+	#superclass : #DAPRequest,
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStackTraceRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
 	^ #(stackTrace )
 ]
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPStackTraceRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -27,20 +27,20 @@ DAPStackTraceRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPStackTraceRequest >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitStackTraceRequest: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStackTraceRequest >> arguments [
 	"Auto-generated method"
 
 	^ arguments
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStackTraceRequest >> arguments: anObject [
 	"Auto-generated method"
 
@@ -51,7 +51,7 @@ DAPStackTraceRequest >> arguments: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStackTraceRequest >> command [
 	"stackTrace: 
 	Auto-generated method"
@@ -59,7 +59,7 @@ DAPStackTraceRequest >> command [
 	^ command ifNil: [ 'stackTrace' ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStackTraceRequest >> command: anObject [
 	"stackTrace: 
 	Auto-generated method"
@@ -68,7 +68,7 @@ DAPStackTraceRequest >> command: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStackTraceRequest >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
