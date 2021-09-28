@@ -367,19 +367,21 @@ DAPStackFrame >> sourceCode [
 ]
 
 { #category : 'ui' }
-DAPStackFrame >> sourceText [ 
-	"Answer the receiver's source code, with the current line highlighted"
-	| text indexes lineNumber sourceCode |
+DAPStackFrame >> sourceText [
 
+	"Answer the receiver's source code, with the current line highlighted"
+
+	| text indexes lineNumber sourceCode |
 	lineNumber := self line.
-	sourceCode := self sourceCode withSqueakLineEndings.
+	sourceCode := self sourceCode withInternalLineEndings.
 	text := sourceCode asRopedText.
 	lineNumber = 0 ifTrue: [ ^ text ].
 	indexes := sourceCode gtIndexOfLineNumber: lineNumber.
-	indexes ifNotNil: 
-		[ (text from: indexes key + self column - 1 to: indexes value) 
-			attribute: (BlTextHighlightAttribute paint: BrGlamorousColors errorBackgroundColor)
-				beNotOverwritableByStyler  ].
+	indexes ifNotNil: [ 
+		(text from: indexes key + self column - 1 to: indexes value) 
+			attribute: (BlTextHighlightAttribute paint:
+					 BrGlamorousColors errorBackgroundColor)
+					beNotOverwritableByStyler ].
 	^ text
 ]
 

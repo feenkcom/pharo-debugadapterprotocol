@@ -119,24 +119,29 @@ DAPReceivedMessageVisitor >> visitNextResponse: anObject [
 
 { #category : 'visiting' }
 DAPReceivedMessageVisitor >> visitOutputEvent: aDAPOutputEvent [
-	"Append stdout and stderr to the client's stream.  Just store other output."
-	| clientOutput stream |
 
+	"Append stdout and stderr to the client's stream.  Just store other output."
+
+	| clientOutput stream |
 	"What is the variablesReference for?"
 	aDAPOutputEvent variablesReference ifNotNil: [ self halt ].
 
-	aDAPOutputEvent category = #stdout ifTrue:
-		[ client stdoutNextPutAll: aDAPOutputEvent output withSqueakLineEndings.
+	aDAPOutputEvent category = #stdout ifTrue: [ 
+		client stdoutNextPutAll:
+			aDAPOutputEvent output withInternalLineEndings.
 		^ false ].
-	aDAPOutputEvent category = #stderr ifTrue:
-		[ client stderrNextPutAll: aDAPOutputEvent output withSqueakLineEndings.
+	aDAPOutputEvent category = #stderr ifTrue: [ 
+		client stderrNextPutAll:
+			aDAPOutputEvent output withSqueakLineEndings.
 		^ false ].
 
 
 	"Not yet sure what output covers, just append it to the server attributes"
-	clientOutput := client serverAttributes at: #output ifAbsentPut: [ OrderedCollection new ].
+	clientOutput := client serverAttributes
+		                at: #output
+		                ifAbsentPut: [ OrderedCollection new ].
 	clientOutput add: aDAPOutputEvent body.
-	^ false.
+	^ false
 ]
 
 { #category : 'visiting' }
