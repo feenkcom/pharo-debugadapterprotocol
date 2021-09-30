@@ -57,6 +57,6 @@ GtDAPDebugSession >> debuggerClient [
 GtDAPDebugSession >> signal [
 	"Answer the signal that triggered the debug session."
 
-	^ signal ifNil: [ signal := self interruptedContext receiver signal ].
+	^ signal ifNil: [ signal := self interruptedContext receiver exception ].
 
 ]

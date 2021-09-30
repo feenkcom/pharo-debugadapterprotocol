@@ -71,7 +71,7 @@ GtPostMortemSessionElement >> dapResume [
 { #category : #'private - accessing' }
 GtPostMortemSessionElement >> debuggerClient [ 
 
-	^ dapDebugger ifNil: [ dapDebugger := debuggingSession ifNotNil: [ debuggingSession debuggerClient ] ]
+	^ debuggerClient ifNil: [ debuggerClient := debuggingSession ifNotNil: [ debuggingSession debuggerClient ] ]
 ]
 
 { #category : #testing }

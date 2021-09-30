@@ -10,7 +10,6 @@ Class {
 	#name : #GtDAPDebuggerElement,
 	#superclass : #GtDebuggerElement,
 	#instVars : [
-		'dapDebugger',
 		'toolbar',
 		'variableList',
 		'callFramesList',
@@ -22,7 +21,8 @@ Class {
 		'stderr',
 		'breakpoints',
 		'variablesContainer',
-		'modules'
+		'modules',
+		'debuggerClient'
 	],
 	#category : #'DebugAdapterProtocol-UI'
 }
@@ -32,7 +32,7 @@ GtDAPDebuggerElement class >> openOnDebugger: aDAPDebugger [
 	| space |
 
 	space := BlSpace new.
-	space root addChild: (self new dapDebugger: aDAPDebugger).
+	space root addChild: (self new debuggerClient: aDAPDebugger).
 	space show.
 ]
 
@@ -41,7 +41,7 @@ GtDAPDebuggerElement >> actOnBrowserClosing: ann [
 	"If the remote debugger is stopped, resume it, otherwise the remote is effectively locked up"
 
 	"Tell the debugger directly to resume, since we are already closing"
-	(dapDebugger isNotNil and: [ dapDebugger isStopped ]) ifTrue: 
+	(debuggerClient isNotNil and: [ debuggerClient isStopped ]) ifTrue: 
 		[ currentThread continue ].
 	toolbar actOnBrowserClosing: ann.
 	super actOnBrowserClosing: ann
@@ -154,13 +154,6 @@ GtDAPDebuggerElement >> columnNumber [
 	^ currentCallFrame columnNumber
 ]
 
-{ #category : #accessing }
-GtDAPDebuggerElement >> dapDebugger: aDAPDebugger [
-
-	dapDebugger := aDAPDebugger.
-	self actOnDebugSessionChanged.
-]
-
 { #category : #'private - actions' }
 GtDAPDebuggerElement >> dapResume [
 	"Continue execution"
@@ -192,7 +185,14 @@ GtDAPDebuggerElement >> dapStepOver [
 GtDAPDebuggerElement >> debuggerClient [
 	"Answer the debugger"
 
-	^ dapDebugger
+	^ debuggerClient
+]
+
+{ #category : #accessing }
+GtDAPDebuggerElement >> debuggerClient: aDAPDebugger [
+
+	debuggerClient := aDAPDebugger.
+	self actOnDebugSessionChanged.
 ]
 
 { #category : #'private - accessing' }
@@ -277,7 +277,7 @@ GtDAPDebuggerElement >> isDisplayingTopFrame [
 	"Answer a boolean indicating whether the top call frame is being displayed.
 	DAP debuggers only allow stepping and continuing from the top frame."
 
-	^ dapDebugger isStopped and: [ currentCallFrame == dapDebugger stoppedThread stackFrames first ]
+	^ debuggerClient isStopped and: [ currentCallFrame == debuggerClient stoppedThread stackFrames first ]
 ]
 
 { #category : #'private - accessing' }
@@ -577,8 +577,8 @@ GtDAPDebuggerElement >> stdoutTab [
 GtDAPDebuggerElement >> terminateSession [
 
 	super terminateSession.
-	self debuggerClient ifNotNil: 
-		[ dapDebugger announcer unsubscribe: self ]
+	debuggerClient ifNotNil: 
+		[ debuggerClient announcer unsubscribe: self ]
 ]
 
 { #category : #'private - update ui' }

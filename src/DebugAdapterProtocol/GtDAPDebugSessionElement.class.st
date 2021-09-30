@@ -56,5 +56,5 @@ GtDAPDebugSessionElement >> dapResume [
 { #category : #'private - accessing' }
 GtDAPDebugSessionElement >> debuggerClient [ 
 
-	^ dapDebugger ifNil: [ dapDebugger := debuggingSession debuggerClient ]
+	^ debuggerClient ifNil: [ debuggerClient := debuggingSession debuggerClient ]
 ]
