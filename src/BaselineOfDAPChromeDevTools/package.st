@@ -1,1 +1,1 @@
-Package { #name : 'BaselineOfDAPChromeDevTools' }
+Package { #name : #BaselineOfDAPChromeDevTools }

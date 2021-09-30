@@ -1,1 +1,1 @@
-Package { #name : 'BaselineOfDAPPythonBridge' }
+Package { #name : #BaselineOfDAPPythonBridge }
