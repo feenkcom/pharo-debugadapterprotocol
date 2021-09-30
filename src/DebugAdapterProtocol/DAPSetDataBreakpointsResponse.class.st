@@ -4,12 +4,12 @@ Returned is information about each breakpoint created by this request.
 
 "
 Class {
-	#name : 'DAPSetDataBreakpointsResponse',
-	#superclass : 'DAPResponse',
+	#name : #DAPSetDataBreakpointsResponse,
+	#superclass : #DAPResponse,
 	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPSetDataBreakpointsResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -19,20 +19,20 @@ DAPSetDataBreakpointsResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPSetDataBreakpointsResponse >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitSetDataBreakpointsResponse: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetDataBreakpointsResponse >> body [
 	"Auto-generated method"
 
 	^ body
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetDataBreakpointsResponse >> body: anObject [
 	"Auto-generated method"
 
@@ -40,7 +40,7 @@ DAPSetDataBreakpointsResponse >> body: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetDataBreakpointsResponse >> breakpoints [
 	"Information about the data breakpoints. The array elements correspond to the elements of the input argument 'breakpoints' array.
 	array
@@ -51,7 +51,7 @@ DAPSetDataBreakpointsResponse >> breakpoints [
 	^ result
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetDataBreakpointsResponse >> breakpoints: anObject [
 	"Information about the data breakpoints. The array elements correspond to the elements of the input argument 'breakpoints' array.
 	array
@@ -60,7 +60,7 @@ DAPSetDataBreakpointsResponse >> breakpoints: anObject [
 	self body at: #breakpoints put: anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetDataBreakpointsResponse >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

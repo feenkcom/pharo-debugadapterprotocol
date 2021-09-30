@@ -3,8 +3,8 @@ An ExceptionBreakpointsFilter is shown in the UI as an filter option for configu
 
 "
 Class {
-	#name : 'DAPExceptionBreakpointsFilter',
-	#superclass : 'DAPObject',
+	#name : #DAPExceptionBreakpointsFilter,
+	#superclass : #DAPObject,
 	#instVars : [
 		'conditionDescription',
 		'default',
@@ -16,7 +16,7 @@ Class {
 	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPExceptionBreakpointsFilter class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -31,13 +31,13 @@ DAPExceptionBreakpointsFilter class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPExceptionBreakpointsFilter >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitExceptionBreakpointsFilter: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPExceptionBreakpointsFilter >> conditionDescription [
 	"An optional help text providing information about the condition. This string is shown as the placeholder text for a text box and must be translated.
 	string
@@ -46,7 +46,7 @@ DAPExceptionBreakpointsFilter >> conditionDescription [
 	^ conditionDescription
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPExceptionBreakpointsFilter >> conditionDescription: anObject [
 	"An optional help text providing information about the condition. This string is shown as the placeholder text for a text box and must be translated.
 	string
@@ -56,7 +56,7 @@ DAPExceptionBreakpointsFilter >> conditionDescription: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPExceptionBreakpointsFilter >> default [
 	"Initial value of the filter option. If not specified a value 'false' is assumed.
 	boolean
@@ -65,7 +65,7 @@ DAPExceptionBreakpointsFilter >> default [
 	^ default
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPExceptionBreakpointsFilter >> default: anObject [
 	"Initial value of the filter option. If not specified a value 'false' is assumed.
 	boolean
@@ -75,7 +75,7 @@ DAPExceptionBreakpointsFilter >> default: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPExceptionBreakpointsFilter >> description [
 	"An optional help text providing additional information about the exception filter. This string is typically shown as a hover and must be translated.
 	string
@@ -84,7 +84,7 @@ DAPExceptionBreakpointsFilter >> description [
 	^ description
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPExceptionBreakpointsFilter >> description: anObject [
 	"An optional help text providing additional information about the exception filter. This string is typically shown as a hover and must be translated.
 	string
@@ -94,7 +94,7 @@ DAPExceptionBreakpointsFilter >> description: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPExceptionBreakpointsFilter >> filter [
 	"The internal ID of the filter option. This value is passed to the 'setExceptionBreakpoints' request.
 	string
@@ -103,7 +103,7 @@ DAPExceptionBreakpointsFilter >> filter [
 	^ filter
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPExceptionBreakpointsFilter >> filter: anObject [
 	"The internal ID of the filter option. This value is passed to the 'setExceptionBreakpoints' request.
 	string
@@ -113,7 +113,7 @@ DAPExceptionBreakpointsFilter >> filter: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPExceptionBreakpointsFilter >> label [
 	"The name of the filter option. This will be shown in the UI.
 	string
@@ -122,7 +122,7 @@ DAPExceptionBreakpointsFilter >> label [
 	^ label
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPExceptionBreakpointsFilter >> label: anObject [
 	"The name of the filter option. This will be shown in the UI.
 	string
@@ -132,14 +132,14 @@ DAPExceptionBreakpointsFilter >> label: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPExceptionBreakpointsFilter >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
 	^ #(conditionDescription default description filter label supportsCondition )
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPExceptionBreakpointsFilter >> supportsCondition [
 	"Controls whether a condition can be specified for this filter option. If false or missing, a condition can not be set.
 	boolean
@@ -148,7 +148,7 @@ DAPExceptionBreakpointsFilter >> supportsCondition [
 	^ supportsCondition
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPExceptionBreakpointsFilter >> supportsCondition: anObject [
 	"Controls whether a condition can be specified for this filter option. If false or missing, a condition can not be set.
 	boolean

@@ -5,8 +5,8 @@ Subclasses are responsible for performing the communications with the remote ser
 
 "
 Class {
-	#name : 'RemoteDebuggerClient',
-	#superclass : 'Object',
+	#name : #RemoteDebuggerClient,
+	#superclass : #Object,
 	#traits : 'TGtAnnouncer',
 	#classTraits : 'TGtAnnouncer classTrait',
 	#instVars : [
@@ -21,14 +21,14 @@ Class {
 	#category : 'DebugAdapterProtocol-Client'
 }
 
-{ #category : 'announcer' }
+{ #category : #announcer }
 RemoteDebuggerClient >> announcer [
 	<return: #Announcer>
 
 	^ announcer
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 RemoteDebuggerClient >> atThreadId: aNumber [ 
 	<return: #DAPThreadModel>
 
@@ -38,7 +38,7 @@ RemoteDebuggerClient >> atThreadId: aNumber [
 			threadId: aNumber ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 RemoteDebuggerClient >> breakpoints [
 	"Answer the dictionary of known breakpoints"
 	<return: #Dictionary of: #DAPBreakpoint>
@@ -46,7 +46,7 @@ RemoteDebuggerClient >> breakpoints [
 	^ breakpoints
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 RemoteDebuggerClient >> capabilities [ 
 	"Answer the capabilities of the remote server"
 	<return: #DAPCapabilities>
@@ -54,37 +54,37 @@ RemoteDebuggerClient >> capabilities [
 	^ self subclassResponsibility 
 ]
 
-{ #category : 'actions' }
+{ #category : #actions }
 RemoteDebuggerClient >> configurationDone [
 	"Let the server know we've finished configuration"
 
 	self subclassResponsibility
 ]
 
-{ #category : 'actions' }
+{ #category : #actions }
 RemoteDebuggerClient >> continueThreadId: aNumber [
 	"Instruct the debugger to continue execution"
 
 	self subclassResponsibility 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 RemoteDebuggerClient >> debugger [
 	^ debugger
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 RemoteDebuggerClient >> debugger: anObject [
 	debugger := anObject
 ]
 
-{ #category : 'actions' }
+{ #category : #actions }
 RemoteDebuggerClient >> disconnect [ 
 
 	self subclassResponsibility 
 ]
 
-{ #category : 'ui' }
+{ #category : #ui }
 RemoteDebuggerClient >> gtBreakpointsFor: aView [
 	<gtView>
 
@@ -99,7 +99,7 @@ RemoteDebuggerClient >> gtBreakpointsFor: aView [
 
 ]
 
-{ #category : 'ui' }
+{ #category : #ui }
 RemoteDebuggerClient >> gtModulesFor: aView [
 	<gtView>
 
@@ -116,7 +116,7 @@ RemoteDebuggerClient >> gtModulesFor: aView [
 
 ]
 
-{ #category : 'ui' }
+{ #category : #ui }
 RemoteDebuggerClient >> gtStderrFor: aView [
 	<gtView>
 
@@ -128,7 +128,7 @@ RemoteDebuggerClient >> gtStderrFor: aView [
 
 ]
 
-{ #category : 'ui' }
+{ #category : #ui }
 RemoteDebuggerClient >> gtStdoutFor: aView [
 	<gtView>
 
@@ -140,7 +140,7 @@ RemoteDebuggerClient >> gtStdoutFor: aView [
 
 ]
 
-{ #category : 'ui' }
+{ #category : #ui }
 RemoteDebuggerClient >> gtThreadsFor: aView [
 	<gtView>
 
@@ -158,7 +158,7 @@ RemoteDebuggerClient >> gtThreadsFor: aView [
 
 ]
 
-{ #category : 'initialization' }
+{ #category : #initialization }
 RemoteDebuggerClient >> initialize [ 
 
 	super initialize.
@@ -173,63 +173,63 @@ RemoteDebuggerClient >> initialize [
 
 ]
 
-{ #category : 'testing' }
+{ #category : #testing }
 RemoteDebuggerClient >> isAttached [ 
 
 	^ self subclassResponsibility
 ]
 
-{ #category : 'testing' }
+{ #category : #testing }
 RemoteDebuggerClient >> isConnected [
 
 	^ self subclassResponsibility
 ]
 
-{ #category : 'testing' }
+{ #category : #testing }
 RemoteDebuggerClient >> isInitialized [ 
 
 	^ self subclassResponsibility
 ]
 
-{ #category : 'testing' }
+{ #category : #testing }
 RemoteDebuggerClient >> isStopped [ 
 
 	^ self subclassResponsibility
 ]
 
-{ #category : 'testing' }
+{ #category : #testing }
 RemoteDebuggerClient >> isTerminated [ 
 
 	^ self subclassResponsibility
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 RemoteDebuggerClient >> modules [
 	<return: #Dictionary of: #DAPModule>
 
 	^ modules
 ]
 
-{ #category : 'actions' }
+{ #category : #actions }
 RemoteDebuggerClient >> nextInThreadId: aNumber [
 	"Instruct the debugger to step over the next instruction"
 
 	self subclassResponsibility 
 ]
 
-{ #category : 'actions' }
+{ #category : #actions }
 RemoteDebuggerClient >> requestAllStackTraces [ 
 
 	self subclassResponsibility 
 ]
 
-{ #category : 'actions' }
+{ #category : #actions }
 RemoteDebuggerClient >> requestAllThreads [ 
 
 	self subclassResponsibility 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 RemoteDebuggerClient >> serverState [
 	"Answer the state of the server.
 	Known states include: nil (no activity), attached, initialized, continued, stopped, exited, terminated.
@@ -239,19 +239,19 @@ RemoteDebuggerClient >> serverState [
 	^ self subclassResponsibility 
 ]
 
-{ #category : 'actions' }
+{ #category : #actions }
 RemoteDebuggerClient >> setBreakpointInFile: aFileReference lines: anArray [ 
 
 	self subclassResponsibility 
 ]
 
-{ #category : 'actions' }
+{ #category : #actions }
 RemoteDebuggerClient >> setExceptionBreakpoints [
 
 	self subclassResponsibility 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 RemoteDebuggerClient >> statusString [
 	"Answer a one-line string that represents the overall state of the debugger"
 	<return: #String>
@@ -259,54 +259,54 @@ RemoteDebuggerClient >> statusString [
 	^ self subclassResponsibility 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 RemoteDebuggerClient >> stderr [
 
 	^ stderrStream contents
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 RemoteDebuggerClient >> stderrNextPutAll: aString [
 
 	stderrStream nextPutAll: aString.
 	self announce: (DAPStderrUpdated new string: aString).
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 RemoteDebuggerClient >> stdout [ 
 
 	^ stdoutStream contents
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 RemoteDebuggerClient >> stdoutNextPutAll: aString [
 
 	stdoutStream nextPutAll: aString.
 	self announce: (DAPStdoutUpdated new string: aString).
 ]
 
-{ #category : 'actions' }
+{ #category : #actions }
 RemoteDebuggerClient >> stepIntoInThreadId: aNumber [
 	"Step into the next statement"
 
 	^ self subclassResponsibility 
 ]
 
-{ #category : 'actions' }
+{ #category : #actions }
 RemoteDebuggerClient >> stepOutInThreadId: aNumber [
 	"Step out (of somewhere)?"
 
 	^ self subclassResponsibility 
 ]
 
-{ #category : 'actions' }
+{ #category : #actions }
 RemoteDebuggerClient >> stepOverInThreadId: aNumber [
 	"Pharo synonym for 'next'"
 
 	^ self nextInThreadId: aNumber
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 RemoteDebuggerClient >> stoppedThread [
 	<return: #DAPThreadModel>
 

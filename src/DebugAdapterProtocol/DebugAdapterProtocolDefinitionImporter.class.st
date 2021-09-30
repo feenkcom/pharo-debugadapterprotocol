@@ -1,6 +1,6 @@
 Class {
-	#name : 'DebugAdapterProtocolDefinitionImporter',
-	#superclass : 'Object',
+	#name : #DebugAdapterProtocolDefinitionImporter,
+	#superclass : #Object,
 	#instVars : [
 		'filename',
 		'rootClass',
@@ -12,7 +12,7 @@ Class {
 	#category : 'DebugAdapterProtocol-Import'
 }
 
-{ #category : 'private' }
+{ #category : #private }
 DebugAdapterProtocolDefinitionImporter >> addEnum: name definition: definition to: messageClass [
 	"If the current method defines enums, add a class selector"
 	| enums methodName source |
@@ -37,7 +37,7 @@ DebugAdapterProtocolDefinitionImporter >> addEnum: name definition: definition t
 
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 DebugAdapterProtocolDefinitionImporter >> addJsonMapping: jsonDictionary to: aClass [
 	"Add a method setting up the default mapping for the supplied class"
 	| methodSource |
@@ -63,7 +63,7 @@ DebugAdapterProtocolDefinitionImporter >> addJsonMapping: jsonDictionary to: aCl
 
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 DebugAdapterProtocolDefinitionImporter >> addMethod: name definition: definition to: messageClass jsonDictionary: jsonDictionary [
 	"Add the supplied method"
 	| getter setter methodComment type |
@@ -89,14 +89,14 @@ DebugAdapterProtocolDefinitionImporter >> addMethod: name definition: definition
 
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 DebugAdapterProtocolDefinitionImporter >> addObjectAccessorsFor: name attribute: attribute properties: properties to: messageClass [
 
 	self addObjectGetterFor: name attribute: attribute properties: properties to: messageClass.
 	self addObjectSetterFor: name attribute: attribute properties: properties to: messageClass.
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 DebugAdapterProtocolDefinitionImporter >> addObjectAccessorsFor: name definition: definition to: messageClass [
 	"Add accessors for the named object"
 
@@ -106,7 +106,7 @@ DebugAdapterProtocolDefinitionImporter >> addObjectAccessorsFor: name definition
 		self addObjectAccessorsFor: name attribute: attribute properties: properties to: messageClass ].
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 DebugAdapterProtocolDefinitionImporter >> addObjectGetterFor: name attribute: attribute properties: properties to: messageClass [
 	| source |
 
@@ -116,7 +116,7 @@ DebugAdapterProtocolDefinitionImporter >> addObjectGetterFor: name attribute: at
 
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 DebugAdapterProtocolDefinitionImporter >> addObjectSetterFor: name attribute: attribute properties: properties to: messageClass [
 	| source |
 
@@ -126,17 +126,17 @@ DebugAdapterProtocolDefinitionImporter >> addObjectSetterFor: name attribute: at
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DebugAdapterProtocolDefinitionImporter >> classNamePrefix [
 	^ classNamePrefix
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DebugAdapterProtocolDefinitionImporter >> classNamePrefix: anObject [
 	classNamePrefix := anObject
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 DebugAdapterProtocolDefinitionImporter >> defineMessage: message named: key [
 	"Define and answer the class associated with the supplied message.
 	If it already exists, use the existing definition."
@@ -171,7 +171,7 @@ DebugAdapterProtocolDefinitionImporter >> defineMessage: message named: key [
 	^ newClass
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 DebugAdapterProtocolDefinitionImporter >> defineMethodsFrom: properties to: messageClass required: requiredProperties jsonDictionary: jsonDictionary [
 	"Iterate over the supplied properties dictionary and add the methods to messageClass"
 
@@ -188,7 +188,7 @@ DebugAdapterProtocolDefinitionImporter >> defineMethodsFrom: properties to: mess
 	self definePropertyNamesMethodFrom: properties to: messageClass.
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 DebugAdapterProtocolDefinitionImporter >> definePropertyNamesMethodFrom: properties to: messageClass [
 	"Add a method that returns the names of all the interesting properties.
 	This will then be used to create a general properties inspector view"
@@ -217,7 +217,7 @@ DebugAdapterProtocolDefinitionImporter >> definePropertyNamesMethodFrom: propert
 
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 DebugAdapterProtocolDefinitionImporter >> defineSuperclassFrom: classDictionary [
 	| allOf superClassName superClass |
 
@@ -231,7 +231,7 @@ DebugAdapterProtocolDefinitionImporter >> defineSuperclassFrom: classDictionary 
 	^ superClass.
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 DebugAdapterProtocolDefinitionImporter >> defineVisitor: key in: messageClass [
 	| source visitorMethod |
 
@@ -251,7 +251,7 @@ DebugAdapterProtocolDefinitionImporter >> defineVisitor: key in: messageClass [
 	visitorMethods add: visitorMethod.
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 DebugAdapterProtocolDefinitionImporter >> defineVisitorTrait [
 	"Define the trait for visiting the protocol"
 	| trait source visitorMethodSymbol |
@@ -275,18 +275,18 @@ DebugAdapterProtocolDefinitionImporter >> defineVisitorTrait [
 			(trait methodNamed: visitorMethodSymbol) protocol: 'visiting' ] ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DebugAdapterProtocolDefinitionImporter >> filename [
 	^ filename
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DebugAdapterProtocolDefinitionImporter >> filename: aFileReference [
 
 	filename := aFileReference asFileReference.
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 DebugAdapterProtocolDefinitionImporter >> getSuperclassOf: className message: message properties: properties classDictionary: classDictionary [
 	| newClass superClass existingInstanceVariables localClassDictionary localProperties instanceVariableNames |
 
@@ -321,7 +321,7 @@ DebugAdapterProtocolDefinitionImporter >> getSuperclassOf: className message: me
 	^ { newClass. localClassDictionary. localProperties. }
 ]
 
-{ #category : 'initialization' }
+{ #category : #initialization }
 DebugAdapterProtocolDefinitionImporter >> initialize [ 
 
 	super initialize.
@@ -332,7 +332,7 @@ DebugAdapterProtocolDefinitionImporter >> initialize [
 	overwrite := false.
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 DebugAdapterProtocolDefinitionImporter >> methodCommentFromDefinition: definition [
 	"Answer a method comment based on the supplied property defintion"
 	| enums enumDescriptions |
@@ -363,7 +363,7 @@ DebugAdapterProtocolDefinitionImporter >> methodCommentFromDefinition: definitio
 
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 DebugAdapterProtocolDefinitionImporter >> methodGetterFromNamed: name definition: definition comment: methodComment [
 	| enum |
 
@@ -383,7 +383,7 @@ DebugAdapterProtocolDefinitionImporter >> methodGetterFromNamed: name definition
 
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 DebugAdapterProtocolDefinitionImporter >> methodObjectGetterFor: name attribute: attribute properties: properties [
 	| enum refClass |
 
@@ -418,7 +418,7 @@ DebugAdapterProtocolDefinitionImporter >> methodObjectGetterFor: name attribute:
 
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 DebugAdapterProtocolDefinitionImporter >> methodObjectSetterFor: name attribute: attribute properties: properties [
 	"Answer the source code for setting an embedded object.
 	Doesn't handle nesting of dictionary objects."
@@ -437,7 +437,7 @@ DebugAdapterProtocolDefinitionImporter >> methodObjectSetterFor: name attribute:
 
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 DebugAdapterProtocolDefinitionImporter >> methodSetterFromNamed: name definition: definition comment: methodComment [
 	| refClass |
 
@@ -463,7 +463,7 @@ DebugAdapterProtocolDefinitionImporter >> methodSetterFromNamed: name definition
 					<< ' := anObject'; cr ] ].
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DebugAdapterProtocolDefinitionImporter >> overwrite [
 	"Answer a boolean indicating whether existing definitions should be overwritten"
 	<return: #Boolean>
@@ -471,19 +471,19 @@ DebugAdapterProtocolDefinitionImporter >> overwrite [
 	^ overwrite
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DebugAdapterProtocolDefinitionImporter >> overwrite: anObject [
 	overwrite := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DebugAdapterProtocolDefinitionImporter >> protocolDictionary [
 	"Answer the dictionary containing the entire protocol"
 
 	^ protocolDictionary ifNil: [ protocolDictionary := STONJSON fromString: filename contents ]
 ]
 
-{ #category : 'private - preparation' }
+{ #category : #'private - preparation' }
 DebugAdapterProtocolDefinitionImporter >> removeClass: aClass [ 
 
 	aClass subclasses do: [ :cls |
@@ -491,7 +491,7 @@ DebugAdapterProtocolDefinitionImporter >> removeClass: aClass [
 	aClass removeFromSystem.
 ]
 
-{ #category : 'preparation' }
+{ #category : #preparation }
 DebugAdapterProtocolDefinitionImporter >> removeGeneratedClasses [
 	"Remove all the previously generated classes, i.e. subclasses of rootClass.
 	This must be called manually."
@@ -501,7 +501,7 @@ DebugAdapterProtocolDefinitionImporter >> removeGeneratedClasses [
 		TDAPProtocolVisitor removeSelector: key ].
 ]
 
-{ #category : 'private - preparation' }
+{ #category : #'private - preparation' }
 DebugAdapterProtocolDefinitionImporter >> removeSubclassesOf: aClass [ 
 
 	aClass subclasses do: [ :cls |
@@ -509,17 +509,17 @@ DebugAdapterProtocolDefinitionImporter >> removeSubclassesOf: aClass [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DebugAdapterProtocolDefinitionImporter >> rootClass [
 	^ rootClass
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DebugAdapterProtocolDefinitionImporter >> rootClass: anObject [
 	rootClass := anObject
 ]
 
-{ #category : 'running' }
+{ #category : #running }
 DebugAdapterProtocolDefinitionImporter >> run [ 
 	"Iterate over the protocol dictionary and generate the required classes.
 	If a class already exists, use the existing definition"

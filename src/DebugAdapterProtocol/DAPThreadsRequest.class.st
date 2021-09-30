@@ -3,19 +3,19 @@ The request retrieves a list of all threads.
 
 "
 Class {
-	#name : 'DAPThreadsRequest',
-	#superclass : 'DAPRequest',
+	#name : #DAPThreadsRequest,
+	#superclass : #DAPRequest,
 	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPThreadsRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
 	^ #(threads )
 ]
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPThreadsRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -25,13 +25,13 @@ DAPThreadsRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPThreadsRequest >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitThreadsRequest: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPThreadsRequest >> command [
 	"threads: 
 	Auto-generated method"
@@ -39,7 +39,7 @@ DAPThreadsRequest >> command [
 	^ command ifNil: [ 'threads' ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPThreadsRequest >> command: anObject [
 	"threads: 
 	Auto-generated method"
@@ -48,7 +48,7 @@ DAPThreadsRequest >> command: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPThreadsRequest >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

@@ -3,8 +3,8 @@ Information about a Breakpoint created in setBreakpoints, setFunctionBreakpoints
 
 "
 Class {
-	#name : 'DAPBreakpoint',
-	#superclass : 'DAPObject',
+	#name : #DAPBreakpoint,
+	#superclass : #DAPObject,
 	#instVars : [
 		'column',
 		'endColumn',
@@ -20,7 +20,7 @@ Class {
 	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPBreakpoint class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -39,13 +39,13 @@ DAPBreakpoint class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPBreakpoint >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitBreakpoint: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPBreakpoint >> column [
 	"An optional start column of the actual range covered by the breakpoint.
 	integer
@@ -54,7 +54,7 @@ DAPBreakpoint >> column [
 	^ column
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPBreakpoint >> column: anObject [
 	"An optional start column of the actual range covered by the breakpoint.
 	integer
@@ -64,7 +64,7 @@ DAPBreakpoint >> column: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPBreakpoint >> displayLabel [
 
 	^ self source 
@@ -72,7 +72,7 @@ DAPBreakpoint >> displayLabel [
 		ifNotNil: [ self source path, ':', line asString ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPBreakpoint >> endColumn [
 	"An optional end column of the actual range covered by the breakpoint.
 If no end line is given, then the end column is assumed to be in the start line.
@@ -82,7 +82,7 @@ If no end line is given, then the end column is assumed to be in the start line.
 	^ endColumn
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPBreakpoint >> endColumn: anObject [
 	"An optional end column of the actual range covered by the breakpoint.
 If no end line is given, then the end column is assumed to be in the start line.
@@ -93,7 +93,7 @@ If no end line is given, then the end column is assumed to be in the start line.
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPBreakpoint >> endLine [
 	"An optional end line of the actual range covered by the breakpoint.
 	integer
@@ -102,7 +102,7 @@ DAPBreakpoint >> endLine [
 	^ endLine
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPBreakpoint >> endLine: anObject [
 	"An optional end line of the actual range covered by the breakpoint.
 	integer
@@ -112,7 +112,7 @@ DAPBreakpoint >> endLine: anObject [
 
 ]
 
-{ #category : 'ui' }
+{ #category : #ui }
 DAPBreakpoint >> gtSourceFor: aView [
 	<gtView>
 
@@ -132,7 +132,7 @@ DAPBreakpoint >> gtSourceFor: aView [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPBreakpoint >> id [
 	"An optional identifier for the breakpoint. It is needed if breakpoint events are used to update or remove breakpoints.
 	integer
@@ -141,7 +141,7 @@ DAPBreakpoint >> id [
 	^ id
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPBreakpoint >> id: anObject [
 	"An optional identifier for the breakpoint. It is needed if breakpoint events are used to update or remove breakpoints.
 	integer
@@ -151,7 +151,7 @@ DAPBreakpoint >> id: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPBreakpoint >> instructionReference [
 	"An optional memory reference to where the breakpoint is set.
 	string
@@ -160,7 +160,7 @@ DAPBreakpoint >> instructionReference [
 	^ instructionReference
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPBreakpoint >> instructionReference: anObject [
 	"An optional memory reference to where the breakpoint is set.
 	string
@@ -170,7 +170,7 @@ DAPBreakpoint >> instructionReference: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPBreakpoint >> line [
 	"The start line of the actual range covered by the breakpoint.
 	integer
@@ -179,7 +179,7 @@ DAPBreakpoint >> line [
 	^ line
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPBreakpoint >> line: anObject [
 	"The start line of the actual range covered by the breakpoint.
 	integer
@@ -189,7 +189,7 @@ DAPBreakpoint >> line: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPBreakpoint >> message [
 	"An optional message about the state of the breakpoint.
 This is shown to the user and can be used to explain why a breakpoint could not be verified.
@@ -199,7 +199,7 @@ This is shown to the user and can be used to explain why a breakpoint could not 
 	^ message
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPBreakpoint >> message: anObject [
 	"An optional message about the state of the breakpoint.
 This is shown to the user and can be used to explain why a breakpoint could not be verified.
@@ -210,7 +210,7 @@ This is shown to the user and can be used to explain why a breakpoint could not 
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPBreakpoint >> offset [
 	"An optional offset from the instruction reference.
 This can be negative.
@@ -220,7 +220,7 @@ This can be negative.
 	^ offset
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPBreakpoint >> offset: anObject [
 	"An optional offset from the instruction reference.
 This can be negative.
@@ -231,7 +231,7 @@ This can be negative.
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPBreakpoint >> printOn: aStream [
 
 	aStream
@@ -239,14 +239,14 @@ DAPBreakpoint >> printOn: aStream [
 		<< self displayLabel
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPBreakpoint >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
 	^ #(column endColumn endLine id instructionReference line message offset source verified )
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPBreakpoint >> source [
 	"The source where the breakpoint is located.
 	#/definitions/Source
@@ -255,7 +255,7 @@ DAPBreakpoint >> source [
 	^ source
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPBreakpoint >> source: anObject [
 	"The source where the breakpoint is located.
 	#/definitions/Source
@@ -268,14 +268,14 @@ DAPBreakpoint >> source: anObject [
 
 ]
 
-{ #category : 'ui' }
+{ #category : #ui }
 DAPBreakpoint >> sourceCode [
 
 	source ifNil: [ ^ '' ].
 	^ self source sourceCode
 ]
 
-{ #category : 'ui' }
+{ #category : #ui }
 DAPBreakpoint >> sourceText [ 
 	"Answer the receiver's source code, with the breakpoint line highlighted"
 	| text indexes lineNumber sourceCode |
@@ -294,7 +294,7 @@ DAPBreakpoint >> sourceText [
 	^ text
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPBreakpoint >> verified [
 	"If true breakpoint could be set (but not necessarily at the desired location).
 	boolean
@@ -303,7 +303,7 @@ DAPBreakpoint >> verified [
 	^ verified
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPBreakpoint >> verified: anObject [
 	"If true breakpoint could be set (but not necessarily at the desired location).
 	boolean

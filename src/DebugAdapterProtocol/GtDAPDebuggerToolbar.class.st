@@ -9,8 +9,8 @@ The buttons are only enabled while the debugger is stopped.
 
 "
 Class {
-	#name : 'GtDAPDebuggerToolbar',
-	#superclass : 'BrHorizontalPane',
+	#name : #GtDAPDebuggerToolbar,
+	#superclass : #BrHorizontalPane,
 	#instVars : [
 		'dapDebugElement',
 		'restartFrameButton',
@@ -20,19 +20,19 @@ Class {
 		'stepOverButton',
 		'stepOutButton'
 	],
-	#category : 'DebugAdapterProtocol-UI'
+	#category : #'DebugAdapterProtocol-UI'
 }
 
-{ #category : 'callbacks' }
+{ #category : #callbacks }
 GtDAPDebuggerToolbar >> actOnBrowserClosing: ann [
 	"No action required at the moment"
 ]
 
-{ #category : 'callbacks' }
+{ #category : #callbacks }
 GtDAPDebuggerToolbar >> actOnDebugSessionChanged [
 	| capabilities |
 
-	capabilities := self dapDebugger capabilities.
+	capabilities := self debuggerClient capabilities.
 	capabilities supportsRestartFrame ifFalse: 
 		[ restartFrameButton visibility: BlVisibility gone ].
 	capabilities supportsStepBack ifFalse:
@@ -40,24 +40,24 @@ GtDAPDebuggerToolbar >> actOnDebugSessionChanged [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtDAPDebuggerToolbar >> dapDebugElement [
 	^ dapDebugElement
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtDAPDebuggerToolbar >> dapDebugElement: aDAPDebugElement [
 
 	dapDebugElement := aDAPDebugElement.
 
 ]
 
-{ #category : 'accessing' }
-GtDAPDebuggerToolbar >> dapDebugger [
-	^ dapDebugElement dapDebugger
+{ #category : #accessing }
+GtDAPDebuggerToolbar >> debuggerClient [
+	^ dapDebugElement debuggerClient
 ]
 
-{ #category : 'initialization' }
+{ #category : #initialization }
 GtDAPDebuggerToolbar >> initialize [
 
 	super initialize.
@@ -73,7 +73,7 @@ GtDAPDebuggerToolbar >> initialize [
 
 ]
 
-{ #category : 'private - element creation' }
+{ #category : #'private - element creation' }
 GtDAPDebuggerToolbar >> newInspectButton [
 
 	^ BrButton new 
@@ -81,10 +81,10 @@ GtDAPDebuggerToolbar >> newInspectButton [
 		margin: (BlInsets left: 5);
 		label: 'Inspect the DAP Debugger';
 		icon: BrGlamorousVectorIcons emphasizedInspect;
-		action: [ :aButton | self dapDebugger inspect ]
+		action: [ :aButton | self inspect ]
 ]
 
-{ #category : 'private - element creation' }
+{ #category : #'private - element creation' }
 GtDAPDebuggerToolbar >> newRestartFrameButton [
 
 	^ BrButton new 
@@ -95,7 +95,7 @@ GtDAPDebuggerToolbar >> newRestartFrameButton [
 		action: [ :aButton | dapDebugElement dapRestartFrame ]
 ]
 
-{ #category : 'private - element creation' }
+{ #category : #'private - element creation' }
 GtDAPDebuggerToolbar >> newResumeButton [
 
 	^ BrButton new 
@@ -106,7 +106,7 @@ GtDAPDebuggerToolbar >> newResumeButton [
 		action: [ :aButton | dapDebugElement dapResume ]
 ]
 
-{ #category : 'private - element creation' }
+{ #category : #'private - element creation' }
 GtDAPDebuggerToolbar >> newStepBackButton [
 
 	^ BrButton new 
@@ -117,7 +117,7 @@ GtDAPDebuggerToolbar >> newStepBackButton [
 		action: [ :aButton | dapDebugElement dapStepBack ]
 ]
 
-{ #category : 'private - element creation' }
+{ #category : #'private - element creation' }
 GtDAPDebuggerToolbar >> newStepIntoButton [
 
 	^ BrButton new 
@@ -128,7 +128,7 @@ GtDAPDebuggerToolbar >> newStepIntoButton [
 		action: [ :aButton | dapDebugElement dapStepInto ]
 ]
 
-{ #category : 'private - element creation' }
+{ #category : #'private - element creation' }
 GtDAPDebuggerToolbar >> newStepOutButton [
 
 	^ BrButton new 
@@ -139,7 +139,7 @@ GtDAPDebuggerToolbar >> newStepOutButton [
 		action: [ :aButton | dapDebugElement dapStepOut ]
 ]
 
-{ #category : 'private - element creation' }
+{ #category : #'private - element creation' }
 GtDAPDebuggerToolbar >> newStepOverButton [
 
 	^ BrButton new 
@@ -150,14 +150,13 @@ GtDAPDebuggerToolbar >> newStepOverButton [
 		action: [ :aButton | dapDebugElement dapStepOver ]
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 GtDAPDebuggerToolbar >> updateUI [ 
 	"Update the button state to reflect the current debugger state.
 	The buttons should only be active if the debugger is stopped and the top call frame is being displayed."
 	| actionsAllowed |
 
 	actionsAllowed := dapDebugElement isDisplayingTopFrame.
-	StringSignal emit: 'toolbar: ', actionsAllowed asString.
 	restartFrameButton enabled: actionsAllowed.
 	resumeButton enabled: actionsAllowed.
 	stepBackButton enabled: actionsAllowed.

@@ -3,8 +3,8 @@ Information about the capabilities of a debug adapter.
 
 "
 Class {
-	#name : 'DAPCapabilities',
-	#superclass : 'DAPObject',
+	#name : #DAPCapabilities,
+	#superclass : #DAPObject,
 	#instVars : [
 		'additionalModuleColumns',
 		'completionTriggerCharacters',
@@ -47,7 +47,7 @@ Class {
 	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPCapabilities class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -93,13 +93,13 @@ DAPCapabilities class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPCapabilities >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitCapabilities: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> additionalModuleColumns [
 	"The set of additional module information exposed by the debug adapter.
 	array
@@ -108,7 +108,7 @@ DAPCapabilities >> additionalModuleColumns [
 	^ additionalModuleColumns
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> additionalModuleColumns: anObject [
 	"The set of additional module information exposed by the debug adapter.
 	array
@@ -118,7 +118,7 @@ DAPCapabilities >> additionalModuleColumns: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> completionTriggerCharacters [
 	"The set of characters that should trigger completion in a REPL. If not specified, the UI should assume the '.' character.
 	array
@@ -127,7 +127,7 @@ DAPCapabilities >> completionTriggerCharacters [
 	^ completionTriggerCharacters
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> completionTriggerCharacters: anObject [
 	"The set of characters that should trigger completion in a REPL. If not specified, the UI should assume the '.' character.
 	array
@@ -137,7 +137,7 @@ DAPCapabilities >> completionTriggerCharacters: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> exceptionBreakpointFilters [
 	"Available exception filter options for the 'setExceptionBreakpoints' request.
 	array
@@ -146,7 +146,7 @@ DAPCapabilities >> exceptionBreakpointFilters [
 	^ exceptionBreakpointFilters
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> exceptionBreakpointFilters: anObject [
 	"Available exception filter options for the 'setExceptionBreakpoints' request.
 	array
@@ -156,7 +156,7 @@ DAPCapabilities >> exceptionBreakpointFilters: anObject [
 
 ]
 
-{ #category : 'initialization' }
+{ #category : #initialization }
 DAPCapabilities >> initialize [ 
 
 	super initialize.
@@ -165,14 +165,14 @@ DAPCapabilities >> initialize [
 			[ self perform: (property, ':') withArguments: { false } ] ].
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
 	^ #(additionalModuleColumns completionTriggerCharacters exceptionBreakpointFilters supportedChecksumAlgorithms supportsBreakpointLocationsRequest supportsCancelRequest supportsClipboardContext supportsCompletionsRequest supportsConditionalBreakpoints supportsConfigurationDoneRequest supportsDataBreakpoints supportsDebuggerProperties supportsDelayedStackTraceLoading supportsDisassembleRequest supportsEvaluateForHovers supportsExceptionFilterOptions supportsExceptionInfoRequest supportsExceptionOptions supportsFunctionBreakpoints supportsGotoTargetsRequest supportsHitConditionalBreakpoints supportsInstructionBreakpoints supportsLoadedSourcesRequest supportsLogPoints supportsModulesRequest supportsReadMemoryRequest supportsRestartFrame supportsRestartRequest supportsSetExpression supportsSetVariable supportsStepBack supportsStepInTargetsRequest supportsSteppingGranularity supportsTerminateDebuggee supportsTerminateRequest supportsTerminateThreadsRequest supportsValueFormattingOptions )
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportedChecksumAlgorithms [
 	"Checksum algorithms supported by the debug adapter.
 	array
@@ -181,7 +181,7 @@ DAPCapabilities >> supportedChecksumAlgorithms [
 	^ supportedChecksumAlgorithms
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportedChecksumAlgorithms: anObject [
 	"Checksum algorithms supported by the debug adapter.
 	array
@@ -191,7 +191,7 @@ DAPCapabilities >> supportedChecksumAlgorithms: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportsBreakpointLocationsRequest [
 	"The debug adapter supports the 'breakpointLocations' request.
 	boolean
@@ -200,7 +200,7 @@ DAPCapabilities >> supportsBreakpointLocationsRequest [
 	^ supportsBreakpointLocationsRequest
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportsBreakpointLocationsRequest: anObject [
 	"The debug adapter supports the 'breakpointLocations' request.
 	boolean
@@ -210,7 +210,7 @@ DAPCapabilities >> supportsBreakpointLocationsRequest: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportsCancelRequest [
 	"The debug adapter supports the 'cancel' request.
 	boolean
@@ -219,7 +219,7 @@ DAPCapabilities >> supportsCancelRequest [
 	^ supportsCancelRequest
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportsCancelRequest: anObject [
 	"The debug adapter supports the 'cancel' request.
 	boolean
@@ -229,7 +229,7 @@ DAPCapabilities >> supportsCancelRequest: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportsClipboardContext [
 	"The debug adapter supports the 'clipboard' context value in the 'evaluate' request.
 	boolean
@@ -238,7 +238,7 @@ DAPCapabilities >> supportsClipboardContext [
 	^ supportsClipboardContext
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportsClipboardContext: anObject [
 	"The debug adapter supports the 'clipboard' context value in the 'evaluate' request.
 	boolean
@@ -248,7 +248,7 @@ DAPCapabilities >> supportsClipboardContext: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportsCompletionsRequest [
 	"The debug adapter supports the 'completions' request.
 	boolean
@@ -257,7 +257,7 @@ DAPCapabilities >> supportsCompletionsRequest [
 	^ supportsCompletionsRequest
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportsCompletionsRequest: anObject [
 	"The debug adapter supports the 'completions' request.
 	boolean
@@ -267,7 +267,7 @@ DAPCapabilities >> supportsCompletionsRequest: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportsConditionalBreakpoints [
 	"The debug adapter supports conditional breakpoints.
 	boolean
@@ -276,7 +276,7 @@ DAPCapabilities >> supportsConditionalBreakpoints [
 	^ supportsConditionalBreakpoints
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportsConditionalBreakpoints: anObject [
 	"The debug adapter supports conditional breakpoints.
 	boolean
@@ -286,7 +286,7 @@ DAPCapabilities >> supportsConditionalBreakpoints: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportsConfigurationDoneRequest [
 	"The debug adapter supports the 'configurationDone' request.
 	boolean
@@ -295,7 +295,7 @@ DAPCapabilities >> supportsConfigurationDoneRequest [
 	^ supportsConfigurationDoneRequest
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportsConfigurationDoneRequest: anObject [
 	"The debug adapter supports the 'configurationDone' request.
 	boolean
@@ -305,7 +305,7 @@ DAPCapabilities >> supportsConfigurationDoneRequest: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportsDataBreakpoints [
 	"The debug adapter supports data breakpoints.
 	boolean
@@ -314,7 +314,7 @@ DAPCapabilities >> supportsDataBreakpoints [
 	^ supportsDataBreakpoints
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportsDataBreakpoints: anObject [
 	"The debug adapter supports data breakpoints.
 	boolean
@@ -324,7 +324,7 @@ DAPCapabilities >> supportsDataBreakpoints: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportsDebuggerProperties [
 	"Manually added.
 	boolean
@@ -333,7 +333,7 @@ DAPCapabilities >> supportsDebuggerProperties [
 	^ supportsDebuggerProperties
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportsDebuggerProperties: anObject [
 	"Manually added.
 	boolean
@@ -343,7 +343,7 @@ DAPCapabilities >> supportsDebuggerProperties: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportsDelayedStackTraceLoading [
 	"The debug adapter supports the delayed loading of parts of the stack, which requires that both the 'startFrame' and 'levels' arguments and an optional 'totalFrames' result of the 'StackTrace' request are supported.
 	boolean
@@ -352,7 +352,7 @@ DAPCapabilities >> supportsDelayedStackTraceLoading [
 	^ supportsDelayedStackTraceLoading
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportsDelayedStackTraceLoading: anObject [
 	"The debug adapter supports the delayed loading of parts of the stack, which requires that both the 'startFrame' and 'levels' arguments and an optional 'totalFrames' result of the 'StackTrace' request are supported.
 	boolean
@@ -362,7 +362,7 @@ DAPCapabilities >> supportsDelayedStackTraceLoading: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportsDisassembleRequest [
 	"The debug adapter supports the 'disassemble' request.
 	boolean
@@ -371,7 +371,7 @@ DAPCapabilities >> supportsDisassembleRequest [
 	^ supportsDisassembleRequest
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportsDisassembleRequest: anObject [
 	"The debug adapter supports the 'disassemble' request.
 	boolean
@@ -381,7 +381,7 @@ DAPCapabilities >> supportsDisassembleRequest: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportsEvaluateForHovers [
 	"The debug adapter supports a (side effect free) evaluate request for data hovers.
 	boolean
@@ -390,7 +390,7 @@ DAPCapabilities >> supportsEvaluateForHovers [
 	^ supportsEvaluateForHovers
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportsEvaluateForHovers: anObject [
 	"The debug adapter supports a (side effect free) evaluate request for data hovers.
 	boolean
@@ -400,7 +400,7 @@ DAPCapabilities >> supportsEvaluateForHovers: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportsExceptionFilterOptions [
 	"The debug adapter supports 'filterOptions' as an argument on the 'setExceptionBreakpoints' request.
 	boolean
@@ -409,7 +409,7 @@ DAPCapabilities >> supportsExceptionFilterOptions [
 	^ supportsExceptionFilterOptions
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportsExceptionFilterOptions: anObject [
 	"The debug adapter supports 'filterOptions' as an argument on the 'setExceptionBreakpoints' request.
 	boolean
@@ -419,7 +419,7 @@ DAPCapabilities >> supportsExceptionFilterOptions: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportsExceptionInfoRequest [
 	"The debug adapter supports the 'exceptionInfo' request.
 	boolean
@@ -428,7 +428,7 @@ DAPCapabilities >> supportsExceptionInfoRequest [
 	^ supportsExceptionInfoRequest
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportsExceptionInfoRequest: anObject [
 	"The debug adapter supports the 'exceptionInfo' request.
 	boolean
@@ -438,7 +438,7 @@ DAPCapabilities >> supportsExceptionInfoRequest: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportsExceptionOptions [
 	"The debug adapter supports 'exceptionOptions' on the setExceptionBreakpoints request.
 	boolean
@@ -447,7 +447,7 @@ DAPCapabilities >> supportsExceptionOptions [
 	^ supportsExceptionOptions
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportsExceptionOptions: anObject [
 	"The debug adapter supports 'exceptionOptions' on the setExceptionBreakpoints request.
 	boolean
@@ -457,7 +457,7 @@ DAPCapabilities >> supportsExceptionOptions: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportsFunctionBreakpoints [
 	"The debug adapter supports function breakpoints.
 	boolean
@@ -466,7 +466,7 @@ DAPCapabilities >> supportsFunctionBreakpoints [
 	^ supportsFunctionBreakpoints
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportsFunctionBreakpoints: anObject [
 	"The debug adapter supports function breakpoints.
 	boolean
@@ -476,7 +476,7 @@ DAPCapabilities >> supportsFunctionBreakpoints: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportsGotoTargetsRequest [
 	"The debug adapter supports the 'gotoTargets' request.
 	boolean
@@ -485,7 +485,7 @@ DAPCapabilities >> supportsGotoTargetsRequest [
 	^ supportsGotoTargetsRequest
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportsGotoTargetsRequest: anObject [
 	"The debug adapter supports the 'gotoTargets' request.
 	boolean
@@ -495,7 +495,7 @@ DAPCapabilities >> supportsGotoTargetsRequest: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportsHitConditionalBreakpoints [
 	"The debug adapter supports breakpoints that break execution after a specified number of hits.
 	boolean
@@ -504,7 +504,7 @@ DAPCapabilities >> supportsHitConditionalBreakpoints [
 	^ supportsHitConditionalBreakpoints
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportsHitConditionalBreakpoints: anObject [
 	"The debug adapter supports breakpoints that break execution after a specified number of hits.
 	boolean
@@ -514,7 +514,7 @@ DAPCapabilities >> supportsHitConditionalBreakpoints: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportsInstructionBreakpoints [
 	"The debug adapter supports adding breakpoints based on instruction references.
 	boolean
@@ -523,7 +523,7 @@ DAPCapabilities >> supportsInstructionBreakpoints [
 	^ supportsInstructionBreakpoints
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportsInstructionBreakpoints: anObject [
 	"The debug adapter supports adding breakpoints based on instruction references.
 	boolean
@@ -533,7 +533,7 @@ DAPCapabilities >> supportsInstructionBreakpoints: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportsLoadedSourcesRequest [
 	"The debug adapter supports the 'loadedSources' request.
 	boolean
@@ -542,7 +542,7 @@ DAPCapabilities >> supportsLoadedSourcesRequest [
 	^ supportsLoadedSourcesRequest
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportsLoadedSourcesRequest: anObject [
 	"The debug adapter supports the 'loadedSources' request.
 	boolean
@@ -552,7 +552,7 @@ DAPCapabilities >> supportsLoadedSourcesRequest: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportsLogPoints [
 	"The debug adapter supports logpoints by interpreting the 'logMessage' attribute of the SourceBreakpoint.
 	boolean
@@ -561,7 +561,7 @@ DAPCapabilities >> supportsLogPoints [
 	^ supportsLogPoints
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportsLogPoints: anObject [
 	"The debug adapter supports logpoints by interpreting the 'logMessage' attribute of the SourceBreakpoint.
 	boolean
@@ -571,7 +571,7 @@ DAPCapabilities >> supportsLogPoints: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportsModulesRequest [
 	"The debug adapter supports the 'modules' request.
 	boolean
@@ -580,7 +580,7 @@ DAPCapabilities >> supportsModulesRequest [
 	^ supportsModulesRequest
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportsModulesRequest: anObject [
 	"The debug adapter supports the 'modules' request.
 	boolean
@@ -590,7 +590,7 @@ DAPCapabilities >> supportsModulesRequest: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportsReadMemoryRequest [
 	"The debug adapter supports the 'readMemory' request.
 	boolean
@@ -599,7 +599,7 @@ DAPCapabilities >> supportsReadMemoryRequest [
 	^ supportsReadMemoryRequest
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportsReadMemoryRequest: anObject [
 	"The debug adapter supports the 'readMemory' request.
 	boolean
@@ -609,7 +609,7 @@ DAPCapabilities >> supportsReadMemoryRequest: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportsRestartFrame [
 	"The debug adapter supports restarting a frame.
 	boolean
@@ -618,7 +618,7 @@ DAPCapabilities >> supportsRestartFrame [
 	^ supportsRestartFrame
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportsRestartFrame: anObject [
 	"The debug adapter supports restarting a frame.
 	boolean
@@ -628,7 +628,7 @@ DAPCapabilities >> supportsRestartFrame: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportsRestartRequest [
 	"The debug adapter supports the 'restart' request. In this case a client should not implement 'restart' by terminating and relaunching the adapter but by calling the RestartRequest.
 	boolean
@@ -637,7 +637,7 @@ DAPCapabilities >> supportsRestartRequest [
 	^ supportsRestartRequest
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportsRestartRequest: anObject [
 	"The debug adapter supports the 'restart' request. In this case a client should not implement 'restart' by terminating and relaunching the adapter but by calling the RestartRequest.
 	boolean
@@ -647,7 +647,7 @@ DAPCapabilities >> supportsRestartRequest: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportsSetExpression [
 	"The debug adapter supports the 'setExpression' request.
 	boolean
@@ -656,7 +656,7 @@ DAPCapabilities >> supportsSetExpression [
 	^ supportsSetExpression
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportsSetExpression: anObject [
 	"The debug adapter supports the 'setExpression' request.
 	boolean
@@ -666,7 +666,7 @@ DAPCapabilities >> supportsSetExpression: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportsSetVariable [
 	"The debug adapter supports setting a variable to a value.
 	boolean
@@ -675,7 +675,7 @@ DAPCapabilities >> supportsSetVariable [
 	^ supportsSetVariable
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportsSetVariable: anObject [
 	"The debug adapter supports setting a variable to a value.
 	boolean
@@ -685,7 +685,7 @@ DAPCapabilities >> supportsSetVariable: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportsStepBack [
 	"The debug adapter supports stepping back via the 'stepBack' and 'reverseContinue' requests.
 	boolean
@@ -694,7 +694,7 @@ DAPCapabilities >> supportsStepBack [
 	^ supportsStepBack
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportsStepBack: anObject [
 	"The debug adapter supports stepping back via the 'stepBack' and 'reverseContinue' requests.
 	boolean
@@ -704,7 +704,7 @@ DAPCapabilities >> supportsStepBack: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportsStepInTargetsRequest [
 	"The debug adapter supports the 'stepInTargets' request.
 	boolean
@@ -713,7 +713,7 @@ DAPCapabilities >> supportsStepInTargetsRequest [
 	^ supportsStepInTargetsRequest
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportsStepInTargetsRequest: anObject [
 	"The debug adapter supports the 'stepInTargets' request.
 	boolean
@@ -723,7 +723,7 @@ DAPCapabilities >> supportsStepInTargetsRequest: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportsSteppingGranularity [
 	"The debug adapter supports stepping granularities (argument 'granularity') for the stepping requests.
 	boolean
@@ -732,7 +732,7 @@ DAPCapabilities >> supportsSteppingGranularity [
 	^ supportsSteppingGranularity
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportsSteppingGranularity: anObject [
 	"The debug adapter supports stepping granularities (argument 'granularity') for the stepping requests.
 	boolean
@@ -742,7 +742,7 @@ DAPCapabilities >> supportsSteppingGranularity: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportsTerminateDebuggee [
 	"The debug adapter supports the 'terminateDebuggee' attribute on the 'disconnect' request.
 	boolean
@@ -751,7 +751,7 @@ DAPCapabilities >> supportsTerminateDebuggee [
 	^ supportsTerminateDebuggee
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportsTerminateDebuggee: anObject [
 	"The debug adapter supports the 'terminateDebuggee' attribute on the 'disconnect' request.
 	boolean
@@ -761,7 +761,7 @@ DAPCapabilities >> supportsTerminateDebuggee: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportsTerminateRequest [
 	"The debug adapter supports the 'terminate' request.
 	boolean
@@ -770,7 +770,7 @@ DAPCapabilities >> supportsTerminateRequest [
 	^ supportsTerminateRequest
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportsTerminateRequest: anObject [
 	"The debug adapter supports the 'terminate' request.
 	boolean
@@ -780,7 +780,7 @@ DAPCapabilities >> supportsTerminateRequest: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportsTerminateThreadsRequest [
 	"The debug adapter supports the 'terminateThreads' request.
 	boolean
@@ -789,7 +789,7 @@ DAPCapabilities >> supportsTerminateThreadsRequest [
 	^ supportsTerminateThreadsRequest
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportsTerminateThreadsRequest: anObject [
 	"The debug adapter supports the 'terminateThreads' request.
 	boolean
@@ -799,7 +799,7 @@ DAPCapabilities >> supportsTerminateThreadsRequest: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportsValueFormattingOptions [
 	"The debug adapter supports a 'format' attribute on the stackTraceRequest, variablesRequest, and evaluateRequest.
 	boolean
@@ -808,7 +808,7 @@ DAPCapabilities >> supportsValueFormattingOptions [
 	^ supportsValueFormattingOptions
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCapabilities >> supportsValueFormattingOptions: anObject [
 	"The debug adapter supports a 'format' attribute on the stackTraceRequest, variablesRequest, and evaluateRequest.
 	boolean

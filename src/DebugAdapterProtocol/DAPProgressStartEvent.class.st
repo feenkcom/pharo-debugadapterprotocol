@@ -6,12 +6,12 @@ This event should only be sent if the client has passed the value true for the '
 
 "
 Class {
-	#name : 'DAPProgressStartEvent',
-	#superclass : 'DAPEvent',
+	#name : #DAPProgressStartEvent,
+	#superclass : #DAPEvent,
 	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPProgressStartEvent class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -22,27 +22,27 @@ DAPProgressStartEvent class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPProgressStartEvent class >> eventEnums [
 	"Enumerated types for the associated attribute"
 
 	^ #(progressStart )
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPProgressStartEvent >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitProgressStartEvent: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPProgressStartEvent >> body [
 	"Auto-generated method"
 
 	^ body
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPProgressStartEvent >> body: anObject [
 	"Auto-generated method"
 
@@ -50,7 +50,7 @@ DAPProgressStartEvent >> body: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPProgressStartEvent >> cancellable [
 	"If true, the request that reports progress may be canceled with a 'cancel' request.
 So this property basically controls whether the client should use UX that supports cancellation.
@@ -63,7 +63,7 @@ Clients that don't support cancellation are allowed to ignore the setting.
 	^ result
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPProgressStartEvent >> cancellable: anObject [
 	"If true, the request that reports progress may be canceled with a 'cancel' request.
 So this property basically controls whether the client should use UX that supports cancellation.
@@ -74,7 +74,7 @@ Clients that don't support cancellation are allowed to ignore the setting.
 	self body at: #cancellable put: anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPProgressStartEvent >> event [
 	"progressStart: 
 	Auto-generated method"
@@ -82,7 +82,7 @@ DAPProgressStartEvent >> event [
 	^ event ifNil: [ 'progressStart' ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPProgressStartEvent >> event: anObject [
 	"progressStart: 
 	Auto-generated method"
@@ -91,7 +91,7 @@ DAPProgressStartEvent >> event: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPProgressStartEvent >> message [
 	"Optional, more detailed progress message.
 	string
@@ -102,7 +102,7 @@ DAPProgressStartEvent >> message [
 	^ result
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPProgressStartEvent >> message: anObject [
 	"Optional, more detailed progress message.
 	string
@@ -111,7 +111,7 @@ DAPProgressStartEvent >> message: anObject [
 	self body at: #message put: anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPProgressStartEvent >> percentage [
 	"Optional progress percentage to display (value range: 0 to 100). If omitted no percentage will be shown.
 	number
@@ -122,7 +122,7 @@ DAPProgressStartEvent >> percentage [
 	^ result
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPProgressStartEvent >> percentage: anObject [
 	"Optional progress percentage to display (value range: 0 to 100). If omitted no percentage will be shown.
 	number
@@ -131,7 +131,7 @@ DAPProgressStartEvent >> percentage: anObject [
 	self body at: #percentage put: anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPProgressStartEvent >> progressId [
 	"An ID that must be used in subsequent 'progressUpdate' and 'progressEnd' events to make them refer to the same progress reporting.
 IDs must be unique within a debug session.
@@ -143,7 +143,7 @@ IDs must be unique within a debug session.
 	^ result
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPProgressStartEvent >> progressId: anObject [
 	"An ID that must be used in subsequent 'progressUpdate' and 'progressEnd' events to make them refer to the same progress reporting.
 IDs must be unique within a debug session.
@@ -153,14 +153,14 @@ IDs must be unique within a debug session.
 	self body at: #progressId put: anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPProgressStartEvent >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
 	^ #(body cancellable event message percentage progressId requestId title )
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPProgressStartEvent >> requestId [
 	"The request ID that this progress report is related to. If specified a debug adapter is expected to emit
 progress events for the long running request until the request has been either completed or cancelled.
@@ -173,7 +173,7 @@ If the request ID is omitted, the progress report is assumed to be related to so
 	^ result
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPProgressStartEvent >> requestId: anObject [
 	"The request ID that this progress report is related to. If specified a debug adapter is expected to emit
 progress events for the long running request until the request has been either completed or cancelled.
@@ -184,7 +184,7 @@ If the request ID is omitted, the progress report is assumed to be related to so
 	self body at: #requestId put: anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPProgressStartEvent >> title [
 	"Mandatory (short) title of the progress reporting. Shown in the UI to describe the long running operation.
 	string
@@ -195,7 +195,7 @@ DAPProgressStartEvent >> title [
 	^ result
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPProgressStartEvent >> title: anObject [
 	"Mandatory (short) title of the progress reporting. Shown in the UI to describe the long running operation.
 	string

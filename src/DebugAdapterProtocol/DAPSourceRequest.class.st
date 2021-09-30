@@ -3,19 +3,19 @@ The request retrieves the source code for a given source reference.
 
 "
 Class {
-	#name : 'DAPSourceRequest',
-	#superclass : 'DAPRequest',
+	#name : #DAPSourceRequest,
+	#superclass : #DAPRequest,
 	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSourceRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
 	^ #(source )
 ]
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPSourceRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -26,20 +26,20 @@ DAPSourceRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPSourceRequest >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitSourceRequest: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSourceRequest >> arguments [
 	"Auto-generated method"
 
 	^ arguments
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSourceRequest >> arguments: anObject [
 	"Auto-generated method"
 
@@ -50,7 +50,7 @@ DAPSourceRequest >> arguments: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSourceRequest >> command [
 	"source: 
 	Auto-generated method"
@@ -58,7 +58,7 @@ DAPSourceRequest >> command [
 	^ command ifNil: [ 'source' ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSourceRequest >> command: anObject [
 	"source: 
 	Auto-generated method"
@@ -67,7 +67,7 @@ DAPSourceRequest >> command: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSourceRequest >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

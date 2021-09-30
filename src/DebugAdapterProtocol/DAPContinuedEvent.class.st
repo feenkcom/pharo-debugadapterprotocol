@@ -5,12 +5,12 @@ It is only necessary to send a 'continued' event if there was no previous reques
 
 "
 Class {
-	#name : 'DAPContinuedEvent',
-	#superclass : 'DAPEvent',
+	#name : #DAPContinuedEvent,
+	#superclass : #DAPEvent,
 	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPContinuedEvent class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -21,20 +21,20 @@ DAPContinuedEvent class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPContinuedEvent class >> eventEnums [
 	"Enumerated types for the associated attribute"
 
 	^ #(continued )
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPContinuedEvent >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitContinuedEvent: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPContinuedEvent >> allThreadsContinued [
 	"If 'allThreadsContinued' is true, a debug adapter can announce that all threads have continued.
 	boolean
@@ -45,7 +45,7 @@ DAPContinuedEvent >> allThreadsContinued [
 	^ result
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPContinuedEvent >> allThreadsContinued: anObject [
 	"If 'allThreadsContinued' is true, a debug adapter can announce that all threads have continued.
 	boolean
@@ -54,14 +54,14 @@ DAPContinuedEvent >> allThreadsContinued: anObject [
 	self body at: #allThreadsContinued put: anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPContinuedEvent >> body [
 	"Auto-generated method"
 
 	^ body
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPContinuedEvent >> body: anObject [
 	"Auto-generated method"
 
@@ -69,7 +69,7 @@ DAPContinuedEvent >> body: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPContinuedEvent >> event [
 	"continued: 
 	Auto-generated method"
@@ -77,7 +77,7 @@ DAPContinuedEvent >> event [
 	^ event ifNil: [ 'continued' ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPContinuedEvent >> event: anObject [
 	"continued: 
 	Auto-generated method"
@@ -86,14 +86,14 @@ DAPContinuedEvent >> event: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPContinuedEvent >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
 	^ #(allThreadsContinued body event threadId )
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPContinuedEvent >> threadId [
 	"The thread which was continued.
 	integer
@@ -104,7 +104,7 @@ DAPContinuedEvent >> threadId [
 	^ result
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPContinuedEvent >> threadId: anObject [
 	"The thread which was continued.
 	integer

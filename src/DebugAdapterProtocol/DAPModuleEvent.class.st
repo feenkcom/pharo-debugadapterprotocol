@@ -3,12 +3,12 @@ The event indicates that some information about a module has changed.
 
 "
 Class {
-	#name : 'DAPModuleEvent',
-	#superclass : 'DAPEvent',
+	#name : #DAPModuleEvent,
+	#superclass : #DAPEvent,
 	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPModuleEvent class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -19,27 +19,27 @@ DAPModuleEvent class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPModuleEvent class >> eventEnums [
 	"Enumerated types for the associated attribute"
 
 	^ #(module )
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPModuleEvent >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitModuleEvent: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPModuleEvent >> body [
 	"Auto-generated method"
 
 	^ body
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPModuleEvent >> body: anObject [
 	"Auto-generated method"
 
@@ -47,7 +47,7 @@ DAPModuleEvent >> body: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPModuleEvent >> event [
 	"module: 
 	Auto-generated method"
@@ -55,7 +55,7 @@ DAPModuleEvent >> event [
 	^ event ifNil: [ 'module' ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPModuleEvent >> event: anObject [
 	"module: 
 	Auto-generated method"
@@ -64,7 +64,7 @@ DAPModuleEvent >> event: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPModuleEvent >> module [
 	"The new, changed, or removed module. In case of 'removed' only the module id is used.
 	#/definitions/Module
@@ -77,7 +77,7 @@ DAPModuleEvent >> module [
 	^ result
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPModuleEvent >> module: anObject [
 	"The new, changed, or removed module. In case of 'removed' only the module id is used.
 	#/definitions/Module
@@ -86,7 +86,7 @@ DAPModuleEvent >> module: anObject [
 	self body at: #module put: anObject
 ]
 
-{ #category : 'printing' }
+{ #category : #printing }
 DAPModuleEvent >> printOn: aStream [
 
 	aStream 
@@ -100,14 +100,14 @@ DAPModuleEvent >> printOn: aStream [
 				<< name ] ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPModuleEvent >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
 	^ #(body event module reason )
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPModuleEvent >> reason [
 	"The reason for the event.
 	string
@@ -123,7 +123,7 @@ DAPModuleEvent >> reason [
 	^ result
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPModuleEvent >> reason: anObject [
 	"The reason for the event.
 	string

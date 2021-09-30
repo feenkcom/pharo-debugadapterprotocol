@@ -3,8 +3,8 @@ Properties of a breakpoint or logpoint passed to the setBreakpoints request.
 
 "
 Class {
-	#name : 'DAPSourceBreakpoint',
-	#superclass : 'DAPObject',
+	#name : #DAPSourceBreakpoint,
+	#superclass : #DAPObject,
 	#instVars : [
 		'column',
 		'condition',
@@ -15,7 +15,7 @@ Class {
 	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPSourceBreakpoint class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -29,13 +29,13 @@ DAPSourceBreakpoint class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPSourceBreakpoint >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitSourceBreakpoint: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSourceBreakpoint >> column [
 	"An optional source column of the breakpoint.
 	integer
@@ -44,7 +44,7 @@ DAPSourceBreakpoint >> column [
 	^ column
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSourceBreakpoint >> column: anObject [
 	"An optional source column of the breakpoint.
 	integer
@@ -54,7 +54,7 @@ DAPSourceBreakpoint >> column: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSourceBreakpoint >> condition [
 	"An optional expression for conditional breakpoints.
 It is only honored by a debug adapter if the capability 'supportsConditionalBreakpoints' is true.
@@ -64,7 +64,7 @@ It is only honored by a debug adapter if the capability 'supportsConditionalBrea
 	^ condition
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSourceBreakpoint >> condition: anObject [
 	"An optional expression for conditional breakpoints.
 It is only honored by a debug adapter if the capability 'supportsConditionalBreakpoints' is true.
@@ -75,7 +75,7 @@ It is only honored by a debug adapter if the capability 'supportsConditionalBrea
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSourceBreakpoint >> hitCondition [
 	"An optional expression that controls how many hits of the breakpoint are ignored.
 The backend is expected to interpret the expression as needed.
@@ -86,7 +86,7 @@ The attribute is only honored by a debug adapter if the capability 'supportsHitC
 	^ hitCondition
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSourceBreakpoint >> hitCondition: anObject [
 	"An optional expression that controls how many hits of the breakpoint are ignored.
 The backend is expected to interpret the expression as needed.
@@ -98,7 +98,7 @@ The attribute is only honored by a debug adapter if the capability 'supportsHitC
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSourceBreakpoint >> line [
 	"The source line of the breakpoint or logpoint.
 	integer
@@ -107,7 +107,7 @@ DAPSourceBreakpoint >> line [
 	^ line
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSourceBreakpoint >> line: anObject [
 	"The source line of the breakpoint or logpoint.
 	integer
@@ -117,7 +117,7 @@ DAPSourceBreakpoint >> line: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSourceBreakpoint >> logMessage [
 	"If this attribute exists and is non-empty, the backend must not 'break' (stop)
 but log the message instead. Expressions within {} are interpolated.
@@ -128,7 +128,7 @@ The attribute is only honored by a debug adapter if the capability 'supportsLogP
 	^ logMessage
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSourceBreakpoint >> logMessage: anObject [
 	"If this attribute exists and is non-empty, the backend must not 'break' (stop)
 but log the message instead. Expressions within {} are interpolated.
@@ -140,7 +140,7 @@ The attribute is only honored by a debug adapter if the capability 'supportsLogP
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSourceBreakpoint >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

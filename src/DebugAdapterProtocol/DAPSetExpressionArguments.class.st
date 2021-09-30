@@ -3,8 +3,8 @@ Arguments for 'setExpression' request.
 
 "
 Class {
-	#name : 'DAPSetExpressionArguments',
-	#superclass : 'DAPObject',
+	#name : #DAPSetExpressionArguments,
+	#superclass : #DAPObject,
 	#instVars : [
 		'expression',
 		'format',
@@ -14,7 +14,7 @@ Class {
 	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPSetExpressionArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -27,13 +27,13 @@ DAPSetExpressionArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPSetExpressionArguments >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitSetExpressionArguments: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetExpressionArguments >> expression [
 	"The l-value expression to assign to.
 	string
@@ -42,7 +42,7 @@ DAPSetExpressionArguments >> expression [
 	^ expression
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetExpressionArguments >> expression: anObject [
 	"The l-value expression to assign to.
 	string
@@ -52,7 +52,7 @@ DAPSetExpressionArguments >> expression: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetExpressionArguments >> format [
 	"Specifies how the resulting value should be formatted.
 	#/definitions/ValueFormat
@@ -61,7 +61,7 @@ DAPSetExpressionArguments >> format [
 	^ format
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetExpressionArguments >> format: anObject [
 	"Specifies how the resulting value should be formatted.
 	#/definitions/ValueFormat
@@ -74,7 +74,7 @@ DAPSetExpressionArguments >> format: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetExpressionArguments >> frameId [
 	"Evaluate the expressions in the scope of this stack frame. If not specified, the expressions are evaluated in the global scope.
 	integer
@@ -83,7 +83,7 @@ DAPSetExpressionArguments >> frameId [
 	^ frameId
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetExpressionArguments >> frameId: anObject [
 	"Evaluate the expressions in the scope of this stack frame. If not specified, the expressions are evaluated in the global scope.
 	integer
@@ -93,14 +93,14 @@ DAPSetExpressionArguments >> frameId: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetExpressionArguments >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
 	^ #(expression format frameId value )
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetExpressionArguments >> value [
 	"The value expression to assign to the l-value expression.
 	string
@@ -109,7 +109,7 @@ DAPSetExpressionArguments >> value [
 	^ value
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetExpressionArguments >> value: anObject [
 	"The value expression to assign to the l-value expression.
 	string

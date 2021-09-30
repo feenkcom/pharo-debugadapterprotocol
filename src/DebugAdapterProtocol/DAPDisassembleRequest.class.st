@@ -4,19 +4,19 @@ Clients should only call this request if the capability 'supportsDisassembleRequ
 
 "
 Class {
-	#name : 'DAPDisassembleRequest',
-	#superclass : 'DAPRequest',
+	#name : #DAPDisassembleRequest,
+	#superclass : #DAPRequest,
 	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPDisassembleRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
 	^ #(disassemble )
 ]
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPDisassembleRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -27,20 +27,20 @@ DAPDisassembleRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPDisassembleRequest >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitDisassembleRequest: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPDisassembleRequest >> arguments [
 	"Auto-generated method"
 
 	^ arguments
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPDisassembleRequest >> arguments: anObject [
 	"Auto-generated method"
 
@@ -51,7 +51,7 @@ DAPDisassembleRequest >> arguments: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPDisassembleRequest >> command [
 	"disassemble: 
 	Auto-generated method"
@@ -59,7 +59,7 @@ DAPDisassembleRequest >> command [
 	^ command ifNil: [ 'disassemble' ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPDisassembleRequest >> command: anObject [
 	"disassemble: 
 	Auto-generated method"
@@ -68,7 +68,7 @@ DAPDisassembleRequest >> command: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPDisassembleRequest >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

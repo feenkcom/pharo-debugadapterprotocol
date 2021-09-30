@@ -3,8 +3,8 @@ Arguments for 'next' request.
 
 "
 Class {
-	#name : 'DAPNextArguments',
-	#superclass : 'DAPObject',
+	#name : #DAPNextArguments,
+	#superclass : #DAPObject,
 	#instVars : [
 		'granularity',
 		'threadId'
@@ -12,7 +12,7 @@ Class {
 	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPNextArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -23,13 +23,13 @@ DAPNextArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPNextArguments >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitNextArguments: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPNextArguments >> granularity [
 	"Optional granularity to step. If no granularity is specified, a granularity of 'statement' is assumed.
 	#/definitions/SteppingGranularity
@@ -38,7 +38,7 @@ DAPNextArguments >> granularity [
 	^ granularity
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPNextArguments >> granularity: anObject [
 	"Optional granularity to step. If no granularity is specified, a granularity of 'statement' is assumed.
 	#/definitions/SteppingGranularity
@@ -51,14 +51,14 @@ DAPNextArguments >> granularity: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPNextArguments >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
 	^ #(granularity threadId )
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPNextArguments >> threadId [
 	"Execute 'next' for this thread.
 	integer
@@ -67,7 +67,7 @@ DAPNextArguments >> threadId [
 	^ threadId
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPNextArguments >> threadId: anObject [
 	"Execute 'next' for this thread.
 	integer

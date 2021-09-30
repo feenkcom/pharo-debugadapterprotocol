@@ -3,12 +3,12 @@ Response to 'runInTerminal' request.
 
 "
 Class {
-	#name : 'DAPRunInTerminalResponse',
-	#superclass : 'DAPResponse',
+	#name : #DAPRunInTerminalResponse,
+	#superclass : #DAPResponse,
 	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPRunInTerminalResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -18,20 +18,20 @@ DAPRunInTerminalResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPRunInTerminalResponse >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitRunInTerminalResponse: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPRunInTerminalResponse >> body [
 	"Auto-generated method"
 
 	^ body
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPRunInTerminalResponse >> body: anObject [
 	"Auto-generated method"
 
@@ -39,7 +39,7 @@ DAPRunInTerminalResponse >> body: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPRunInTerminalResponse >> processId [
 	"The process ID. The value should be less than or equal to 2147483647 (2^31-1).
 	integer
@@ -50,7 +50,7 @@ DAPRunInTerminalResponse >> processId [
 	^ result
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPRunInTerminalResponse >> processId: anObject [
 	"The process ID. The value should be less than or equal to 2147483647 (2^31-1).
 	integer
@@ -59,14 +59,14 @@ DAPRunInTerminalResponse >> processId: anObject [
 	self body at: #processId put: anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPRunInTerminalResponse >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
 	^ #(body processId shellProcessId )
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPRunInTerminalResponse >> shellProcessId [
 	"The process ID of the terminal shell. The value should be less than or equal to 2147483647 (2^31-1).
 	integer
@@ -77,7 +77,7 @@ DAPRunInTerminalResponse >> shellProcessId [
 	^ result
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPRunInTerminalResponse >> shellProcessId: anObject [
 	"The process ID of the terminal shell. The value should be less than or equal to 2147483647 (2^31-1).
 	integer

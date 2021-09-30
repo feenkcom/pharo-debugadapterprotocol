@@ -4,19 +4,19 @@ If the capability is missing or has the value false, a typical client will emula
 
 "
 Class {
-	#name : 'DAPRestartRequest',
-	#superclass : 'DAPRequest',
+	#name : #DAPRestartRequest,
+	#superclass : #DAPRequest,
 	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPRestartRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
 	^ #(restart )
 ]
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPRestartRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -27,20 +27,20 @@ DAPRestartRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPRestartRequest >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitRestartRequest: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPRestartRequest >> arguments [
 	"Auto-generated method"
 
 	^ arguments
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPRestartRequest >> arguments: anObject [
 	"Auto-generated method"
 
@@ -51,7 +51,7 @@ DAPRestartRequest >> arguments: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPRestartRequest >> command [
 	"restart: 
 	Auto-generated method"
@@ -59,7 +59,7 @@ DAPRestartRequest >> command [
 	^ command ifNil: [ 'restart' ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPRestartRequest >> command: anObject [
 	"restart: 
 	Auto-generated method"
@@ -68,7 +68,7 @@ DAPRestartRequest >> command: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPRestartRequest >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

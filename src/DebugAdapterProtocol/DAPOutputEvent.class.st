@@ -3,12 +3,12 @@ The event indicates that the target has produced some output.
 
 "
 Class {
-	#name : 'DAPOutputEvent',
-	#superclass : 'DAPEvent',
+	#name : #DAPOutputEvent,
+	#superclass : #DAPEvent,
 	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPOutputEvent class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -19,27 +19,27 @@ DAPOutputEvent class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPOutputEvent class >> eventEnums [
 	"Enumerated types for the associated attribute"
 
 	^ #(output )
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPOutputEvent >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitOutputEvent: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPOutputEvent >> body [
 	"Auto-generated method"
 
 	^ body
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPOutputEvent >> body: anObject [
 	"Auto-generated method"
 
@@ -47,7 +47,7 @@ DAPOutputEvent >> body: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPOutputEvent >> category [
 	"The output category. If not specified, 'console' is assumed.
 	string
@@ -58,7 +58,7 @@ DAPOutputEvent >> category [
 	^ result
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPOutputEvent >> category: anObject [
 	"The output category. If not specified, 'console' is assumed.
 	string
@@ -67,7 +67,7 @@ DAPOutputEvent >> category: anObject [
 	self body at: #category put: anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPOutputEvent >> column [
 	"An optional source location column where the output was produced.
 	integer
@@ -78,7 +78,7 @@ DAPOutputEvent >> column [
 	^ result
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPOutputEvent >> column: anObject [
 	"An optional source location column where the output was produced.
 	integer
@@ -87,7 +87,7 @@ DAPOutputEvent >> column: anObject [
 	self body at: #column put: anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPOutputEvent >> data [
 	"Optional data to report. For the 'telemetry' category the data will be sent to telemetry, for the other categories the data is shown in JSON format.
 	arraybooleanintegernullnumberobjectstring
@@ -98,7 +98,7 @@ DAPOutputEvent >> data [
 	^ result
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPOutputEvent >> data: anObject [
 	"Optional data to report. For the 'telemetry' category the data will be sent to telemetry, for the other categories the data is shown in JSON format.
 	arraybooleanintegernullnumberobjectstring
@@ -107,7 +107,7 @@ DAPOutputEvent >> data: anObject [
 	self body at: #data put: anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPOutputEvent >> event [
 	"output: 
 	Auto-generated method"
@@ -115,7 +115,7 @@ DAPOutputEvent >> event [
 	^ event ifNil: [ 'output' ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPOutputEvent >> event: anObject [
 	"output: 
 	Auto-generated method"
@@ -124,7 +124,7 @@ DAPOutputEvent >> event: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPOutputEvent >> group [
 	"Support for keeping an output log organized by grouping related messages.
 	string
@@ -143,7 +143,7 @@ A non empty 'output' attribute is shown as the unindented end of the group.
 	^ result
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPOutputEvent >> group: anObject [
 	"Support for keeping an output log organized by grouping related messages.
 	string
@@ -158,7 +158,7 @@ A non empty 'output' attribute is shown as the unindented end of the group.
 	self body at: #group put: anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPOutputEvent >> line [
 	"An optional source location line where the output was produced.
 	integer
@@ -169,7 +169,7 @@ DAPOutputEvent >> line [
 	^ result
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPOutputEvent >> line: anObject [
 	"An optional source location line where the output was produced.
 	integer
@@ -178,7 +178,7 @@ DAPOutputEvent >> line: anObject [
 	self body at: #line put: anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPOutputEvent >> output [
 	"The output to report.
 	string
@@ -189,7 +189,7 @@ DAPOutputEvent >> output [
 	^ result
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPOutputEvent >> output: anObject [
 	"The output to report.
 	string
@@ -198,14 +198,14 @@ DAPOutputEvent >> output: anObject [
 	self body at: #output put: anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPOutputEvent >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
 	^ #(body category column data event group line output source variablesReference )
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPOutputEvent >> source [
 	"An optional source location where the output was produced.
 	#/definitions/Source
@@ -218,7 +218,7 @@ DAPOutputEvent >> source [
 	^ result
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPOutputEvent >> source: anObject [
 	"An optional source location where the output was produced.
 	#/definitions/Source
@@ -227,7 +227,7 @@ DAPOutputEvent >> source: anObject [
 	self body at: #source put: anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPOutputEvent >> variablesReference [
 	"If an attribute 'variablesReference' exists and its value is > 0, the output contains objects which can be retrieved by passing 'variablesReference' to the 'variables' request. The value should be less than or equal to 2147483647 (2^31-1).
 	integer
@@ -238,7 +238,7 @@ DAPOutputEvent >> variablesReference [
 	^ result
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPOutputEvent >> variablesReference: anObject [
 	"If an attribute 'variablesReference' exists and its value is > 0, the output contains objects which can be retrieved by passing 'variablesReference' to the 'variables' request. The value should be less than or equal to 2147483647 (2^31-1).
 	integer

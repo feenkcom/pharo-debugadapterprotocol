@@ -6,19 +6,19 @@ If a filter or filter option is invalid (e.g. due to an invalid 'condition'), th
 
 "
 Class {
-	#name : 'DAPSetExceptionBreakpointsRequest',
-	#superclass : 'DAPRequest',
+	#name : #DAPSetExceptionBreakpointsRequest,
+	#superclass : #DAPRequest,
 	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetExceptionBreakpointsRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
 	^ #(setExceptionBreakpoints )
 ]
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPSetExceptionBreakpointsRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -29,20 +29,20 @@ DAPSetExceptionBreakpointsRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPSetExceptionBreakpointsRequest >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitSetExceptionBreakpointsRequest: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetExceptionBreakpointsRequest >> arguments [
 	"Auto-generated method"
 
 	^ arguments
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetExceptionBreakpointsRequest >> arguments: anObject [
 	"Auto-generated method"
 
@@ -53,7 +53,7 @@ DAPSetExceptionBreakpointsRequest >> arguments: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetExceptionBreakpointsRequest >> command [
 	"setExceptionBreakpoints: 
 	Auto-generated method"
@@ -61,7 +61,7 @@ DAPSetExceptionBreakpointsRequest >> command [
 	^ command ifNil: [ 'setExceptionBreakpoints' ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetExceptionBreakpointsRequest >> command: anObject [
 	"setExceptionBreakpoints: 
 	Auto-generated method"
@@ -70,7 +70,7 @@ DAPSetExceptionBreakpointsRequest >> command: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetExceptionBreakpointsRequest >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

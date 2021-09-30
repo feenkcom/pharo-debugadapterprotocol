@@ -3,8 +3,8 @@ Arguments for 'stepIn' request.
 
 "
 Class {
-	#name : 'DAPStepInArguments',
-	#superclass : 'DAPObject',
+	#name : #DAPStepInArguments,
+	#superclass : #DAPObject,
 	#instVars : [
 		'granularity',
 		'targetId',
@@ -13,7 +13,7 @@ Class {
 	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPStepInArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -25,13 +25,13 @@ DAPStepInArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPStepInArguments >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitStepInArguments: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStepInArguments >> granularity [
 	"Optional granularity to step. If no granularity is specified, a granularity of 'statement' is assumed.
 	#/definitions/SteppingGranularity
@@ -40,7 +40,7 @@ DAPStepInArguments >> granularity [
 	^ granularity
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStepInArguments >> granularity: anObject [
 	"Optional granularity to step. If no granularity is specified, a granularity of 'statement' is assumed.
 	#/definitions/SteppingGranularity
@@ -53,14 +53,14 @@ DAPStepInArguments >> granularity: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStepInArguments >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
 	^ #(granularity targetId threadId )
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStepInArguments >> targetId [
 	"Optional id of the target to step into.
 	integer
@@ -69,7 +69,7 @@ DAPStepInArguments >> targetId [
 	^ targetId
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStepInArguments >> targetId: anObject [
 	"Optional id of the target to step into.
 	integer
@@ -79,7 +79,7 @@ DAPStepInArguments >> targetId: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStepInArguments >> threadId [
 	"Execute 'stepIn' for this thread.
 	integer
@@ -88,7 +88,7 @@ DAPStepInArguments >> threadId [
 	^ threadId
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStepInArguments >> threadId: anObject [
 	"Execute 'stepIn' for this thread.
 	integer

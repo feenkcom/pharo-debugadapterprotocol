@@ -3,12 +3,12 @@ Notification by debugpy that the debuggee(?) is attached.
 
 "
 Class {
-	#name : 'DAPDebugpyAttachEvent',
-	#superclass : 'DAPEvent',
+	#name : #DAPDebugpyAttachEvent,
+	#superclass : #DAPEvent,
 	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPDebugpyAttachEvent class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -18,27 +18,27 @@ DAPDebugpyAttachEvent class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPDebugpyAttachEvent class >> eventEnums [
 	"Enumerated types for the associated attribute"
 
 	^ #(debugpyAttach )
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPDebugpyAttachEvent >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitDebugpyAttachEvent: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPDebugpyAttachEvent >> body [
 	"Auto-generated method"
 
 	^ body
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPDebugpyAttachEvent >> body: anObject [
 	"Auto-generated method"
 
@@ -49,7 +49,7 @@ DAPDebugpyAttachEvent >> body: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPDebugpyAttachEvent >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

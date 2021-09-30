@@ -3,8 +3,8 @@ Arguments for 'breakpointLocations' request.
 
 "
 Class {
-	#name : 'DAPBreakpointLocationsArguments',
-	#superclass : 'DAPObject',
+	#name : #DAPBreakpointLocationsArguments,
+	#superclass : #DAPObject,
 	#instVars : [
 		'column',
 		'endColumn',
@@ -15,7 +15,7 @@ Class {
 	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPBreakpointLocationsArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -29,13 +29,13 @@ DAPBreakpointLocationsArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPBreakpointLocationsArguments >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitBreakpointLocationsArguments: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPBreakpointLocationsArguments >> column [
 	"Optional start column of range to search possible breakpoint locations in. If no start column is given, the first column in the start line is assumed.
 	integer
@@ -44,7 +44,7 @@ DAPBreakpointLocationsArguments >> column [
 	^ column
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPBreakpointLocationsArguments >> column: anObject [
 	"Optional start column of range to search possible breakpoint locations in. If no start column is given, the first column in the start line is assumed.
 	integer
@@ -54,7 +54,7 @@ DAPBreakpointLocationsArguments >> column: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPBreakpointLocationsArguments >> endColumn [
 	"Optional end column of range to search possible breakpoint locations in. If no end column is given, then it is assumed to be in the last column of the end line.
 	integer
@@ -63,7 +63,7 @@ DAPBreakpointLocationsArguments >> endColumn [
 	^ endColumn
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPBreakpointLocationsArguments >> endColumn: anObject [
 	"Optional end column of range to search possible breakpoint locations in. If no end column is given, then it is assumed to be in the last column of the end line.
 	integer
@@ -73,7 +73,7 @@ DAPBreakpointLocationsArguments >> endColumn: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPBreakpointLocationsArguments >> endLine [
 	"Optional end line of range to search possible breakpoint locations in. If no end line is given, then the end line is assumed to be the start line.
 	integer
@@ -82,7 +82,7 @@ DAPBreakpointLocationsArguments >> endLine [
 	^ endLine
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPBreakpointLocationsArguments >> endLine: anObject [
 	"Optional end line of range to search possible breakpoint locations in. If no end line is given, then the end line is assumed to be the start line.
 	integer
@@ -92,7 +92,7 @@ DAPBreakpointLocationsArguments >> endLine: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPBreakpointLocationsArguments >> line [
 	"Start line of range to search possible breakpoint locations in. If only the line is specified, the request returns all possible locations in that line.
 	integer
@@ -101,7 +101,7 @@ DAPBreakpointLocationsArguments >> line [
 	^ line
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPBreakpointLocationsArguments >> line: anObject [
 	"Start line of range to search possible breakpoint locations in. If only the line is specified, the request returns all possible locations in that line.
 	integer
@@ -111,14 +111,14 @@ DAPBreakpointLocationsArguments >> line: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPBreakpointLocationsArguments >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
 	^ #(column endColumn endLine line source )
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPBreakpointLocationsArguments >> source [
 	"The source location of the breakpoints; either 'source.path' or 'source.reference' must be specified.
 	#/definitions/Source
@@ -127,7 +127,7 @@ DAPBreakpointLocationsArguments >> source [
 	^ source
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPBreakpointLocationsArguments >> source: anObject [
 	"The source location of the breakpoints; either 'source.path' or 'source.reference' must be specified.
 	#/definitions/Source

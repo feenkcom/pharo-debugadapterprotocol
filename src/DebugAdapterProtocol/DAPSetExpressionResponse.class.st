@@ -3,12 +3,12 @@ Response to 'setExpression' request.
 
 "
 Class {
-	#name : 'DAPSetExpressionResponse',
-	#superclass : 'DAPResponse',
+	#name : #DAPSetExpressionResponse,
+	#superclass : #DAPResponse,
 	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPSetExpressionResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -18,20 +18,20 @@ DAPSetExpressionResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPSetExpressionResponse >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitSetExpressionResponse: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetExpressionResponse >> body [
 	"Auto-generated method"
 
 	^ body
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetExpressionResponse >> body: anObject [
 	"Auto-generated method"
 
@@ -39,7 +39,7 @@ DAPSetExpressionResponse >> body: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetExpressionResponse >> indexedVariables [
 	"The number of indexed child variables.
 The client can use this optional information to present the variables in a paged UI and fetch them in chunks.
@@ -52,7 +52,7 @@ The value should be less than or equal to 2147483647 (2^31-1).
 	^ result
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetExpressionResponse >> indexedVariables: anObject [
 	"The number of indexed child variables.
 The client can use this optional information to present the variables in a paged UI and fetch them in chunks.
@@ -63,7 +63,7 @@ The value should be less than or equal to 2147483647 (2^31-1).
 	self body at: #indexedVariables put: anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetExpressionResponse >> namedVariables [
 	"The number of named child variables.
 The client can use this optional information to present the variables in a paged UI and fetch them in chunks.
@@ -76,7 +76,7 @@ The value should be less than or equal to 2147483647 (2^31-1).
 	^ result
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetExpressionResponse >> namedVariables: anObject [
 	"The number of named child variables.
 The client can use this optional information to present the variables in a paged UI and fetch them in chunks.
@@ -87,7 +87,7 @@ The value should be less than or equal to 2147483647 (2^31-1).
 	self body at: #namedVariables put: anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetExpressionResponse >> presentationHint [
 	"Properties of a value that can be used to determine how to render the result in the UI.
 	#/definitions/VariablePresentationHint
@@ -100,7 +100,7 @@ DAPSetExpressionResponse >> presentationHint [
 	^ result
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetExpressionResponse >> presentationHint: anObject [
 	"Properties of a value that can be used to determine how to render the result in the UI.
 	#/definitions/VariablePresentationHint
@@ -109,14 +109,14 @@ DAPSetExpressionResponse >> presentationHint: anObject [
 	self body at: #presentationHint put: anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetExpressionResponse >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
 	^ #(body indexedVariables namedVariables presentationHint type value variablesReference )
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetExpressionResponse >> type [
 	"The optional type of the value.
 This attribute should only be returned by a debug adapter if the client has passed the value true for the 'supportsVariableType' capability of the 'initialize' request.
@@ -128,7 +128,7 @@ This attribute should only be returned by a debug adapter if the client has pass
 	^ result
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetExpressionResponse >> type: anObject [
 	"The optional type of the value.
 This attribute should only be returned by a debug adapter if the client has passed the value true for the 'supportsVariableType' capability of the 'initialize' request.
@@ -138,7 +138,7 @@ This attribute should only be returned by a debug adapter if the client has pass
 	self body at: #type put: anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetExpressionResponse >> value [
 	"The new value of the expression.
 	string
@@ -149,7 +149,7 @@ DAPSetExpressionResponse >> value [
 	^ result
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetExpressionResponse >> value: anObject [
 	"The new value of the expression.
 	string
@@ -158,7 +158,7 @@ DAPSetExpressionResponse >> value: anObject [
 	self body at: #value put: anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetExpressionResponse >> variablesReference [
 	"If variablesReference is > 0, the value is structured and its children can be retrieved by passing variablesReference to the VariablesRequest.
 The value should be less than or equal to 2147483647 (2^31-1).
@@ -170,7 +170,7 @@ The value should be less than or equal to 2147483647 (2^31-1).
 	^ result
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetExpressionResponse >> variablesReference: anObject [
 	"If variablesReference is > 0, the value is structured and its children can be retrieved by passing variablesReference to the VariablesRequest.
 The value should be less than or equal to 2147483647 (2^31-1).

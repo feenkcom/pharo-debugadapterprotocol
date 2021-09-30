@@ -1,14 +1,15 @@
 "
 GtDAPDebuggerElement is the main display element of the DAP debugger UI.
 
-While this is a subclass of GtDebuggerElement, it is able to act as the UI for a remote DAP debugger without the Pharo debug session present.  For debuggering a remote server resulting from a pharo exception (breakpoint), use {{gtClass:name=GtDAPDebugSessionElement}}.
+While this is a subclass of GtDebuggerElement, it is able to act as the UI for a remote debugger without the Pharo debug session present.  For debuggering a remote server resulting from a pharo exception (breakpoint), use {{gtClass:name=GtDAPDebugSessionElement}}.
+
+Note that while the name includes DAP, for historical reasons, GtDAPDebuggerElement can work with any remote debugger that has the appropriate API, e.g. the CDT debugger.
 
 "
 Class {
-	#name : 'GtDAPDebuggerElement',
-	#superclass : 'GtDebuggerElement',
+	#name : #GtDAPDebuggerElement,
+	#superclass : #GtDebuggerElement,
 	#instVars : [
-		'dapDebugger',
 		'toolbar',
 		'variableList',
 		'callFramesList',
@@ -20,47 +21,48 @@ Class {
 		'stderr',
 		'breakpoints',
 		'variablesContainer',
-		'modules'
+		'modules',
+		'debuggerClient'
 	],
-	#category : 'DebugAdapterProtocol-UI'
+	#category : #'DebugAdapterProtocol-UI'
 }
 
-{ #category : 'instance creation' }
+{ #category : #'instance creation' }
 GtDAPDebuggerElement class >> openOnDebugger: aDAPDebugger [
 	| space |
 
 	space := BlSpace new.
-	space root addChild: (self new dapDebugger: aDAPDebugger).
+	space root addChild: (self new debuggerClient: aDAPDebugger).
 	space show.
 ]
 
-{ #category : 'callbacks' }
+{ #category : #callbacks }
 GtDAPDebuggerElement >> actOnBrowserClosing: ann [
 	"If the remote debugger is stopped, resume it, otherwise the remote is effectively locked up"
 
 	"Tell the debugger directly to resume, since we are already closing"
-	(dapDebugger isNotNil and: [ dapDebugger isStopped ]) ifTrue: 
+	(debuggerClient isNotNil and: [ debuggerClient isStopped ]) ifTrue: 
 		[ currentThread continue ].
 	toolbar actOnBrowserClosing: ann.
 	super actOnBrowserClosing: ann
 ]
 
-{ #category : 'callbacks' }
+{ #category : #callbacks }
 GtDAPDebuggerElement >> actOnDebugSessionChanged [
 
-	self dapDebugger announcer 
+	self debuggerClient announcer 
 		when: DAPStateChanged 
 		send: #scheduleUpdateUI
 		to: self.
-	self dapDebugger announcer 
+	self debuggerClient announcer 
 		when: DAPStdoutUpdated 
 		send: #scheduleUpdateStdout
 		to: self.
-	self dapDebugger announcer 
+	self debuggerClient announcer 
 		when: DAPStderrUpdated 
 		send: #scheduleUpdateStderr
 		to: self.
-	self dapDebugger announcer 
+	self debuggerClient announcer 
 		when: DAPBreakpointAdded
 		send: #scheduleUpdateBreakpoints
 		to: self.
@@ -72,7 +74,7 @@ GtDAPDebuggerElement >> actOnDebugSessionChanged [
 	self scheduleUpdateModules.
 ]
 
-{ #category : 'private - element creation' }
+{ #category : #'private - element creation' }
 GtDAPDebuggerElement >> breakpointsTab [
 
 	^ BrTab new 
@@ -85,7 +87,7 @@ GtDAPDebuggerElement >> breakpointsTab [
 				breakpoints ] ]
 ]
 
-{ #category : 'private - element creation' }
+{ #category : #'private - element creation' }
 GtDAPDebuggerElement >> buildVariablesHeader [
 	| header |
 
@@ -106,7 +108,7 @@ GtDAPDebuggerElement >> buildVariablesHeader [
 	^ header
 ]
 
-{ #category : 'private - element creation' }
+{ #category : #'private - element creation' }
 GtDAPDebuggerElement >> buildVariablesTree [
 	| tree |
 
@@ -140,33 +142,19 @@ GtDAPDebuggerElement >> buildVariablesTree [
 	^ tree
 ]
 
-{ #category : 'private - accessing' }
+{ #category : #'private - accessing' }
 GtDAPDebuggerElement >> cellSpacing [ 
 
 	^ 10
 ]
 
-{ #category : 'private - accessing' }
+{ #category : #'private - accessing' }
 GtDAPDebuggerElement >> columnNumber [ 
 
 	^ currentCallFrame columnNumber
 ]
 
-{ #category : 'private - accessing' }
-GtDAPDebuggerElement >> dapDebugger [
-	"Answer the debugger"
-
-	^ dapDebugger
-]
-
-{ #category : 'accessing' }
-GtDAPDebuggerElement >> dapDebugger: aDAPDebugger [
-
-	dapDebugger := aDAPDebugger.
-	self actOnDebugSessionChanged.
-]
-
-{ #category : 'private - actions' }
+{ #category : #'private - actions' }
 GtDAPDebuggerElement >> dapResume [
 	"Continue execution"
 
@@ -174,32 +162,46 @@ GtDAPDebuggerElement >> dapResume [
 
 ]
 
-{ #category : 'private - actions' }
+{ #category : #'private - actions' }
 GtDAPDebuggerElement >> dapStepInto [
 
 	currentThread stepInto.
 ]
 
-{ #category : 'private - actions' }
+{ #category : #'private - actions' }
 GtDAPDebuggerElement >> dapStepOut [
 
 	currentThread stepOut.
 ]
 
-{ #category : 'private - actions' }
+{ #category : #'private - actions' }
 GtDAPDebuggerElement >> dapStepOver [
 
 	currentThread stepOver.
 
 ]
 
-{ #category : 'private - accessing' }
+{ #category : #'private - accessing' }
+GtDAPDebuggerElement >> debuggerClient [
+	"Answer the debugger"
+
+	^ debuggerClient
+]
+
+{ #category : #accessing }
+GtDAPDebuggerElement >> debuggerClient: aDAPDebugger [
+
+	debuggerClient := aDAPDebugger.
+	self actOnDebugSessionChanged.
+]
+
+{ #category : #'private - accessing' }
 GtDAPDebuggerElement >> defaultMargin [ 
 
 	^ 5
 ]
 
-{ #category : 'private - update ui' }
+{ #category : #'private - update ui' }
 GtDAPDebuggerElement >> displayStackFrame: aDAPStackFrame [
 	"Set the supplied frame as the current frame and update the rest of the UI"
 
@@ -208,7 +210,7 @@ GtDAPDebuggerElement >> displayStackFrame: aDAPStackFrame [
 	self updateDisplay.
 ]
 
-{ #category : 'initialization' }
+{ #category : #initialization }
 GtDAPDebuggerElement >> initialize [
 	| container mainPane leftPane rightTabGroup rightPane cfContainer sourceContainer |
 
@@ -270,15 +272,15 @@ GtDAPDebuggerElement >> initialize [
 
 ]
 
-{ #category : 'testing' }
+{ #category : #testing }
 GtDAPDebuggerElement >> isDisplayingTopFrame [
 	"Answer a boolean indicating whether the top call frame is being displayed.
 	DAP debuggers only allow stepping and continuing from the top frame."
 
-	^ dapDebugger isStopped and: [ currentCallFrame == dapDebugger stoppedThread stackFrames first ]
+	^ debuggerClient isStopped and: [ currentCallFrame == debuggerClient stoppedThread stackFrames first ]
 ]
 
-{ #category : 'private - accessing' }
+{ #category : #'private - accessing' }
 GtDAPDebuggerElement >> lineNumber [ 
 
 	^ currentCallFrame
@@ -286,7 +288,7 @@ GtDAPDebuggerElement >> lineNumber [
 		ifNotNil: [ currentCallFrame line ifNil: [ 1 ] ]
 ]
 
-{ #category : 'private - element creation' }
+{ #category : #'private - element creation' }
 GtDAPDebuggerElement >> modulesTab [
 
 	^ BrTab new 
@@ -299,7 +301,7 @@ GtDAPDebuggerElement >> modulesTab [
 				modules ] ]
 ]
 
-{ #category : 'instance creation' }
+{ #category : #'instance creation' }
 GtDAPDebuggerElement >> newBreakpointsList [
 	| list |
 
@@ -335,7 +337,7 @@ GtDAPDebuggerElement >> newBreakpointsList [
 	^ list
 ]
 
-{ #category : 'instance creation' }
+{ #category : #'instance creation' }
 GtDAPDebuggerElement >> newCallFramesList [
 	| list |
 
@@ -371,7 +373,7 @@ GtDAPDebuggerElement >> newCallFramesList [
 	^ list
 ]
 
-{ #category : 'instance creation' }
+{ #category : #'instance creation' }
 GtDAPDebuggerElement >> newDebuggerState [
 
 	^ BrEditor new
@@ -384,7 +386,7 @@ GtDAPDebuggerElement >> newDebuggerState [
 
 ]
 
-{ #category : 'instance creation' }
+{ #category : #'instance creation' }
 GtDAPDebuggerElement >> newModulesList [
 	| list |
 
@@ -420,7 +422,7 @@ GtDAPDebuggerElement >> newModulesList [
 	^ list
 ]
 
-{ #category : 'instance creation' }
+{ #category : #'instance creation' }
 GtDAPDebuggerElement >> newRightTabGroup [
 
 	^ BrTabGroup new 
@@ -434,7 +436,7 @@ GtDAPDebuggerElement >> newRightTabGroup [
 		addTab: self modulesTab.
 ]
 
-{ #category : 'private - element creation' }
+{ #category : #'private - element creation' }
 GtDAPDebuggerElement >> newSourceEditor [
 
 	^ BrEditor new
@@ -443,7 +445,7 @@ GtDAPDebuggerElement >> newSourceEditor [
 		background: Color white.
 ]
 
-{ #category : 'private - element creation' }
+{ #category : #'private - element creation' }
 GtDAPDebuggerElement >> newStderrView [
 
 	^ BrEditor new
@@ -451,7 +453,7 @@ GtDAPDebuggerElement >> newStderrView [
 		background: Color white.
 ]
 
-{ #category : 'private - element creation' }
+{ #category : #'private - element creation' }
 GtDAPDebuggerElement >> newStdoutView [
 
 	^ BrEditor new
@@ -459,7 +461,7 @@ GtDAPDebuggerElement >> newStdoutView [
 		background: Color white.
 ]
 
-{ #category : 'private - element creation' }
+{ #category : #'private - element creation' }
 GtDAPDebuggerElement >> newToolbar [ 
 
 	^ GtDAPDebuggerToolbar new 
@@ -472,7 +474,7 @@ GtDAPDebuggerElement >> newToolbar [
 		yourself
 ]
 
-{ #category : 'instance creation' }
+{ #category : #'instance creation' }
 GtDAPDebuggerElement >> newVariablesList [
 	| container header tree |
 
@@ -491,7 +493,7 @@ GtDAPDebuggerElement >> newVariablesList [
 	^ container
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 GtDAPDebuggerElement >> scheduleUpdateBreakpoints [
 
 	breakpoints ifNotNil:
@@ -499,7 +501,7 @@ GtDAPDebuggerElement >> scheduleUpdateBreakpoints [
 
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 GtDAPDebuggerElement >> scheduleUpdateModules [
 
 	modules ifNotNil:
@@ -507,7 +509,7 @@ GtDAPDebuggerElement >> scheduleUpdateModules [
 
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 GtDAPDebuggerElement >> scheduleUpdateStderr [
 
 	stderr ifNotNil:
@@ -515,7 +517,7 @@ GtDAPDebuggerElement >> scheduleUpdateStderr [
 
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 GtDAPDebuggerElement >> scheduleUpdateStdout [
 
 	stdout ifNotNil:
@@ -523,20 +525,20 @@ GtDAPDebuggerElement >> scheduleUpdateStdout [
 
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 GtDAPDebuggerElement >> scheduleUpdateUI [
 
 	self enqueueTask: (BlTaskAction new action: [ self updateUI ]).
 
 ]
 
-{ #category : 'private - accessing' }
+{ #category : #'private - accessing' }
 GtDAPDebuggerElement >> sourceCode [
 
 	^ currentCallFrame sourceCode
 ]
 
-{ #category : 'private - accessing' }
+{ #category : #'private - accessing' }
 GtDAPDebuggerElement >> sourceText [ 
 	"Answer the receiver's source code, with the current line highlighted"
 
@@ -545,7 +547,7 @@ GtDAPDebuggerElement >> sourceText [
 		ifNotNil: [ currentCallFrame sourceText ]
 ]
 
-{ #category : 'private - element creation' }
+{ #category : #'private - element creation' }
 GtDAPDebuggerElement >> stderrTab [
 
 	^ BrTab new 
@@ -558,7 +560,7 @@ GtDAPDebuggerElement >> stderrTab [
 				stderr ] ]
 ]
 
-{ #category : 'private - element creation' }
+{ #category : #'private - element creation' }
 GtDAPDebuggerElement >> stdoutTab [
 
 	^ BrTab new 
@@ -571,30 +573,30 @@ GtDAPDebuggerElement >> stdoutTab [
 				stdout ] ]
 ]
 
-{ #category : 'actions' }
+{ #category : #actions }
 GtDAPDebuggerElement >> terminateSession [
 
 	super terminateSession.
-	self dapDebugger ifNotNil: 
-		[ dapDebugger announcer unsubscribe: self ]
+	debuggerClient ifNotNil: 
+		[ debuggerClient announcer unsubscribe: self ]
 ]
 
-{ #category : 'private - update ui' }
+{ #category : #'private - update ui' }
 GtDAPDebuggerElement >> updateBreakpoints [
 
 	breakpoints ifNotNil:
-		[ breakpoints items: (self dapDebugger breakpoints values sorted: [ :a :b | a id < b id ]) ]
+		[ breakpoints items: (self debuggerClient breakpoints values sorted: [ :a :b | a id < b id ]) ]
 
 ]
 
-{ #category : 'private - update ui' }
+{ #category : #'private - update ui' }
 GtDAPDebuggerElement >> updateCallFrame [
 
 	callFramesList items: currentThread stackFrames.
 
 ]
 
-{ #category : 'private - update ui' }
+{ #category : #'private - update ui' }
 GtDAPDebuggerElement >> updateDisplay [ 
 
 	self updateCallFrame.
@@ -603,17 +605,19 @@ GtDAPDebuggerElement >> updateDisplay [
 
 ]
 
-{ #category : 'private - update ui' }
+{ #category : #'private - update ui' }
 GtDAPDebuggerElement >> updateModules [
 
 	modules ifNotNil:
-		[ modules items: (self dapDebugger modules values sorted: [ :a :b | a name < b name ]) ]
+		[ modules items: (self debuggerClient modules values sorted: [ :a :b | a name < b name ]) ]
 
 ]
 
-{ #category : 'private - update ui' }
+{ #category : #'private - update ui' }
 GtDAPDebuggerElement >> updateSource [ 
 
+	StringSignal emit: 'source: ', self sourceText.
+	StringSignal emit: 'frame: ', currentCallFrame printString.
 	sourceCode text: self sourceText.
 	self lineNumber > 5 ifTrue:
 		[ StringSignal emit: 'Scrolling to line: ', self lineNumber asString.
@@ -621,28 +625,28 @@ GtDAPDebuggerElement >> updateSource [
 
 ]
 
-{ #category : 'callbacks' }
+{ #category : #callbacks }
 GtDAPDebuggerElement >> updateStderr [
 
-	stderr text: self dapDebugger stderr asRopedText
+	stderr text: self debuggerClient stderr asRopedText
 ]
 
-{ #category : 'callbacks' }
+{ #category : #callbacks }
 GtDAPDebuggerElement >> updateStdout [
 
-	stdout text: self dapDebugger stdout asRopedText
+	stdout text: self debuggerClient stdout asRopedText
 ]
 
-{ #category : 'callbacks' }
+{ #category : #callbacks }
 GtDAPDebuggerElement >> updateUI [
 	"Update the UI to reflect the debugger state."
 
 	StringSignal emit: 'updateUI'.
-	debuggerState text: self dapDebugger statusString asRopedText.
+	debuggerState text: self debuggerClient statusString asRopedText.
 	"Always display the stopped threads.
 	Currently we only support the threading module, which has green threads, like Pharo.
 	This means that if one thread is stopped, none of the others are actually processing."
-	currentThread := self dapDebugger stoppedThread.
+	currentThread := self debuggerClient stoppedThread.
 	currentThread ifNil: [ 
 		toolbar updateUI.
 		^ self ].
@@ -657,7 +661,7 @@ GtDAPDebuggerElement >> updateUI [
 
 ]
 
-{ #category : 'private - update ui' }
+{ #category : #'private - update ui' }
 GtDAPDebuggerElement >> updateVariables [ 
 
 	variableList 
@@ -674,7 +678,7 @@ GtDAPDebuggerElement >> updateVariables [
 
 ]
 
-{ #category : 'private - element creation' }
+{ #category : #'private - element creation' }
 GtDAPDebuggerElement >> variablesTab [
 
 	^ BrTab new 

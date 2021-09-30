@@ -3,8 +3,8 @@ Arguments for 'disconnect' request.
 
 "
 Class {
-	#name : 'DAPDisconnectArguments',
-	#superclass : 'DAPObject',
+	#name : #DAPDisconnectArguments,
+	#superclass : #DAPObject,
 	#instVars : [
 		'restart',
 		'terminateDebuggee'
@@ -12,7 +12,7 @@ Class {
 	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPDisconnectArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -23,20 +23,20 @@ DAPDisconnectArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPDisconnectArguments >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitDisconnectArguments: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPDisconnectArguments >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
 	^ #(restart terminateDebuggee )
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPDisconnectArguments >> restart [
 	"A value of true indicates that this 'disconnect' request is part of a restart sequence.
 	boolean
@@ -45,7 +45,7 @@ DAPDisconnectArguments >> restart [
 	^ restart
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPDisconnectArguments >> restart: anObject [
 	"A value of true indicates that this 'disconnect' request is part of a restart sequence.
 	boolean
@@ -55,7 +55,7 @@ DAPDisconnectArguments >> restart: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPDisconnectArguments >> terminateDebuggee [
 	"Indicates whether the debuggee should be terminated when the debugger is disconnected.
 If unspecified, the debug adapter is free to do whatever it thinks is best.
@@ -66,7 +66,7 @@ The attribute is only honored by a debug adapter if the capability 'supportTermi
 	^ terminateDebuggee
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPDisconnectArguments >> terminateDebuggee: anObject [
 	"Indicates whether the debuggee should be terminated when the debugger is disconnected.
 If unspecified, the debug adapter is free to do whatever it thinks is best.

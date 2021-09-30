@@ -3,8 +3,8 @@ Base class of requests, responses, and events.
 
 "
 Class {
-	#name : 'DAPProtocolMessage',
-	#superclass : 'DAPObject',
+	#name : #DAPProtocolMessage,
+	#superclass : #DAPObject,
 	#instVars : [
 		'seq',
 		'type'
@@ -12,7 +12,7 @@ Class {
 	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPProtocolMessage class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -23,20 +23,20 @@ DAPProtocolMessage class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPProtocolMessage >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitProtocolMessage: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPProtocolMessage >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
 	^ #(seq type )
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPProtocolMessage >> seq [
 	"Sequence number (also known as message ID). For protocol messages of type 'request' this ID can be used to cancel the request.
 	integer
@@ -45,7 +45,7 @@ DAPProtocolMessage >> seq [
 	^ seq
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPProtocolMessage >> seq: anObject [
 	"Sequence number (also known as message ID). For protocol messages of type 'request' this ID can be used to cancel the request.
 	integer
@@ -55,7 +55,7 @@ DAPProtocolMessage >> seq: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPProtocolMessage >> type [
 	"Message type.
 	string
@@ -64,7 +64,7 @@ DAPProtocolMessage >> type [
 	^ type
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPProtocolMessage >> type: anObject [
 	"Message type.
 	string

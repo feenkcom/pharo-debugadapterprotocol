@@ -3,8 +3,8 @@ A debug adapter initiated event.
 
 "
 Class {
-	#name : 'DAPEvent',
-	#superclass : 'DAPProtocolMessage',
+	#name : #DAPEvent,
+	#superclass : #DAPProtocolMessage,
 	#instVars : [
 		'body',
 		'event'
@@ -12,7 +12,7 @@ Class {
 	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPEvent class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -24,20 +24,20 @@ DAPEvent class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPEvent class >> typeEnums [
 	"Enumerated types for the associated attribute"
 
 	^ #(event )
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPEvent >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitEvent: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPEvent >> body [
 	"Event-specific information.
 	arraybooleanintegernullnumberobjectstring
@@ -46,7 +46,7 @@ DAPEvent >> body [
 	^ body
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPEvent >> body: anObject [
 	"Event-specific information.
 	arraybooleanintegernullnumberobjectstring
@@ -56,7 +56,7 @@ DAPEvent >> body: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPEvent >> event [
 	"Type of event.
 	string
@@ -65,7 +65,7 @@ DAPEvent >> event [
 	^ event
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPEvent >> event: anObject [
 	"Type of event.
 	string
@@ -75,14 +75,14 @@ DAPEvent >> event: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPEvent >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
 	^ #(body event type )
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPEvent >> type [
 	"event: 
 	Auto-generated method"
@@ -90,7 +90,7 @@ DAPEvent >> type [
 	^ type ifNil: [ 'event' ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPEvent >> type: anObject [
 	"event: 
 	Auto-generated method"

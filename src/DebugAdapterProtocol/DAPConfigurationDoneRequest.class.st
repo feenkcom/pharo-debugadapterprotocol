@@ -5,19 +5,19 @@ Clients should only call this request if the capability 'supportsConfigurationDo
 
 "
 Class {
-	#name : 'DAPConfigurationDoneRequest',
-	#superclass : 'DAPRequest',
+	#name : #DAPConfigurationDoneRequest,
+	#superclass : #DAPRequest,
 	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPConfigurationDoneRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
 	^ #(configurationDone )
 ]
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPConfigurationDoneRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -28,20 +28,20 @@ DAPConfigurationDoneRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPConfigurationDoneRequest >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitConfigurationDoneRequest: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPConfigurationDoneRequest >> arguments [
 	"Auto-generated method"
 
 	^ arguments
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPConfigurationDoneRequest >> arguments: anObject [
 	"Auto-generated method"
 
@@ -52,7 +52,7 @@ DAPConfigurationDoneRequest >> arguments: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPConfigurationDoneRequest >> command [
 	"configurationDone: 
 	Auto-generated method"
@@ -60,7 +60,7 @@ DAPConfigurationDoneRequest >> command [
 	^ command ifNil: [ 'configurationDone' ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPConfigurationDoneRequest >> command: anObject [
 	"configurationDone: 
 	Auto-generated method"
@@ -69,7 +69,7 @@ DAPConfigurationDoneRequest >> command: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPConfigurationDoneRequest >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

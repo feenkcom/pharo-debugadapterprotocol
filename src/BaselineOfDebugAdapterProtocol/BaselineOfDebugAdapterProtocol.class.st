@@ -1,7 +1,7 @@
 Class {
 	#name : #BaselineOfDebugAdapterProtocol,
 	#superclass : #BaselineOf,
-	#category : #BaselineOfDebugAdapterProtocol
+	#category : 'BaselineOfDebugAdapterProtocol'
 }
 
 { #category : #baselines }
@@ -17,5 +17,6 @@ BaselineOfDebugAdapterProtocol >> baseline: spec [
 BaselineOfDebugAdapterProtocol >> postLoadSetup: spec [
 	"Register the JS debugger"
 
-	GtDAPDebugSessionElement register
+	GtDAPDebugSessionElement register.
+	GtPostMortemSessionElement register.
 ]

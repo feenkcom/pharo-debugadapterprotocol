@@ -1,6 +1,6 @@
 Class {
-	#name : 'DAPMessageSignal',
-	#superclass : 'BeaconSignal',
+	#name : #DAPMessageSignal,
+	#superclass : #BeaconSignal,
 	#instVars : [
 		'message',
 		'direction'
@@ -8,27 +8,27 @@ Class {
 	#category : 'DebugAdapterProtocol-Beacon'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPMessageSignal >> direction [
 	^ direction
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPMessageSignal >> direction: anObject [
 	direction := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPMessageSignal >> message [
 	^ message
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPMessageSignal >> message: anObject [
 	message := anObject
 ]
 
-{ #category : 'printing' }
+{ #category : #printing }
 DAPMessageSignal >> printOneLineContentsOn: stream [
 
 	message ifNil: 

@@ -3,8 +3,8 @@ Arguments for 'initialize' request.
 
 "
 Class {
-	#name : 'DAPInitializeRequestArguments',
-	#superclass : 'DAPObject',
+	#name : #DAPInitializeRequestArguments,
+	#superclass : #DAPObject,
 	#instVars : [
 		'adapterID',
 		'clientID',
@@ -23,7 +23,7 @@ Class {
 	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPInitializeRequestArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -45,13 +45,13 @@ DAPInitializeRequestArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPInitializeRequestArguments >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitInitializeRequestArguments: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPInitializeRequestArguments >> adapterID [
 	"The ID of the debug adapter.
 	string
@@ -60,7 +60,7 @@ DAPInitializeRequestArguments >> adapterID [
 	^ adapterID
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPInitializeRequestArguments >> adapterID: anObject [
 	"The ID of the debug adapter.
 	string
@@ -70,7 +70,7 @@ DAPInitializeRequestArguments >> adapterID: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPInitializeRequestArguments >> clientID [
 	"The ID of the (frontend) client using this adapter.
 	string
@@ -79,7 +79,7 @@ DAPInitializeRequestArguments >> clientID [
 	^ clientID
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPInitializeRequestArguments >> clientID: anObject [
 	"The ID of the (frontend) client using this adapter.
 	string
@@ -89,7 +89,7 @@ DAPInitializeRequestArguments >> clientID: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPInitializeRequestArguments >> clientName [
 	"The human readable name of the (frontend) client using this adapter.
 	string
@@ -98,7 +98,7 @@ DAPInitializeRequestArguments >> clientName [
 	^ clientName
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPInitializeRequestArguments >> clientName: anObject [
 	"The human readable name of the (frontend) client using this adapter.
 	string
@@ -108,7 +108,7 @@ DAPInitializeRequestArguments >> clientName: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPInitializeRequestArguments >> columnsStartAt1 [
 	"If true all column numbers are 1-based (default).
 	boolean
@@ -117,7 +117,7 @@ DAPInitializeRequestArguments >> columnsStartAt1 [
 	^ columnsStartAt1
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPInitializeRequestArguments >> columnsStartAt1: anObject [
 	"If true all column numbers are 1-based (default).
 	boolean
@@ -127,7 +127,7 @@ DAPInitializeRequestArguments >> columnsStartAt1: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPInitializeRequestArguments >> linesStartAt1 [
 	"If true all line numbers are 1-based (default).
 	boolean
@@ -136,7 +136,7 @@ DAPInitializeRequestArguments >> linesStartAt1 [
 	^ linesStartAt1
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPInitializeRequestArguments >> linesStartAt1: anObject [
 	"If true all line numbers are 1-based (default).
 	boolean
@@ -146,7 +146,7 @@ DAPInitializeRequestArguments >> linesStartAt1: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPInitializeRequestArguments >> locale [
 	"The ISO-639 locale of the (frontend) client using this adapter, e.g. en-US or de-CH.
 	string
@@ -155,7 +155,7 @@ DAPInitializeRequestArguments >> locale [
 	^ locale
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPInitializeRequestArguments >> locale: anObject [
 	"The ISO-639 locale of the (frontend) client using this adapter, e.g. en-US or de-CH.
 	string
@@ -165,7 +165,7 @@ DAPInitializeRequestArguments >> locale: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPInitializeRequestArguments >> pathFormat [
 	"Determines in what format paths are specified. The default is 'path', which is the native format.
 	string
@@ -174,7 +174,7 @@ DAPInitializeRequestArguments >> pathFormat [
 	^ pathFormat
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPInitializeRequestArguments >> pathFormat: anObject [
 	"Determines in what format paths are specified. The default is 'path', which is the native format.
 	string
@@ -184,14 +184,14 @@ DAPInitializeRequestArguments >> pathFormat: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPInitializeRequestArguments >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
 	^ #(adapterID clientID clientName columnsStartAt1 linesStartAt1 locale pathFormat supportsInvalidatedEvent supportsMemoryReferences supportsProgressReporting supportsRunInTerminalRequest supportsVariablePaging supportsVariableType )
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPInitializeRequestArguments >> supportsInvalidatedEvent [
 	"Client supports the invalidated event.
 	boolean
@@ -200,7 +200,7 @@ DAPInitializeRequestArguments >> supportsInvalidatedEvent [
 	^ supportsInvalidatedEvent
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPInitializeRequestArguments >> supportsInvalidatedEvent: anObject [
 	"Client supports the invalidated event.
 	boolean
@@ -210,7 +210,7 @@ DAPInitializeRequestArguments >> supportsInvalidatedEvent: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPInitializeRequestArguments >> supportsMemoryReferences [
 	"Client supports memory references.
 	boolean
@@ -219,7 +219,7 @@ DAPInitializeRequestArguments >> supportsMemoryReferences [
 	^ supportsMemoryReferences
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPInitializeRequestArguments >> supportsMemoryReferences: anObject [
 	"Client supports memory references.
 	boolean
@@ -229,7 +229,7 @@ DAPInitializeRequestArguments >> supportsMemoryReferences: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPInitializeRequestArguments >> supportsProgressReporting [
 	"Client supports progress reporting.
 	boolean
@@ -238,7 +238,7 @@ DAPInitializeRequestArguments >> supportsProgressReporting [
 	^ supportsProgressReporting
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPInitializeRequestArguments >> supportsProgressReporting: anObject [
 	"Client supports progress reporting.
 	boolean
@@ -248,7 +248,7 @@ DAPInitializeRequestArguments >> supportsProgressReporting: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPInitializeRequestArguments >> supportsRunInTerminalRequest [
 	"Client supports the runInTerminal request.
 	boolean
@@ -257,7 +257,7 @@ DAPInitializeRequestArguments >> supportsRunInTerminalRequest [
 	^ supportsRunInTerminalRequest
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPInitializeRequestArguments >> supportsRunInTerminalRequest: anObject [
 	"Client supports the runInTerminal request.
 	boolean
@@ -267,7 +267,7 @@ DAPInitializeRequestArguments >> supportsRunInTerminalRequest: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPInitializeRequestArguments >> supportsVariablePaging [
 	"Client supports the paging of variables.
 	boolean
@@ -276,7 +276,7 @@ DAPInitializeRequestArguments >> supportsVariablePaging [
 	^ supportsVariablePaging
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPInitializeRequestArguments >> supportsVariablePaging: anObject [
 	"Client supports the paging of variables.
 	boolean
@@ -286,7 +286,7 @@ DAPInitializeRequestArguments >> supportsVariablePaging: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPInitializeRequestArguments >> supportsVariableType [
 	"Client supports the optional type attribute for variables.
 	boolean
@@ -295,7 +295,7 @@ DAPInitializeRequestArguments >> supportsVariableType [
 	^ supportsVariableType
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPInitializeRequestArguments >> supportsVariableType: anObject [
 	"Client supports the optional type attribute for variables.
 	boolean

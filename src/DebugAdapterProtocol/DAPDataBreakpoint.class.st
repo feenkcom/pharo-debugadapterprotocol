@@ -3,8 +3,8 @@ Properties of a data breakpoint passed to the setDataBreakpoints request.
 
 "
 Class {
-	#name : 'DAPDataBreakpoint',
-	#superclass : 'DAPObject',
+	#name : #DAPDataBreakpoint,
+	#superclass : #DAPObject,
 	#instVars : [
 		'accessType',
 		'condition',
@@ -14,7 +14,7 @@ Class {
 	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPDataBreakpoint class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -27,13 +27,13 @@ DAPDataBreakpoint class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPDataBreakpoint >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitDataBreakpoint: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPDataBreakpoint >> accessType [
 	"The access type of the data.
 	#/definitions/DataBreakpointAccessType
@@ -42,7 +42,7 @@ DAPDataBreakpoint >> accessType [
 	^ accessType
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPDataBreakpoint >> accessType: anObject [
 	"The access type of the data.
 	#/definitions/DataBreakpointAccessType
@@ -55,7 +55,7 @@ DAPDataBreakpoint >> accessType: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPDataBreakpoint >> condition [
 	"An optional expression for conditional breakpoints.
 	string
@@ -64,7 +64,7 @@ DAPDataBreakpoint >> condition [
 	^ condition
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPDataBreakpoint >> condition: anObject [
 	"An optional expression for conditional breakpoints.
 	string
@@ -74,7 +74,7 @@ DAPDataBreakpoint >> condition: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPDataBreakpoint >> dataId [
 	"An id representing the data. This id is returned from the dataBreakpointInfo request.
 	string
@@ -83,7 +83,7 @@ DAPDataBreakpoint >> dataId [
 	^ dataId
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPDataBreakpoint >> dataId: anObject [
 	"An id representing the data. This id is returned from the dataBreakpointInfo request.
 	string
@@ -93,7 +93,7 @@ DAPDataBreakpoint >> dataId: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPDataBreakpoint >> hitCondition [
 	"An optional expression that controls how many hits of the breakpoint are ignored.
 The backend is expected to interpret the expression as needed.
@@ -103,7 +103,7 @@ The backend is expected to interpret the expression as needed.
 	^ hitCondition
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPDataBreakpoint >> hitCondition: anObject [
 	"An optional expression that controls how many hits of the breakpoint are ignored.
 The backend is expected to interpret the expression as needed.
@@ -114,7 +114,7 @@ The backend is expected to interpret the expression as needed.
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPDataBreakpoint >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

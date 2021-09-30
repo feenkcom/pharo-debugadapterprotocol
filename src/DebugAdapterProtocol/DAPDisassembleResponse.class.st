@@ -3,12 +3,12 @@ Response to 'disassemble' request.
 
 "
 Class {
-	#name : 'DAPDisassembleResponse',
-	#superclass : 'DAPResponse',
+	#name : #DAPDisassembleResponse,
+	#superclass : #DAPResponse,
 	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPDisassembleResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -18,20 +18,20 @@ DAPDisassembleResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPDisassembleResponse >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitDisassembleResponse: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPDisassembleResponse >> body [
 	"Auto-generated method"
 
 	^ body
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPDisassembleResponse >> body: anObject [
 	"Auto-generated method"
 
@@ -39,7 +39,7 @@ DAPDisassembleResponse >> body: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPDisassembleResponse >> instructions [
 	"The list of disassembled instructions.
 	array
@@ -50,7 +50,7 @@ DAPDisassembleResponse >> instructions [
 	^ result
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPDisassembleResponse >> instructions: anObject [
 	"The list of disassembled instructions.
 	array
@@ -59,7 +59,7 @@ DAPDisassembleResponse >> instructions: anObject [
 	self body at: #instructions put: anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPDisassembleResponse >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

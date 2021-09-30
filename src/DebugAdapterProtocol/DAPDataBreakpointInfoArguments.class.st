@@ -3,8 +3,8 @@ Arguments for 'dataBreakpointInfo' request.
 
 "
 Class {
-	#name : 'DAPDataBreakpointInfoArguments',
-	#superclass : 'DAPObject',
+	#name : #DAPDataBreakpointInfoArguments,
+	#superclass : #DAPObject,
 	#instVars : [
 		'name',
 		'variablesReference'
@@ -12,7 +12,7 @@ Class {
 	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPDataBreakpointInfoArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -23,13 +23,13 @@ DAPDataBreakpointInfoArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPDataBreakpointInfoArguments >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitDataBreakpointInfoArguments: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPDataBreakpointInfoArguments >> name [
 	"The name of the Variable's child to obtain data breakpoint information for.
 If variablesReference isn’t provided, this can be an expression.
@@ -39,7 +39,7 @@ If variablesReference isn’t provided, this can be an expression.
 	^ name
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPDataBreakpointInfoArguments >> name: anObject [
 	"The name of the Variable's child to obtain data breakpoint information for.
 If variablesReference isn’t provided, this can be an expression.
@@ -50,14 +50,14 @@ If variablesReference isn’t provided, this can be an expression.
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPDataBreakpointInfoArguments >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
 	^ #(name variablesReference )
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPDataBreakpointInfoArguments >> variablesReference [
 	"Reference to the Variable container if the data breakpoint is requested for a child of the container.
 	integer
@@ -66,7 +66,7 @@ DAPDataBreakpointInfoArguments >> variablesReference [
 	^ variablesReference
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPDataBreakpointInfoArguments >> variablesReference: anObject [
 	"Reference to the Variable container if the data breakpoint is requested for a child of the container.
 	integer

@@ -3,8 +3,8 @@ The checksum of an item calculated by the specified algorithm.
 
 "
 Class {
-	#name : 'DAPChecksum',
-	#superclass : 'DAPObject',
+	#name : #DAPChecksum,
+	#superclass : #DAPObject,
 	#instVars : [
 		'algorithm',
 		'checksum'
@@ -12,7 +12,7 @@ Class {
 	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPChecksum class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -23,13 +23,13 @@ DAPChecksum class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPChecksum >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitChecksum: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPChecksum >> algorithm [
 	"The algorithm used to calculate this checksum.
 	#/definitions/ChecksumAlgorithm
@@ -38,7 +38,7 @@ DAPChecksum >> algorithm [
 	^ algorithm
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPChecksum >> algorithm: anObject [
 	"The algorithm used to calculate this checksum.
 	#/definitions/ChecksumAlgorithm
@@ -51,7 +51,7 @@ DAPChecksum >> algorithm: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPChecksum >> checksum [
 	"Value of the checksum.
 	string
@@ -60,7 +60,7 @@ DAPChecksum >> checksum [
 	^ checksum
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPChecksum >> checksum: anObject [
 	"Value of the checksum.
 	string
@@ -70,7 +70,7 @@ DAPChecksum >> checksum: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPChecksum >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

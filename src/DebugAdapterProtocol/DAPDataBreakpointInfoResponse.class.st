@@ -3,12 +3,12 @@ Response to 'dataBreakpointInfo' request.
 
 "
 Class {
-	#name : 'DAPDataBreakpointInfoResponse',
-	#superclass : 'DAPResponse',
+	#name : #DAPDataBreakpointInfoResponse,
+	#superclass : #DAPResponse,
 	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPDataBreakpointInfoResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -18,13 +18,13 @@ DAPDataBreakpointInfoResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPDataBreakpointInfoResponse >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitDataBreakpointInfoResponse: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPDataBreakpointInfoResponse >> accessTypes [
 	"Optional attribute listing the available access types for a potential data breakpoint. A UI frontend could surface this information.
 	array
@@ -35,7 +35,7 @@ DAPDataBreakpointInfoResponse >> accessTypes [
 	^ result
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPDataBreakpointInfoResponse >> accessTypes: anObject [
 	"Optional attribute listing the available access types for a potential data breakpoint. A UI frontend could surface this information.
 	array
@@ -44,14 +44,14 @@ DAPDataBreakpointInfoResponse >> accessTypes: anObject [
 	self body at: #accessTypes put: anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPDataBreakpointInfoResponse >> body [
 	"Auto-generated method"
 
 	^ body
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPDataBreakpointInfoResponse >> body: anObject [
 	"Auto-generated method"
 
@@ -59,7 +59,7 @@ DAPDataBreakpointInfoResponse >> body: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPDataBreakpointInfoResponse >> canPersist [
 	"Optional attribute indicating that a potential data breakpoint could be persisted across sessions.
 	boolean
@@ -70,7 +70,7 @@ DAPDataBreakpointInfoResponse >> canPersist [
 	^ result
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPDataBreakpointInfoResponse >> canPersist: anObject [
 	"Optional attribute indicating that a potential data breakpoint could be persisted across sessions.
 	boolean
@@ -79,7 +79,7 @@ DAPDataBreakpointInfoResponse >> canPersist: anObject [
 	self body at: #canPersist put: anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPDataBreakpointInfoResponse >> dataId [
 	"An identifier for the data on which a data breakpoint can be registered with the setDataBreakpoints request or null if no data breakpoint is available.
 	stringnull
@@ -90,7 +90,7 @@ DAPDataBreakpointInfoResponse >> dataId [
 	^ result
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPDataBreakpointInfoResponse >> dataId: anObject [
 	"An identifier for the data on which a data breakpoint can be registered with the setDataBreakpoints request or null if no data breakpoint is available.
 	stringnull
@@ -99,7 +99,7 @@ DAPDataBreakpointInfoResponse >> dataId: anObject [
 	self body at: #dataId put: anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPDataBreakpointInfoResponse >> description [
 	"UI string that describes on what data the breakpoint is set on or why a data breakpoint is not available.
 	string
@@ -110,7 +110,7 @@ DAPDataBreakpointInfoResponse >> description [
 	^ result
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPDataBreakpointInfoResponse >> description: anObject [
 	"UI string that describes on what data the breakpoint is set on or why a data breakpoint is not available.
 	string
@@ -119,7 +119,7 @@ DAPDataBreakpointInfoResponse >> description: anObject [
 	self body at: #description put: anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPDataBreakpointInfoResponse >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

@@ -3,8 +3,8 @@ An ExceptionOptions assigns configuration options to a set of exceptions.
 
 "
 Class {
-	#name : 'DAPExceptionOptions',
-	#superclass : 'DAPObject',
+	#name : #DAPExceptionOptions,
+	#superclass : #DAPObject,
 	#instVars : [
 		'breakMode',
 		'path'
@@ -12,7 +12,7 @@ Class {
 	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPExceptionOptions class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -23,13 +23,13 @@ DAPExceptionOptions class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPExceptionOptions >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitExceptionOptions: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPExceptionOptions >> breakMode [
 	"Condition when a thrown exception should result in a break.
 	#/definitions/ExceptionBreakMode
@@ -38,7 +38,7 @@ DAPExceptionOptions >> breakMode [
 	^ breakMode
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPExceptionOptions >> breakMode: anObject [
 	"Condition when a thrown exception should result in a break.
 	#/definitions/ExceptionBreakMode
@@ -51,7 +51,7 @@ DAPExceptionOptions >> breakMode: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPExceptionOptions >> path [
 	"A path that selects a single or multiple exceptions in a tree. If 'path' is missing, the whole tree is selected.
 By convention the first segment of the path is a category that is used to group exceptions in the UI.
@@ -61,7 +61,7 @@ By convention the first segment of the path is a category that is used to group 
 	^ path
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPExceptionOptions >> path: anObject [
 	"A path that selects a single or multiple exceptions in a tree. If 'path' is missing, the whole tree is selected.
 By convention the first segment of the path is a category that is used to group exceptions in the UI.
@@ -72,7 +72,7 @@ By convention the first segment of the path is a category that is used to group 
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPExceptionOptions >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

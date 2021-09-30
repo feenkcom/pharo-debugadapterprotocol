@@ -4,19 +4,19 @@ The debug adapter first sends the response and then a 'stopped' event (with reas
 
 "
 Class {
-	#name : 'DAPPauseRequest',
-	#superclass : 'DAPRequest',
+	#name : #DAPPauseRequest,
+	#superclass : #DAPRequest,
 	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPPauseRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
 	^ #(pause )
 ]
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPPauseRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -27,20 +27,20 @@ DAPPauseRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPPauseRequest >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitPauseRequest: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPPauseRequest >> arguments [
 	"Auto-generated method"
 
 	^ arguments
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPPauseRequest >> arguments: anObject [
 	"Auto-generated method"
 
@@ -51,7 +51,7 @@ DAPPauseRequest >> arguments: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPPauseRequest >> command [
 	"pause: 
 	Auto-generated method"
@@ -59,7 +59,7 @@ DAPPauseRequest >> command [
 	^ command ifNil: [ 'pause' ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPPauseRequest >> command: anObject [
 	"pause: 
 	Auto-generated method"
@@ -68,7 +68,7 @@ DAPPauseRequest >> command: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPPauseRequest >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

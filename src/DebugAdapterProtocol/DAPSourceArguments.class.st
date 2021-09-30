@@ -3,8 +3,8 @@ Arguments for 'source' request.
 
 "
 Class {
-	#name : 'DAPSourceArguments',
-	#superclass : 'DAPObject',
+	#name : #DAPSourceArguments,
+	#superclass : #DAPObject,
 	#instVars : [
 		'source',
 		'sourceReference'
@@ -12,7 +12,7 @@ Class {
 	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPSourceArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -23,20 +23,20 @@ DAPSourceArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPSourceArguments >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitSourceArguments: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSourceArguments >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
 	^ #(source sourceReference )
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSourceArguments >> source [
 	"Specifies the source content to load. Either source.path or source.sourceReference must be specified.
 	#/definitions/Source
@@ -45,7 +45,7 @@ DAPSourceArguments >> source [
 	^ source
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSourceArguments >> source: anObject [
 	"Specifies the source content to load. Either source.path or source.sourceReference must be specified.
 	#/definitions/Source
@@ -58,7 +58,7 @@ DAPSourceArguments >> source: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSourceArguments >> sourceReference [
 	"The reference to the source. This is the same as source.sourceReference.
 This is provided for backward compatibility since old backends do not understand the 'source' attribute.
@@ -68,7 +68,7 @@ This is provided for backward compatibility since old backends do not understand
 	^ sourceReference
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSourceArguments >> sourceReference: anObject [
 	"The reference to the source. This is the same as source.sourceReference.
 This is provided for backward compatibility since old backends do not understand the 'source' attribute.

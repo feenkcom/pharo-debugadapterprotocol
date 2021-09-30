@@ -3,8 +3,8 @@ Optional properties of a variable that can be used to determine how to render th
 
 "
 Class {
-	#name : 'DAPVariablePresentationHint',
-	#superclass : 'DAPObject',
+	#name : #DAPVariablePresentationHint,
+	#superclass : #DAPObject,
 	#instVars : [
 		'attributes',
 		'kind',
@@ -13,7 +13,7 @@ Class {
 	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPVariablePresentationHint class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -25,13 +25,13 @@ DAPVariablePresentationHint class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPVariablePresentationHint >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitVariablePresentationHint: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPVariablePresentationHint >> attributes [
 	"Set of attributes represented as an array of strings. Before introducing additional values, try to use the listed values.
 	array
@@ -40,7 +40,7 @@ DAPVariablePresentationHint >> attributes [
 	^ attributes
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPVariablePresentationHint >> attributes: anObject [
 	"Set of attributes represented as an array of strings. Before introducing additional values, try to use the listed values.
 	array
@@ -50,7 +50,7 @@ DAPVariablePresentationHint >> attributes: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPVariablePresentationHint >> kind [
 	"The kind of variable. Before introducing additional values, try to use the listed values.
 	string
@@ -59,7 +59,7 @@ DAPVariablePresentationHint >> kind [
 	^ kind
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPVariablePresentationHint >> kind: anObject [
 	"The kind of variable. Before introducing additional values, try to use the listed values.
 	string
@@ -69,14 +69,14 @@ DAPVariablePresentationHint >> kind: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPVariablePresentationHint >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
 	^ #(attributes kind visibility )
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPVariablePresentationHint >> visibility [
 	"Visibility of variable. Before introducing additional values, try to use the listed values.
 	string
@@ -85,7 +85,7 @@ DAPVariablePresentationHint >> visibility [
 	^ visibility
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPVariablePresentationHint >> visibility: anObject [
 	"Visibility of variable. Before introducing additional values, try to use the listed values.
 	string

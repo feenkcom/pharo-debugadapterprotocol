@@ -3,8 +3,8 @@ Arguments for 'setExceptionBreakpoints' request.
 
 "
 Class {
-	#name : 'DAPSetExceptionBreakpointsArguments',
-	#superclass : 'DAPObject',
+	#name : #DAPSetExceptionBreakpointsArguments,
+	#superclass : #DAPObject,
 	#instVars : [
 		'exceptionOptions',
 		'filterOptions',
@@ -13,7 +13,7 @@ Class {
 	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPSetExceptionBreakpointsArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -25,13 +25,13 @@ DAPSetExceptionBreakpointsArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPSetExceptionBreakpointsArguments >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitSetExceptionBreakpointsArguments: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetExceptionBreakpointsArguments >> exceptionOptions [
 	"Configuration options for selected exceptions.
 The attribute is only honored by a debug adapter if the capability 'supportsExceptionOptions' is true.
@@ -41,7 +41,7 @@ The attribute is only honored by a debug adapter if the capability 'supportsExce
 	^ exceptionOptions
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetExceptionBreakpointsArguments >> exceptionOptions: anObject [
 	"Configuration options for selected exceptions.
 The attribute is only honored by a debug adapter if the capability 'supportsExceptionOptions' is true.
@@ -52,7 +52,7 @@ The attribute is only honored by a debug adapter if the capability 'supportsExce
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetExceptionBreakpointsArguments >> filterOptions [
 	"Set of exception filters and their options. The set of all possible exception filters is defined by the 'exceptionBreakpointFilters' capability. This attribute is only honored by a debug adapter if the capability 'supportsExceptionFilterOptions' is true. The 'filter' and 'filterOptions' sets are additive.
 	array
@@ -61,7 +61,7 @@ DAPSetExceptionBreakpointsArguments >> filterOptions [
 	^ filterOptions
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetExceptionBreakpointsArguments >> filterOptions: anObject [
 	"Set of exception filters and their options. The set of all possible exception filters is defined by the 'exceptionBreakpointFilters' capability. This attribute is only honored by a debug adapter if the capability 'supportsExceptionFilterOptions' is true. The 'filter' and 'filterOptions' sets are additive.
 	array
@@ -71,7 +71,7 @@ DAPSetExceptionBreakpointsArguments >> filterOptions: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetExceptionBreakpointsArguments >> filters [
 	"Set of exception filters specified by their ID. The set of all possible exception filters is defined by the 'exceptionBreakpointFilters' capability. The 'filter' and 'filterOptions' sets are additive.
 	array
@@ -80,7 +80,7 @@ DAPSetExceptionBreakpointsArguments >> filters [
 	^ filters
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetExceptionBreakpointsArguments >> filters: anObject [
 	"Set of exception filters specified by their ID. The set of all possible exception filters is defined by the 'exceptionBreakpointFilters' capability. The 'filter' and 'filterOptions' sets are additive.
 	array
@@ -90,7 +90,7 @@ DAPSetExceptionBreakpointsArguments >> filters: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSetExceptionBreakpointsArguments >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

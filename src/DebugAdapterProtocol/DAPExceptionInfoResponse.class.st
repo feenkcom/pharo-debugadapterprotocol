@@ -3,12 +3,12 @@ Response to 'exceptionInfo' request.
 
 "
 Class {
-	#name : 'DAPExceptionInfoResponse',
-	#superclass : 'DAPResponse',
+	#name : #DAPExceptionInfoResponse,
+	#superclass : #DAPResponse,
 	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPExceptionInfoResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -18,20 +18,20 @@ DAPExceptionInfoResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPExceptionInfoResponse >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitExceptionInfoResponse: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPExceptionInfoResponse >> body [
 	"Auto-generated method"
 
 	^ body
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPExceptionInfoResponse >> body: anObject [
 	"Auto-generated method"
 
@@ -39,7 +39,7 @@ DAPExceptionInfoResponse >> body: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPExceptionInfoResponse >> breakMode [
 	"Mode that caused the exception notification to be raised.
 	#/definitions/ExceptionBreakMode
@@ -52,7 +52,7 @@ DAPExceptionInfoResponse >> breakMode [
 	^ result
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPExceptionInfoResponse >> breakMode: anObject [
 	"Mode that caused the exception notification to be raised.
 	#/definitions/ExceptionBreakMode
@@ -61,7 +61,7 @@ DAPExceptionInfoResponse >> breakMode: anObject [
 	self body at: #breakMode put: anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPExceptionInfoResponse >> description [
 	"Descriptive text for the exception provided by the debug adapter.
 	string
@@ -72,7 +72,7 @@ DAPExceptionInfoResponse >> description [
 	^ result
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPExceptionInfoResponse >> description: anObject [
 	"Descriptive text for the exception provided by the debug adapter.
 	string
@@ -81,7 +81,7 @@ DAPExceptionInfoResponse >> description: anObject [
 	self body at: #description put: anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPExceptionInfoResponse >> details [
 	"Detailed information about the exception.
 	#/definitions/ExceptionDetails
@@ -94,7 +94,7 @@ DAPExceptionInfoResponse >> details [
 	^ result
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPExceptionInfoResponse >> details: anObject [
 	"Detailed information about the exception.
 	#/definitions/ExceptionDetails
@@ -103,7 +103,7 @@ DAPExceptionInfoResponse >> details: anObject [
 	self body at: #details put: anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPExceptionInfoResponse >> exceptionId [
 	"ID of the exception that was thrown.
 	string
@@ -114,7 +114,7 @@ DAPExceptionInfoResponse >> exceptionId [
 	^ result
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPExceptionInfoResponse >> exceptionId: anObject [
 	"ID of the exception that was thrown.
 	string
@@ -123,7 +123,7 @@ DAPExceptionInfoResponse >> exceptionId: anObject [
 	self body at: #exceptionId put: anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPExceptionInfoResponse >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

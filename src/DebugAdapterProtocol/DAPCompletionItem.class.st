@@ -3,8 +3,8 @@ CompletionItems are the suggestions returned from the CompletionsRequest.
 
 "
 Class {
-	#name : 'DAPCompletionItem',
-	#superclass : 'DAPObject',
+	#name : #DAPCompletionItem,
+	#superclass : #DAPObject,
 	#instVars : [
 		'label',
 		'length',
@@ -18,7 +18,7 @@ Class {
 	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPCompletionItem class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -35,13 +35,13 @@ DAPCompletionItem class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPCompletionItem >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitCompletionItem: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCompletionItem >> label [
 	"The label of this completion item. By default this is also the text that is inserted when selecting this completion.
 	string
@@ -50,7 +50,7 @@ DAPCompletionItem >> label [
 	^ label
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCompletionItem >> label: anObject [
 	"The label of this completion item. By default this is also the text that is inserted when selecting this completion.
 	string
@@ -60,7 +60,7 @@ DAPCompletionItem >> label: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCompletionItem >> length [
 	"This value determines how many characters are overwritten by the completion text.
 If missing the value 0 is assumed which results in the completion text being inserted.
@@ -70,7 +70,7 @@ If missing the value 0 is assumed which results in the completion text being ins
 	^ length
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCompletionItem >> length: anObject [
 	"This value determines how many characters are overwritten by the completion text.
 If missing the value 0 is assumed which results in the completion text being inserted.
@@ -81,14 +81,14 @@ If missing the value 0 is assumed which results in the completion text being ins
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCompletionItem >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
 	^ #(label length selectionLength selectionStart sortText start text type )
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCompletionItem >> selectionLength [
 	"Determines the length of the new selection after the text has been inserted (or replaced).
 The selection can not extend beyond the bounds of the completion text.
@@ -99,7 +99,7 @@ If omitted the length is assumed to be 0.
 	^ selectionLength
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCompletionItem >> selectionLength: anObject [
 	"Determines the length of the new selection after the text has been inserted (or replaced).
 The selection can not extend beyond the bounds of the completion text.
@@ -111,7 +111,7 @@ If omitted the length is assumed to be 0.
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCompletionItem >> selectionStart [
 	"Determines the start of the new selection after the text has been inserted (or replaced).
 The start position must in the range 0 and length of the completion text.
@@ -122,7 +122,7 @@ If omitted the selection starts at the end of the completion text.
 	^ selectionStart
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCompletionItem >> selectionStart: anObject [
 	"Determines the start of the new selection after the text has been inserted (or replaced).
 The start position must in the range 0 and length of the completion text.
@@ -134,7 +134,7 @@ If omitted the selection starts at the end of the completion text.
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCompletionItem >> sortText [
 	"A string that should be used when comparing this item with other items. When `falsy` the label is used.
 	string
@@ -143,7 +143,7 @@ DAPCompletionItem >> sortText [
 	^ sortText
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCompletionItem >> sortText: anObject [
 	"A string that should be used when comparing this item with other items. When `falsy` the label is used.
 	string
@@ -153,7 +153,7 @@ DAPCompletionItem >> sortText: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCompletionItem >> start [
 	"This value determines the location (in the CompletionsRequest's 'text' attribute) where the completion text is added.
 If missing the text is added at the location specified by the CompletionsRequest's 'column' attribute.
@@ -163,7 +163,7 @@ If missing the text is added at the location specified by the CompletionsRequest
 	^ start
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCompletionItem >> start: anObject [
 	"This value determines the location (in the CompletionsRequest's 'text' attribute) where the completion text is added.
 If missing the text is added at the location specified by the CompletionsRequest's 'column' attribute.
@@ -174,7 +174,7 @@ If missing the text is added at the location specified by the CompletionsRequest
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCompletionItem >> text [
 	"If text is not falsy then it is inserted instead of the label.
 	string
@@ -183,7 +183,7 @@ DAPCompletionItem >> text [
 	^ text
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCompletionItem >> text: anObject [
 	"If text is not falsy then it is inserted instead of the label.
 	string
@@ -193,7 +193,7 @@ DAPCompletionItem >> text: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCompletionItem >> type [
 	"The item's type. Typically the client uses this information to render the item in the UI with an icon.
 	#/definitions/CompletionItemType
@@ -202,7 +202,7 @@ DAPCompletionItem >> type [
 	^ type
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPCompletionItem >> type: anObject [
 	"The item's type. Typically the client uses this information to render the item in the UI with an icon.
 	#/definitions/CompletionItemType

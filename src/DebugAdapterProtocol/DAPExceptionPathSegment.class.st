@@ -5,8 +5,8 @@ it matches anything except the names provided if 'negate' is true.
 
 "
 Class {
-	#name : 'DAPExceptionPathSegment',
-	#superclass : 'DAPObject',
+	#name : #DAPExceptionPathSegment,
+	#superclass : #DAPObject,
 	#instVars : [
 		'names',
 		'negate'
@@ -14,7 +14,7 @@ Class {
 	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPExceptionPathSegment class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -25,13 +25,13 @@ DAPExceptionPathSegment class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPExceptionPathSegment >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitExceptionPathSegment: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPExceptionPathSegment >> names [
 	"Depending on the value of 'negate' the names that should match or not match.
 	array
@@ -40,7 +40,7 @@ DAPExceptionPathSegment >> names [
 	^ names
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPExceptionPathSegment >> names: anObject [
 	"Depending on the value of 'negate' the names that should match or not match.
 	array
@@ -50,7 +50,7 @@ DAPExceptionPathSegment >> names: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPExceptionPathSegment >> negate [
 	"If false or missing this segment matches the names provided, otherwise it matches anything except the names provided.
 	boolean
@@ -59,7 +59,7 @@ DAPExceptionPathSegment >> negate [
 	^ negate
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPExceptionPathSegment >> negate: anObject [
 	"If false or missing this segment matches the names provided, otherwise it matches anything except the names provided.
 	boolean
@@ -69,7 +69,7 @@ DAPExceptionPathSegment >> negate: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPExceptionPathSegment >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

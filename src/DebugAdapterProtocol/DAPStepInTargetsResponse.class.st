@@ -3,12 +3,12 @@ Response to 'stepInTargets' request.
 
 "
 Class {
-	#name : 'DAPStepInTargetsResponse',
-	#superclass : 'DAPResponse',
+	#name : #DAPStepInTargetsResponse,
+	#superclass : #DAPResponse,
 	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPStepInTargetsResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -18,20 +18,20 @@ DAPStepInTargetsResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPStepInTargetsResponse >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitStepInTargetsResponse: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStepInTargetsResponse >> body [
 	"Auto-generated method"
 
 	^ body
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStepInTargetsResponse >> body: anObject [
 	"Auto-generated method"
 
@@ -39,14 +39,14 @@ DAPStepInTargetsResponse >> body: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStepInTargetsResponse >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
 	^ #(body targets )
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStepInTargetsResponse >> targets [
 	"The possible stepIn targets of the specified source location.
 	array
@@ -57,7 +57,7 @@ DAPStepInTargetsResponse >> targets [
 	^ result
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStepInTargetsResponse >> targets: anObject [
 	"The possible stepIn targets of the specified source location.
 	array

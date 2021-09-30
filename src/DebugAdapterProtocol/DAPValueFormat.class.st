@@ -3,15 +3,15 @@ Provides formatting information for a value.
 
 "
 Class {
-	#name : 'DAPValueFormat',
-	#superclass : 'DAPObject',
+	#name : #DAPValueFormat,
+	#superclass : #DAPObject,
 	#instVars : [
 		'hex'
 	],
 	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPValueFormat class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -21,13 +21,13 @@ DAPValueFormat class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPValueFormat >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitValueFormat: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPValueFormat >> hex [
 	"Display the value in hex.
 	boolean
@@ -36,7 +36,7 @@ DAPValueFormat >> hex [
 	^ hex
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPValueFormat >> hex: anObject [
 	"Display the value in hex.
 	boolean
@@ -46,7 +46,7 @@ DAPValueFormat >> hex: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPValueFormat >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

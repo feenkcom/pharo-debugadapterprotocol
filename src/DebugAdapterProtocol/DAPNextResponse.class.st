@@ -3,12 +3,12 @@ Response to 'next' request. This is just an acknowledgement, so no body field is
 
 "
 Class {
-	#name : 'DAPNextResponse',
-	#superclass : 'DAPResponse',
+	#name : #DAPNextResponse,
+	#superclass : #DAPResponse,
 	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPNextResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -17,13 +17,13 @@ DAPNextResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPNextResponse >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitNextResponse: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPNextResponse >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

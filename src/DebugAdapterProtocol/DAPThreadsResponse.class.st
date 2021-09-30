@@ -3,12 +3,12 @@ Response to 'threads' request.
 
 "
 Class {
-	#name : 'DAPThreadsResponse',
-	#superclass : 'DAPResponse',
+	#name : #DAPThreadsResponse,
+	#superclass : #DAPResponse,
 	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPThreadsResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -18,20 +18,20 @@ DAPThreadsResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPThreadsResponse >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitThreadsResponse: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPThreadsResponse >> body [
 	"Auto-generated method"
 
 	^ body
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPThreadsResponse >> body: anObject [
 	"Auto-generated method"
 
@@ -39,14 +39,14 @@ DAPThreadsResponse >> body: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPThreadsResponse >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
 	^ #(body threads )
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPThreadsResponse >> threads [
 	"All threads.
 	array
@@ -57,7 +57,7 @@ DAPThreadsResponse >> threads [
 	^ result
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPThreadsResponse >> threads: anObject [
 	"All threads.
 	array

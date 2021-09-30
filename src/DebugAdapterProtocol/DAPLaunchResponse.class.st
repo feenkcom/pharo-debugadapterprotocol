@@ -3,12 +3,12 @@ Response to 'launch' request. This is just an acknowledgement, so no body field 
 
 "
 Class {
-	#name : 'DAPLaunchResponse',
-	#superclass : 'DAPResponse',
+	#name : #DAPLaunchResponse,
+	#superclass : #DAPResponse,
 	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPLaunchResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -17,13 +17,13 @@ DAPLaunchResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPLaunchResponse >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitLaunchResponse: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPLaunchResponse >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

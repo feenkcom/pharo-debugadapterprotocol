@@ -3,12 +3,12 @@ The granularity of one 'step' in the stepping requests 'next', 'stepIn', 'stepOu
 
 "
 Class {
-	#name : 'DAPSteppingGranularity',
-	#superclass : 'DAPObject',
+	#name : #DAPSteppingGranularity,
+	#superclass : #DAPObject,
 	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPSteppingGranularity class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -17,13 +17,13 @@ DAPSteppingGranularity class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPSteppingGranularity >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitSteppingGranularity: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPSteppingGranularity >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

@@ -3,8 +3,8 @@ Provides formatting information for a stack frame.
 
 "
 Class {
-	#name : 'DAPStackFrameFormat',
-	#superclass : 'DAPValueFormat',
+	#name : #DAPStackFrameFormat,
+	#superclass : #DAPValueFormat,
 	#instVars : [
 		'includeAll',
 		'line',
@@ -17,7 +17,7 @@ Class {
 	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPStackFrameFormat class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -33,13 +33,13 @@ DAPStackFrameFormat class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPStackFrameFormat >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitStackFrameFormat: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStackFrameFormat >> includeAll [
 	"Includes all stack frames, including those the debug adapter might otherwise hide.
 	boolean
@@ -48,7 +48,7 @@ DAPStackFrameFormat >> includeAll [
 	^ includeAll
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStackFrameFormat >> includeAll: anObject [
 	"Includes all stack frames, including those the debug adapter might otherwise hide.
 	boolean
@@ -58,7 +58,7 @@ DAPStackFrameFormat >> includeAll: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStackFrameFormat >> line [
 	"Displays the line number of the stack frame.
 	boolean
@@ -67,7 +67,7 @@ DAPStackFrameFormat >> line [
 	^ line
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStackFrameFormat >> line: anObject [
 	"Displays the line number of the stack frame.
 	boolean
@@ -77,7 +77,7 @@ DAPStackFrameFormat >> line: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStackFrameFormat >> module [
 	"Displays the module of the stack frame.
 	boolean
@@ -86,7 +86,7 @@ DAPStackFrameFormat >> module [
 	^ module
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStackFrameFormat >> module: anObject [
 	"Displays the module of the stack frame.
 	boolean
@@ -96,7 +96,7 @@ DAPStackFrameFormat >> module: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStackFrameFormat >> parameterNames [
 	"Displays the names of parameters for the stack frame.
 	boolean
@@ -105,7 +105,7 @@ DAPStackFrameFormat >> parameterNames [
 	^ parameterNames
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStackFrameFormat >> parameterNames: anObject [
 	"Displays the names of parameters for the stack frame.
 	boolean
@@ -115,7 +115,7 @@ DAPStackFrameFormat >> parameterNames: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStackFrameFormat >> parameterTypes [
 	"Displays the types of parameters for the stack frame.
 	boolean
@@ -124,7 +124,7 @@ DAPStackFrameFormat >> parameterTypes [
 	^ parameterTypes
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStackFrameFormat >> parameterTypes: anObject [
 	"Displays the types of parameters for the stack frame.
 	boolean
@@ -134,7 +134,7 @@ DAPStackFrameFormat >> parameterTypes: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStackFrameFormat >> parameterValues [
 	"Displays the values of parameters for the stack frame.
 	boolean
@@ -143,7 +143,7 @@ DAPStackFrameFormat >> parameterValues [
 	^ parameterValues
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStackFrameFormat >> parameterValues: anObject [
 	"Displays the values of parameters for the stack frame.
 	boolean
@@ -153,7 +153,7 @@ DAPStackFrameFormat >> parameterValues: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStackFrameFormat >> parameters [
 	"Displays parameters for the stack frame.
 	boolean
@@ -162,7 +162,7 @@ DAPStackFrameFormat >> parameters [
 	^ parameters
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStackFrameFormat >> parameters: anObject [
 	"Displays parameters for the stack frame.
 	boolean
@@ -172,7 +172,7 @@ DAPStackFrameFormat >> parameters: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStackFrameFormat >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

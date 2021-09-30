@@ -3,12 +3,12 @@ Response to 'stepIn' request. This is just an acknowledgement, so no body field 
 
 "
 Class {
-	#name : 'DAPStepInResponse',
-	#superclass : 'DAPResponse',
+	#name : #DAPStepInResponse,
+	#superclass : #DAPResponse,
 	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPStepInResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -17,13 +17,13 @@ DAPStepInResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPStepInResponse >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitStepInResponse: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStepInResponse >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 

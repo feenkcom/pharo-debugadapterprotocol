@@ -3,12 +3,12 @@ Response to 'modules' request.
 
 "
 Class {
-	#name : 'DAPModulesResponse',
-	#superclass : 'DAPResponse',
+	#name : #DAPModulesResponse,
+	#superclass : #DAPResponse,
 	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPModulesResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -18,20 +18,20 @@ DAPModulesResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPModulesResponse >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitModulesResponse: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPModulesResponse >> body [
 	"Auto-generated method"
 
 	^ body
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPModulesResponse >> body: anObject [
 	"Auto-generated method"
 
@@ -39,7 +39,7 @@ DAPModulesResponse >> body: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPModulesResponse >> modules [
 	"All modules or range of modules.
 	array
@@ -50,7 +50,7 @@ DAPModulesResponse >> modules [
 	^ result
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPModulesResponse >> modules: anObject [
 	"All modules or range of modules.
 	array
@@ -59,14 +59,14 @@ DAPModulesResponse >> modules: anObject [
 	self body at: #modules put: anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPModulesResponse >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
 	^ #(body modules totalModules )
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPModulesResponse >> totalModules [
 	"The total number of modules available.
 	integer
@@ -77,7 +77,7 @@ DAPModulesResponse >> totalModules [
 	^ result
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPModulesResponse >> totalModules: anObject [
 	"The total number of modules available.
 	integer

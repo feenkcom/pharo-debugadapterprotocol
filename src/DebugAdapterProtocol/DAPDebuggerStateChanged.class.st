@@ -1,35 +1,35 @@
 Class {
-	#name : 'DAPDebuggerStateChanged',
-	#superclass : 'DAPStateChanged',
+	#name : #DAPDebuggerStateChanged,
+	#superclass : #DAPStateChanged,
 	#instVars : [
 		'debugger'
 	],
 	#category : 'DebugAdapterProtocol-Announcments'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPDebuggerStateChanged >> debugger [
 	^ debugger
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPDebuggerStateChanged >> debugger: anObject [
 	debugger := anObject
 ]
 
-{ #category : 'testing' }
+{ #category : #testing }
 DAPDebuggerStateChanged >> isAttached [ 
 
 	^ debugger isAttached
 ]
 
-{ #category : 'testing' }
+{ #category : #testing }
 DAPDebuggerStateChanged >> isInitialized [
 
 	^ debugger isInitialized
 ]
 
-{ #category : 'testing' }
+{ #category : #testing }
 DAPDebuggerStateChanged >> isTerminated [
 
 	^ debugger isTerminated

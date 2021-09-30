@@ -3,8 +3,8 @@ Arguments for 'stepBack' request.
 
 "
 Class {
-	#name : 'DAPStepBackArguments',
-	#superclass : 'DAPObject',
+	#name : #DAPStepBackArguments,
+	#superclass : #DAPObject,
 	#instVars : [
 		'granularity',
 		'threadId'
@@ -12,7 +12,7 @@ Class {
 	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPStepBackArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -23,13 +23,13 @@ DAPStepBackArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPStepBackArguments >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitStepBackArguments: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStepBackArguments >> granularity [
 	"Optional granularity to step. If no granularity is specified, a granularity of 'statement' is assumed.
 	#/definitions/SteppingGranularity
@@ -38,7 +38,7 @@ DAPStepBackArguments >> granularity [
 	^ granularity
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStepBackArguments >> granularity: anObject [
 	"Optional granularity to step. If no granularity is specified, a granularity of 'statement' is assumed.
 	#/definitions/SteppingGranularity
@@ -51,14 +51,14 @@ DAPStepBackArguments >> granularity: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStepBackArguments >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
 	^ #(granularity threadId )
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStepBackArguments >> threadId [
 	"Execute 'stepBack' for this thread.
 	integer
@@ -67,7 +67,7 @@ DAPStepBackArguments >> threadId [
 	^ threadId
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPStepBackArguments >> threadId: anObject [
 	"Execute 'stepBack' for this thread.
 	integer

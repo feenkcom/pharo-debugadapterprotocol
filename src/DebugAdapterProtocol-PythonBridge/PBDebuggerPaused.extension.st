@@ -1,7 +1,7 @@
 Extension { #name : #PBDebuggerPaused }
 
 { #category : #'*DebugAdapterProtocol-PythonBridge' }
-PBDebuggerPaused >> dapDebugger [
+PBDebuggerPaused >> debuggerClient [
 
 	^ debugger
 ]

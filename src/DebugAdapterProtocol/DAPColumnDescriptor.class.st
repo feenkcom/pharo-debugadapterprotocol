@@ -5,8 +5,8 @@ It is only used if the underlying UI actually supports this level of customizati
 
 "
 Class {
-	#name : 'DAPColumnDescriptor',
-	#superclass : 'DAPObject',
+	#name : #DAPColumnDescriptor,
+	#superclass : #DAPObject,
 	#instVars : [
 		'attributeName',
 		'format',
@@ -17,7 +17,7 @@ Class {
 	#category : 'DebugAdapterProtocol-Protocol'
 }
 
-{ #category : 'json - configuration' }
+{ #category : #'json - configuration' }
 DAPColumnDescriptor class >> dapJsonMappingFor: aNeoJSONMapper [
 
 	super dapJsonMappingFor: aNeoJSONMapper.
@@ -31,20 +31,20 @@ DAPColumnDescriptor class >> dapJsonMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPColumnDescriptor class >> typeEnums [
 	"Enumerated types for the associated attribute"
 
 	^ #(string number boolean unixTimestampUTC )
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 DAPColumnDescriptor >> acceptVisitor: aVisitor [
 
 	^ aVisitor visitColumnDescriptor: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPColumnDescriptor >> attributeName [
 	"Name of the attribute rendered in this column.
 	string
@@ -53,7 +53,7 @@ DAPColumnDescriptor >> attributeName [
 	^ attributeName
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPColumnDescriptor >> attributeName: anObject [
 	"Name of the attribute rendered in this column.
 	string
@@ -63,7 +63,7 @@ DAPColumnDescriptor >> attributeName: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPColumnDescriptor >> format [
 	"Format to use for the rendered values in this column. TBD how the format strings looks like.
 	string
@@ -72,7 +72,7 @@ DAPColumnDescriptor >> format [
 	^ format
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPColumnDescriptor >> format: anObject [
 	"Format to use for the rendered values in this column. TBD how the format strings looks like.
 	string
@@ -82,7 +82,7 @@ DAPColumnDescriptor >> format: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPColumnDescriptor >> label [
 	"Header UI label of column.
 	string
@@ -91,7 +91,7 @@ DAPColumnDescriptor >> label [
 	^ label
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPColumnDescriptor >> label: anObject [
 	"Header UI label of column.
 	string
@@ -101,14 +101,14 @@ DAPColumnDescriptor >> label: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPColumnDescriptor >> propertyNames [
 	"Answer the names of all the receiver's interesting properties"
 
 	^ #(attributeName format label type width )
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPColumnDescriptor >> type [
 	"Datatype of values in this column.  Defaults to 'string' if not specified.
 	string
@@ -121,7 +121,7 @@ DAPColumnDescriptor >> type [
 	^ type ifNil: [ 'string' ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPColumnDescriptor >> type: anObject [
 	"Datatype of values in this column.  Defaults to 'string' if not specified.
 	string
@@ -135,7 +135,7 @@ DAPColumnDescriptor >> type: anObject [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPColumnDescriptor >> width [
 	"Width of this column in characters (hint only).
 	integer
@@ -144,7 +144,7 @@ DAPColumnDescriptor >> width [
 	^ width
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 DAPColumnDescriptor >> width: anObject [
 	"Width of this column in characters (hint only).
 	integer
