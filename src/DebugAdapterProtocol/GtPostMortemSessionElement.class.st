@@ -4,6 +4,9 @@ GtPostMortemSessionElement is the UI component that displays a {{gtClass::GtPost
 Class {
 	#name : #GtPostMortemSessionElement,
 	#superclass : #GtDAPDebuggerElement,
+	#instVars : [
+		'summary'
+	],
 	#category : #'DebugAdapterProtocol-UI'
 }
 
@@ -74,12 +77,61 @@ GtPostMortemSessionElement >> debuggerClient [
 	^ debuggerClient ifNil: [ debuggerClient := debuggingSession ifNotNil: [ debuggingSession debuggerClient ] ]
 ]
 
+{ #category : #'private - accessing' }
+GtPostMortemSessionElement >> exception [
+
+	^ self debuggerClient exception
+]
+
 { #category : #testing }
 GtPostMortemSessionElement >> isDisplayingTopFrame [ 
 	"This is used to determine whether to enable the toolbar buttons,
 	but since the post-mortem debugger doesn't have actions, always answer false"
 
 	^ false
+]
+
+{ #category : #'instance creation' }
+GtPostMortemSessionElement >> newRightTabGroup [
+
+	^ BrTabGroup new 
+		aptitude: BrGlamorousTabGroupAptitude + BrShadowAptitude;
+		margin: (BlInsets all: self defaultMargin);
+		background: Color white;
+		addTab: self summaryTab;
+		addTab: self stdoutTab;
+		addTab: self stderrTab;
+		addTab: self variablesTab
+
+]
+
+{ #category : #'private - element creation' }
+GtPostMortemSessionElement >> newSummaryView [
+
+	^ BrEditor new
+		aptitude: BrGlamorousCodeEditorAptitude new + BrShadowAptitude new;
+		background: Color white.
+]
+
+{ #category : #private }
+GtPostMortemSessionElement >> scheduleUpdateSummary [
+
+	summary ifNotNil:
+		[ self enqueueTask: (BlTaskAction new action: [ self updateSummary ]) ].
+
+]
+
+{ #category : #'private - element creation' }
+GtPostMortemSessionElement >> summaryTab [
+
+	^ BrTab new 
+		aptitude: BrGlamorousTabAptitude;
+		label: 'Summary';
+		stencil: 
+			[ summary ifNil: 
+				[ summary := self newSummaryView.
+				self scheduleUpdateSummary.
+				summary ] ]
 ]
 
 { #category : #'private - update ui' }
@@ -89,11 +141,18 @@ GtPostMortemSessionElement >> updateCallFrame [
 
 ]
 
+{ #category : #callbacks }
+GtPostMortemSessionElement >> updateSummary [
+
+	summary text: self exception summaryText
+]
+
 { #category : #updating }
 GtPostMortemSessionElement >> updateUI [
 
 	debuggerState text: 'Post Mortem Inspection' asRopedText.
 	self updateDisplay.
+	toolbar updateUI.
 ]
 
 { #category : #private }
