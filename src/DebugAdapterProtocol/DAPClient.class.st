@@ -13,7 +13,7 @@ Class {
 		'comms',
 		'capabilities'
 	],
-	#category : 'DebugAdapterProtocol-Client'
+	#category : #'DebugAdapterProtocol-Client'
 }
 
 { #category : #'instance creation' }
@@ -173,7 +173,7 @@ DAPClient >> killProcesses [
 	| serverPid proc |
 
 	serverPid := serverProcessDetailsEvent systemProcessId.
-	proc := GtUnixSubprocess 
+	proc := GtSubprocessWithInMemoryOutput 
 		command: 'kill'
 		arguments: { serverPid asString }.
 	proc runAndWait.
