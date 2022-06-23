@@ -6,7 +6,7 @@ Class {
 	#instVars : [
 		'client'
 	],
-	#category : 'DebugAdapterProtocol-Visitors'
+	#category : #'DebugAdapterProtocol-Visitors'
 }
 
 { #category : #accessing }
@@ -122,7 +122,7 @@ DAPReceivedMessageVisitor >> visitOutputEvent: aDAPOutputEvent [
 
 	"Append stdout and stderr to the client's stream.  Just store other output."
 
-	| clientOutput stream |
+	| clientOutput |
 	"What is the variablesReference for?"
 	aDAPOutputEvent variablesReference ifNotNil: [ self halt ].
 
