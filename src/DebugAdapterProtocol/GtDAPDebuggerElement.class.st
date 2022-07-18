@@ -90,20 +90,20 @@ GtDAPDebuggerElement >> breakpointsTab [
 { #category : #'private - element creation' }
 GtDAPDebuggerElement >> buildVariablesHeader [
 	| header |
-
 	header := BlElement new
-		layout: (BlLinearLayout horizontal alignCenterLeft cellSpacing: self cellSpacing);
-		padding: (BlInsets top: 5 bottom: 5);
-		labeled: 'Columned Header';
-		background: Color white;
-		constraintsDo: [ :c |
-			c horizontal matchParent.
-			c vertical fitContent ].
-	#(Name Value) do: [ :label |
-		header addChild: (BrLabel new
-			aptitude: BrGlamorousLabelAptitude;
-			alignCenterLeft;
-			text: (label asRopedText foreground: BrGlamorousColors defaultButtonTextColor)) ].
+			layout: (BlLinearLayout horizontal alignCenterLeft cellSpacing: self cellSpacing);
+			padding: (BlInsets top: 5 bottom: 5);
+			labeled: 'Columned Header';
+			background: Color white;
+			constraintsDo: [ :c | 
+				c horizontal matchParent.
+				c vertical fitContent ].
+	#(Name Value)
+		do: [ :label | 
+			header
+				addChild: (BrLabel new
+						alignCenterLeft;
+						text: (label asRopedText foreground: BrGlamorousColors defaultButtonTextColor)) ].
 	header children first padding: (BlInsets left: 20).
 	^ header
 ]
@@ -111,34 +111,37 @@ GtDAPDebuggerElement >> buildVariablesHeader [
 { #category : #'private - element creation' }
 GtDAPDebuggerElement >> buildVariablesTree [
 	| tree |
-
 	tree := BrColumnedTree new
-		rowStencil: (BrGlamorousColumnedTreeSelectableRowElementStencilBuilder new cellSpacing: self cellSpacing);
-		margin: (BlInsets top: 10);
-		background: Color white;
-		addEventHandler: (GtPhlowListToSelectHandler new 
-			transformation: [ :variableNode | variableNode value value ]).
+			rowStencil: (BrGlamorousColumnedTreeSelectableRowElementStencilBuilder new
+					cellSpacing: self cellSpacing);
+			margin: (BlInsets top: 10);
+			background: Color white;
+			addEventHandler: (GtPhlowListToSelectHandler new
+					transformation: [ :variableNode | variableNode value value ]).
 
-	tree column 
+	tree column
 		title: 'Variable';
-		cellStencil: [ 
-			BrLabel new
+		cellStencil: [ BrLabel new
 				aptitude: (BrGlamorousLabelAptitude new foreground: Color black);
 				hMatchParent;
 				vFitContent;
-				margin: (BlInsets top: 3 left: 10 bottom: 3 right: 0) ];
-		dataBinder: [ :aCellElement :anAssociation |
-			aCellElement text: anAssociation key asRopedText ].
+				margin: (BlInsets
+						top: 3
+						left: 10
+						bottom: 3
+						right: 0) ];
+		dataBinder: [ :aCellElement :anAssociation | aCellElement text: anAssociation key asRopedText ].
 	tree column
 		title: 'Value';
-		cellStencil: [
-			BrLabel new
-				aptitude: BrGlamorousLabelAptitude new;
+		cellStencil: [ BrLabel new
 				hMatchParent;
 				vFitContent;
-				margin: (BlInsets top: 3 left: 10 bottom: 3 right: 0) ];
-		dataBinder: [ :aCellElement :anAssociation |
-			aCellElement text: anAssociation value asString asRopedText ].
+				margin: (BlInsets
+						top: 3
+						left: 10
+						bottom: 3
+						right: 0) ];
+		dataBinder: [ :aCellElement :anAssociation | aCellElement text: anAssociation value asString asRopedText ].
 	^ tree
 ]
 
@@ -340,35 +343,39 @@ GtDAPDebuggerElement >> newBreakpointsList [
 { #category : #'instance creation' }
 GtDAPDebuggerElement >> newCallFramesList [
 	| list |
-
 	list := BrColumnedList new
-		margin: (BlInsets top: 10);
-		background: Color white;
-		rowStencil: (BrGlamorousColumnedListSelectableRowElementStencilBuilder new);
-		addEventHandler: (GtPhlowListToSelectHandler new 
-			transformation: [ :aDAPStackFrame | self displayStackFrame: aDAPStackFrame. aDAPStackFrame ]);
-		yourself.
+			margin: (BlInsets top: 10);
+			background: Color white;
+			rowStencil: BrGlamorousColumnedListSelectableRowElementStencilBuilder new;
+			addEventHandler: (GtPhlowListToSelectHandler new
+					transformation: [ :aDAPStackFrame | 
+						self displayStackFrame: aDAPStackFrame.
+						aDAPStackFrame ]);
+			yourself.
 
-	list column 
+	list column
 		title: 'Depth';
-		cellStencil: [ 
-			BrLabel new
+		cellStencil: [ BrLabel new
 				aptitude: (BrGlamorousLabelAptitude new foreground: Color black);
 				hExact: 30;
 				vFitContent;
-				margin: (BlInsets top: 3 left: 10 bottom: 3 right: 0) ];
-		dataBinder: [ :aCellElement :aCDTCallFrame |
-			aCellElement text: aCDTCallFrame ordinal asString asRopedText ].
+				margin: (BlInsets
+						top: 3
+						left: 10
+						bottom: 3
+						right: 0) ];
+		dataBinder: [ :aCellElement :aCDTCallFrame | aCellElement text: aCDTCallFrame ordinal asString asRopedText ].
 	list column
 		title: 'Frame';
-		cellStencil: [
-			BrLabel new
-				aptitude: BrGlamorousLabelAptitude new;
+		cellStencil: [ BrLabel new
 				hMatchParent;
 				vFitContent;
-				margin: (BlInsets top: 3 left: 10 bottom: 3 right: 0) ];
-		dataBinder: [ :aCellElement :aCDTCallFrame |
-			aCellElement text: aCDTCallFrame printString asRopedText ].
+				margin: (BlInsets
+						top: 3
+						left: 10
+						bottom: 3
+						right: 0) ];
+		dataBinder: [ :aCellElement :aCDTCallFrame | aCellElement text: aCDTCallFrame printString asRopedText ].
 
 	^ list
 ]
