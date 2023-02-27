@@ -36,7 +36,7 @@ GtDAPDebugSessionElement class >> handlesContext: aContext [
 { #category : #'tools registry' }
 GtDAPDebugSessionElement class >> registerToolsOn: registry [
 	"self register"
-	registry registerDebugger: self withRank: 1100.
+	registry registerDebugger: self withRank: 900.
 ]
 
 { #category : #accessing }
