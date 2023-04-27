@@ -616,8 +616,6 @@ GtDAPDebuggerElement >> updateModules [
 { #category : #'private - update ui' }
 GtDAPDebuggerElement >> updateSource [ 
 
-	StringSignal emit: 'source: ', self sourceText.
-	StringSignal emit: 'frame: ', currentCallFrame printString.
 	sourceCode text: self sourceText.
 	self lineNumber > 5 ifTrue:
 		[ StringSignal emit: 'Scrolling to line: ', self lineNumber asString.
