@@ -132,7 +132,7 @@ DAPReceivedMessageVisitor >> visitOutputEvent: aDAPOutputEvent [
 		^ false ].
 	aDAPOutputEvent category = #stderr ifTrue: [ 
 		client stderrNextPutAll:
-			aDAPOutputEvent output withSqueakLineEndings.
+			(aDAPOutputEvent output copyReplaceAll: String lf with: String cr).
 		^ false ].
 
 
