@@ -277,7 +277,9 @@ GtDAPDebuggerElement >> isDisplayingTopFrame [
 	"Answer a boolean indicating whether the top call frame is being displayed.
 	DAP debuggers only allow stepping and continuing from the top frame."
 
-	^ debuggerClient isStopped and: [ currentCallFrame == debuggerClient stoppedThread stackFrames first ]
+	^ debuggerClient isStopped
+		and: [ currentCallFrame
+				== (debuggerClient stoppedThread ifNotNil: [ :thread | thread stackFrames first ]) ]
 ]
 
 { #category : #'private - accessing' }
