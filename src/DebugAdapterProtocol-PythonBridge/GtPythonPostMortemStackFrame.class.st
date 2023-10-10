@@ -1,6 +1,6 @@
 Class {
-	#name : 'GtPythonPostMortemStackFrame',
-	#superclass : 'Object',
+	#name : #GtPythonPostMortemStackFrame,
+	#superclass : #Object,
 	#instVars : [
 		'ordinal',
 		'displayString',
@@ -11,67 +11,67 @@ Class {
 	#category : 'DebugAdapterProtocol-PythonBridge'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPythonPostMortemStackFrame >> displayString [
 
 	^ displayString
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPythonPostMortemStackFrame >> displayString: anObject [
 
 	displayString := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPythonPostMortemStackFrame >> exception [
 
 	^ exception
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPythonPostMortemStackFrame >> exception: anObject [
 
 	exception := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPythonPostMortemStackFrame >> file [
 
 	^ file
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPythonPostMortemStackFrame >> file: anObject [
 
 	file := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPythonPostMortemStackFrame >> line [
 
 	^ line
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPythonPostMortemStackFrame >> line: anObject [
 
 	line := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPythonPostMortemStackFrame >> ordinal [
 
 	^ ordinal
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPythonPostMortemStackFrame >> ordinal: anObject [
 
 	ordinal := anObject
 ]
 
-{ #category : 'printing' }
+{ #category : #printing }
 GtPythonPostMortemStackFrame >> printOn: aStream [
 
 	displayString
@@ -79,7 +79,7 @@ GtPythonPostMortemStackFrame >> printOn: aStream [
 		ifNotNil: [ aStream << displayString ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPythonPostMortemStackFrame >> sourceText [
 	| source text indexes lineNumber |
 

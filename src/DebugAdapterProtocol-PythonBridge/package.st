@@ -1,1 +1,1 @@
-Package { #name : 'DebugAdapterProtocol-PythonBridge' }
+Package { #name : #'DebugAdapterProtocol-PythonBridge' }

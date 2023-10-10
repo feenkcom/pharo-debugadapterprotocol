@@ -1,6 +1,6 @@
 Class {
-	#name : 'GtPythonPostMortemDebugger',
-	#superclass : 'Object',
+	#name : #GtPythonPostMortemDebugger,
+	#superclass : #Object,
 	#instVars : [
 		'exception',
 		'session',
@@ -10,39 +10,39 @@ Class {
 	#category : 'DebugAdapterProtocol-PythonBridge'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPythonPostMortemDebugger >> application [
 
 	^ exception application
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPythonPostMortemDebugger >> exception [
 
 	^ exception
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPythonPostMortemDebugger >> exception: anObject [
 
 	exception := anObject
 ]
 
-{ #category : 'initialization' }
+{ #category : #initialization }
 GtPythonPostMortemDebugger >> initialize [
 
 	super initialize.
 	frameRegex := 'file "(.*)", line (\d+)' asRegexIgnoringCase.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPythonPostMortemDebugger >> sourceStyler [
 	"Answer the styler used by the source code editor for this exception"
 
 	^ PythonParser gtStyler
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 GtPythonPostMortemDebugger >> stackFrameFromLine: aString ordinal: ordinal [
 	"Answer a frame if the supplied string contains a valid file and line number, or nil"
 	<return: #GtPythonPostMortemStackFrame or: nil>
@@ -59,7 +59,7 @@ GtPythonPostMortemDebugger >> stackFrameFromLine: aString ordinal: ordinal [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPythonPostMortemDebugger >> stackFrames [
 	"Answer a ordered collection of stack frames.
 	This is called many times by the debugger, so cache"
@@ -76,14 +76,14 @@ GtPythonPostMortemDebugger >> stackFrames [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPythonPostMortemDebugger >> stderr [
 	"Answer the stderr for the receiver's process."
 
 	^ self application stderr
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPythonPostMortemDebugger >> stdout [
 	"Answer the stdout for the receiver's process."
 
