@@ -1,14 +1,22 @@
 Class {
 	#name : #GtPythonPostMortemDebugger,
 	#superclass : #Object,
+	#traits : 'TGtAnnouncer',
+	#classTraits : 'TGtAnnouncer classTrait',
 	#instVars : [
 		'exception',
 		'session',
 		'stackFrames',
-		'frameRegex'
+		'frameRegex',
+		'announcer'
 	],
-	#category : 'DebugAdapterProtocol-PythonBridge'
+	#category : #'DebugAdapterProtocol-PythonBridge'
 }
+
+{ #category : #announcer }
+GtPythonPostMortemDebugger >> announcer [
+	^ announcer ifNil: [ announcer := Announcer new ]
+]
 
 { #category : #accessing }
 GtPythonPostMortemDebugger >> application [
