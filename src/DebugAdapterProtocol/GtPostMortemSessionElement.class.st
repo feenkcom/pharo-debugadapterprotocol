@@ -53,6 +53,7 @@ GtPostMortemSessionElement >> actOnBrowserClosing: ann [
 
 	"Tell the debugger directly to resume, since we are already closing"
 	toolbar actOnBrowserClosing: ann.
+	self terminateSession
 
 ]
 
