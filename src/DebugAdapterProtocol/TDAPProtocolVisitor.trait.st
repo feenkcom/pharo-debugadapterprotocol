@@ -1,6 +1,6 @@
 Trait {
 	#name : #TDAPProtocolVisitor,
-	#category : 'DebugAdapterProtocol-Visitors'
+	#category : #'DebugAdapterProtocol-Visitors'
 }
 
 { #category : #visiting }
@@ -211,6 +211,11 @@ TDAPProtocolVisitor >> visitDataBreakpointInfoResponse: anObject [
 TDAPProtocolVisitor >> visitDebugpyAttachEvent: anObject [
 
 	^ false halt
+]
+
+{ #category : #visiting }
+TDAPProtocolVisitor >> visitDebugpySocketsEvent: anObject [
+	"do nothing"
 ]
 
 { #category : #visiting }
