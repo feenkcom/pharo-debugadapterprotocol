@@ -14,7 +14,7 @@ DAPDebugpySocketsEvent class >> eventEnums [
 { #category : #visiting }
 DAPDebugpySocketsEvent >> acceptVisitor: aVisitor [
 
-	"^ aVisitor visitDebugpySocketsEvent: self"
+	^ aVisitor visitDebugpySocketsEvent: self
 ]
 
 { #category : #accessing }
