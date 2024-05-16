@@ -12,14 +12,15 @@ Class {
 		'stderr',
 		'readDelay'
 	],
-	#category : 'DebugAdapterProtocol-Client'
+	#category : #'DebugAdapterProtocol-Client'
 }
 
 { #category : #running }
 DAPSubprocessComms >> connect [
 
+	self error: 'I need updating to use GtExternalProcessBuilder'.
 	"Streams are named from the debugger process' perspective"
-	inStream := OSSVMProcess vmProcess systemAccessor makeBlockingPipe.
+	"inStream := OSSVMProcess vmProcess systemAccessor makeBlockingPipe.
 	outStream := OSSVMProcess vmProcess systemAccessor makeNonBlockingPipe.
 	errStream := OSSVMProcess vmProcess systemAccessor makeNonBlockingPipe.
 
@@ -33,7 +34,7 @@ DAPSubprocessComms >> connect [
 		yourself.
 	subprocess run.
 
-	readProcess := [ self readFromSubprocess ] forkAt: Processor userSchedulingPriority - 1.
+	readProcess := [ self readFromSubprocess ] forkAt: Processor userSchedulingPriority - 1."
 ]
 
 { #category : #running }
