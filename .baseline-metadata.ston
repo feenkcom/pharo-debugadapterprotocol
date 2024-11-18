@@ -1,6 +1,6 @@
 {
 	"repositories" : {
-		"github://feenkcom/Pharo-Chrome/repository" : "v0.5.209",
-		"github://feenkcom/PythonBridge/src" : "v0.5.313"
+		"github://feenkcom/Pharo-Chrome/repository" : "v0.5.210",
+		"github://feenkcom/PythonBridge/src" : "v0.5.314"
 	}
 }
