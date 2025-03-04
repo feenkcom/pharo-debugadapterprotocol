@@ -124,7 +124,8 @@ DAPReceivedMessageVisitor >> visitOutputEvent: aDAPOutputEvent [
 
 	| clientOutput |
 	"What is the variablesReference for?"
-	aDAPOutputEvent variablesReference ifNotNil: [ self halt ].
+	aDAPOutputEvent variablesReference ifNotNil: [ 
+		self error: 'What is the variablesReference for?' ].
 
 	aDAPOutputEvent category = #stdout ifTrue: [ 
 		client stdoutNextPutAll:
