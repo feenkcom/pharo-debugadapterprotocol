@@ -1,7 +1,7 @@
 Class {
 	#name : #DAPSocketStream,
 	#superclass : #SocketStream,
-	#category : 'DebugAdapterProtocol-Utilities'
+	#category : #'DebugAdapterProtocol-Utilities'
 }
 
 { #category : #'stream in' }

@@ -10,7 +10,7 @@ Class {
 		'totalStackFrames',
 		'state'
 	],
-	#category : 'DebugAdapterProtocol-Model'
+	#category : #'DebugAdapterProtocol-Model'
 }
 
 { #category : #accessing }

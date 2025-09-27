@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'exception'
 	],
-	#category : 'DebugAdapterProtocol-Client'
+	#category : #'DebugAdapterProtocol-Client'
 }
 
 { #category : #'instance creation' }

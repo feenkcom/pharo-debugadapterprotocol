@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'debugger'
 	],
-	#category : 'DebugAdapterProtocol-Announcments'
+	#category : #'DebugAdapterProtocol-Announcments'
 }
 
 { #category : #accessing }

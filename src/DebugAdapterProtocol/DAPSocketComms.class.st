@@ -8,7 +8,7 @@ Class {
 		'socketState',
 		'messageListener'
 	],
-	#category : 'DebugAdapterProtocol-Client'
+	#category : #'DebugAdapterProtocol-Client'
 }
 
 { #category : #running }

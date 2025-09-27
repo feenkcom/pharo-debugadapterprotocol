@@ -5,7 +5,7 @@ Class {
 		'client',
 		'localRoot'
 	],
-	#category : 'DebugAdapterProtocol-Client'
+	#category : #'DebugAdapterProtocol-Client'
 }
 
 { #category : #accessor }

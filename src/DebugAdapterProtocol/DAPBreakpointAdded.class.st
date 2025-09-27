@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'breakpoint'
 	],
-	#category : 'DebugAdapterProtocol-Announcments'
+	#category : #'DebugAdapterProtocol-Announcments'
 }
 
 { #category : #accessing }

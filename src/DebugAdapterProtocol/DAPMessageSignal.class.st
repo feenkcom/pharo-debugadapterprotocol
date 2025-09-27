@@ -5,7 +5,7 @@ Class {
 		'message',
 		'direction'
 	],
-	#category : 'DebugAdapterProtocol-Beacon'
+	#category : #'DebugAdapterProtocol-Beacon'
 }
 
 { #category : #accessing }

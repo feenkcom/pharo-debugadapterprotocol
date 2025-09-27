@@ -9,7 +9,7 @@ Class {
 		'visitorMethods',
 		'overwrite'
 	],
-	#category : 'DebugAdapterProtocol-Import'
+	#category : #'DebugAdapterProtocol-Import'
 }
 
 { #category : #private }

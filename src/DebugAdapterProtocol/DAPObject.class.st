@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'client'
 	],
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

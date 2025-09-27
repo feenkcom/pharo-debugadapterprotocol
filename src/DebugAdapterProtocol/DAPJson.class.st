@@ -1,7 +1,7 @@
 Class {
 	#name : #DAPJson,
 	#superclass : #Object,
-	#category : 'DebugAdapterProtocol-JSON'
+	#category : #'DebugAdapterProtocol-JSON'
 }
 
 { #category : #private }
