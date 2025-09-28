@@ -90,7 +90,7 @@ GtDAPDebuggerToolbar >> newRestartFrameButton [
 	^ BrButton new 
 		aptitude: BrGlamorousButtonWithIconAptitude;
 		margin: (BlInsets left: 5);
-		icon: BrGlamorousIcons restart;
+		icon: BrGlamorousVectorIcons restart;
 		label: 'Restart Frame';
 		action: [ :aButton | dapDebugElement dapRestartFrame ]
 ]
@@ -112,7 +112,7 @@ GtDAPDebuggerToolbar >> newStepBackButton [
 	^ BrButton new 
 		aptitude: BrGlamorousButtonWithIconAptitude;
 		margin: (BlInsets left: 5);
-		icon: BrGlamorousIcons down;
+		icon: BrGlamorousVectorIcons down;
 		label: 'Step Back';
 		action: [ :aButton | dapDebugElement dapStepBack ]
 ]
@@ -123,7 +123,7 @@ GtDAPDebuggerToolbar >> newStepIntoButton [
 	^ BrButton new 
 		aptitude: BrGlamorousButtonWithIconAptitude;
 		margin: (BlInsets left: 5);
-		icon: BrGlamorousIcons into;
+		icon: BrGlamorousVectorIcons into;
 		label: 'Step Into';
 		action: [ :aButton | dapDebugElement dapStepInto ]
 ]
@@ -134,7 +134,7 @@ GtDAPDebuggerToolbar >> newStepOutButton [
 	^ BrButton new 
 		aptitude: BrGlamorousButtonWithIconAptitude;
 		margin: (BlInsets left: 5);
-		icon: BrGlamorousIcons down;
+		icon: BrGlamorousVectorIcons down;
 		label: 'Step Out';
 		action: [ :aButton | dapDebugElement dapStepOut ]
 ]
@@ -145,7 +145,7 @@ GtDAPDebuggerToolbar >> newStepOverButton [
 	^ BrButton new 
 		aptitude: BrGlamorousButtonWithIconAptitude;
 		margin: (BlInsets left: 5);
-		icon: BrGlamorousIcons over;
+		icon: BrGlamorousVectorIcons over;
 		label: 'Step Over';
 		action: [ :aButton | dapDebugElement dapStepOver ]
 ]
