@@ -6,211 +6,211 @@ Trait {
 { #category : #visiting }
 TDAPProtocolVisitor >> visitAttachRequest: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitAttachRequestArguments: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitAttachResponse: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitBreakpoint: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitBreakpointEvent: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitBreakpointLocation: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitBreakpointLocationsArguments: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitBreakpointLocationsRequest: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitBreakpointLocationsResponse: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitCancelArguments: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitCancelRequest: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitCancelResponse: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitCapabilities: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitCapabilitiesEvent: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitChecksum: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitChecksumAlgorithm: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitColumnDescriptor: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitCompletionItem: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitCompletionItemType: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitCompletionsArguments: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitCompletionsRequest: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitCompletionsResponse: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitConfigurationDoneArguments: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitConfigurationDoneRequest: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitConfigurationDoneResponse: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitContinueArguments: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitContinueRequest: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitContinueResponse: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitContinuedEvent: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitDataBreakpoint: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitDataBreakpointAccessType: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitDataBreakpointInfoArguments: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitDataBreakpointInfoRequest: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitDataBreakpointInfoResponse: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitDebugpyAttachEvent: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
@@ -221,541 +221,541 @@ TDAPProtocolVisitor >> visitDebugpySocketsEvent: anObject [
 { #category : #visiting }
 TDAPProtocolVisitor >> visitDebugpyWaitingForServer: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitDebugpyWaitingForServerEvent: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitDisassembleArguments: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitDisassembleRequest: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitDisassembleResponse: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitDisassembledInstruction: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitDisconnectArguments: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitDisconnectRequest: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitDisconnectResponse: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitErrorResponse: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitEvaluateArguments: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitEvaluateRequest: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitEvaluateResponse: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitEvent: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitExceptionBreakMode: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitExceptionBreakpointsFilter: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitExceptionDetails: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitExceptionFilterOptions: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitExceptionInfoArguments: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitExceptionInfoRequest: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitExceptionInfoResponse: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitExceptionOptions: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitExceptionPathSegment: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitExitedEvent: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitFunctionBreakpoint: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitGotoArguments: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitGotoRequest: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitGotoResponse: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitGotoTarget: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitGotoTargetsArguments: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitGotoTargetsRequest: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitGotoTargetsResponse: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitIPAddress: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitInitializeRequest: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitInitializeRequestArguments: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitInitializeResponse: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitInitializedEvent: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitInstructionBreakpoint: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitInvalidatedAreas: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitInvalidatedEvent: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitLaunchRequest: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitLaunchRequestArguments: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitLaunchResponse: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitLoadedSourceEvent: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitLoadedSourcesArguments: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitLoadedSourcesRequest: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitLoadedSourcesResponse: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitMessage: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitModule: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitModuleEvent: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitModulesArguments: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitModulesRequest: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitModulesResponse: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitModulesViewDescriptor: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitNextArguments: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitNextRequest: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitNextResponse: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitOutputEvent: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitPauseArguments: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitPauseRequest: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitPauseResponse: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitProcessEvent: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitProgressEndEvent: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitProgressStartEvent: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitProgressUpdateEvent: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitProtocolMessage: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitPythonAttachRequestArguments: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitReadMemoryArguments: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitReadMemoryRequest: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitReadMemoryResponse: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitRequest: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitResponse: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitRestartArguments: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitRestartFrameArguments: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitRestartFrameRequest: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitRestartFrameResponse: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitRestartRequest: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitRestartResponse: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitReverseContinueArguments: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitReverseContinueRequest: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitReverseContinueResponse: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitRunInTerminalRequest: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitRunInTerminalRequestArguments: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitRunInTerminalResponse: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitScope: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitScopesArguments: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitScopesRequest: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitScopesResponse: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitSetBreakpointsArguments: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitSetBreakpointsRequest: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
@@ -768,103 +768,103 @@ TDAPProtocolVisitor >> visitSetBreakpointsResponse: anObject [
 { #category : #visiting }
 TDAPProtocolVisitor >> visitSetDataBreakpointsArguments: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitSetDataBreakpointsRequest: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitSetDataBreakpointsResponse: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitSetExceptionBreakpointsArguments: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitSetExceptionBreakpointsRequest: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitSetExceptionBreakpointsResponse: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitSetExpressionArguments: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitSetExpressionRequest: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitSetExpressionResponse: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitSetFunctionBreakpointsArguments: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitSetFunctionBreakpointsRequest: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitSetFunctionBreakpointsResponse: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitSetInstructionBreakpointsArguments: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitSetInstructionBreakpointsRequest: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitSetInstructionBreakpointsResponse: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitSetVariableArguments: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitSetVariableRequest: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
@@ -876,251 +876,251 @@ TDAPProtocolVisitor >> visitSetVariableResponse: anObject [
 { #category : #visiting }
 TDAPProtocolVisitor >> visitSource: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitSourceArguments: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitSourceBreakpoint: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitSourceRequest: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitSourceResponse: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitStackFrame: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitStackFrameFormat: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitStackTraceArguments: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitStackTraceRequest: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitStackTraceResponse: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitStepBackArguments: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitStepBackRequest: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitStepBackResponse: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitStepInArguments: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitStepInRequest: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitStepInResponse: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitStepInTarget: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitStepInTargetsArguments: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitStepInTargetsRequest: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitStepInTargetsResponse: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitStepOutArguments: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitStepOutRequest: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitStepOutResponse: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitSteppingGranularity: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitStoppedEvent: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitTerminateArguments: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitTerminateRequest: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitTerminateResponse: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitTerminateThreadsArguments: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitTerminateThreadsRequest: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitTerminateThreadsResponse: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitTerminatedEvent: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitThread: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitThreadEvent: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitThreadsRequest: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitThreadsResponse: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitValueFormat: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitVariable: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitVariablePresentationHint: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitVariablesArguments: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitVariablesRequest: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
 
 { #category : #visiting }
 TDAPProtocolVisitor >> visitVariablesResponse: anObject [
 
-	^ false halt
+	^ false notYetTested
 ]
