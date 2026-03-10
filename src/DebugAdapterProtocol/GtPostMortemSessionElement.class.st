@@ -155,7 +155,3 @@ GtPostMortemSessionElement >> updateUI [
 	self updateDisplay.
 	toolbar updateUI.
 ]
-
-{ #category : #private }
-GtPostMortemSessionElement >> updateVariables [
-]
