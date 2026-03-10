@@ -8,28 +8,36 @@ Class {
 		'file',
 		'line',
 		'functionName',
-		'localVariables'
+		'localVariables',
+		'sourceString'
 	],
 	#category : #'DebugAdapterProtocol-PythonBridge'
 }
 
 { #category : #'instance creation' }
 GtPythonPostMortemStackFrame class >> fromStructuredFrame: aDictionary ordinal: anInteger exception: anException [
-    ^ self new
-        ordinal: anInteger;
-        exception: anException;
-        file: ((aDictionary at: 'filename' ifAbsent: [ '<unavailable>' ]) asFileReference);
-        line: (aDictionary at: 'lineno' ifAbsent: [ 0 ]);
-        functionName: (aDictionary at: 'function' ifAbsent: [ '<unknown>' ]);
-        localVariables: (aDictionary at: 'locals' ifAbsent: [ Dictionary new ]);
-        displayString: (String streamContents: [ :stream |
-            stream
-                << (aDictionary at: 'function' ifAbsent: [ '<unknown>' ]);
-                << ' in ';
-                << ((aDictionary at: 'filename' ifAbsent: [ '<unavailable>' ]) asString);
-                << ':';
-                << ((aDictionary at: 'lineno' ifAbsent: [ 0 ]) asString) ]);
-        yourself
+	| filename function script |
+
+	filename := aDictionary at: 'filename' ifAbsent: [ '<unavailable>' ].
+	function := aDictionary at: 'function' ifAbsent: [ '<unknown>' ].
+	(filename = '<string>' and: [ function = '<module>' ]) ifTrue:
+		[ script := anException script ].
+	^ self new
+		ordinal: anInteger;
+    exception: anException;
+    file: (filename asFileReference);
+    line: (aDictionary at: 'lineno' ifAbsent: [ 0 ]);
+    functionName: function;
+    localVariables: (aDictionary at: 'locals' ifAbsent: [ Dictionary new ]);
+    sourceString: script;
+    displayString: (String streamContents: [ :stream |
+    	stream
+        << (aDictionary at: 'function' ifAbsent: [ '<unknown>' ]);
+        << ' in ';
+        << ((aDictionary at: 'filename' ifAbsent: [ '<unavailable>' ]) asString);
+        << ':';
+        << ((aDictionary at: 'lineno' ifAbsent: [ 0 ]) asString) ]);
+    yourself
 ]
 
 { #category : #accessing }
@@ -170,15 +178,29 @@ GtPythonPostMortemStackFrame >> printOn: aStream [
 ]
 
 { #category : #accessing }
+GtPythonPostMortemStackFrame >> sourceString [
+	^ sourceString
+]
+
+{ #category : #accessing }
+GtPythonPostMortemStackFrame >> sourceString: anObject [
+	sourceString := anObject
+]
+
+{ #category : #accessing }
 GtPythonPostMortemStackFrame >> sourceText [
 	| source text indexes lineNumber |
 
-	file exists ifTrue:
-		[ source := file contents.
-		lineNumber := line ]
-	ifFalse:
-		[ source := '<unavailable>'.
-		lineNumber := 0 ].
+	sourceString ifNil:
+		[ file exists ifTrue:
+			[ source := file contents.
+			lineNumber := line ]
+		ifFalse:
+			[ source := '<unavailable>'.
+			lineNumber := 0 ] ]
+	ifNotNil:
+		[ source := sourceString.
+		lineNumber := line ].
 	text := source asRopedText.
 	lineNumber = 0 ifTrue: [ ^ text ].
 	indexes := source gtIndexOfLineNumber: lineNumber.
