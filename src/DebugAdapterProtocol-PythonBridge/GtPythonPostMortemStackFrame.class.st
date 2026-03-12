@@ -206,7 +206,7 @@ GtPythonPostMortemStackFrame >> sourceText [
 	indexes := source gtIndexOfLineNumber: lineNumber.
 	indexes ifNotNil: 
 		[ (text from: indexes key to: indexes value) 
-			attribute: (BlTextHighlightAttribute paint: BrGlamorousColors errorBackgroundColor)
+			attribute: (BlTextHighlightAttribute paint: BrGlamorousColors debuggerTextHighlightColor)
 				beNotOverwritableByStyler  ].
 	^ text
 ]

@@ -380,7 +380,7 @@ DAPStackFrame >> sourceText [
 	indexes ifNotNil: [ 
 		(text from: indexes key + self column - 1 to: indexes value) 
 			attribute: (BlTextHighlightAttribute paint:
-					 BrGlamorousColors errorBackgroundColor)
+					 BrGlamorousColors debuggerTextHighlightColor)
 					beNotOverwritableByStyler ].
 	^ text
 ]
