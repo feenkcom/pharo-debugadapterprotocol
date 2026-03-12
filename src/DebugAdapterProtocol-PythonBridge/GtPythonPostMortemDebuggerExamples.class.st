@@ -30,7 +30,7 @@ GtPythonPostMortemDebuggerExamples >> debuggerWithStructuredFrames [
 
     self assert: debugger stackFrames size equals: 2.
     self assert: debugger stackFrames last line equals: 12.
-    self assert: debugger stackFrames last file fullName equals: '/tmp/example.py'.
+    self assert: debugger stackFrames last file path segments equals: #('tmp' 'example.py').
 
     ^ debugger
 ]
