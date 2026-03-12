@@ -26,14 +26,15 @@ GtPythonPostMortemDebugger >> application [
 
 { #category : #accessing }
 GtPythonPostMortemDebugger >> exception [
+	<return: #PharoLinkRemoteError>
 
 	^ exception
 ]
 
 { #category : #accessing }
-GtPythonPostMortemDebugger >> exception: anObject [
+GtPythonPostMortemDebugger >> exception: aPharoLinkRemoteError [
 
-	exception := anObject
+	exception := aPharoLinkRemoteError
 ]
 
 { #category : #testing }

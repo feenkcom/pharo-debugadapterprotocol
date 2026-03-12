@@ -66,13 +66,14 @@ GtPythonPostMortemDebuggerExamples >> lastStructuredFrame [
 { #category : #examples }
 GtPythonPostMortemDebuggerExamples >> structuredFailure [
     <gtExample>
-    <return: #LanguageLinkErrorMessage>
-    | failure |
-    failure := LanguageLinkErrorMessage new.
-    failure
-        errorMessage: 'ZeroDivisionError: division by zero';
-        trace: 'Traceback (most recent call last)';
-        exceptionData: {
+    <return: #PharoLinkRemoteError>
+    | error exceptionData |
+    error := PharoLinkRemoteError new.
+    exceptionData := Dictionary new.
+    exceptionData 
+    	at: 'exception_message' put: 'division by zero';
+    	at: 'exception_type' put: 'ZeroDivisionError';
+    	at: 'frames' put: {
             (Dictionary new
                 at: 'function' put: 'divide';
                 at: 'filename' put: '/tmp/example.py';
@@ -99,7 +100,11 @@ GtPythonPostMortemDebuggerExamples >> structuredFailure [
                         yourself);
                     yourself);
                 yourself) }.
-    ^ failure
+    error
+        errorMessage: 'ZeroDivisionError: division by zero';
+        trace: 'Traceback (most recent call last)';
+        exceptionData: exceptionData.
+    ^ error
 ]
 
 { #category : #examples }
