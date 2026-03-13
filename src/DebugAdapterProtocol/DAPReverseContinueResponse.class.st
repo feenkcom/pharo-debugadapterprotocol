@@ -5,7 +5,7 @@ Response to 'reverseContinue' request. This is just an acknowledgement, so no bo
 Class {
 	#name : #DAPReverseContinueResponse,
 	#superclass : #DAPResponse,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

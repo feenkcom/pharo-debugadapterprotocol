@@ -6,7 +6,7 @@ This can be caused by a break point previously set, a stepping request has compl
 Class {
 	#name : #DAPStoppedEvent,
 	#superclass : #DAPEvent,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

@@ -5,7 +5,7 @@ Response to 'continue' request.
 Class {
 	#name : #DAPContinueResponse,
 	#superclass : #DAPResponse,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

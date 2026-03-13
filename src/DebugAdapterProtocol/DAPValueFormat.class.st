@@ -8,7 +8,7 @@ Class {
 	#instVars : [
 		'hex'
 	],
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

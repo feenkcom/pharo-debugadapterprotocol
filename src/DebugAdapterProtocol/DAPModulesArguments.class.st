@@ -9,7 +9,7 @@ Class {
 		'moduleCount',
 		'startModule'
 	],
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

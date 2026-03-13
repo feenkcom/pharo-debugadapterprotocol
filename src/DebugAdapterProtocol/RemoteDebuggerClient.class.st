@@ -18,7 +18,7 @@ Class {
 		'stdoutStream',
 		'stderrStream'
 	],
-	#category : 'DebugAdapterProtocol-Client'
+	#category : #'DebugAdapterProtocol-Client'
 }
 
 { #category : #announcer }

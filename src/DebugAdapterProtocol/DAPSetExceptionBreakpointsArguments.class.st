@@ -10,7 +10,7 @@ Class {
 		'filterOptions',
 		'filters'
 	],
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

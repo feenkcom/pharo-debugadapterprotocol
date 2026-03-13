@@ -26,14 +26,23 @@ GtPythonPostMortemDebugger >> application [
 
 { #category : #accessing }
 GtPythonPostMortemDebugger >> exception [
+	<return: #PharoLinkRemoteError>
 
 	^ exception
 ]
 
 { #category : #accessing }
-GtPythonPostMortemDebugger >> exception: anObject [
+GtPythonPostMortemDebugger >> exception: aPharoLinkRemoteError [
 
-	exception := anObject
+	exception := aPharoLinkRemoteError
+]
+
+{ #category : #testing }
+GtPythonPostMortemDebugger >> hasStructuredFrames [
+	"Answer a boolean indicating whether the stack frames are based on information returned from the python server, or scraped from the stack string"
+
+	^ exception isNotNil and:
+		[ exception exceptionData isNotNil ]
 ]
 
 { #category : #initialization }
@@ -76,12 +85,19 @@ GtPythonPostMortemDebugger >> stackFrames [
 	^ stackFrames ifNil:
 		[ ordinal := 1.
 		stackFrames := OrderedCollection new.
-		exception trace lines do: [ :line | 
-			(self stackFrameFromLine: line ordinal: ordinal) ifNotNil: [ :frame | 
-				stackFrames add: frame.
-				ordinal := ordinal + 1 ] ].
+		self hasStructuredFrames ifTrue:
+			[ exception stackFrames do: [ :frame |
+				stackFrames add: (GtPythonPostMortemStackFrame
+					fromStructuredFrame: frame
+					ordinal: ordinal
+					exception: exception) ] ]
+		ifFalse:
+			[ 	exception trace lines do: [ :line | 
+				(self stackFrameFromLine: line ordinal: ordinal) ifNotNil: [ :frame | 
+					stackFrames add: frame.
+					ordinal := ordinal + 1 ] ] ].
+		stackFrames := stackFrames reversed asArray.
 		stackFrames ].
-
 ]
 
 { #category : #accessing }

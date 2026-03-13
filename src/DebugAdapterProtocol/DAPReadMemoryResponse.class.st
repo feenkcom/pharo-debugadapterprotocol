@@ -5,7 +5,7 @@ Response to 'readMemory' request.
 Class {
 	#name : #DAPReadMemoryResponse,
 	#superclass : #DAPResponse,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

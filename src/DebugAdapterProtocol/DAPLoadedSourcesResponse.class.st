@@ -5,7 +5,7 @@ Response to 'loadedSources' request.
 Class {
 	#name : #DAPLoadedSourcesResponse,
 	#superclass : #DAPResponse,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

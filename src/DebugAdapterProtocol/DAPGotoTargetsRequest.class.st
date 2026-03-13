@@ -7,7 +7,7 @@ Clients should only call this request if the capability 'supportsGotoTargetsRequ
 Class {
 	#name : #DAPGotoTargetsRequest,
 	#superclass : #DAPRequest,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #accessing }

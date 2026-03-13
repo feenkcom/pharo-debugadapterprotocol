@@ -5,7 +5,7 @@ Notification that the remote debugpy server is waiting.
 Class {
 	#name : #DAPDebugpyWaitingForServerEvent,
 	#superclass : #DAPEvent,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

@@ -6,7 +6,7 @@ Clients should only call this request if the capability 'supportsReadMemoryReque
 Class {
 	#name : #DAPReadMemoryRequest,
 	#superclass : #DAPRequest,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #accessing }

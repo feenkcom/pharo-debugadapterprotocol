@@ -5,7 +5,7 @@ Response to 'setVariable' request.
 Class {
 	#name : #DAPSetVariableResponse,
 	#superclass : #DAPResponse,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

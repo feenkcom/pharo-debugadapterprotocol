@@ -7,7 +7,7 @@ It is only necessary to send a 'continued' event if there was no previous reques
 Class {
 	#name : #DAPContinuedEvent,
 	#superclass : #DAPEvent,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

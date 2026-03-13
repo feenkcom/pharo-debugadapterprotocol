@@ -5,7 +5,7 @@ Arguments for 'restart' request.
 Class {
 	#name : #DAPRestartArguments,
 	#superclass : #DAPObject,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

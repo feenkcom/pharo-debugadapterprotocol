@@ -7,7 +7,7 @@ When a breakpoint is hit, a 'stopped' event (with reason 'breakpoint') is genera
 Class {
 	#name : #DAPSetBreakpointsRequest,
 	#superclass : #DAPRequest,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #accessing }

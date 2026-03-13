@@ -5,7 +5,7 @@ DAPCDTThreadModel maps information from the CDTDebuggerClient on to the DAPThrea
 Class {
 	#name : #DAPCDTThreadModel,
 	#superclass : #DAPThreadModel,
-	#category : 'DebugAdapterProtocol-Model'
+	#category : #'DebugAdapterProtocol-Model'
 }
 
 { #category : #initialization }

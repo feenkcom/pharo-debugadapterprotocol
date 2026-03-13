@@ -5,7 +5,7 @@ Notification by debugpy that the debuggee(?) is attached.
 Class {
 	#name : #DAPDebugpyAttachEvent,
 	#superclass : #DAPEvent,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

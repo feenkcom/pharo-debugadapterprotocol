@@ -5,7 +5,7 @@ On error (whenever 'success' is false), the body can provide more details.
 Class {
 	#name : #DAPErrorResponse,
 	#superclass : #DAPResponse,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

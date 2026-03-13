@@ -9,7 +9,7 @@ Class {
 		'arguments',
 		'command'
 	],
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

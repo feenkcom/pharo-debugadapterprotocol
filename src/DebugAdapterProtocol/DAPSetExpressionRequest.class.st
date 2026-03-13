@@ -7,7 +7,7 @@ Clients should only call this request if the capability 'supportsSetExpression' 
 Class {
 	#name : #DAPSetExpressionRequest,
 	#superclass : #DAPRequest,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #accessing }

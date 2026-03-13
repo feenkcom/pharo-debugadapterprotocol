@@ -11,7 +11,7 @@ Class {
 		'endLine',
 		'line'
 	],
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

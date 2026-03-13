@@ -8,7 +8,7 @@ Clients should only call this request if the capability 'supportsFunctionBreakpo
 Class {
 	#name : #DAPSetFunctionBreakpointsRequest,
 	#superclass : #DAPRequest,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #accessing }

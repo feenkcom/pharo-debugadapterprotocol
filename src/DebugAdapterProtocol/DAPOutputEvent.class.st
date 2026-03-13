@@ -5,7 +5,7 @@ The event indicates that the target has produced some output.
 Class {
 	#name : #DAPOutputEvent,
 	#superclass : #DAPEvent,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

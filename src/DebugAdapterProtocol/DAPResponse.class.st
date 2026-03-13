@@ -12,7 +12,7 @@ Class {
 		'request_seq',
 		'success'
 	],
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

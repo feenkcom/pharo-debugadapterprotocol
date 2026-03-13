@@ -5,7 +5,7 @@ The request retrieves a list of all threads.
 Class {
 	#name : #DAPThreadsRequest,
 	#superclass : #DAPRequest,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #accessing }

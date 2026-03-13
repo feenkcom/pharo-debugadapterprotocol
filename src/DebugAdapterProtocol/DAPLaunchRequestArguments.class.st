@@ -9,7 +9,7 @@ Class {
 		'__restart',
 		'noDebug'
 	],
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

@@ -6,7 +6,7 @@ Clients should only call this request if the capability 'supportsModulesRequest'
 Class {
 	#name : #DAPModulesRequest,
 	#superclass : #DAPRequest,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #accessing }

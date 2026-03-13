@@ -5,7 +5,7 @@ Response to 'initialize' request.
 Class {
 	#name : #DAPInitializeResponse,
 	#superclass : #DAPResponse,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

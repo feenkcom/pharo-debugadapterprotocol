@@ -5,7 +5,7 @@ The event indicates that the debugger has begun debugging a new process. Either 
 Class {
 	#name : #DAPProcessEvent,
 	#superclass : #DAPEvent,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

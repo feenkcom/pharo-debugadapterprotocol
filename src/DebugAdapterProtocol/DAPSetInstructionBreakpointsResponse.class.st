@@ -5,7 +5,7 @@ Response to 'setInstructionBreakpoints' request
 Class {
 	#name : #DAPSetInstructionBreakpointsResponse,
 	#superclass : #DAPResponse,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

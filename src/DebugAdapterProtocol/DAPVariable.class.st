@@ -22,7 +22,7 @@ Class {
 		'variablesReference',
 		'scope'
 	],
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

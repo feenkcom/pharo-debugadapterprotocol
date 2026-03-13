@@ -8,7 +8,7 @@ Class {
 	#instVars : [
 		'__restart'
 	],
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

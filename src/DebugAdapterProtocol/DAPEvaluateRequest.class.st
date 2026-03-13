@@ -6,7 +6,7 @@ The expression has access to any variables and arguments that are in scope.
 Class {
 	#name : #DAPEvaluateRequest,
 	#superclass : #DAPRequest,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #accessing }

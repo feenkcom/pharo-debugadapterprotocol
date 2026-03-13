@@ -5,7 +5,7 @@ Class {
 		'host',
 		'port'
 	],
-	#category : 'DebugAdapterProtocol-Client'
+	#category : #'DebugAdapterProtocol-Client'
 }
 
 { #category : #initialization }

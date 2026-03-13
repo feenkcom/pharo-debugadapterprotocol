@@ -8,7 +8,7 @@ If a filter or filter option is invalid (e.g. due to an invalid 'condition'), th
 Class {
 	#name : #DAPSetExceptionBreakpointsRequest,
 	#superclass : #DAPRequest,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #accessing }

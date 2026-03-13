@@ -5,7 +5,7 @@ Response to 'modules' request.
 Class {
 	#name : #DAPModulesResponse,
 	#superclass : #DAPResponse,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

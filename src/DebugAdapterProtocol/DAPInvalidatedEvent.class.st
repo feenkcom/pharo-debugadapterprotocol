@@ -7,7 +7,7 @@ This event should only be sent if the debug adapter has received a value true fo
 Class {
 	#name : #DAPInvalidatedEvent,
 	#superclass : #DAPEvent,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

@@ -5,7 +5,7 @@ The event indicates that some information about a breakpoint has changed.
 Class {
 	#name : #DAPBreakpointEvent,
 	#superclass : #DAPEvent,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

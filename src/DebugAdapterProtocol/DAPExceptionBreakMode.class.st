@@ -9,7 +9,7 @@ userUnhandled: breaks if the exception is not handled by user code.
 Class {
 	#name : #DAPExceptionBreakMode,
 	#superclass : #DAPObject,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

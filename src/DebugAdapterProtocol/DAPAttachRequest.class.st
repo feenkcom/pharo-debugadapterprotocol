@@ -6,7 +6,7 @@ Since attaching is debugger/runtime specific, the arguments for this request are
 Class {
 	#name : #DAPAttachRequest,
 	#superclass : #DAPRequest,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #accessing }

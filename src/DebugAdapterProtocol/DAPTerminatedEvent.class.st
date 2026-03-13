@@ -5,7 +5,7 @@ The event indicates that debugging of the debuggee has terminated. This does ** 
 Class {
 	#name : #DAPTerminatedEvent,
 	#superclass : #DAPEvent,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

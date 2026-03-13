@@ -6,7 +6,7 @@ Class {
 		'program',
 		'arguments'
 	],
-	#category : 'DebugAdapterProtocol-Client'
+	#category : #'DebugAdapterProtocol-Client'
 }
 
 { #category : #accessing }

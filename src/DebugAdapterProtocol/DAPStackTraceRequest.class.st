@@ -6,7 +6,7 @@ A client can request all stack frames by omitting the startFrame and levels argu
 Class {
 	#name : #DAPStackTraceRequest,
 	#superclass : #DAPRequest,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #accessing }

@@ -19,7 +19,7 @@ Class {
 		'workspaceFolder',
 		'__sessionId'
 	],
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

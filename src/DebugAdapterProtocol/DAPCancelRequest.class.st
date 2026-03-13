@@ -15,7 +15,7 @@ Returning partial results from a cancelled request is possible but please note t
 Class {
 	#name : #DAPCancelRequest,
 	#superclass : #DAPRequest,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #accessing }

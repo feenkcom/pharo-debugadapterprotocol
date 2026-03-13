@@ -5,7 +5,7 @@ The event indicates that some source has been added, changed, or removed from th
 Class {
 	#name : #DAPLoadedSourceEvent,
 	#superclass : #DAPEvent,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

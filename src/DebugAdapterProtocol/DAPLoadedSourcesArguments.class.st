@@ -5,7 +5,7 @@ Arguments for 'loadedSources' request.
 Class {
 	#name : #DAPLoadedSourcesArguments,
 	#superclass : #DAPObject,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

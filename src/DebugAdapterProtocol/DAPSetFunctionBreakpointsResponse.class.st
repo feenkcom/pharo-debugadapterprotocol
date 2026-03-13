@@ -6,7 +6,7 @@ Returned is information about each breakpoint created by this request.
 Class {
 	#name : #DAPSetFunctionBreakpointsResponse,
 	#superclass : #DAPResponse,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

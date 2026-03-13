@@ -5,7 +5,7 @@ Response to 'dataBreakpointInfo' request.
 Class {
 	#name : #DAPDataBreakpointInfoResponse,
 	#superclass : #DAPResponse,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

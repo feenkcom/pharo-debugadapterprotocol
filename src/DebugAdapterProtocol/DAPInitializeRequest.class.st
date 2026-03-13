@@ -9,7 +9,7 @@ The 'initialize' request may only be sent once.
 Class {
 	#name : #DAPInitializeRequest,
 	#superclass : #DAPRequest,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #accessing }

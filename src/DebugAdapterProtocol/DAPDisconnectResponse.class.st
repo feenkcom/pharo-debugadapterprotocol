@@ -5,7 +5,7 @@ Response to 'disconnect' request. This is just an acknowledgement, so no body fi
 Class {
 	#name : #DAPDisconnectResponse,
 	#superclass : #DAPResponse,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

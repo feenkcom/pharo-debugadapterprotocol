@@ -5,7 +5,7 @@ Response to 'disassemble' request.
 Class {
 	#name : #DAPDisassembleResponse,
 	#superclass : #DAPResponse,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

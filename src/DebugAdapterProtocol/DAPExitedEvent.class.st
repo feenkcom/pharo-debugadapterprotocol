@@ -5,7 +5,7 @@ The event indicates that the debuggee has exited and returns its exit code.
 Class {
 	#name : #DAPExitedEvent,
 	#superclass : #DAPEvent,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

@@ -5,7 +5,7 @@ Response to 'completions' request.
 Class {
 	#name : #DAPCompletionsResponse,
 	#superclass : #DAPResponse,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

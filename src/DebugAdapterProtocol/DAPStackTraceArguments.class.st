@@ -11,7 +11,7 @@ Class {
 		'startFrame',
 		'threadId'
 	],
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

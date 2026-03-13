@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'thread'
 	],
-	#category : 'DebugAdapterProtocol-Announcments'
+	#category : #'DebugAdapterProtocol-Announcments'
 }
 
 { #category : #testing }

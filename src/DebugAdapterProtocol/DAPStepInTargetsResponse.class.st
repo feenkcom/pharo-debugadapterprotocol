@@ -5,7 +5,7 @@ Response to 'stepInTargets' request.
 Class {
 	#name : #DAPStepInTargetsResponse,
 	#superclass : #DAPResponse,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

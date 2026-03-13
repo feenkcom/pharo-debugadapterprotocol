@@ -6,7 +6,7 @@ Contains possible locations for source breakpoints.
 Class {
 	#name : #DAPBreakpointLocationsResponse,
 	#superclass : #DAPResponse,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

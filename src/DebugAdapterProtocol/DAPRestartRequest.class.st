@@ -6,7 +6,7 @@ If the capability is missing or has the value false, a typical client will emula
 Class {
 	#name : #DAPRestartRequest,
 	#superclass : #DAPRequest,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #accessing }

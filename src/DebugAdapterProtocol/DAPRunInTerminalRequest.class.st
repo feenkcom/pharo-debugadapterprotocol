@@ -7,7 +7,7 @@ This request should only be called if the client has passed the value true for t
 Class {
 	#name : #DAPRunInTerminalRequest,
 	#superclass : #DAPRequest,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #accessing }

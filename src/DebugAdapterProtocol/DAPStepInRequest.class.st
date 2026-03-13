@@ -10,7 +10,7 @@ The list of possible targets for a given source line can be retrieved via the 's
 Class {
 	#name : #DAPStepInRequest,
 	#superclass : #DAPRequest,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #accessing }

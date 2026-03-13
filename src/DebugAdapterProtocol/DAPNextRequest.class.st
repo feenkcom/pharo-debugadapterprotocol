@@ -6,7 +6,7 @@ The debug adapter first sends the response and then a 'stopped' event (with reas
 Class {
 	#name : #DAPNextRequest,
 	#superclass : #DAPRequest,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #accessing }

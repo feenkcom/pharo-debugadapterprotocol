@@ -5,7 +5,7 @@ The event indicates that a thread has started or exited.
 Class {
 	#name : #DAPThreadEvent,
 	#superclass : #DAPEvent,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

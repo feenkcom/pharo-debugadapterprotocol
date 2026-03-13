@@ -5,7 +5,7 @@ The request starts the debuggee to run again.
 Class {
 	#name : #DAPContinueRequest,
 	#superclass : #DAPRequest,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #accessing }

@@ -9,7 +9,7 @@ Class {
 		'condition',
 		'filterId'
 	],
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

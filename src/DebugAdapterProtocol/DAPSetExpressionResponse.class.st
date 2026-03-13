@@ -5,7 +5,7 @@ Response to 'setExpression' request.
 Class {
 	#name : #DAPSetExpressionResponse,
 	#superclass : #DAPResponse,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

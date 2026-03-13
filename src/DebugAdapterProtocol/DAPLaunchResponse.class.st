@@ -5,7 +5,7 @@ Response to 'launch' request. This is just an acknowledgement, so no body field 
 Class {
 	#name : #DAPLaunchResponse,
 	#superclass : #DAPResponse,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

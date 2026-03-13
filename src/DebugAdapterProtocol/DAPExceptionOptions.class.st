@@ -9,7 +9,7 @@ Class {
 		'breakMode',
 		'path'
 	],
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

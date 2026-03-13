@@ -6,7 +6,7 @@ An optional filter can be used to limit the fetched children to either named or 
 Class {
 	#name : #DAPVariablesRequest,
 	#superclass : #DAPRequest,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #accessing }

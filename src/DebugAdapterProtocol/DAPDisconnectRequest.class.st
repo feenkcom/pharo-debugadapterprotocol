@@ -9,7 +9,7 @@ This behavior can be controlled with the 'terminateDebuggee' argument (if suppor
 Class {
 	#name : #DAPDisconnectRequest,
 	#superclass : #DAPRequest,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #accessing }

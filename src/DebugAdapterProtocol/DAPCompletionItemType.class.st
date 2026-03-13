@@ -5,7 +5,7 @@ Some predefined types for the CompletionItem. Please note that not all clients h
 Class {
 	#name : #DAPCompletionItemType,
 	#superclass : #DAPObject,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

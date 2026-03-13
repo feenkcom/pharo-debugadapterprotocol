@@ -5,7 +5,7 @@ Response to 'cancel' request. This is just an acknowledgement, so no body field 
 Class {
 	#name : #DAPCancelResponse,
 	#superclass : #DAPResponse,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

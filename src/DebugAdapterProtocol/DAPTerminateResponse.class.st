@@ -5,7 +5,7 @@ Response to 'terminate' request. This is just an acknowledgement, so no body fie
 Class {
 	#name : #DAPTerminateResponse,
 	#superclass : #DAPResponse,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

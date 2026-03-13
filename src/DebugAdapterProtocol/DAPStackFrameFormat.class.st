@@ -14,7 +14,7 @@ Class {
 		'parameterValues',
 		'parameters'
 	],
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

@@ -5,7 +5,7 @@ The granularity of one 'step' in the stepping requests 'next', 'stepIn', 'stepOu
 Class {
 	#name : #DAPSteppingGranularity,
 	#superclass : #DAPObject,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

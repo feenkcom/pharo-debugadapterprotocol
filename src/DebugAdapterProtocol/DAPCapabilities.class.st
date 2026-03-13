@@ -44,7 +44,7 @@ Class {
 		'supportsTerminateThreadsRequest',
 		'supportsValueFormattingOptions'
 	],
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

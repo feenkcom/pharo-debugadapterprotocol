@@ -19,7 +19,7 @@ Class {
 		'variables',
 		'variablesReference'
 	],
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

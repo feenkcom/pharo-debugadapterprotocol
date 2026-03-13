@@ -5,7 +5,7 @@ Response to 'setExceptionBreakpoints' request. This is just an acknowledgement, 
 Class {
 	#name : #DAPSetExceptionBreakpointsResponse,
 	#superclass : #DAPResponse,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

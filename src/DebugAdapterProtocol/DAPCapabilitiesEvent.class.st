@@ -8,7 +8,7 @@ Only changed capabilities need to be included, all other capabilities keep their
 Class {
 	#name : #DAPCapabilitiesEvent,
 	#superclass : #DAPEvent,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

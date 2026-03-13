@@ -5,7 +5,7 @@ This enumeration defines all possible access types for data breakpoints.
 Class {
 	#name : #DAPDataBreakpointAccessType,
 	#superclass : #DAPObject,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

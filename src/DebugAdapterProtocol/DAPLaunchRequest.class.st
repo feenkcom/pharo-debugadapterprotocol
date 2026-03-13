@@ -6,7 +6,7 @@ Since launching is debugger/runtime specific, the arguments for this request are
 Class {
 	#name : #DAPLaunchRequest,
 	#superclass : #DAPRequest,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #accessing }

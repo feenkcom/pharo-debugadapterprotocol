@@ -5,7 +5,7 @@ Response to 'configurationDone' request. This is just an acknowledgement, so no 
 Class {
 	#name : #DAPConfigurationDoneResponse,
 	#superclass : #DAPResponse,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

@@ -7,7 +7,7 @@ Clients should only call this request if the capability 'supportsRestartFrame' i
 Class {
 	#name : #DAPRestartFrameRequest,
 	#superclass : #DAPRequest,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #accessing }

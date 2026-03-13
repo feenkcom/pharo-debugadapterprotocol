@@ -11,7 +11,7 @@ Class {
 		'source',
 		'sourceModified'
 	],
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

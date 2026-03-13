@@ -5,7 +5,7 @@ Names of checksum algorithms that may be supported by a debug adapter.
 Class {
 	#name : #DAPChecksumAlgorithm,
 	#superclass : #DAPObject,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

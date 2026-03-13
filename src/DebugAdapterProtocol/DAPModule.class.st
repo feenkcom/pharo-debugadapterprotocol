@@ -31,7 +31,7 @@ Class {
 		'vsPreferredLoadAddress',
 		'vsLoadOrder'
 	],
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

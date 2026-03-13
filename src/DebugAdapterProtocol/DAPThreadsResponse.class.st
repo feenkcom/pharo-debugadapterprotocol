@@ -5,7 +5,7 @@ Response to 'threads' request.
 Class {
 	#name : #DAPThreadsResponse,
 	#superclass : #DAPResponse,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

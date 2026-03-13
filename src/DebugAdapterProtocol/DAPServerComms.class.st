@@ -12,7 +12,7 @@ Class {
 	#instVars : [
 		'client'
 	],
-	#category : 'DebugAdapterProtocol-Client'
+	#category : #'DebugAdapterProtocol-Client'
 }
 
 { #category : #accessing }

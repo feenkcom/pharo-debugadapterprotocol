@@ -5,7 +5,7 @@ Logical areas that can be invalidated by the 'invalidated' event.
 Class {
 	#name : #DAPInvalidatedAreas,
 	#superclass : #DAPObject,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

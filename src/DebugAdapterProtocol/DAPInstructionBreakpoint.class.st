@@ -11,7 +11,7 @@ Class {
 		'instructionReference',
 		'offset'
 	],
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

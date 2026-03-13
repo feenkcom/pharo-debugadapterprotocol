@@ -9,7 +9,7 @@ Class {
 		'progressId',
 		'requestId'
 	],
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

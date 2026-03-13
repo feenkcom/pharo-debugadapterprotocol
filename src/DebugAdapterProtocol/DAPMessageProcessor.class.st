@@ -5,7 +5,7 @@ Class {
 		'semaphore',
 		'maxWaitSeconds'
 	],
-	#category : 'DebugAdapterProtocol-Processor'
+	#category : #'DebugAdapterProtocol-Processor'
 }
 
 { #category : #initialize }

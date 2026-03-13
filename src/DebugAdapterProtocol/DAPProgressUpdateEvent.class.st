@@ -7,7 +7,7 @@ This event should only be sent if the client has passed the value true for the '
 Class {
 	#name : #DAPProgressUpdateEvent,
 	#superclass : #DAPEvent,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'response'
 	],
-	#category : 'DebugAdapterProtocol-Exceptions'
+	#category : #'DebugAdapterProtocol-Exceptions'
 }
 
 { #category : #accessing }

@@ -5,7 +5,7 @@ Set the variable with the given name in the variable container to a new value. C
 Class {
 	#name : #DAPSetVariableRequest,
 	#superclass : #DAPRequest,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #accessing }

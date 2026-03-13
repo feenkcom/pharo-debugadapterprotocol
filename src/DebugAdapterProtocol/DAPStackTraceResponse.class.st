@@ -5,7 +5,7 @@ Response to 'stackTrace' request.
 Class {
 	#name : #DAPStackTraceResponse,
 	#superclass : #DAPResponse,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

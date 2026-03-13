@@ -20,7 +20,7 @@ Class {
 		'supportsVariablePaging',
 		'supportsVariableType'
 	],
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

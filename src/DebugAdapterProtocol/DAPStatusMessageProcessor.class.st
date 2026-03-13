@@ -5,7 +5,7 @@ Class {
 		'id',
 		'result'
 	],
-	#category : 'DebugAdapterProtocol-Processor'
+	#category : #'DebugAdapterProtocol-Processor'
 }
 
 { #category : #'instance creation' }

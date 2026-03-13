@@ -5,7 +5,7 @@ Response to 'scopes' request.
 Class {
 	#name : #DAPScopesResponse,
 	#superclass : #DAPResponse,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

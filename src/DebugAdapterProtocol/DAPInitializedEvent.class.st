@@ -13,7 +13,7 @@ The sequence of events/requests is as follows:
 Class {
 	#name : #DAPInitializedEvent,
 	#superclass : #DAPEvent,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

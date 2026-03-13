@@ -9,7 +9,7 @@ Class {
 		'algorithm',
 		'checksum'
 	],
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

@@ -5,7 +5,7 @@ Response to 'gotoTargets' request.
 Class {
 	#name : #DAPGotoTargetsResponse,
 	#superclass : #DAPResponse,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

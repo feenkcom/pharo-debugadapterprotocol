@@ -9,7 +9,7 @@ Class {
 	#instVars : [
 		'columns'
 	],
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

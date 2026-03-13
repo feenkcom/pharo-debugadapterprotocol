@@ -5,7 +5,7 @@ Response to 'goto' request. This is just an acknowledgement, so no body field is
 Class {
 	#name : #DAPGotoResponse,
 	#superclass : #DAPResponse,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

@@ -5,7 +5,7 @@ Response to 'stepOut' request. This is just an acknowledgement, so no body field
 Class {
 	#name : #DAPStepOutResponse,
 	#superclass : #DAPResponse,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

@@ -10,7 +10,7 @@ Class {
 		'hitCondition',
 		'name'
 	],
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

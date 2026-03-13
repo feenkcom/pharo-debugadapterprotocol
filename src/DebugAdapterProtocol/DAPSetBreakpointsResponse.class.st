@@ -9,7 +9,7 @@ The breakpoints returned are in the same order as the elements of the 'breakpoin
 Class {
 	#name : #DAPSetBreakpointsResponse,
 	#superclass : #DAPResponse,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }

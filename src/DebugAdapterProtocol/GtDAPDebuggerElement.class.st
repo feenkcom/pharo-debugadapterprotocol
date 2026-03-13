@@ -534,6 +534,14 @@ GtDAPDebuggerElement >> scheduleUpdateUI [
 
 ]
 
+{ #category : #private }
+GtDAPDebuggerElement >> scheduleUpdateVariables [
+
+	variableList ifNotNil:
+		[ self enqueueTask: (BlTaskAction new action: [ self updateVariables ]) ].
+
+]
+
 { #category : #'private - accessing' }
 GtDAPDebuggerElement >> sourceCode [
 
@@ -641,7 +649,6 @@ GtDAPDebuggerElement >> updateStdout [
 GtDAPDebuggerElement >> updateUI [
 	"Update the UI to reflect the debugger state."
 
-	StringSignal emit: 'updateUI'.
 	debuggerState text: self debuggerClient statusString asRopedText.
 	"Always display the stopped threads.
 	Currently we only support the threading module, which has green threads, like Pharo.
@@ -664,15 +671,16 @@ GtDAPDebuggerElement >> updateUI [
 { #category : #'private - update ui' }
 GtDAPDebuggerElement >> updateVariables [ 
 
+	variableList ifNil: [ ^ self ].
 	variableList 
 		items: (currentCallFrame
 			ifNil: [ #() ]
-			ifNotNil: [ currentCallFrame variablesDictionary associations ])
+			ifNotNil: [ currentCallFrame variablesDictionary associations sorted: [ :v | v key asLowercase ] ascending ])
 		immediate: [ :item | 
 			item value isDictionary
-				ifTrue: [ item value associations ]
+				ifTrue: [ item value associations sorted: [ :v | v key asLowercase ] ascending ]
 				ifFalse: [ (item value isArray and: [ item value allSatisfy: #isDictionary ])
-						ifTrue: [ item value collectWithIndex: [ :x :i | i -> x ] ]
+						ifTrue: [ (item value collectWithIndex: [ :x :i | i -> x ]) sorted: [ :v | v key asLowercase ] ascending ]
 						ifFalse: [ #() ] ] ].
 	variableList expandAll.
 
@@ -688,5 +696,6 @@ GtDAPDebuggerElement >> variablesTab [
 			[ variablesContainer ifNil: 
 				[ variablesContainer := self newVariablesList.
 				variableList := variablesContainer childNamed: #variablesList.
+				self scheduleUpdateVariables.
 				variablesContainer ] ]
 ]

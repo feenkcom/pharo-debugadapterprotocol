@@ -8,7 +8,7 @@ Clients should only call this request if the capability 'supportsDataBreakpoints
 Class {
 	#name : #DAPSetDataBreakpointsRequest,
 	#superclass : #DAPRequest,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #accessing }

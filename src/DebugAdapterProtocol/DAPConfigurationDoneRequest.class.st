@@ -7,7 +7,7 @@ Clients should only call this request if the capability 'supportsConfigurationDo
 Class {
 	#name : #DAPConfigurationDoneRequest,
 	#superclass : #DAPRequest,
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #accessing }

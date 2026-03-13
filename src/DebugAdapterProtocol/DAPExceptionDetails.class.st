@@ -13,7 +13,7 @@ Class {
 		'stackTrace',
 		'typeName'
 	],
-	#category : 'DebugAdapterProtocol-Protocol'
+	#category : #'DebugAdapterProtocol-Protocol'
 }
 
 { #category : #'json - configuration' }
