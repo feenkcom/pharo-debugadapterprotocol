@@ -5,7 +5,7 @@ GtDAPDebugSession extends {{gtClass:name=DebugSession}} to also simultaneously m
 "
 Class {
 	#name : #GtDAPDebugSession,
-	#superclass : #DebugSession,
+	#superclass : #GtDebugSession,
 	#instVars : [
 		'signal',
 		'nodeJSDebugger'

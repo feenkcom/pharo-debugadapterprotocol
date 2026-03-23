@@ -5,7 +5,7 @@ GtPostMortemSession works with multiple backends, e.g. Python, JavaScript and Ge
 "
 Class {
 	#name : #GtPostMortemSession,
-	#superclass : #DebugSession,
+	#superclass : #GtDebugSession,
 	#category : #'DebugAdapterProtocol-UI'
 }
 
