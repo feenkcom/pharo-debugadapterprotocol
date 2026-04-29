@@ -311,10 +311,10 @@ DebugAdapterProtocolDefinitionImporter >> getSuperclassOf: className message: me
 			[ self class environment at: className ifPresent: [ :cls |
 				instanceVariableNames addAll: cls instVarNames ] ].
 
-		(superClass subclass: className
-			instanceVariableNames: (' ' join: instanceVariableNames sorted)
-			classVariableNames: ''
+		((superClass << className)
+			slots: instanceVariableNames sorted;
 			package: 'DebugAdapterProtocol-Protocol')
+			install
 			comment: (localClassDictionary at: #description);
 			yourself ].
 
