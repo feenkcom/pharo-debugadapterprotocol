@@ -27,6 +27,7 @@ GtDAPDebugSessionElement class >> handlesContext: aContext [
 	"This is currently determined by checking the class of the receiver and its value, which will be different for each snippet type.  This should be changed to the signalling method having the appropriate pragma (<dapOpenDebugger>)"
 	| result |
 
+	aContext ifNil: [ ^ false ].
 	result := (aContext method hasPragmaNamed: #remoteDebuggerSignal) and:
 		[ (aContext receiver exception respondsTo: #debuggerClient) and:
 		[ aContext receiver exception isPaused ] ].
