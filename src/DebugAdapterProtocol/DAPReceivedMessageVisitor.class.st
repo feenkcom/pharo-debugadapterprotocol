@@ -266,3 +266,20 @@ DAPReceivedMessageVisitor >> visitVariablesResponse: anObject [
 
 	^ false
 ]
+
+{ #category : #'visiting' }
+DAPReceivedMessageVisitor >> visitDisconnectResponse: anObject [
+	"The result is handled by the caller, the same as every other response we
+	send and wait for. It was marked notYetTested because nothing disconnected
+	before."
+
+	^ false
+]
+
+{ #category : #'visiting' }
+DAPReceivedMessageVisitor >> visitBreakpointLocationsResponse: anObject [
+	"The places are handled by the caller. Answer false to check the response
+	status, the same as every other response the caller waits for."
+
+	^ false
+]

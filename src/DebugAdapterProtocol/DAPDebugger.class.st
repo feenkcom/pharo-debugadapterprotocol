@@ -225,3 +225,39 @@ DAPDebugger >> stoppedThread [
 
 	^ client stoppedThread
 ]
+
+{ #category : #'accessing' }
+DAPDebugger >> breakpointsInSource: aPath [
+	"The breakpoints the server has confirmed in one file"
+
+	^ client breakpointsInSource: aPath
+]
+
+{ #category : #'actions' }
+DAPDebugger >> breakpointLocationInSource: aDAPSource line: aLine [
+	"Where a breakpoint asked for on this line would land"
+
+	^ client breakpointLocationInSource: aDAPSource line: aLine
+]
+
+{ #category : #'actions' }
+DAPDebugger >> toggleBreakpointInSource: aDAPSource line: aLine [
+	"Put a breakpoint where this line lands, or take away the one already there"
+
+	^ client toggleBreakpointInSource: aDAPSource line: aLine
+]
+
+{ #category : #'actions' }
+DAPDebugger >> toggleBreakpointInSource: aDAPSource line: aLine column: aColumn [
+	"Put a breakpoint on the form at this line and column, or take away the
+	one already there"
+
+	^ client toggleBreakpointInSource: aDAPSource line: aLine column: aColumn
+]
+
+{ #category : #'actions' }
+DAPDebugger >> breakpointLocationsInSource: aDAPSource line: aLine [
+	"Every place on this line a breakpoint could stand"
+
+	^ client breakpointLocationsInSource: aDAPSource line: aLine
+]

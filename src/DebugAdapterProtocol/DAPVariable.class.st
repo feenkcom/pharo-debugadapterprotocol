@@ -20,7 +20,8 @@ Class {
 		'type',
 		'value',
 		'variablesReference',
-		'scope'
+		'scope',
+		'children'
 	],
 	#category : #'DebugAdapterProtocol-Protocol'
 }
@@ -268,4 +269,22 @@ DAPVariable >> variablesReference: anObject [
 
 	variablesReference := anObject
 
+]
+
+{ #category : #'accessing' }
+DAPVariable >> children [
+	"The variables inside this one, for a value that has any. The reference is
+	the adapter's handle on the value; zero means there is nothing to ask
+	for. Cached the way a scope caches its variables: a stopped program does
+	not change under us."
+
+	<return: #Array of: #DAPVariable>
+	^ children ifNil: [
+		children := self variablesReference = 0
+			ifTrue: [ #() ]
+			ifFalse: [ [ (self client variablesForReference: self variablesReference) allVariables ]
+				on: Error
+				do: [ :e | #() ] ].
+		children do: [ :each | each scope: self scope ].
+		children ]
 ]

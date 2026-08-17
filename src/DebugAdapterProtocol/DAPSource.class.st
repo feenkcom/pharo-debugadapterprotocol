@@ -216,18 +216,11 @@ DAPSource >> propertyNames [
 	^ #(adapterData checksums name origin path presentationHint sourceReference sources )
 ]
 
-{ #category : #accessing }
-DAPSource >> sourceCode [ 
-	"Answer the receiver's source code.
-	For now, cheat, if the debug server won't get it and we have access, load directly from the file."
+{ #category : #'ui' }
+DAPSource >> sourceCode [
+	"The text of this source, read once."
 
-	^ sourceCode ifNil: [ sourceCode := [ client sourceCodeFor: self ]
-		on: DAPBadResponse 
-		do: [ :ex | | fileReference |
-			fileReference := path asFileReference.
-			fileReference isReadable 
-				ifTrue: [ fileReference contents ]
-				ifFalse: [ 'N/A' ] ] ]
+	^ sourceCode ifNil: [ sourceCode := self readSourceCode ]
 ]
 
 { #category : #accessing }
@@ -270,4 +263,32 @@ DAPSource >> sources: anObject [
 
 	sources := anObject
 
+]
+
+{ #category : #'private' }
+DAPSource >> readSourceCode [
+	"Whoever the protocol says owns the text. A source reference is the
+	adapter's to resolve and only it can; a plain path is the client's to
+	read, and an adapter whose source is on disk may answer the source request
+	with nothing at all, which is what lldb-dap does. Asking it first and
+	caching the empty answer leaves the pane blank with the file sitting right
+	there."
+
+	(sourceReference isNil or: [ sourceReference = 0 ])
+		ifTrue: [ self sourceCodeFromFile ifNotEmpty: [ :text | ^ text ] ].
+	^ [ client sourceCodeFor: self ]
+		on: DAPBadResponse
+		do: [ :ex | self sourceCodeFromFile ]
+]
+
+{ #category : #'private' }
+DAPSource >> sourceCodeFromFile [
+	"The file this source names, when there is one to read."
+	| reference |
+
+	path ifNil: [ ^ '' ].
+	reference := path asFileReference.
+	^ (reference exists and: [ reference isReadable ])
+		ifTrue: [ reference contents ]
+		ifFalse: [ '' ]
 ]

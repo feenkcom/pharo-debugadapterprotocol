@@ -57,28 +57,36 @@ GtDAPDebuggerToolbar >> debuggerClient [
 	^ dapDebugElement debuggerClient
 ]
 
-{ #category : #initialization }
+{ #category : #'initialization' }
 GtDAPDebuggerToolbar >> initialize [
+	"Left to right: proceed, then the three ways to step forward in the order
+	they are usually reached for, then the reverse of the first of them, then
+	restart. Inspecting the debugger is not a debugging action, so it sits at
+	the end rather than in front of them."
 
 	super initialize.
 	self vFitContent.
-	restartFrameButton := self newRestartFrameButton.
 	resumeButton := self newResumeButton.
-	stepBackButton := self newStepBackButton.
+	stepOverButton := self newStepOverButton.
 	stepIntoButton := self newStepIntoButton.
 	stepOutButton := self newStepOutButton.
-	stepOverButton := self newStepOverButton.
-	self addChild: self newInspectButton.
-	self addChildren: { restartFrameButton. resumeButton. stepBackButton. stepIntoButton. stepOutButton. stepOverButton. }.
-
+	stepBackButton := self newStepBackButton.
+	restartFrameButton := self newRestartFrameButton.
+	self addChildren: {
+		resumeButton.
+		stepOverButton.
+		stepIntoButton.
+		stepOutButton.
+		stepBackButton.
+		restartFrameButton.
+		self newInspectButton }
 ]
 
 { #category : #'private - element creation' }
 GtDAPDebuggerToolbar >> newInspectButton [
-
 	^ BrButton new 
 		aptitude: BrGlamorousButtonWithIconAptitude;
-		margin: (BlInsets left: 5);
+		margin: (BlInsets left: 15);
 		label: 'Inspect the DAP Debugger';
 		icon: BrGlamorousVectorIcons emphasizedInspect;
 		action: [ :aButton | self inspect ]
@@ -150,16 +158,23 @@ GtDAPDebuggerToolbar >> newStepOverButton [
 		action: [ :aButton | dapDebugElement dapStepOver ]
 ]
 
-{ #category : #private }
-GtDAPDebuggerToolbar >> updateUI [ 
+{ #category : #'updating' }
+GtDAPDebuggerToolbar >> updateUI [
 	"Update the button state to reflect the current debugger state.
-	The buttons should only be active if the debugger is stopped and the top call frame is being displayed."
-	| actionsAllowed |
+	The buttons should only be active if the debugger is stopped and the top
+	call frame is being displayed, and only if the adapter says it can do the
+	thing: stepping backwards and restarting a frame are optional in the
+	protocol, and an adapter that does not offer them should not be offered
+	a live button for them."
+	| actionsAllowed capabilities |
 
 	actionsAllowed := dapDebugElement isDisplayingTopFrame.
-	restartFrameButton enabled: actionsAllowed.
+	capabilities := [ self debuggerClient capabilities ] on: Error do: [ :e | nil ].
+	restartFrameButton enabled: (actionsAllowed and: [ capabilities notNil
+		and: [ capabilities supportsRestartFrame = true ] ]).
+	stepBackButton enabled: (actionsAllowed and: [ capabilities notNil
+		and: [ capabilities supportsStepBack = true ] ]).
 	resumeButton enabled: actionsAllowed.
-	stepBackButton enabled: actionsAllowed.
 	stepIntoButton enabled: actionsAllowed.
 	stepOverButton enabled: actionsAllowed.
 	stepOutButton enabled: actionsAllowed.

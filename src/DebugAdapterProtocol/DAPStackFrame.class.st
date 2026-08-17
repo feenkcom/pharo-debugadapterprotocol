@@ -366,23 +366,50 @@ DAPStackFrame >> sourceCode [
 	^ self source sourceCode
 ]
 
-{ #category : #ui }
+{ #category : #'ui' }
 DAPStackFrame >> sourceText [
+	"Answer the receiver's source code, with the current form highlighted.
 
-	"Answer the receiver's source code, with the current line highlighted"
+	A frame that says where its form ends is taken at its word. One that
+	cannot — an adapter debugging compiled code reports positions in the C —
+	is asked about instead: a debugger that knows the language can find the
+	form a line begins, and a form is what a frame is about. Failing both, the
+	line is marked, which is at least never wrong about where it is."
 
-	| text indexes lineNumber sourceCode |
+	| text lineNumber sourceCode startIndexes endIndexes start stop range |
 	lineNumber := self line.
 	sourceCode := self sourceCode withInternalLineEndings.
 	text := sourceCode asRopedText.
 	lineNumber = 0 ifTrue: [ ^ text ].
-	indexes := sourceCode gtIndexOfLineNumber: lineNumber.
-	indexes ifNotNil: [ 
-		(text from: indexes key + self column - 1 to: indexes value) 
-			attribute: (BlTextHighlightAttribute paint:
-					 BrGlamorousColors debuggerTextHighlightColor)
-					beNotOverwritableByStyler ].
+	startIndexes := sourceCode gtIndexOfLineNumber: lineNumber.
+	startIndexes ifNil: [ ^ text ].
+	range := self highlightsWholeLine
+		ifTrue: [ self formRangeIn: sourceCode ]
+		ifFalse: [ nil ].
+	range
+		ifNotNil: [
+			start := range first.
+			stop := range last ]
+		ifNil: [
+			start := self highlightsWholeLine
+				ifTrue: [ startIndexes key ]
+				ifFalse: [ startIndexes key + self column - 1 ].
+			endIndexes := (self highlightsWholeLine not
+				and: [ self endLine notNil and: [ self endLine > 0 ] ])
+					ifTrue: [ sourceCode gtIndexOfLineNumber: self endLine ]
+					ifFalse: [ nil ].
+			stop := endIndexes
+				ifNil: [ startIndexes value ]
+				ifNotNil: [ self endColumn
+					ifNil: [ endIndexes value ]
+					ifNotNil: [ :aColumn | (endIndexes key + aColumn - 2) min: endIndexes value ] ] ].
+	(start between: 1 and: sourceCode size + 1) ifFalse: [ ^ text ].
+	stop := (stop max: start - 1) min: sourceCode size.
+	(text from: start to: stop)
+		attribute: (BlTextHighlightAttribute paint: BrGlamorousColors debuggerTextHighlightColor)
+			beNotOverwritableByStyler.
 	^ text
+
 ]
 
 { #category : #accessing }
@@ -412,4 +439,36 @@ DAPStackFrame >> variablesDictionary [
 			scopeDictionary at: variable name put: variable ] ].
 	^ dictionary 
 
+]
+
+{ #category : #'ui' }
+DAPStackFrame >> highlightsWholeLine [
+	"Whether a frame's column says anything about the source being shown.
+
+	An adapter debugging what a compiler produced reports the column of the
+	generated code, and the file on screen is the code it was generated from:
+	the number is real but it belongs to another text, and using it starts the
+	highlight in the middle of a form or past the end of the line. A debugger
+	that knows this says so, and the whole line is marked instead."
+
+	^ [ client notNil and: [
+		client debugger notNil and: [
+			(client debugger respondsTo: #framesCarryColumns)
+				and: [ client debugger framesCarryColumns not ] ] ] ]
+		on: Error
+		do: [ :e | false ]
+]
+
+{ #category : #'ui' }
+DAPStackFrame >> formRangeIn: aSourceString [
+	"Where the form this frame is at begins and ends, when the debugger can
+	work it out from the source."
+
+	^ [ (client notNil
+		and: [ client debugger notNil
+			and: [ client debugger respondsTo: #formRangeIn:line: ] ])
+		ifTrue: [ client debugger formRangeIn: aSourceString line: self line ]
+		ifFalse: [ nil ] ]
+		on: Error
+		do: [ :e | nil ]
 ]
