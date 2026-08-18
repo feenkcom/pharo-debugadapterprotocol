@@ -10,7 +10,13 @@ BaselineOfDebugAdapterProtocol >> baseline: spec [
 	spec
 		for: #common do: [
 			spec postLoadDoIt: #'postLoadSetup:'.
-			spec package: 'DebugAdapterProtocol' ]
+			spec
+				package: 'DebugAdapterProtocol';
+				package: 'DebugAdapterProtocol-Tests'
+					with: [ spec requires: 'DebugAdapterProtocol' ].
+			spec
+				group: 'default' with: #('DebugAdapterProtocol');
+				group: 'tests' with: #('DebugAdapterProtocol-Tests') ]
 ]
 
 { #category : 'post load' }
