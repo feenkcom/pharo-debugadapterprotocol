@@ -700,6 +700,10 @@ DAPClient >> place: aDictionary surroundsLine: aLine column: aColumn [
 	cursor sitting exactly at the end is outside."
 	| startLine startColumn endLine endColumn |
 
+	"A caller with no column to offer is pointing at the line, not into a form,
+	and no form on it surrounds the cursor. Columns count from one, so a zero
+	is the same statement in the protocol's own terms."
+	(aColumn isNil or: [ aColumn = 0 ]) ifTrue: [ ^ false ].
 	startLine := aDictionary at: 'line'.
 	startColumn := aDictionary at: 'column' ifAbsent: [ 1 ].
 	endLine := aDictionary at: 'endLine' ifAbsent: [ startLine ].
