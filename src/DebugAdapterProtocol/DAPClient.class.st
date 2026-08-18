@@ -11,7 +11,8 @@ Class {
 		'serverState',
 		'serverProcessDetailsEvent',
 		'comms',
-		'capabilities'
+		'capabilities',
+		'breakpointSpecs'
 	],
 	#category : #'DebugAdapterProtocol-Client'
 }
@@ -597,7 +598,8 @@ DAPClient >> removeBreakpointsInSource: aPath [
 	setBreakpoints is the whole truth about it and everything before is stale."
 
 	(self breakpointsInSource: aPath) do: [ :each |
-		breakpoints removeKey: each id ifAbsent: [ ] ]
+		breakpoints removeKey: each id ifAbsent: [ ] ].
+	self breakpointSpecs removeKey: aPath ifAbsent: [ ]
 ]
 
 { #category : #'actions' }
@@ -608,7 +610,7 @@ DAPClient >> setBreakpointsInSource: aDAPSource specs: anArray [
 
 	setBreakpointInSource:lines: is the same request without columns, from
 	before any back end could say which form on a line it stopped at."
-	| arguments request response |
+	| arguments request response confirmed |
 
 	arguments := DAPSetBreakpointsArguments new
 		source: aDAPSource;
@@ -617,9 +619,11 @@ DAPClient >> setBreakpointsInSource: aDAPSource specs: anArray [
 		sourceModified: false.
 	request := DAPSetBreakpointsRequest new arguments: arguments.
 	response := self sendMessageAndWait: request.
+	confirmed := response breakpoints ifNil: [ #() ].
 	self removeBreakpointsInSource: aDAPSource path.
-	(response breakpoints ifNil: [ #() ]) do: [ :aDictionary |
+	confirmed do: [ :aDictionary |
 		self registerBreakpoint: (DAPBreakpoint fromDictionary: aDictionary client: self) ].
+	self rememberSpecs: anArray resolvedFrom: confirmed inSource: aDAPSource path.
 	^ self breakpointsInSource: aDAPSource path
 ]
 
@@ -736,17 +740,62 @@ DAPClient >> toggleBreakpointInSource: aDAPSource line: aLine column: aColumn [
 	"Put a breakpoint on the form the cursor is in, or take away the one
 	already there. The protocol has a request for neither: both are the
 	file's whole list of breakpoints, sent again."
-	| place existing specs line column |
+	| place entries line column kept |
 
 	place := self breakpointPlaceIn: aDAPSource line: aLine column: aColumn.
 	place ifNil: [ ^ nil ].
 	line := place at: 'line'.
 	column := place at: 'column' ifAbsent: [ nil ].
-	existing := self breakpointsInSource: aDAPSource path.
-	specs := (existing reject: [ :each |
-			each line = line and: [ each column = column ] ])
-		collect: [ :each | self breakpointSpecFor: each ].
-	specs size = existing size ifTrue: [
-		specs := specs , { self specForLine: line column: column } ].
-	^ self setBreakpointsInSource: aDAPSource specs: specs
+	entries := self breakpointEntriesInSource: aDAPSource path.
+	kept := entries reject: [ :each | self entry: each isAt: line column: column ].
+	kept size = entries size ifTrue: [
+		kept := kept , { (self specForLine: line column: column) -> nil } ].
+	^ self setBreakpointsInSource: aDAPSource specs: (kept collect: [ :each | each key ])
+]
+
+{ #category : #'private' }
+DAPClient >> breakpointSpecs [
+	"The specs we last sent, per file. The registered breakpoints are what the
+	back end confirmed, which is a different thing as soon as it moves one."
+
+	^ breakpointSpecs ifNil: [ breakpointSpecs := Dictionary new ]
+]
+
+{ #category : #'private' }
+DAPClient >> breakpointEntriesInSource: aPath [
+	"What we asked for in one file, paired with the line it ended up on. A back
+	end may move a breakpoint to the next line that has code, so where a reader
+	pointed and where the breakpoint is are two questions, and toggling has to
+	answer both. Breakpoints set some other way are known only by where they
+	ended up."
+
+	^ self breakpointSpecs
+		at: aPath
+		ifAbsent: [ (self breakpointsInSource: aPath)
+			collect: [ :each | (self breakpointSpecFor: each) -> each line ] ]
+]
+
+{ #category : #'private' }
+DAPClient >> entry: anAssociation isAt: aLine column: aColumn [
+	"Whether this is the breakpoint a reader means by pointing at a place: the
+	one we asked for there, or the one the back end moved there."
+
+	| spec |
+	spec := anAssociation key.
+	^ ((spec at: 'line') = aLine
+		and: [ (spec at: 'column' ifAbsent: [ nil ]) = aColumn ])
+		or: [ anAssociation value = aLine ]
+]
+
+{ #category : #'private' }
+DAPClient >> rememberSpecs: anArray resolvedFrom: confirmed inSource: aPath [
+	"The response answers one breakpoint per spec, in the order they were sent,
+	so what we asked for can be paired with where it ended up."
+
+	self breakpointSpecs
+		at: aPath
+		put: (anArray withIndexCollect: [ :spec :index |
+			spec -> (index <= confirmed size
+				ifTrue: [ (confirmed at: index) at: 'line' ifAbsent: [ nil ] ]
+				ifFalse: [ nil ]) ])
 ]
