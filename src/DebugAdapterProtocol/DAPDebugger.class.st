@@ -21,11 +21,32 @@ DAPDebugger >> atThreadId: aNumber [
 	^ client atThreadId: aNumber
 ]
 
+{ #category : #actions }
+DAPDebugger >> breakpointLocationInSource: aDAPSource line: aLine [
+	"Where a breakpoint asked for on this line would land"
+
+	^ client breakpointLocationInSource: aDAPSource line: aLine
+]
+
+{ #category : #actions }
+DAPDebugger >> breakpointLocationsInSource: aDAPSource line: aLine [
+	"Every place on this line a breakpoint could stand"
+
+	^ client breakpointLocationsInSource: aDAPSource line: aLine
+]
+
 { #category : #accessing }
 DAPDebugger >> breakpoints [
 	"Answer the dictionary of known breakpoints"
 
 	^ client breakpoints
+]
+
+{ #category : #accessing }
+DAPDebugger >> breakpointsInSource: aPath [
+	"The breakpoints the server has confirmed in one file"
+
+	^ client breakpointsInSource: aPath
 ]
 
 { #category : #accessing }
@@ -224,4 +245,19 @@ DAPDebugger >> stoppedThread [
 	"Answer the thread in the stopped state, or nil"
 
 	^ client stoppedThread
+]
+
+{ #category : #actions }
+DAPDebugger >> toggleBreakpointInSource: aDAPSource line: aLine [
+	"Put a breakpoint where this line lands, or take away the one already there"
+
+	^ client toggleBreakpointInSource: aDAPSource line: aLine
+]
+
+{ #category : #actions }
+DAPDebugger >> toggleBreakpointInSource: aDAPSource line: aLine column: aColumn [
+	"Put a breakpoint on the form at this line and column, or take away the
+	one already there"
+
+	^ client toggleBreakpointInSource: aDAPSource line: aLine column: aColumn
 ]

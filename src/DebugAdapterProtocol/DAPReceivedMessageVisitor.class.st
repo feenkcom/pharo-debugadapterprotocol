@@ -34,6 +34,14 @@ DAPReceivedMessageVisitor >> visitBreakpointEvent: aDAPBreakpointEvent [
 ]
 
 { #category : #visiting }
+DAPReceivedMessageVisitor >> visitBreakpointLocationsResponse: anObject [
+	"The places are handled by the caller. Answer false to check the response
+	status, the same as every other response the caller waits for."
+
+	^ false
+]
+
+{ #category : #visiting }
 DAPReceivedMessageVisitor >> visitCapabilitiesEvent: aDAPCapabilitiesEvent [
 
 	client capabilities: aDAPCapabilitiesEvent capabilities.
@@ -75,6 +83,15 @@ DAPReceivedMessageVisitor >> visitDebugpyWaitingForServerEvent: anObject [
 	The IP address is assumed to be correct"
 
 	client serverState: #debugpyWaitingForServer.
+]
+
+{ #category : #visiting }
+DAPReceivedMessageVisitor >> visitDisconnectResponse: anObject [
+	"The result is handled by the caller, the same as every other response we
+	send and wait for. It was marked notYetTested because nothing disconnected
+	before."
+
+	^ false
 ]
 
 { #category : #visiting }

@@ -26,14 +26,19 @@ DAPObject class >> eventEnums [
 
 { #category : #'instance creation' }
 DAPObject class >> fromDictionary: aDictionary client: client [
-	| instance |
+	| instance selector |
 
 	aDictionary ifNil: [ ^ nil ].
 	instance := self new client: client.
 	aDictionary keysAndValuesDo: [ :key :value |
-		instance
-			perform: (key, ':') asSymbol
-			with: value ].
+		selector := (key copyWith: $:) asSymbol.
+		"An adapter may send keys we do not model: capabilities are an open bag
+		in the protocol, and adapters add vendor keys of their own. Performing
+		a setter for one raises inside the message queue processor, which then
+		stops processing every later message, so the session appears to hang
+		rather than to fail. Skipping the key keeps the session alive."
+		(instance respondsTo: selector)
+			ifTrue: [ instance perform: selector with: value ] ].
 	^ instance.
 ]
 
