@@ -14,7 +14,7 @@ Class {
 DAPStepBackRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
-	^ #(stepBack )
+	^ #('stepBack' )
 ]
 
 { #category : #'json - configuration' }

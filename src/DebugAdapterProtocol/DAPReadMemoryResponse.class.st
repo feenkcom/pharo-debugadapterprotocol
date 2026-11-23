@@ -32,7 +32,7 @@ Treated as a hex value if prefixed with '0x', or as a decimal value otherwise.
 	Auto-generated method"
 	| result |
 
-	result := self body at: #address ifAbsent: [ nil ].
+	result := self body at: 'address' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -43,7 +43,7 @@ Treated as a hex value if prefixed with '0x', or as a decimal value otherwise.
 	string
 	Auto-generated method"
 
-	self body at: #address put: anObject
+	self body at: 'address' put: anObject
 ]
 
 { #category : #accessing }
@@ -68,7 +68,7 @@ DAPReadMemoryResponse >> data [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #data ifAbsent: [ nil ].
+	result := self body at: 'data' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -78,7 +78,7 @@ DAPReadMemoryResponse >> data: anObject [
 	string
 	Auto-generated method"
 
-	self body at: #data put: anObject
+	self body at: 'data' put: anObject
 ]
 
 { #category : #accessing }
@@ -96,7 +96,7 @@ This can be used to determine the number of bytes that must be skipped before a 
 	Auto-generated method"
 	| result |
 
-	result := self body at: #unreadableBytes ifAbsent: [ nil ].
+	result := self body at: 'unreadableBytes' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -107,5 +107,5 @@ This can be used to determine the number of bytes that must be skipped before a 
 	integer
 	Auto-generated method"
 
-	self body at: #unreadableBytes put: anObject
+	self body at: 'unreadableBytes' put: anObject
 ]

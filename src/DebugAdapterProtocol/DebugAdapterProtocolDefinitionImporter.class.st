@@ -17,7 +17,7 @@ DebugAdapterProtocolDefinitionImporter >> addEnum: name definition: definition t
 	"If the current method defines enums, add a class selector"
 	| enums methodName source |
 
-	enums := definition at: #enum ifAbsent: [ ^ self ].
+	enums := definition at: 'enum' ifAbsent: [ ^ self ].
 	methodName := (name, 'Enums') asSymbol.
 	(overwrite not and: [ messageClass class includesSelector: methodName ]) ifTrue: [ ^ self ].
 	source := String streamContents: [ :stream |
@@ -28,7 +28,7 @@ DebugAdapterProtocolDefinitionImporter >> addEnum: name definition: definition t
 			tab; << '^ #('.
 		enums do: [ :enum |
 			stream
-				<< enum;
+				print: enum;
 				space ].
 		stream << ')' ].
 
@@ -68,7 +68,7 @@ DebugAdapterProtocolDefinitionImporter >> addMethod: name definition: definition
 	"Add the supplied method"
 	| getter setter methodComment type |
 
-	(definition includesKey: #'$ref') ifTrue: 
+	(definition includesKey: '$ref') ifTrue: 
 		[ type := classNamePrefix, ($/ split: (definition at: '$ref')) last ].
 	jsonDictionary at: name put: type.
 	methodComment := self methodCommentFromDefinition: definition.
@@ -83,7 +83,7 @@ DebugAdapterProtocolDefinitionImporter >> addMethod: name definition: definition
 		messageClass compile: setter.
 		(messageClass methodNamed: (name,':') asSymbol) protocol: 'accessing' ].
 
-	(definition at: #type ifAbsent: [ nil ]) = #object ifTrue:
+	(definition at: 'type' ifAbsent: [ nil ]) = 'object' ifTrue:
 		[ "The attribute is a dictionary, add getters and setters to the receiver's object"
 		self addObjectAccessorsFor: name definition: definition to: messageClass ].
 
@@ -102,7 +102,7 @@ DebugAdapterProtocolDefinitionImporter >> addObjectAccessorsFor: name definition
 
 	"If properties aren't present, do nothing.
 	There are #additionalProperties which are currently ignored."
-	(definition at: #properties ifAbsent: [ Dictionary new ]) keysAndValuesDo: [ :attribute :properties |
+	(definition at: 'properties' ifAbsent: [ Dictionary new ]) keysAndValuesDo: [ :attribute :properties |
 		self addObjectAccessorsFor: name attribute: attribute properties: properties to: messageClass ].
 ]
 
@@ -149,7 +149,7 @@ DebugAdapterProtocolDefinitionImporter >> defineMessage: message named: key [
 		In that case, the superclass MUST already exist"
 		^ self class environment at: className ].
 	classDictionary := message.
-	properties := classDictionary at: #properties ifAbsent: [ Dictionary new ].
+	properties := classDictionary at: 'properties' ifAbsent: [ Dictionary new ].
 	newClassResults := self getSuperclassOf: className message: message properties: properties classDictionary: classDictionary.
 	newClass := newClassResults first. 
 	classDictionary := newClassResults second. 
@@ -159,7 +159,7 @@ DebugAdapterProtocolDefinitionImporter >> defineMessage: message named: key [
 	self 
 		defineMethodsFrom: properties 
 		to: newClass 
-		required: (classDictionary at: #required ifAbsent: [ #() ])
+		required: (classDictionary at: 'required' ifAbsent: [ #() ])
 		jsonDictionary: jsonDictionary.
 	self defineVisitor: key in: newClass.
 	properties keysDo: [ :property |
@@ -197,7 +197,7 @@ DebugAdapterProtocolDefinitionImporter >> definePropertyNamesMethodFrom: propert
 	propertyNames := OrderedCollection new.
 	properties keysAndValuesDo: [ :key :value |
 		propertyNames add: key.
-		value at: #properties ifPresent:
+		value at: 'properties' ifPresent:
 			[ :subProperties |
 				subProperties keysDo: [ :subProperty |
 					propertyNames add: subProperty ] ] ].
@@ -223,10 +223,10 @@ DebugAdapterProtocolDefinitionImporter >> defineSuperclassFrom: classDictionary 
 
 	classDictionary size = 1 ifFalse:
 		[ self error: 'Expect a single entry for #allOf' ].
-	allOf := classDictionary at: #allOf.
+	allOf := classDictionary at: 'allOf'.
 	superClassName := ($/ split: (allOf first at: '$ref')) last.
 	superClass := self 
-			defineMessage: ((self protocolDictionary at: #definitions) at: superClassName ifAbsent: [ nil ]) 
+			defineMessage: ((self protocolDictionary at: 'definitions') at: superClassName ifAbsent: [ nil ]) 
 			named: superClassName.
 	^ superClass.
 ]
@@ -296,15 +296,15 @@ DebugAdapterProtocolDefinitionImporter >> getSuperclassOf: className message: me
 		[ self class environment at: className ]
 	ifFalse:
 		[ superClass := rootClass.
-		(classDictionary includesKey: #allOf) ifTrue: 
+		(classDictionary includesKey: 'allOf') ifTrue: 
 			[ superClass := self defineSuperclassFrom: classDictionary.
-			localClassDictionary := (localClassDictionary at: #allOf) second ].
+			localClassDictionary := (localClassDictionary at: 'allOf') second ].
 
-		localProperties := localClassDictionary at: #properties ifAbsent: [ Dictionary new ].
+		localProperties := localClassDictionary at: 'properties' ifAbsent: [ Dictionary new ].
 		existingInstanceVariables := Set new.
 		superClass withAllSuperclassesDo: [ :cls |
 			existingInstanceVariables addAll: cls instVarNames ].
-		instanceVariableNames := localProperties keys asSet difference: existingInstanceVariables.
+		instanceVariableNames := (localProperties keys collect: [ :each | each asSymbol ]) asSet difference: existingInstanceVariables.
 
 		"If overwriting, keep all existing instance variable names"
 		overwrite ifTrue:
@@ -315,7 +315,7 @@ DebugAdapterProtocolDefinitionImporter >> getSuperclassOf: className message: me
 			slots: instanceVariableNames sorted;
 			package: 'DebugAdapterProtocol-Protocol')
 			install
-			comment: (localClassDictionary at: #description);
+			comment: (localClassDictionary at: 'description');
 			yourself ].
 
 	^ { newClass. localClassDictionary. localProperties. }
@@ -341,14 +341,14 @@ DebugAdapterProtocolDefinitionImporter >> methodCommentFromDefinition: definitio
 		stream 
 			tab;
 			<< '"'.
-		(definition includesKey: #description) ifTrue:
+		(definition includesKey: 'description') ifTrue:
 			[ stream
-				<< (definition at: #description); cr; tab;
-				<< (definition at: #type ifAbsent: [ definition at: #'$ref' ]);
+				<< (definition at: 'description'); cr; tab;
+				<< (definition at: 'type' ifAbsent: [ definition at: '$ref' ]);
 				cr; tab ].
-		(definition includesKey: #enum) ifTrue:
-			[ enums := definition at: #enum.
-			enumDescriptions := definition at: #enumDescriptions 
+		(definition includesKey: 'enum') ifTrue:
+			[ enums := definition at: 'enum'.
+			enumDescriptions := definition at: 'enumDescriptions' 
 					ifAbsent: [ Array new: enums size withAll: '' ].
 			enums doWithIndex: [ :enum :index |
 				stream 
@@ -374,7 +374,7 @@ DebugAdapterProtocolDefinitionImporter >> methodGetterFromNamed: name definition
 			cr; tab;
 			<< '^ ';
 			<< name.
-		enum := definition at: #enum ifAbsent: [ #() ].
+		enum := definition at: 'enum' ifAbsent: [ #() ].
 		enum ifNotEmpty: 
 			[ stream 
 				<< ' ifNil: [ ''';
@@ -387,8 +387,8 @@ DebugAdapterProtocolDefinitionImporter >> methodGetterFromNamed: name definition
 DebugAdapterProtocolDefinitionImporter >> methodObjectGetterFor: name attribute: attribute properties: properties [
 	| enum refClass |
 
-	(properties includesKey: #'$ref') ifTrue: 
-		[ refClass := classNamePrefix, ($/ split: (properties at: #'$ref')) last. ].
+	(properties includesKey: '$ref') ifTrue: 
+		[ refClass := classNamePrefix, ($/ split: (properties at: '$ref')) last. ].
 	^ String streamContents: [ :stream |
 		stream
 			<< attribute; cr;
@@ -397,8 +397,8 @@ DebugAdapterProtocolDefinitionImporter >> methodObjectGetterFor: name attribute:
 			cr;
 			tab; << 'result := self ';
 				<< name;
-				<< ' at: #';
-				<< attribute;
+				<< ' at: ';
+				print: attribute;
 				<< ' ifAbsent: [ nil ].'; cr.
 		refClass ifNotNil:
 			[ stream
@@ -406,7 +406,7 @@ DebugAdapterProtocolDefinitionImporter >> methodObjectGetterFor: name attribute:
 				tab; tab; << '[ result := ';
 					<< refClass;
 					<< ' fromDictionary: result client: client ].'; cr ].
-		enum := properties at: #enum ifAbsent: [ #() ].
+		enum := properties at: 'enum' ifAbsent: [ #() ].
 		enum ifNotEmpty: 
 			[ stream 
 				tab; << 'result ifNil:'; cr;
@@ -431,8 +431,8 @@ DebugAdapterProtocolDefinitionImporter >> methodObjectSetterFor: name attribute:
 			cr; tab;
 			<< 'self ';
 			<< name;
-			<< ' at: #';
-			<< attribute;
+			<< ' at: ';
+			print: attribute;
 			<< ' put: anObject' ].
 
 ]
@@ -447,8 +447,8 @@ DebugAdapterProtocolDefinitionImporter >> methodSetterFromNamed: name definition
 			<< ': anObject'; cr;
 			<< methodComment; cr;
 			cr.
-		(definition includesKey: #'$ref' ) ifTrue: 
-			[ refClass := classNamePrefix, ($/ split: (definition at: #'$ref')) last.
+		(definition includesKey: '$ref' ) ifTrue: 
+			[ refClass := classNamePrefix, ($/ split: (definition at: '$ref')) last.
 			stream
 				tab; << name;
 					<< ' := anObject isDictionary ifTrue:'; cr;
@@ -525,7 +525,7 @@ DebugAdapterProtocolDefinitionImporter >> run [
 	If a class already exists, use the existing definition"
 	| definitions |
 
-	definitions := self protocolDictionary at: #definitions.
+	definitions := self protocolDictionary at: 'definitions'.
 	definitions keysAndValuesDo: [ :key :value | self defineMessage: value named: key ].
 	self defineVisitorTrait.
 ]

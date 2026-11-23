@@ -13,7 +13,7 @@ Class {
 DAPDisassembleRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
-	^ #(disassemble )
+	^ #('disassemble' )
 ]
 
 { #category : #'json - configuration' }

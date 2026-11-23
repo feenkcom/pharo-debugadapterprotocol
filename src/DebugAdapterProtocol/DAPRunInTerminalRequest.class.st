@@ -14,7 +14,7 @@ Class {
 DAPRunInTerminalRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
-	^ #(runInTerminal )
+	^ #('runInTerminal' )
 ]
 
 { #category : #'json - configuration' }

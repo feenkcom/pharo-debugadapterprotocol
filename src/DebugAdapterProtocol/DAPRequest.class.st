@@ -28,7 +28,7 @@ DAPRequest class >> dapJsonMappingFor: aNeoJSONMapper [
 DAPRequest class >> typeEnums [
 	"Enumerated types for the associated attribute"
 
-	^ #(request )
+	^ #('request' )
 ]
 
 { #category : #visiting }

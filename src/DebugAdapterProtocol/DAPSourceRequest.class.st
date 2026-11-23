@@ -12,7 +12,7 @@ Class {
 DAPSourceRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
-	^ #(source )
+	^ #('source' )
 ]
 
 { #category : #'json - configuration' }

@@ -53,7 +53,7 @@ DAPGotoTargetsResponse >> targets [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #targets ifAbsent: [ nil ].
+	result := self body at: 'targets' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -63,5 +63,5 @@ DAPGotoTargetsResponse >> targets: anObject [
 	array
 	Auto-generated method"
 
-	self body at: #targets put: anObject
+	self body at: 'targets' put: anObject
 ]

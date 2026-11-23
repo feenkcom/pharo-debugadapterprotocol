@@ -23,7 +23,7 @@ DAPBreakpointEvent class >> dapJsonMappingFor: aNeoJSONMapper [
 DAPBreakpointEvent class >> eventEnums [
 	"Enumerated types for the associated attribute"
 
-	^ #(breakpoint )
+	^ #('breakpoint' )
 ]
 
 { #category : #visiting }
@@ -54,7 +54,7 @@ DAPBreakpointEvent >> breakpoint [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #breakpoint ifAbsent: [ nil ].
+	result := self body at: 'breakpoint' ifAbsent: [ nil ].
 	result isDictionary ifTrue:
 		[ result := DAPBreakpoint fromDictionary: result client: client ].
 	^ result
@@ -66,7 +66,7 @@ DAPBreakpointEvent >> breakpoint: anObject [
 	#/definitions/Breakpoint
 	Auto-generated method"
 
-	self body at: #breakpoint put: anObject
+	self body at: 'breakpoint' put: anObject
 ]
 
 { #category : #accessing }
@@ -100,7 +100,7 @@ DAPBreakpointEvent >> reason [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #reason ifAbsent: [ nil ].
+	result := self body at: 'reason' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -110,5 +110,5 @@ DAPBreakpointEvent >> reason: anObject [
 	string
 	Auto-generated method"
 
-	self body at: #reason put: anObject
+	self body at: 'reason' put: anObject
 ]

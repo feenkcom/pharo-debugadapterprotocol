@@ -71,7 +71,7 @@ DAPScopesResponse >> scopes [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #scopes ifAbsent: [ nil ].
+	result := self body at: 'scopes' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -81,5 +81,5 @@ DAPScopesResponse >> scopes: anObject [
 	array
 	Auto-generated method"
 
-	self body at: #scopes put: anObject
+	self body at: 'scopes' put: anObject
 ]

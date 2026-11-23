@@ -13,7 +13,7 @@ Class {
 DAPAttachRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
-	^ #(attach )
+	^ #('attach' )
 ]
 
 { #category : #'json - configuration' }

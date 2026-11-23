@@ -12,7 +12,7 @@ Class {
 DAPSetVariableRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
-	^ #(setVariable )
+	^ #('setVariable' )
 ]
 
 { #category : #'json - configuration' }

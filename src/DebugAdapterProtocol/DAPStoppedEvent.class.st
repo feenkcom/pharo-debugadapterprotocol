@@ -24,7 +24,7 @@ DAPStoppedEvent class >> dapJsonMappingFor: aNeoJSONMapper [
 DAPStoppedEvent class >> eventEnums [
 	"Enumerated types for the associated attribute"
 
-	^ #(stopped )
+	^ #('stopped' )
 ]
 
 { #category : #visiting }
@@ -42,7 +42,7 @@ DAPStoppedEvent >> allThreadsStopped [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #allThreadsStopped ifAbsent: [ nil ].
+	result := self body at: 'allThreadsStopped' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -54,7 +54,7 @@ DAPStoppedEvent >> allThreadsStopped: anObject [
 	boolean
 	Auto-generated method"
 
-	self body at: #allThreadsStopped put: anObject
+	self body at: 'allThreadsStopped' put: anObject
 ]
 
 { #category : #accessing }
@@ -79,7 +79,7 @@ DAPStoppedEvent >> description [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #description ifAbsent: [ nil ].
+	result := self body at: 'description' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -89,7 +89,7 @@ DAPStoppedEvent >> description: anObject [
 	string
 	Auto-generated method"
 
-	self body at: #description put: anObject
+	self body at: 'description' put: anObject
 ]
 
 { #category : #accessing }
@@ -116,7 +116,7 @@ DAPStoppedEvent >> preserveFocusHint [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #preserveFocusHint ifAbsent: [ nil ].
+	result := self body at: 'preserveFocusHint' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -126,7 +126,7 @@ DAPStoppedEvent >> preserveFocusHint: anObject [
 	boolean
 	Auto-generated method"
 
-	self body at: #preserveFocusHint put: anObject
+	self body at: 'preserveFocusHint' put: anObject
 ]
 
 { #category : #accessing }
@@ -144,7 +144,7 @@ For backward compatibility this string is shown in the UI if the 'description' a
 	Auto-generated method"
 	| result |
 
-	result := self body at: #reason ifAbsent: [ nil ].
+	result := self body at: 'reason' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -155,7 +155,7 @@ For backward compatibility this string is shown in the UI if the 'description' a
 	string
 	Auto-generated method"
 
-	self body at: #reason put: anObject
+	self body at: 'reason' put: anObject
 ]
 
 { #category : #accessing }
@@ -165,7 +165,7 @@ DAPStoppedEvent >> text [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #text ifAbsent: [ nil ].
+	result := self body at: 'text' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -175,7 +175,7 @@ DAPStoppedEvent >> text: anObject [
 	string
 	Auto-generated method"
 
-	self body at: #text put: anObject
+	self body at: 'text' put: anObject
 ]
 
 { #category : #accessing }
@@ -185,7 +185,7 @@ DAPStoppedEvent >> threadId [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #threadId ifAbsent: [ nil ].
+	result := self body at: 'threadId' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -195,5 +195,5 @@ DAPStoppedEvent >> threadId: anObject [
 	integer
 	Auto-generated method"
 
-	self body at: #threadId put: anObject
+	self body at: 'threadId' put: anObject
 ]

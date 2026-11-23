@@ -47,7 +47,7 @@ DAPStackFrame class >> dapJsonMappingFor: aNeoJSONMapper [
 DAPStackFrame class >> presentationHintEnums [
 	"Enumerated types for the associated attribute"
 
-	^ #(normal label subtle )
+	^ #('normal' 'label' 'subtle' )
 ]
 
 { #category : #visiting }

@@ -48,7 +48,7 @@ The value should be less than or equal to 2147483647 (2^31-1).
 	Auto-generated method"
 	| result |
 
-	result := self body at: #indexedVariables ifAbsent: [ nil ].
+	result := self body at: 'indexedVariables' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -60,7 +60,7 @@ The value should be less than or equal to 2147483647 (2^31-1).
 	integer
 	Auto-generated method"
 
-	self body at: #indexedVariables put: anObject
+	self body at: 'indexedVariables' put: anObject
 ]
 
 { #category : #accessing }
@@ -72,7 +72,7 @@ The value should be less than or equal to 2147483647 (2^31-1).
 	Auto-generated method"
 	| result |
 
-	result := self body at: #namedVariables ifAbsent: [ nil ].
+	result := self body at: 'namedVariables' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -84,7 +84,7 @@ The value should be less than or equal to 2147483647 (2^31-1).
 	integer
 	Auto-generated method"
 
-	self body at: #namedVariables put: anObject
+	self body at: 'namedVariables' put: anObject
 ]
 
 { #category : #accessing }
@@ -94,7 +94,7 @@ DAPSetExpressionResponse >> presentationHint [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #presentationHint ifAbsent: [ nil ].
+	result := self body at: 'presentationHint' ifAbsent: [ nil ].
 	result isDictionary ifTrue:
 		[ result := DAPVariablePresentationHint fromDictionary: result client: client ].
 	^ result
@@ -106,7 +106,7 @@ DAPSetExpressionResponse >> presentationHint: anObject [
 	#/definitions/VariablePresentationHint
 	Auto-generated method"
 
-	self body at: #presentationHint put: anObject
+	self body at: 'presentationHint' put: anObject
 ]
 
 { #category : #accessing }
@@ -124,7 +124,7 @@ This attribute should only be returned by a debug adapter if the client has pass
 	Auto-generated method"
 	| result |
 
-	result := self body at: #type ifAbsent: [ nil ].
+	result := self body at: 'type' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -135,7 +135,7 @@ This attribute should only be returned by a debug adapter if the client has pass
 	string
 	Auto-generated method"
 
-	self body at: #type put: anObject
+	self body at: 'type' put: anObject
 ]
 
 { #category : #accessing }
@@ -145,7 +145,7 @@ DAPSetExpressionResponse >> value [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #value ifAbsent: [ nil ].
+	result := self body at: 'value' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -155,7 +155,7 @@ DAPSetExpressionResponse >> value: anObject [
 	string
 	Auto-generated method"
 
-	self body at: #value put: anObject
+	self body at: 'value' put: anObject
 ]
 
 { #category : #accessing }
@@ -166,7 +166,7 @@ The value should be less than or equal to 2147483647 (2^31-1).
 	Auto-generated method"
 	| result |
 
-	result := self body at: #variablesReference ifAbsent: [ nil ].
+	result := self body at: 'variablesReference' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -177,5 +177,5 @@ The value should be less than or equal to 2147483647 (2^31-1).
 	integer
 	Auto-generated method"
 
-	self body at: #variablesReference put: anObject
+	self body at: 'variablesReference' put: anObject
 ]

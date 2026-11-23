@@ -16,7 +16,7 @@ Class {
 DAPDisconnectRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
-	^ #(disconnect )
+	^ #('disconnect' )
 ]
 
 { #category : #'json - configuration' }

@@ -13,7 +13,7 @@ Class {
 DAPRestartRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
-	^ #(restart )
+	^ #('restart' )
 ]
 
 { #category : #'json - configuration' }

@@ -23,7 +23,7 @@ DAPExitedEvent class >> dapJsonMappingFor: aNeoJSONMapper [
 DAPExitedEvent class >> eventEnums [
 	"Enumerated types for the associated attribute"
 
-	^ #(exited )
+	^ #('exited' )
 ]
 
 { #category : #visiting }
@@ -71,7 +71,7 @@ DAPExitedEvent >> exitCode [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #exitCode ifAbsent: [ nil ].
+	result := self body at: 'exitCode' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -81,7 +81,7 @@ DAPExitedEvent >> exitCode: anObject [
 	integer
 	Auto-generated method"
 
-	self body at: #exitCode put: anObject
+	self body at: 'exitCode' put: anObject
 ]
 
 { #category : #accessing }

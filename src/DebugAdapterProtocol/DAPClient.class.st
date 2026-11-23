@@ -375,7 +375,7 @@ DAPClient >> processMessage: aByteArray [
 	processors do: [ :processor |
 		handled := handled | (processor processMessage: message) ].
 	"If the response hasn't been handled, check the status and fork any errors"
-	(handled not and: [ message type = #response ]) ifTrue: 
+	(handled not and: [ message type = 'response' ]) ifTrue: 
 		[ [ self checkResponse: message ]
 			on: Error fork: [ :ex | ex pass ] ].
 ]

@@ -13,7 +13,7 @@ Class {
 DAPLaunchRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
-	^ #(launch )
+	^ #('launch' )
 ]
 
 { #category : #'json - configuration' }

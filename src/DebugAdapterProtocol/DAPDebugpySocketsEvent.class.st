@@ -8,7 +8,7 @@ Class {
 DAPDebugpySocketsEvent class >> eventEnums [
 	"Enumerated types for the associated attribute"
 
-	^ #(debugpySockets)
+	^ #('debugpySockets' )
 ]
 
 { #category : #visiting }
@@ -26,5 +26,5 @@ DAPDebugpySocketsEvent >> propertyNames [
 
 { #category : #accessing }
 DAPDebugpySocketsEvent >> sockets [
-	^ self body at: #sockets
+	^ self body at: 'sockets'
 ]

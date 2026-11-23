@@ -23,7 +23,7 @@ DAPModuleEvent class >> dapJsonMappingFor: aNeoJSONMapper [
 DAPModuleEvent class >> eventEnums [
 	"Enumerated types for the associated attribute"
 
-	^ #(module )
+	^ #('module' )
 ]
 
 { #category : #visiting }
@@ -71,7 +71,7 @@ DAPModuleEvent >> module [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #module ifAbsent: [ nil ].
+	result := self body at: 'module' ifAbsent: [ nil ].
 	result isDictionary ifTrue:
 		[ result := DAPModule fromDictionary: result client: client ].
 	^ result
@@ -83,7 +83,7 @@ DAPModuleEvent >> module: anObject [
 	#/definitions/Module
 	Auto-generated method"
 
-	self body at: #module put: anObject
+	self body at: 'module' put: anObject
 ]
 
 { #category : #printing }
@@ -117,7 +117,7 @@ DAPModuleEvent >> reason [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #reason ifAbsent: [ nil ].
+	result := self body at: 'reason' ifAbsent: [ nil ].
 	result ifNil:
 		[ result := 'new' ].
 	^ result
@@ -132,5 +132,5 @@ DAPModuleEvent >> reason: anObject [
 	removed: 
 	Auto-generated method"
 
-	self body at: #reason put: anObject
+	self body at: 'reason' put: anObject
 ]

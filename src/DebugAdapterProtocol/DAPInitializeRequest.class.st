@@ -16,7 +16,7 @@ Class {
 DAPInitializeRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
-	^ #(initialize )
+	^ #('initialize' )
 ]
 
 { #category : #'json - configuration' }

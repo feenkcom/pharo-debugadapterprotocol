@@ -25,7 +25,7 @@ DAPProgressUpdateEvent class >> dapJsonMappingFor: aNeoJSONMapper [
 DAPProgressUpdateEvent class >> eventEnums [
 	"Enumerated types for the associated attribute"
 
-	^ #(progressUpdate )
+	^ #('progressUpdate' )
 ]
 
 { #category : #visiting }
@@ -73,7 +73,7 @@ DAPProgressUpdateEvent >> message [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #message ifAbsent: [ nil ].
+	result := self body at: 'message' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -83,7 +83,7 @@ DAPProgressUpdateEvent >> message: anObject [
 	string
 	Auto-generated method"
 
-	self body at: #message put: anObject
+	self body at: 'message' put: anObject
 ]
 
 { #category : #accessing }
@@ -93,7 +93,7 @@ DAPProgressUpdateEvent >> percentage [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #percentage ifAbsent: [ nil ].
+	result := self body at: 'percentage' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -103,7 +103,7 @@ DAPProgressUpdateEvent >> percentage: anObject [
 	number
 	Auto-generated method"
 
-	self body at: #percentage put: anObject
+	self body at: 'percentage' put: anObject
 ]
 
 { #category : #accessing }
@@ -113,7 +113,7 @@ DAPProgressUpdateEvent >> progressId [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #progressId ifAbsent: [ nil ].
+	result := self body at: 'progressId' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -123,7 +123,7 @@ DAPProgressUpdateEvent >> progressId: anObject [
 	string
 	Auto-generated method"
 
-	self body at: #progressId put: anObject
+	self body at: 'progressId' put: anObject
 ]
 
 { #category : #accessing }

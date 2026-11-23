@@ -12,7 +12,7 @@ Class {
 DAPScopesRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
-	^ #(scopes )
+	^ #('scopes' )
 ]
 
 { #category : #'json - configuration' }

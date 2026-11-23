@@ -53,7 +53,7 @@ DAPThreadsResponse >> threads [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #threads ifAbsent: [ nil ].
+	result := self body at: 'threads' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -63,5 +63,5 @@ DAPThreadsResponse >> threads: anObject [
 	array
 	Auto-generated method"
 
-	self body at: #threads put: anObject
+	self body at: 'threads' put: anObject
 ]

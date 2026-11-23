@@ -32,7 +32,7 @@ If this attribute is missing a value of 'true' is assumed for backward compatibi
 	Auto-generated method"
 	| result |
 
-	result := self body at: #allThreadsContinued ifAbsent: [ nil ].
+	result := self body at: 'allThreadsContinued' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -43,7 +43,7 @@ If this attribute is missing a value of 'true' is assumed for backward compatibi
 	boolean
 	Auto-generated method"
 
-	self body at: #allThreadsContinued put: anObject
+	self body at: 'allThreadsContinued' put: anObject
 ]
 
 { #category : #accessing }

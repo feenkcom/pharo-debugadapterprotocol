@@ -46,7 +46,7 @@ DAPDisassembleResponse >> instructions [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #instructions ifAbsent: [ nil ].
+	result := self body at: 'instructions' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -56,7 +56,7 @@ DAPDisassembleResponse >> instructions: anObject [
 	array
 	Auto-generated method"
 
-	self body at: #instructions put: anObject
+	self body at: 'instructions' put: anObject
 ]
 
 { #category : #accessing }

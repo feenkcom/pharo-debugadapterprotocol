@@ -173,7 +173,7 @@ The client can use this optional information to present the children in a paged 
 DAPVariable >> pharoValue [
 	"Answer the receiver's value converted to the equivalent Pharo object"
 
-	self type = #int ifTrue: [ ^ self value asNumber ].
+	self type = 'int' ifTrue: [ ^ self value asNumber ].
 	^ self value
 ]
 

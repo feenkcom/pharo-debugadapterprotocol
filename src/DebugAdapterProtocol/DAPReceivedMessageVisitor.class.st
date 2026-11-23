@@ -144,11 +144,11 @@ DAPReceivedMessageVisitor >> visitOutputEvent: aDAPOutputEvent [
 	aDAPOutputEvent variablesReference ifNotNil: [ 
 		self error: 'What is the variablesReference for?' ].
 
-	aDAPOutputEvent category = #stdout ifTrue: [ 
+	aDAPOutputEvent category = 'stdout' ifTrue: [ 
 		client stdoutNextPutAll:
 			aDAPOutputEvent output withInternalLineEndings.
 		^ false ].
-	aDAPOutputEvent category = #stderr ifTrue: [ 
+	aDAPOutputEvent category = 'stderr' ifTrue: [ 
 		client stderrNextPutAll:
 			(aDAPOutputEvent output copyReplaceAll: String lf with: String cr).
 		^ false ].
@@ -262,9 +262,10 @@ DAPReceivedMessageVisitor >> visitTerminatedEvent: anObject [
 
 { #category : #visiting }
 DAPReceivedMessageVisitor >> visitThreadEvent: aDAPThreadEvent [
+	"The adapter sends the reason as a String ('started', 'exited'); thread states are Symbols (#stopped, #exited)"
 
 	(client atThreadId: aDAPThreadEvent threadId) 
-		state: aDAPThreadEvent reason;
+		state: (aDAPThreadEvent reason ifNotNil: [ :aReason | aReason asSymbol ]);
 		latestEvent: aDAPThreadEvent.
 	^ true
 ]
@@ -273,7 +274,7 @@ DAPReceivedMessageVisitor >> visitThreadEvent: aDAPThreadEvent [
 DAPReceivedMessageVisitor >> visitThreadsResponse: aDAPThreadsResponse [
 
 	aDAPThreadsResponse threads do: [ :thread |
-		(client atThreadId: (thread at: #id)) name: (thread at: #name) ].
+		(client atThreadId: (thread at: 'id')) name: (thread at: 'name') ].
 	^ true
 ]
 

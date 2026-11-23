@@ -26,7 +26,7 @@ DAPProgressStartEvent class >> dapJsonMappingFor: aNeoJSONMapper [
 DAPProgressStartEvent class >> eventEnums [
 	"Enumerated types for the associated attribute"
 
-	^ #(progressStart )
+	^ #('progressStart' )
 ]
 
 { #category : #visiting }
@@ -59,7 +59,7 @@ Clients that don't support cancellation are allowed to ignore the setting.
 	Auto-generated method"
 	| result |
 
-	result := self body at: #cancellable ifAbsent: [ nil ].
+	result := self body at: 'cancellable' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -71,7 +71,7 @@ Clients that don't support cancellation are allowed to ignore the setting.
 	boolean
 	Auto-generated method"
 
-	self body at: #cancellable put: anObject
+	self body at: 'cancellable' put: anObject
 ]
 
 { #category : #accessing }
@@ -98,7 +98,7 @@ DAPProgressStartEvent >> message [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #message ifAbsent: [ nil ].
+	result := self body at: 'message' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -108,7 +108,7 @@ DAPProgressStartEvent >> message: anObject [
 	string
 	Auto-generated method"
 
-	self body at: #message put: anObject
+	self body at: 'message' put: anObject
 ]
 
 { #category : #accessing }
@@ -118,7 +118,7 @@ DAPProgressStartEvent >> percentage [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #percentage ifAbsent: [ nil ].
+	result := self body at: 'percentage' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -128,7 +128,7 @@ DAPProgressStartEvent >> percentage: anObject [
 	number
 	Auto-generated method"
 
-	self body at: #percentage put: anObject
+	self body at: 'percentage' put: anObject
 ]
 
 { #category : #accessing }
@@ -139,7 +139,7 @@ IDs must be unique within a debug session.
 	Auto-generated method"
 	| result |
 
-	result := self body at: #progressId ifAbsent: [ nil ].
+	result := self body at: 'progressId' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -150,7 +150,7 @@ IDs must be unique within a debug session.
 	string
 	Auto-generated method"
 
-	self body at: #progressId put: anObject
+	self body at: 'progressId' put: anObject
 ]
 
 { #category : #accessing }
@@ -169,7 +169,7 @@ If the request ID is omitted, the progress report is assumed to be related to so
 	Auto-generated method"
 	| result |
 
-	result := self body at: #requestId ifAbsent: [ nil ].
+	result := self body at: 'requestId' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -181,7 +181,7 @@ If the request ID is omitted, the progress report is assumed to be related to so
 	integer
 	Auto-generated method"
 
-	self body at: #requestId put: anObject
+	self body at: 'requestId' put: anObject
 ]
 
 { #category : #accessing }
@@ -191,7 +191,7 @@ DAPProgressStartEvent >> title [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #title ifAbsent: [ nil ].
+	result := self body at: 'title' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -201,5 +201,5 @@ DAPProgressStartEvent >> title: anObject [
 	string
 	Auto-generated method"
 
-	self body at: #title put: anObject
+	self body at: 'title' put: anObject
 ]

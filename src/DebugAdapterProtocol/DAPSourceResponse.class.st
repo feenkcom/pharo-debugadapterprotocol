@@ -46,7 +46,7 @@ DAPSourceResponse >> content [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #content ifAbsent: [ nil ].
+	result := self body at: 'content' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -56,7 +56,7 @@ DAPSourceResponse >> content: anObject [
 	string
 	Auto-generated method"
 
-	self body at: #content put: anObject
+	self body at: 'content' put: anObject
 ]
 
 { #category : #accessing }
@@ -66,7 +66,7 @@ DAPSourceResponse >> mimeType [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #mimeType ifAbsent: [ nil ].
+	result := self body at: 'mimeType' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -76,7 +76,7 @@ DAPSourceResponse >> mimeType: anObject [
 	string
 	Auto-generated method"
 
-	self body at: #mimeType put: anObject
+	self body at: 'mimeType' put: anObject
 ]
 
 { #category : #accessing }

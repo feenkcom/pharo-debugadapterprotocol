@@ -23,7 +23,7 @@ DAPTerminatedEvent class >> dapJsonMappingFor: aNeoJSONMapper [
 DAPTerminatedEvent class >> eventEnums [
 	"Enumerated types for the associated attribute"
 
-	^ #(terminated )
+	^ #('terminated' )
 ]
 
 { #category : #visiting }
@@ -79,7 +79,7 @@ The value is not interpreted by the client and passed unmodified as an attribute
 	Auto-generated method"
 	| result |
 
-	result := self body at: #restart ifAbsent: [ nil ].
+	result := self body at: 'restart' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -90,5 +90,5 @@ The value is not interpreted by the client and passed unmodified as an attribute
 	arraybooleanintegernullnumberobjectstring
 	Auto-generated method"
 
-	self body at: #restart put: anObject
+	self body at: 'restart' put: anObject
 ]

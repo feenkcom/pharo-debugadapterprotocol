@@ -23,7 +23,7 @@ DAPLoadedSourceEvent class >> dapJsonMappingFor: aNeoJSONMapper [
 DAPLoadedSourceEvent class >> eventEnums [
 	"Enumerated types for the associated attribute"
 
-	^ #(loadedSource )
+	^ #('loadedSource' )
 ]
 
 { #category : #visiting }
@@ -81,7 +81,7 @@ DAPLoadedSourceEvent >> reason [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #reason ifAbsent: [ nil ].
+	result := self body at: 'reason' ifAbsent: [ nil ].
 	result ifNil:
 		[ result := 'new' ].
 	^ result
@@ -96,7 +96,7 @@ DAPLoadedSourceEvent >> reason: anObject [
 	removed: 
 	Auto-generated method"
 
-	self body at: #reason put: anObject
+	self body at: 'reason' put: anObject
 ]
 
 { #category : #accessing }
@@ -106,7 +106,7 @@ DAPLoadedSourceEvent >> source [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #source ifAbsent: [ nil ].
+	result := self body at: 'source' ifAbsent: [ nil ].
 	result isDictionary ifTrue:
 		[ result := DAPSource fromDictionary: result client: client ].
 	^ result
@@ -118,5 +118,5 @@ DAPLoadedSourceEvent >> source: anObject [
 	#/definitions/Source
 	Auto-generated method"
 
-	self body at: #source put: anObject
+	self body at: 'source' put: anObject
 ]

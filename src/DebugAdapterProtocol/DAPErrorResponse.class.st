@@ -46,7 +46,7 @@ DAPErrorResponse >> error [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #error ifAbsent: [ nil ].
+	result := self body at: 'error' ifAbsent: [ nil ].
 	result isDictionary ifTrue:
 		[ result := DAPMessage fromDictionary: result client: client ].
 	^ result
@@ -58,7 +58,7 @@ DAPErrorResponse >> error: anObject [
 	#/definitions/Message
 	Auto-generated method"
 
-	self body at: #error put: anObject
+	self body at: 'error' put: anObject
 ]
 
 { #category : #accessing }

@@ -13,7 +13,7 @@ Class {
 DAPBreakpointLocationsRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
-	^ #(breakpointLocations )
+	^ #('breakpointLocations' )
 ]
 
 { #category : #'json - configuration' }

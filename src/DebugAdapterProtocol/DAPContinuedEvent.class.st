@@ -25,7 +25,7 @@ DAPContinuedEvent class >> dapJsonMappingFor: aNeoJSONMapper [
 DAPContinuedEvent class >> eventEnums [
 	"Enumerated types for the associated attribute"
 
-	^ #(continued )
+	^ #('continued' )
 ]
 
 { #category : #visiting }
@@ -41,7 +41,7 @@ DAPContinuedEvent >> allThreadsContinued [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #allThreadsContinued ifAbsent: [ nil ].
+	result := self body at: 'allThreadsContinued' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -51,7 +51,7 @@ DAPContinuedEvent >> allThreadsContinued: anObject [
 	boolean
 	Auto-generated method"
 
-	self body at: #allThreadsContinued put: anObject
+	self body at: 'allThreadsContinued' put: anObject
 ]
 
 { #category : #accessing }
@@ -100,7 +100,7 @@ DAPContinuedEvent >> threadId [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #threadId ifAbsent: [ nil ].
+	result := self body at: 'threadId' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -110,5 +110,5 @@ DAPContinuedEvent >> threadId: anObject [
 	integer
 	Auto-generated method"
 
-	self body at: #threadId put: anObject
+	self body at: 'threadId' put: anObject
 ]

@@ -23,7 +23,7 @@ DAPDebugpyWaitingForServerEvent class >> dapJsonMappingFor: aNeoJSONMapper [
 DAPDebugpyWaitingForServerEvent class >> eventEnums [
 	"Enumerated types for the associated attribute"
 
-	^ #(debugpyWaitingForServer )
+	^ #('debugpyWaitingForServer' )
 ]
 
 { #category : #visiting }

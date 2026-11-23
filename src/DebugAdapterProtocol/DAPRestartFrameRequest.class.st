@@ -14,7 +14,7 @@ Class {
 DAPRestartFrameRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
-	^ #(restartFrame )
+	^ #('restartFrame' )
 ]
 
 { #category : #'json - configuration' }

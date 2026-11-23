@@ -54,7 +54,7 @@ This means that there is no location information available.
 	Auto-generated method"
 	| result |
 
-	result := self body at: #stackFrames ifAbsent: [ nil ].
+	result := self body at: 'stackFrames' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -65,7 +65,7 @@ This means that there is no location information available.
 	array
 	Auto-generated method"
 
-	self body at: #stackFrames put: anObject
+	self body at: 'stackFrames' put: anObject
 ]
 
 { #category : #accessing }
@@ -75,7 +75,7 @@ DAPStackTraceResponse >> totalFrames [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #totalFrames ifAbsent: [ nil ].
+	result := self body at: 'totalFrames' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -85,5 +85,5 @@ DAPStackTraceResponse >> totalFrames: anObject [
 	integer
 	Auto-generated method"
 
-	self body at: #totalFrames put: anObject
+	self body at: 'totalFrames' put: anObject
 ]

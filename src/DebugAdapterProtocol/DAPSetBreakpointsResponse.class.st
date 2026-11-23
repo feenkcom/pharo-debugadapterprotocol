@@ -51,7 +51,7 @@ The array elements are in the same order as the elements of the 'breakpoints' (o
 	Auto-generated method"
 	| result |
 
-	result := self body at: #breakpoints ifAbsent: [ nil ].
+	result := self body at: 'breakpoints' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -62,7 +62,7 @@ The array elements are in the same order as the elements of the 'breakpoints' (o
 	array
 	Auto-generated method"
 
-	self body at: #breakpoints put: anObject
+	self body at: 'breakpoints' put: anObject
 ]
 
 { #category : #accessing }

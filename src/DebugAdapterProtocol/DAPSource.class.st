@@ -41,7 +41,7 @@ DAPSource class >> dapJsonMappingFor: aNeoJSONMapper [
 DAPSource class >> presentationHintEnums [
 	"Enumerated types for the associated attribute"
 
-	^ #(normal emphasize deemphasize )
+	^ #('normal' 'emphasize' 'deemphasize' )
 ]
 
 { #category : #visiting }

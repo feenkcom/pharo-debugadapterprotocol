@@ -46,7 +46,7 @@ DAPModulesResponse >> modules [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #modules ifAbsent: [ nil ].
+	result := self body at: 'modules' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -56,7 +56,7 @@ DAPModulesResponse >> modules: anObject [
 	array
 	Auto-generated method"
 
-	self body at: #modules put: anObject
+	self body at: 'modules' put: anObject
 ]
 
 { #category : #accessing }
@@ -73,7 +73,7 @@ DAPModulesResponse >> totalModules [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #totalModules ifAbsent: [ nil ].
+	result := self body at: 'totalModules' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -83,5 +83,5 @@ DAPModulesResponse >> totalModules: anObject [
 	integer
 	Auto-generated method"
 
-	self body at: #totalModules put: anObject
+	self body at: 'totalModules' put: anObject
 ]
