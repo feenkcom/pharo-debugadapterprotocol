@@ -13,7 +13,7 @@ Class {
 DAPCompletionsRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
-	^ #(completions )
+	^ #('completions' )
 ]
 
 { #category : #'json - configuration' }

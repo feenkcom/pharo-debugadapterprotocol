@@ -13,7 +13,7 @@ Class {
 DAPExceptionInfoRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
-	^ #(exceptionInfo )
+	^ #('exceptionInfo' )
 ]
 
 { #category : #'json - configuration' }

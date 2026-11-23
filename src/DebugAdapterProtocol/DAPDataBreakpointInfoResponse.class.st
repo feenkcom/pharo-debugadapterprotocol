@@ -31,7 +31,7 @@ DAPDataBreakpointInfoResponse >> accessTypes [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #accessTypes ifAbsent: [ nil ].
+	result := self body at: 'accessTypes' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -41,7 +41,7 @@ DAPDataBreakpointInfoResponse >> accessTypes: anObject [
 	array
 	Auto-generated method"
 
-	self body at: #accessTypes put: anObject
+	self body at: 'accessTypes' put: anObject
 ]
 
 { #category : #accessing }
@@ -66,7 +66,7 @@ DAPDataBreakpointInfoResponse >> canPersist [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #canPersist ifAbsent: [ nil ].
+	result := self body at: 'canPersist' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -76,7 +76,7 @@ DAPDataBreakpointInfoResponse >> canPersist: anObject [
 	boolean
 	Auto-generated method"
 
-	self body at: #canPersist put: anObject
+	self body at: 'canPersist' put: anObject
 ]
 
 { #category : #accessing }
@@ -86,7 +86,7 @@ DAPDataBreakpointInfoResponse >> dataId [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #dataId ifAbsent: [ nil ].
+	result := self body at: 'dataId' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -96,7 +96,7 @@ DAPDataBreakpointInfoResponse >> dataId: anObject [
 	stringnull
 	Auto-generated method"
 
-	self body at: #dataId put: anObject
+	self body at: 'dataId' put: anObject
 ]
 
 { #category : #accessing }
@@ -106,7 +106,7 @@ DAPDataBreakpointInfoResponse >> description [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #description ifAbsent: [ nil ].
+	result := self body at: 'description' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -116,7 +116,7 @@ DAPDataBreakpointInfoResponse >> description: anObject [
 	string
 	Auto-generated method"
 
-	self body at: #description put: anObject
+	self body at: 'description' put: anObject
 ]
 
 { #category : #accessing }

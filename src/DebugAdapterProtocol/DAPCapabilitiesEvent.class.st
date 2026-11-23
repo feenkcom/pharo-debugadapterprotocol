@@ -26,7 +26,7 @@ DAPCapabilitiesEvent class >> dapJsonMappingFor: aNeoJSONMapper [
 DAPCapabilitiesEvent class >> eventEnums [
 	"Enumerated types for the associated attribute"
 
-	^ #(capabilities )
+	^ #('capabilities' )
 ]
 
 { #category : #visiting }
@@ -57,7 +57,7 @@ DAPCapabilitiesEvent >> capabilities [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #capabilities ifAbsent: [ nil ].
+	result := self body at: 'capabilities' ifAbsent: [ nil ].
 	result isDictionary ifTrue:
 		[ result := DAPCapabilities fromDictionary: result client: client ].
 	^ result
@@ -69,7 +69,7 @@ DAPCapabilitiesEvent >> capabilities: anObject [
 	#/definitions/Capabilities
 	Auto-generated method"
 
-	self body at: #capabilities put: anObject
+	self body at: 'capabilities' put: anObject
 ]
 
 { #category : #accessing }

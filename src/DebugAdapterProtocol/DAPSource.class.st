@@ -41,7 +41,7 @@ DAPSource class >> dapJsonMappingFor: aNeoJSONMapper [
 DAPSource class >> presentationHintEnums [
 	"Enumerated types for the associated attribute"
 
-	^ #(normal emphasize deemphasize )
+	^ #('normal' 'emphasize' 'deemphasize' )
 ]
 
 { #category : #visiting }
@@ -216,11 +216,39 @@ DAPSource >> propertyNames [
 	^ #(adapterData checksums name origin path presentationHint sourceReference sources )
 ]
 
-{ #category : #'ui' }
+{ #category : #private }
+DAPSource >> readSourceCode [
+	"Whoever the protocol says owns the text. A source reference is the
+	adapter's to resolve and only it can; a plain path is the client's to
+	read, and an adapter whose source is on disk may answer the source request
+	with nothing at all, which is what lldb-dap does. Asking it first and
+	caching the empty answer leaves the pane blank with the file sitting right
+	there."
+
+	(sourceReference isNil or: [ sourceReference = 0 ])
+		ifTrue: [ self sourceCodeFromFile ifNotEmpty: [ :text | ^ text ] ].
+	^ [ client sourceCodeFor: self ]
+		on: DAPBadResponse
+		do: [ :ex | self sourceCodeFromFile ]
+]
+
+{ #category : #ui }
 DAPSource >> sourceCode [
 	"The text of this source, read once."
 
 	^ sourceCode ifNil: [ sourceCode := self readSourceCode ]
+]
+
+{ #category : #private }
+DAPSource >> sourceCodeFromFile [
+	"The file this source names, when there is one to read."
+	| reference |
+
+	path ifNil: [ ^ '' ].
+	reference := path asFileReference.
+	^ (reference exists and: [ reference isReadable ])
+		ifTrue: [ reference contents ]
+		ifFalse: [ '' ]
 ]
 
 { #category : #accessing }
@@ -263,32 +291,4 @@ DAPSource >> sources: anObject [
 
 	sources := anObject
 
-]
-
-{ #category : #'private' }
-DAPSource >> readSourceCode [
-	"Whoever the protocol says owns the text. A source reference is the
-	adapter's to resolve and only it can; a plain path is the client's to
-	read, and an adapter whose source is on disk may answer the source request
-	with nothing at all, which is what lldb-dap does. Asking it first and
-	caching the empty answer leaves the pane blank with the file sitting right
-	there."
-
-	(sourceReference isNil or: [ sourceReference = 0 ])
-		ifTrue: [ self sourceCodeFromFile ifNotEmpty: [ :text | ^ text ] ].
-	^ [ client sourceCodeFor: self ]
-		on: DAPBadResponse
-		do: [ :ex | self sourceCodeFromFile ]
-]
-
-{ #category : #'private' }
-DAPSource >> sourceCodeFromFile [
-	"The file this source names, when there is one to read."
-	| reference |
-
-	path ifNil: [ ^ '' ].
-	reference := path asFileReference.
-	^ (reference exists and: [ reference isReadable ])
-		ifTrue: [ reference contents ]
-		ifFalse: [ '' ]
 ]

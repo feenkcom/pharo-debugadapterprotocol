@@ -33,7 +33,7 @@ DAPVariablesArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 DAPVariablesArguments class >> filterEnums [
 	"Enumerated types for the associated attribute"
 
-	^ #(indexed named )
+	^ #('indexed' 'named' )
 ]
 
 { #category : #visiting }

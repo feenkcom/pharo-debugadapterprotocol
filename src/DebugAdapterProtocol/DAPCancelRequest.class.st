@@ -22,7 +22,7 @@ Class {
 DAPCancelRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
-	^ #(cancel )
+	^ #('cancel' )
 ]
 
 { #category : #'json - configuration' }

@@ -13,7 +13,7 @@ Class {
 DAPReverseContinueRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
-	^ #(reverseContinue )
+	^ #('reverseContinue' )
 ]
 
 { #category : #'json - configuration' }

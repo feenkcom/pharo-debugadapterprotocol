@@ -57,7 +57,7 @@ GtDAPDebuggerToolbar >> debuggerClient [
 	^ dapDebugElement debuggerClient
 ]
 
-{ #category : #'initialization' }
+{ #category : #initialization }
 GtDAPDebuggerToolbar >> initialize [
 	"Left to right: proceed, then the three ways to step forward in the order
 	they are usually reached for, then the reverse of the first of them, then
@@ -158,7 +158,7 @@ GtDAPDebuggerToolbar >> newStepOverButton [
 		action: [ :aButton | dapDebugElement dapStepOver ]
 ]
 
-{ #category : #'updating' }
+{ #category : #updating }
 GtDAPDebuggerToolbar >> updateUI [
 	"Update the button state to reflect the current debugger state.
 	The buttons should only be active if the debugger is stopped and the top

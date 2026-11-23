@@ -28,7 +28,7 @@ DAPEvent class >> dapJsonMappingFor: aNeoJSONMapper [
 DAPEvent class >> typeEnums [
 	"Enumerated types for the associated attribute"
 
-	^ #(event )
+	^ #('event' )
 ]
 
 { #category : #visiting }

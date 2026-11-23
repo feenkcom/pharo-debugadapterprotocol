@@ -23,7 +23,7 @@ DAPProcessEvent class >> dapJsonMappingFor: aNeoJSONMapper [
 DAPProcessEvent class >> eventEnums [
 	"Enumerated types for the associated attribute"
 
-	^ #(process )
+	^ #('process' )
 ]
 
 { #category : #visiting }
@@ -71,7 +71,7 @@ DAPProcessEvent >> isLocalProcess [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #isLocalProcess ifAbsent: [ nil ].
+	result := self body at: 'isLocalProcess' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -81,7 +81,7 @@ DAPProcessEvent >> isLocalProcess: anObject [
 	boolean
 	Auto-generated method"
 
-	self body at: #isLocalProcess put: anObject
+	self body at: 'isLocalProcess' put: anObject
 ]
 
 { #category : #accessing }
@@ -91,7 +91,7 @@ DAPProcessEvent >> name [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #name ifAbsent: [ nil ].
+	result := self body at: 'name' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -101,7 +101,7 @@ DAPProcessEvent >> name: anObject [
 	string
 	Auto-generated method"
 
-	self body at: #name put: anObject
+	self body at: 'name' put: anObject
 ]
 
 { #category : #accessing }
@@ -111,7 +111,7 @@ DAPProcessEvent >> pointerSize [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #pointerSize ifAbsent: [ nil ].
+	result := self body at: 'pointerSize' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -121,7 +121,7 @@ DAPProcessEvent >> pointerSize: anObject [
 	integer
 	Auto-generated method"
 
-	self body at: #pointerSize put: anObject
+	self body at: 'pointerSize' put: anObject
 ]
 
 { #category : #accessing }
@@ -141,7 +141,7 @@ DAPProcessEvent >> startMethod [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #startMethod ifAbsent: [ nil ].
+	result := self body at: 'startMethod' ifAbsent: [ nil ].
 	result ifNil:
 		[ result := 'launch' ].
 	^ result
@@ -156,7 +156,7 @@ DAPProcessEvent >> startMethod: anObject [
 	attachForSuspendedLaunch: A project launcher component has launched a new process in a suspended state and then asked the debugger to attach.
 	Auto-generated method"
 
-	self body at: #startMethod put: anObject
+	self body at: 'startMethod' put: anObject
 ]
 
 { #category : #accessing }
@@ -166,7 +166,7 @@ DAPProcessEvent >> systemProcessId [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #systemProcessId ifAbsent: [ nil ].
+	result := self body at: 'systemProcessId' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -176,5 +176,5 @@ DAPProcessEvent >> systemProcessId: anObject [
 	integer
 	Auto-generated method"
 
-	self body at: #systemProcessId put: anObject
+	self body at: 'systemProcessId' put: anObject
 ]

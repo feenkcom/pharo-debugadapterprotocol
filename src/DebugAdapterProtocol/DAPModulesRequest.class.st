@@ -13,7 +13,7 @@ Class {
 DAPModulesRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
-	^ #(modules )
+	^ #('modules' )
 ]
 
 { #category : #'json - configuration' }

@@ -46,7 +46,7 @@ DAPRunInTerminalResponse >> processId [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #processId ifAbsent: [ nil ].
+	result := self body at: 'processId' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -56,7 +56,7 @@ DAPRunInTerminalResponse >> processId: anObject [
 	integer
 	Auto-generated method"
 
-	self body at: #processId put: anObject
+	self body at: 'processId' put: anObject
 ]
 
 { #category : #accessing }
@@ -73,7 +73,7 @@ DAPRunInTerminalResponse >> shellProcessId [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #shellProcessId ifAbsent: [ nil ].
+	result := self body at: 'shellProcessId' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -83,5 +83,5 @@ DAPRunInTerminalResponse >> shellProcessId: anObject [
 	integer
 	Auto-generated method"
 
-	self body at: #shellProcessId put: anObject
+	self body at: 'shellProcessId' put: anObject
 ]

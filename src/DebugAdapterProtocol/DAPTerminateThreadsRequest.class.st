@@ -13,7 +13,7 @@ Class {
 DAPTerminateThreadsRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
-	^ #(terminateThreads )
+	^ #('terminateThreads' )
 ]
 
 { #category : #'json - configuration' }

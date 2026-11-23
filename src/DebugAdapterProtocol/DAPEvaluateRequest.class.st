@@ -13,7 +13,7 @@ Class {
 DAPEvaluateRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
-	^ #(evaluate )
+	^ #('evaluate' )
 ]
 
 { #category : #'json - configuration' }

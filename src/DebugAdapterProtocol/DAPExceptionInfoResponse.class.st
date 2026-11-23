@@ -46,7 +46,7 @@ DAPExceptionInfoResponse >> breakMode [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #breakMode ifAbsent: [ nil ].
+	result := self body at: 'breakMode' ifAbsent: [ nil ].
 	result isDictionary ifTrue:
 		[ result := DAPExceptionBreakMode fromDictionary: result client: client ].
 	^ result
@@ -58,7 +58,7 @@ DAPExceptionInfoResponse >> breakMode: anObject [
 	#/definitions/ExceptionBreakMode
 	Auto-generated method"
 
-	self body at: #breakMode put: anObject
+	self body at: 'breakMode' put: anObject
 ]
 
 { #category : #accessing }
@@ -68,7 +68,7 @@ DAPExceptionInfoResponse >> description [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #description ifAbsent: [ nil ].
+	result := self body at: 'description' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -78,7 +78,7 @@ DAPExceptionInfoResponse >> description: anObject [
 	string
 	Auto-generated method"
 
-	self body at: #description put: anObject
+	self body at: 'description' put: anObject
 ]
 
 { #category : #accessing }
@@ -88,7 +88,7 @@ DAPExceptionInfoResponse >> details [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #details ifAbsent: [ nil ].
+	result := self body at: 'details' ifAbsent: [ nil ].
 	result isDictionary ifTrue:
 		[ result := DAPExceptionDetails fromDictionary: result client: client ].
 	^ result
@@ -100,7 +100,7 @@ DAPExceptionInfoResponse >> details: anObject [
 	#/definitions/ExceptionDetails
 	Auto-generated method"
 
-	self body at: #details put: anObject
+	self body at: 'details' put: anObject
 ]
 
 { #category : #accessing }
@@ -110,7 +110,7 @@ DAPExceptionInfoResponse >> exceptionId [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #exceptionId ifAbsent: [ nil ].
+	result := self body at: 'exceptionId' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -120,7 +120,7 @@ DAPExceptionInfoResponse >> exceptionId: anObject [
 	string
 	Auto-generated method"
 
-	self body at: #exceptionId put: anObject
+	self body at: 'exceptionId' put: anObject
 ]
 
 { #category : #accessing }

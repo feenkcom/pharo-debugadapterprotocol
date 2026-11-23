@@ -12,7 +12,7 @@ Class {
 DAPThreadsRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
-	^ #(threads )
+	^ #('threads' )
 ]
 
 { #category : #'json - configuration' }

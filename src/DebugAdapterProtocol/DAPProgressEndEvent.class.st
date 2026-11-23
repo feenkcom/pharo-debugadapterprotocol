@@ -24,7 +24,7 @@ DAPProgressEndEvent class >> dapJsonMappingFor: aNeoJSONMapper [
 DAPProgressEndEvent class >> eventEnums [
 	"Enumerated types for the associated attribute"
 
-	^ #(progressEnd )
+	^ #('progressEnd' )
 ]
 
 { #category : #visiting }
@@ -72,7 +72,7 @@ DAPProgressEndEvent >> message [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #message ifAbsent: [ nil ].
+	result := self body at: 'message' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -82,7 +82,7 @@ DAPProgressEndEvent >> message: anObject [
 	string
 	Auto-generated method"
 
-	self body at: #message put: anObject
+	self body at: 'message' put: anObject
 ]
 
 { #category : #accessing }
@@ -92,7 +92,7 @@ DAPProgressEndEvent >> progressId [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #progressId ifAbsent: [ nil ].
+	result := self body at: 'progressId' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -102,7 +102,7 @@ DAPProgressEndEvent >> progressId: anObject [
 	string
 	Auto-generated method"
 
-	self body at: #progressId put: anObject
+	self body at: 'progressId' put: anObject
 ]
 
 { #category : #accessing }

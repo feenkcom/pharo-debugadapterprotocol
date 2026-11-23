@@ -13,7 +13,7 @@ Class {
 DAPNextRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
-	^ #(next )
+	^ #('next' )
 ]
 
 { #category : #'json - configuration' }

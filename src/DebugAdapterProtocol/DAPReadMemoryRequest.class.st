@@ -13,7 +13,7 @@ Class {
 DAPReadMemoryRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
-	^ #(readMemory )
+	^ #('readMemory' )
 ]
 
 { #category : #'json - configuration' }

@@ -48,7 +48,7 @@ The value should be less than or equal to 2147483647 (2^31-1).
 	Auto-generated method"
 	| result |
 
-	result := self body at: #indexedVariables ifAbsent: [ nil ].
+	result := self body at: 'indexedVariables' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -60,7 +60,7 @@ The value should be less than or equal to 2147483647 (2^31-1).
 	integer
 	Auto-generated method"
 
-	self body at: #indexedVariables put: anObject
+	self body at: 'indexedVariables' put: anObject
 ]
 
 { #category : #accessing }
@@ -72,7 +72,7 @@ The value should be less than or equal to 2147483647 (2^31-1).
 	Auto-generated method"
 	| result |
 
-	result := self body at: #namedVariables ifAbsent: [ nil ].
+	result := self body at: 'namedVariables' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -84,7 +84,7 @@ The value should be less than or equal to 2147483647 (2^31-1).
 	integer
 	Auto-generated method"
 
-	self body at: #namedVariables put: anObject
+	self body at: 'namedVariables' put: anObject
 ]
 
 { #category : #accessing }
@@ -101,7 +101,7 @@ DAPSetVariableResponse >> type [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #type ifAbsent: [ nil ].
+	result := self body at: 'type' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -111,7 +111,7 @@ DAPSetVariableResponse >> type: anObject [
 	string
 	Auto-generated method"
 
-	self body at: #type put: anObject
+	self body at: 'type' put: anObject
 ]
 
 { #category : #accessing }
@@ -121,7 +121,7 @@ DAPSetVariableResponse >> value [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #value ifAbsent: [ nil ].
+	result := self body at: 'value' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -131,7 +131,7 @@ DAPSetVariableResponse >> value: anObject [
 	string
 	Auto-generated method"
 
-	self body at: #value put: anObject
+	self body at: 'value' put: anObject
 ]
 
 { #category : #accessing }
@@ -142,7 +142,7 @@ The value should be less than or equal to 2147483647 (2^31-1).
 	Auto-generated method"
 	| result |
 
-	result := self body at: #variablesReference ifAbsent: [ nil ].
+	result := self body at: 'variablesReference' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -153,5 +153,5 @@ The value should be less than or equal to 2147483647 (2^31-1).
 	integer
 	Auto-generated method"
 
-	self body at: #variablesReference put: anObject
+	self body at: 'variablesReference' put: anObject
 ]

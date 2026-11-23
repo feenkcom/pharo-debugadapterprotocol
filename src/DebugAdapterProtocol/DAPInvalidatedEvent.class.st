@@ -25,7 +25,7 @@ DAPInvalidatedEvent class >> dapJsonMappingFor: aNeoJSONMapper [
 DAPInvalidatedEvent class >> eventEnums [
 	"Enumerated types for the associated attribute"
 
-	^ #(invalidated )
+	^ #('invalidated' )
 ]
 
 { #category : #visiting }
@@ -41,7 +41,7 @@ DAPInvalidatedEvent >> areas [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #areas ifAbsent: [ nil ].
+	result := self body at: 'areas' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -51,7 +51,7 @@ DAPInvalidatedEvent >> areas: anObject [
 	array
 	Auto-generated method"
 
-	self body at: #areas put: anObject
+	self body at: 'areas' put: anObject
 ]
 
 { #category : #accessing }
@@ -100,7 +100,7 @@ DAPInvalidatedEvent >> stackFrameId [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #stackFrameId ifAbsent: [ nil ].
+	result := self body at: 'stackFrameId' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -110,7 +110,7 @@ DAPInvalidatedEvent >> stackFrameId: anObject [
 	integer
 	Auto-generated method"
 
-	self body at: #stackFrameId put: anObject
+	self body at: 'stackFrameId' put: anObject
 ]
 
 { #category : #accessing }
@@ -120,7 +120,7 @@ DAPInvalidatedEvent >> threadId [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #threadId ifAbsent: [ nil ].
+	result := self body at: 'threadId' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -130,5 +130,5 @@ DAPInvalidatedEvent >> threadId: anObject [
 	integer
 	Auto-generated method"
 
-	self body at: #threadId put: anObject
+	self body at: 'threadId' put: anObject
 ]

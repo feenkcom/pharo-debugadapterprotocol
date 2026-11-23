@@ -34,7 +34,7 @@ DAPResponse class >> dapJsonMappingFor: aNeoJSONMapper [
 DAPResponse class >> typeEnums [
 	"Enumerated types for the associated attribute"
 
-	^ #(response )
+	^ #('response' )
 ]
 
 { #category : #visiting }

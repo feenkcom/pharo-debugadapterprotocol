@@ -22,7 +22,7 @@ DAPDebugpyAttachEvent class >> dapJsonMappingFor: aNeoJSONMapper [
 DAPDebugpyAttachEvent class >> eventEnums [
 	"Enumerated types for the associated attribute"
 
-	^ #(debugpyAttach )
+	^ #('debugpyAttach' )
 ]
 
 { #category : #visiting }

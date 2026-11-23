@@ -35,7 +35,7 @@ DAPColumnDescriptor class >> dapJsonMappingFor: aNeoJSONMapper [
 DAPColumnDescriptor class >> typeEnums [
 	"Enumerated types for the associated attribute"
 
-	^ #(string number boolean unixTimestampUTC )
+	^ #('string' 'number' 'boolean' 'unixTimestampUTC' )
 ]
 
 { #category : #visiting }

@@ -73,7 +73,7 @@ DAPVariablesResponse >> variables [
 	Auto-generated method"
 	| result |
 
-	result := self body ifNotNil: [ :anObject | anObject at: #variables ifAbsent: [ nil ] ].
+	result := self body ifNotNil: [ :anObject | anObject at: 'variables' ifAbsent: [ nil ] ].
 	^ result
 ]
 
@@ -83,5 +83,5 @@ DAPVariablesResponse >> variables: anObject [
 	array
 	Auto-generated method"
 
-	self body at: #variables put: anObject
+	self body at: 'variables' put: anObject
 ]

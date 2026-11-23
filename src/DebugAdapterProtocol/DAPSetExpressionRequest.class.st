@@ -14,7 +14,7 @@ Class {
 DAPSetExpressionRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
-	^ #(setExpression )
+	^ #('setExpression' )
 ]
 
 { #category : #'json - configuration' }

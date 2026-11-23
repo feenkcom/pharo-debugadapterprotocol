@@ -53,7 +53,7 @@ DAPLoadedSourcesResponse >> sources [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #sources ifAbsent: [ nil ].
+	result := self body at: 'sources' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -63,5 +63,5 @@ DAPLoadedSourcesResponse >> sources: anObject [
 	array
 	Auto-generated method"
 
-	self body at: #sources put: anObject
+	self body at: 'sources' put: anObject
 ]

@@ -30,7 +30,7 @@ DAPInitializedEvent class >> dapJsonMappingFor: aNeoJSONMapper [
 DAPInitializedEvent class >> eventEnums [
 	"Enumerated types for the associated attribute"
 
-	^ #(initialized )
+	^ #('initialized' )
 ]
 
 { #category : #visiting }

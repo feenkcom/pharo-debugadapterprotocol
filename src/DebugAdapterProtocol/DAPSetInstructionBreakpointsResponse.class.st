@@ -46,7 +46,7 @@ DAPSetInstructionBreakpointsResponse >> breakpoints [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #breakpoints ifAbsent: [ nil ].
+	result := self body at: 'breakpoints' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -56,7 +56,7 @@ DAPSetInstructionBreakpointsResponse >> breakpoints: anObject [
 	array
 	Auto-generated method"
 
-	self body at: #breakpoints put: anObject
+	self body at: 'breakpoints' put: anObject
 ]
 
 { #category : #accessing }

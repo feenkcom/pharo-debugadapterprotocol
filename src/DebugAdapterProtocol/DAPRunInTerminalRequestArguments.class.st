@@ -33,7 +33,7 @@ DAPRunInTerminalRequestArguments class >> dapJsonMappingFor: aNeoJSONMapper [
 DAPRunInTerminalRequestArguments class >> kindEnums [
 	"Enumerated types for the associated attribute"
 
-	^ #(integrated external )
+	^ #('integrated' 'external' )
 ]
 
 { #category : #visiting }

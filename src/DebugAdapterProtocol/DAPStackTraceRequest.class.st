@@ -13,7 +13,7 @@ Class {
 DAPStackTraceRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
-	^ #(stackTrace )
+	^ #('stackTrace' )
 ]
 
 { #category : #'json - configuration' }

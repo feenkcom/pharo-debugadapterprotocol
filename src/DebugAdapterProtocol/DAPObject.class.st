@@ -17,6 +17,21 @@ DAPObject class >> empty [
 	^ self new dictionary: Dictionary new.
 ]
 
+{ #category : #'instance creation' }
+DAPObject class >> eventClassNamed: anEventName [
+	"Answer my subclass for the event named anEventName, or nil.
+	The event classes are named after their event ('output' -> DAPOutputEvent), as the responses and requests after their command.
+	Looking the class up by name is much faster than searching the eventEnums of all my subclasses, and an adapter sends an event for every line of output."
+
+	| cls |
+	cls := self environment
+		at: ('DAP', anEventName capitalized, 'Event') asSymbol
+		ifAbsent: [ ^ nil ].
+	^ (cls isClass and: [ (cls inheritsFrom: self) and: [ cls eventEnums includes: anEventName ] ])
+		ifTrue: [ cls ]
+		ifFalse: [ nil ]
+]
+
 { #category : #accessing }
 DAPObject class >> eventEnums [
 	"Enumerated types for the associated attribute"
@@ -44,18 +59,22 @@ DAPObject class >> fromDictionary: aDictionary client: client [
 
 { #category : #'instance creation' }
 DAPObject class >> fromJSONDictionary: aDictionary client: client [
-	aDictionary at: #type ifPresent: [ :type |
-		type = #event ifTrue:
-			[ aDictionary at: #event ifPresent: [ :event |
+	"Answer the protocol object for aDictionary, a message read from JSON: its keys and values are Strings"
+
+	aDictionary at: 'type' ifPresent: [ :type |
+		type = 'event' ifTrue:
+			[ aDictionary at: 'event' ifPresent: [ :event |
+				(self eventClassNamed: event) ifNotNil: [ :cls |
+					^ cls fromDictionary: aDictionary client: client ].
 				self allSubclasses 
 					detect: [ :subcls | subcls eventEnums = { event } ]
 					ifFound: [ :cls | ^ cls fromDictionary: aDictionary client: client ] ] ].
-		type = #response ifTrue: 
-			[ aDictionary at: #command ifPresent: [ :response | | cls |
+		type = 'response' ifTrue: 
+			[ aDictionary at: 'command' ifPresent: [ :response | | cls |
 				cls := self class environment at: ('DAP', response capitalized, 'Response') asSymbol.
 				^ cls fromDictionary: aDictionary client: client ] ].
-		type = #request ifTrue:
-			[ aDictionary at: #command ifPresent: [ :request | | cls |
+		type = 'request' ifTrue:
+			[ aDictionary at: 'command' ifPresent: [ :request | | cls |
 				cls := self class environment at: ('DAP', request capitalized, 'Request') asSymbol.
 				^ cls fromDictionary: aDictionary client: client ] ] ].
 	self error: 'Unrecognised message'.

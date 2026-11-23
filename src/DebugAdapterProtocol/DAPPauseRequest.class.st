@@ -13,7 +13,7 @@ Class {
 DAPPauseRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
-	^ #(pause )
+	^ #('pause' )
 ]
 
 { #category : #'json - configuration' }

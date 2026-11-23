@@ -23,7 +23,7 @@ DAPOutputEvent class >> dapJsonMappingFor: aNeoJSONMapper [
 DAPOutputEvent class >> eventEnums [
 	"Enumerated types for the associated attribute"
 
-	^ #(output )
+	^ #('output' )
 ]
 
 { #category : #visiting }
@@ -54,7 +54,7 @@ DAPOutputEvent >> category [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #category ifAbsent: [ nil ].
+	result := self body at: 'category' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -64,7 +64,7 @@ DAPOutputEvent >> category: anObject [
 	string
 	Auto-generated method"
 
-	self body at: #category put: anObject
+	self body at: 'category' put: anObject
 ]
 
 { #category : #accessing }
@@ -74,7 +74,7 @@ DAPOutputEvent >> column [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #column ifAbsent: [ nil ].
+	result := self body at: 'column' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -84,7 +84,7 @@ DAPOutputEvent >> column: anObject [
 	integer
 	Auto-generated method"
 
-	self body at: #column put: anObject
+	self body at: 'column' put: anObject
 ]
 
 { #category : #accessing }
@@ -94,7 +94,7 @@ DAPOutputEvent >> data [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #data ifAbsent: [ nil ].
+	result := self body at: 'data' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -104,7 +104,7 @@ DAPOutputEvent >> data: anObject [
 	arraybooleanintegernullnumberobjectstring
 	Auto-generated method"
 
-	self body at: #data put: anObject
+	self body at: 'data' put: anObject
 ]
 
 { #category : #accessing }
@@ -137,7 +137,7 @@ A non empty 'output' attribute is shown as the unindented end of the group.
 	Auto-generated method"
 	| result |
 
-	result := self body at: #group ifAbsent: [ nil ].
+	result := self body at: 'group' ifAbsent: [ nil ].
 	result ifNil:
 		[ result := 'start' ].
 	^ result
@@ -155,7 +155,7 @@ The 'output' attribute becomes the name of the group and is not indented.
 A non empty 'output' attribute is shown as the unindented end of the group.
 	Auto-generated method"
 
-	self body at: #group put: anObject
+	self body at: 'group' put: anObject
 ]
 
 { #category : #accessing }
@@ -165,7 +165,7 @@ DAPOutputEvent >> line [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #line ifAbsent: [ nil ].
+	result := self body at: 'line' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -175,7 +175,7 @@ DAPOutputEvent >> line: anObject [
 	integer
 	Auto-generated method"
 
-	self body at: #line put: anObject
+	self body at: 'line' put: anObject
 ]
 
 { #category : #accessing }
@@ -185,7 +185,7 @@ DAPOutputEvent >> output [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #output ifAbsent: [ nil ].
+	result := self body at: 'output' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -195,7 +195,7 @@ DAPOutputEvent >> output: anObject [
 	string
 	Auto-generated method"
 
-	self body at: #output put: anObject
+	self body at: 'output' put: anObject
 ]
 
 { #category : #accessing }
@@ -212,7 +212,7 @@ DAPOutputEvent >> source [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #source ifAbsent: [ nil ].
+	result := self body at: 'source' ifAbsent: [ nil ].
 	result isDictionary ifTrue:
 		[ result := DAPSource fromDictionary: result client: client ].
 	^ result
@@ -224,7 +224,7 @@ DAPOutputEvent >> source: anObject [
 	#/definitions/Source
 	Auto-generated method"
 
-	self body at: #source put: anObject
+	self body at: 'source' put: anObject
 ]
 
 { #category : #accessing }
@@ -234,7 +234,7 @@ DAPOutputEvent >> variablesReference [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #variablesReference ifAbsent: [ nil ].
+	result := self body at: 'variablesReference' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -244,5 +244,5 @@ DAPOutputEvent >> variablesReference: anObject [
 	integer
 	Auto-generated method"
 
-	self body at: #variablesReference put: anObject
+	self body at: 'variablesReference' put: anObject
 ]

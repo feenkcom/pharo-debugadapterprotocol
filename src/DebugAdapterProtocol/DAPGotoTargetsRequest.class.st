@@ -14,7 +14,7 @@ Class {
 DAPGotoTargetsRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
-	^ #(gotoTargets )
+	^ #('gotoTargets' )
 ]
 
 { #category : #'json - configuration' }

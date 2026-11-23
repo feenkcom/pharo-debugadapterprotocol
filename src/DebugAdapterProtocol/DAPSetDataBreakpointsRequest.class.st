@@ -15,7 +15,7 @@ Class {
 DAPSetDataBreakpointsRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
-	^ #(setDataBreakpoints )
+	^ #('setDataBreakpoints' )
 ]
 
 { #category : #'json - configuration' }

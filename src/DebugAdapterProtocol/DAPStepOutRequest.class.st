@@ -13,7 +13,7 @@ Class {
 DAPStepOutRequest class >> commandEnums [
 	"Enumerated types for the associated attribute"
 
-	^ #(stepOut )
+	^ #('stepOut' )
 ]
 
 { #category : #'json - configuration' }

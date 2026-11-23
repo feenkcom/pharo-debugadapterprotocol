@@ -23,7 +23,7 @@ DAPThreadEvent class >> dapJsonMappingFor: aNeoJSONMapper [
 DAPThreadEvent class >> eventEnums [
 	"Enumerated types for the associated attribute"
 
-	^ #(thread )
+	^ #('thread' )
 ]
 
 { #category : #visiting }
@@ -89,7 +89,7 @@ DAPThreadEvent >> reason [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #reason ifAbsent: [ nil ].
+	result := self body at: 'reason' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -99,7 +99,7 @@ DAPThreadEvent >> reason: anObject [
 	string
 	Auto-generated method"
 
-	self body at: #reason put: anObject
+	self body at: 'reason' put: anObject
 ]
 
 { #category : #accessing }
@@ -109,7 +109,7 @@ DAPThreadEvent >> threadId [
 	Auto-generated method"
 	| result |
 
-	result := self body at: #threadId ifAbsent: [ nil ].
+	result := self body at: 'threadId' ifAbsent: [ nil ].
 	^ result
 ]
 
@@ -119,5 +119,5 @@ DAPThreadEvent >> threadId: anObject [
 	integer
 	Auto-generated method"
 
-	self body at: #threadId put: anObject
+	self body at: 'threadId' put: anObject
 ]

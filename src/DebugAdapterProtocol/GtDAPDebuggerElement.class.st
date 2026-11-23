@@ -153,10 +153,56 @@ GtDAPDebuggerElement >> cellSpacing [
 	^ 10
 ]
 
+{ #category : #'private - updating' }
+GtDAPDebuggerElement >> childrenOfVariableNode: aValue [
+	"What sits under one row of the variables tree."
+
+	aValue isDictionary ifTrue: [
+		^ aValue associations sorted: [ :v | v key asLowercase ] ascending ].
+	(aValue isKindOf: DAPVariable) ifTrue: [
+		^ aValue children collect: [ :each | each name -> each ] ].
+	(aValue isArray and: [ aValue allSatisfy: #isDictionary ]) ifTrue: [
+		^ (aValue collectWithIndex: [ :x :i | i -> x ]) sorted: [ :v | v key asLowercase ] ascending ].
+	^ #()
+]
+
 { #category : #'private - accessing' }
 GtDAPDebuggerElement >> columnNumber [ 
 
 	^ currentCallFrame columnNumber
+]
+
+{ #category : #'private - accessing' }
+GtDAPDebuggerElement >> cursorColumn [
+	"Which column of the displayed source the cursor is on, counting from one.
+	The protocol talks in lines and columns; the editor counts characters, and
+	a cursor position is an index into the text the way GT's own coder treats
+	it."
+	| positions position string |
+
+	positions := sourceCode editor cursors positions.
+	positions isEmpty ifTrue: [ ^ 1 ].
+	position := positions first.
+	string := sourceCode text asString.
+	^ position
+		- (string gtIndexOfLineNumber: (string lineNumberCorrespondingToIndex: position)) key
+		+ 1
+]
+
+{ #category : #'private - accessing' }
+GtDAPDebuggerElement >> cursorLine [
+	"Which line of the displayed source the cursor is on, or the first line
+	when the editor has no cursor because it was never clicked in.
+
+	The editor answers its cursors as a cursor object rather than as a
+	collection, so the positions are asked for by name, and the line is the
+	one the string itself counts: the text is shown with this image's line
+	endings, which a hand-rolled count of newlines gets wrong."
+	| positions |
+
+	positions := sourceCode editor cursors positions.
+	positions isEmpty ifTrue: [ ^ 1 ].
+	^ sourceCode text asString lineNumberCorrespondingToIndex: positions first
 ]
 
 { #category : #'private - actions' }
@@ -167,7 +213,16 @@ GtDAPDebuggerElement >> dapResume [
 
 ]
 
-{ #category : #'callbacks' }
+{ #category : #actions }
+GtDAPDebuggerElement >> dapStepBack [
+	"Walk the recording the other way, for adapters that report
+	supportsStepBack. The toolbar has always had the button; the method it
+	calls was missing."
+
+	currentThread stepBack.
+]
+
+{ #category : #callbacks }
 GtDAPDebuggerElement >> dapStepInto [
 	"Step in. A debugger that knows what its program was compiled from is
 	asked to do it, because a step through generated code should not stop in
@@ -178,7 +233,7 @@ GtDAPDebuggerElement >> dapStepInto [
 		ifFalse: [ currentThread stepInto ]
 ]
 
-{ #category : #'callbacks' }
+{ #category : #callbacks }
 GtDAPDebuggerElement >> dapStepOut [
 	"Step out, through generated code when the debugger knows how."
 
@@ -187,7 +242,7 @@ GtDAPDebuggerElement >> dapStepOut [
 		ifFalse: [ currentThread stepOut ]
 ]
 
-{ #category : #'callbacks' }
+{ #category : #callbacks }
 GtDAPDebuggerElement >> dapStepOver [
 	"Step over, through generated code when the debugger knows how."
 
@@ -223,6 +278,26 @@ GtDAPDebuggerElement >> displayStackFrame: aDAPStackFrame [
 	currentCallFrame := aDAPStackFrame.
 	toolbar updateUI.
 	self updateDisplay.
+]
+
+{ #category : #'private - accessing' }
+GtDAPDebuggerElement >> frameName: aFrame [
+	"What a frame is called. A debugger that compiled the program knows what
+	its symbols were before the compiler wrote them, and says so; anything
+	else keeps the name the adapter reported."
+
+	(debuggerClient respondsTo: #displayNameForFrame:)
+		ifTrue: [ ^ debuggerClient displayNameForFrame: aFrame ].
+	^ aFrame name ifNil: [ aFrame printString ]
+]
+
+{ #category : #'private - accessing' }
+GtDAPDebuggerElement >> hidesVariable: aName [
+	"Whether a variable is the compiler's own bookkeeping. A debugger that
+	knows says so; anything else shows everything it is given."
+
+	^ (debuggerClient respondsTo: #hidesVariable:)
+		and: [ debuggerClient hidesVariable: aName ]
 ]
 
 { #category : #initialization }
@@ -305,6 +380,31 @@ GtDAPDebuggerElement >> lineNumber [
 		ifNotNil: [ currentCallFrame line ifNil: [ 1 ] ]
 ]
 
+{ #category : #'private - update ui' }
+GtDAPDebuggerElement >> markBreakpointsIn: aText [
+	"Show where the debugger has been told to stop. A breakpoint stands on a
+	form rather than on a line, so it is marked where the form starts rather
+	than in a margin beside it."
+	| string |
+
+	(debuggerClient respondsTo: #breakpointsInSource:) ifFalse: [ ^ aText ].
+	currentCallFrame ifNil: [ ^ aText ].
+	currentCallFrame source ifNil: [ ^ aText ].
+	string := aText asString.
+	(debuggerClient breakpointsInSource: currentCallFrame source path) do: [ :each |
+		| indexes index |
+		each line ifNotNil: [
+			indexes := string gtIndexOfLineNumber: each line.
+			indexes ifNotNil: [
+				index := indexes key + (each column ifNil: [ 1 ]) - 1.
+				index := (index max: 2) min: string size.
+				(aText from: index - 1 to: index - 1)
+					attribute: ((BrTextAdornmentDynamicAttribute new beAppend)
+						beNotOverwritableByStyler;
+						stencil: [ self newBreakpointMarkerFor: each ]) ] ] ].
+	^ aText
+]
+
 { #category : #'private - element creation' }
 GtDAPDebuggerElement >> modulesTab [
 
@@ -316,6 +416,24 @@ GtDAPDebuggerElement >> modulesTab [
 				[ modules := self newModulesList.
 				self scheduleUpdateModules.
 				modules ] ]
+]
+
+{ #category : #'private - element creation' }
+GtDAPDebuggerElement >> newBreakpointMarkerFor: aDAPBreakpoint [
+	"The mark beside a breakpointed form. Clicking it takes the breakpoint
+	away, which is the only thing there is to do with one."
+
+	^ BlElement new
+		size: 8 @ 8;
+		margin: (BlInsets right: 2);
+		geometry: BlCircleGeometry new;
+		background: (aDAPBreakpoint verified = false
+			ifTrue: [ BrGlamorousColors disabledButtonTextColor ]
+			ifFalse: [ BrGlamorousColors errorBackgroundColor ]);
+		addEventHandlerOn: BlClickEvent
+			do: [ :anEvent |
+				anEvent consumed: true.
+				self toggleBreakpointAt: aDAPBreakpoint ]
 ]
 
 { #category : #'instance creation' }
@@ -578,6 +696,20 @@ GtDAPDebuggerElement >> scheduleUpdateVariables [
 ]
 
 { #category : #'private - accessing' }
+GtDAPDebuggerElement >> scopeRank: aScopeName [
+	"Scopes in the order a reader wants them: what this frame binds, then what
+	the program holds, then the machine. Ordering is by a key rather than by a
+	set of names so an adapter with scopes of its own still sorts."
+
+	| name |
+	name := aScopeName asLowercase.
+	(name includesSubstring: 'local') ifTrue: [ ^ '0' , name ].
+	(name includesSubstring: 'argument') ifTrue: [ ^ '1' , name ].
+	(name includesSubstring: 'register') ifTrue: [ ^ '8' , name ].
+	^ '5' , name
+]
+
+{ #category : #'private - accessing' }
 GtDAPDebuggerElement >> sourceCode [
 
 	^ currentCallFrame sourceCode
@@ -624,6 +756,35 @@ GtDAPDebuggerElement >> terminateSession [
 	super terminateSession.
 	debuggerClient ifNotNil: 
 		[ debuggerClient announcer unsubscribe: self ]
+]
+
+{ #category : #callbacks }
+GtDAPDebuggerElement >> toggleBreakpointAt: aDAPBreakpoint [
+	"Take away a breakpoint that is already shown."
+
+	aDAPBreakpoint source ifNil: [ ^ self ].
+	debuggerClient
+		toggleBreakpointInSource: aDAPBreakpoint source
+		line: aDAPBreakpoint line.
+	self scheduleUpdateBreakpoints.
+	self enqueueTask: (BlTaskAction new action: [ self updateSource ])
+]
+
+{ #category : #callbacks }
+GtDAPDebuggerElement >> toggleBreakpointAtCursor [
+	"Stop at the form the cursor is in, or stop doing so. A breakpoint belongs
+	to a source rather than to a frame, so it is the frame's file that is
+	asked, not the frame."
+
+	currentCallFrame ifNil: [ ^ self ].
+	currentCallFrame source ifNil: [ ^ self ].
+	(debuggerClient respondsTo: #toggleBreakpointInSource:line:column:) ifFalse: [ ^ self ].
+	debuggerClient
+		toggleBreakpointInSource: currentCallFrame source
+		line: self cursorLine
+		column: self cursorColumn.
+	self scheduleUpdateBreakpoints.
+	self enqueueTask: (BlTaskAction new action: [ self updateSource ])
 ]
 
 { #category : #'private - update ui' }
@@ -714,7 +875,7 @@ GtDAPDebuggerElement >> updateUI [
 
 ]
 
-{ #category : #'callbacks' }
+{ #category : #callbacks }
 GtDAPDebuggerElement >> updateVariables [
 	"A variable may hold more variables. The adapter says so with a non-zero
 	reference, and answers them when asked; a value that is a dictionary or an
@@ -740,6 +901,16 @@ GtDAPDebuggerElement >> updateVariables [
 	variableList expandUpTo: 1
 ]
 
+{ #category : #'private - accessing' }
+GtDAPDebuggerElement >> variableName: aName [
+	"What to call a variable. A debugger that compiled the program knows what
+	its names were before the compiler wrote them."
+
+	^ (debuggerClient respondsTo: #displayNameForVariable:)
+		ifTrue: [ debuggerClient displayNameForVariable: aName ]
+		ifFalse: [ aName ]
+]
+
 { #category : #'private - element creation' }
 GtDAPDebuggerElement >> variablesTab [
 
@@ -752,158 +923,6 @@ GtDAPDebuggerElement >> variablesTab [
 				variableList := variablesContainer childNamed: #variablesList.
 				self scheduleUpdateVariables.
 				variablesContainer ] ]
-]
-
-{ #category : #'actions' }
-GtDAPDebuggerElement >> dapStepBack [
-	"Walk the recording the other way, for adapters that report
-	supportsStepBack. The toolbar has always had the button; the method it
-	calls was missing."
-
-	currentThread stepBack.
-]
-
-{ #category : #'private - updating' }
-GtDAPDebuggerElement >> childrenOfVariableNode: aValue [
-	"What sits under one row of the variables tree."
-
-	aValue isDictionary ifTrue: [
-		^ aValue associations sorted: [ :v | v key asLowercase ] ascending ].
-	(aValue isKindOf: DAPVariable) ifTrue: [
-		^ aValue children collect: [ :each | each name -> each ] ].
-	(aValue isArray and: [ aValue allSatisfy: #isDictionary ]) ifTrue: [
-		^ (aValue collectWithIndex: [ :x :i | i -> x ]) sorted: [ :v | v key asLowercase ] ascending ].
-	^ #()
-]
-
-{ #category : #'private - accessing' }
-GtDAPDebuggerElement >> cursorLine [
-	"Which line of the displayed source the cursor is on, or the first line
-	when the editor has no cursor because it was never clicked in.
-
-	The editor answers its cursors as a cursor object rather than as a
-	collection, so the positions are asked for by name, and the line is the
-	one the string itself counts: the text is shown with this image's line
-	endings, which a hand-rolled count of newlines gets wrong."
-	| positions |
-
-	positions := sourceCode editor cursors positions.
-	positions isEmpty ifTrue: [ ^ 1 ].
-	^ sourceCode text asString lineNumberCorrespondingToIndex: positions first
-]
-
-{ #category : #'callbacks' }
-GtDAPDebuggerElement >> toggleBreakpointAtCursor [
-	"Stop at the form the cursor is in, or stop doing so. A breakpoint belongs
-	to a source rather than to a frame, so it is the frame's file that is
-	asked, not the frame."
-
-	currentCallFrame ifNil: [ ^ self ].
-	currentCallFrame source ifNil: [ ^ self ].
-	(debuggerClient respondsTo: #toggleBreakpointInSource:line:column:) ifFalse: [ ^ self ].
-	debuggerClient
-		toggleBreakpointInSource: currentCallFrame source
-		line: self cursorLine
-		column: self cursorColumn.
-	self scheduleUpdateBreakpoints.
-	self enqueueTask: (BlTaskAction new action: [ self updateSource ])
-]
-
-{ #category : #'private - update ui' }
-GtDAPDebuggerElement >> markBreakpointsIn: aText [
-	"Show where the debugger has been told to stop. A breakpoint stands on a
-	form rather than on a line, so it is marked where the form starts rather
-	than in a margin beside it."
-	| string |
-
-	(debuggerClient respondsTo: #breakpointsInSource:) ifFalse: [ ^ aText ].
-	currentCallFrame ifNil: [ ^ aText ].
-	currentCallFrame source ifNil: [ ^ aText ].
-	string := aText asString.
-	(debuggerClient breakpointsInSource: currentCallFrame source path) do: [ :each |
-		| indexes index |
-		each line ifNotNil: [
-			indexes := string gtIndexOfLineNumber: each line.
-			indexes ifNotNil: [
-				index := indexes key + (each column ifNil: [ 1 ]) - 1.
-				index := (index max: 2) min: string size.
-				(aText from: index - 1 to: index - 1)
-					attribute: ((BrTextAdornmentDynamicAttribute new beAppend)
-						beNotOverwritableByStyler;
-						stencil: [ self newBreakpointMarkerFor: each ]) ] ] ].
-	^ aText
-]
-
-{ #category : #'private - element creation' }
-GtDAPDebuggerElement >> newBreakpointMarkerFor: aDAPBreakpoint [
-	"The mark beside a breakpointed form. Clicking it takes the breakpoint
-	away, which is the only thing there is to do with one."
-
-	^ BlElement new
-		size: 8 @ 8;
-		margin: (BlInsets right: 2);
-		geometry: BlCircleGeometry new;
-		background: (aDAPBreakpoint verified = false
-			ifTrue: [ BrGlamorousColors disabledButtonTextColor ]
-			ifFalse: [ BrGlamorousColors errorBackgroundColor ]);
-		addEventHandlerOn: BlClickEvent
-			do: [ :anEvent |
-				anEvent consumed: true.
-				self toggleBreakpointAt: aDAPBreakpoint ]
-]
-
-{ #category : #'callbacks' }
-GtDAPDebuggerElement >> toggleBreakpointAt: aDAPBreakpoint [
-	"Take away a breakpoint that is already shown."
-
-	aDAPBreakpoint source ifNil: [ ^ self ].
-	debuggerClient
-		toggleBreakpointInSource: aDAPBreakpoint source
-		line: aDAPBreakpoint line.
-	self scheduleUpdateBreakpoints.
-	self enqueueTask: (BlTaskAction new action: [ self updateSource ])
-]
-
-{ #category : #'private - accessing' }
-GtDAPDebuggerElement >> cursorColumn [
-	"Which column of the displayed source the cursor is on, counting from one.
-	The protocol talks in lines and columns; the editor counts characters, and
-	a cursor position is an index into the text the way GT's own coder treats
-	it."
-	| positions position string |
-
-	positions := sourceCode editor cursors positions.
-	positions isEmpty ifTrue: [ ^ 1 ].
-	position := positions first.
-	string := sourceCode text asString.
-	^ position
-		- (string gtIndexOfLineNumber: (string lineNumberCorrespondingToIndex: position)) key
-		+ 1
-]
-
-{ #category : #'private - accessing' }
-GtDAPDebuggerElement >> frameName: aFrame [
-	"What a frame is called. A debugger that compiled the program knows what
-	its symbols were before the compiler wrote them, and says so; anything
-	else keeps the name the adapter reported."
-
-	(debuggerClient respondsTo: #displayNameForFrame:)
-		ifTrue: [ ^ debuggerClient displayNameForFrame: aFrame ].
-	^ aFrame name ifNil: [ aFrame printString ]
-]
-
-{ #category : #'private - accessing' }
-GtDAPDebuggerElement >> scopeRank: aScopeName [
-	"Scopes in the order a reader wants them: what this frame binds, then what
-	the program holds, then the machine. Ordering is by a key rather than by a
-	set of names so an adapter with scopes of its own still sorts."
-
-	| name |
-	name := aScopeName asLowercase.
-	(name includesSubstring: 'local') ifTrue: [ ^ '0' , name ].
-	(name includesSubstring: 'argument') ifTrue: [ ^ '1' , name ].
-	(name includesSubstring: 'register') ifTrue: [ ^ '8' , name ].
-	^ '5' , name
 ]
 
 { #category : #'private - accessing' }
@@ -919,23 +938,4 @@ GtDAPDebuggerElement >> withoutBookkeeping: aScope [
 		ifFalse: [ aScope ] ]
 		on: Error
 		do: [ :e | aScope ]
-]
-
-{ #category : #'private - accessing' }
-GtDAPDebuggerElement >> variableName: aName [
-	"What to call a variable. A debugger that compiled the program knows what
-	its names were before the compiler wrote them."
-
-	^ (debuggerClient respondsTo: #displayNameForVariable:)
-		ifTrue: [ debuggerClient displayNameForVariable: aName ]
-		ifFalse: [ aName ]
-]
-
-{ #category : #'private - accessing' }
-GtDAPDebuggerElement >> hidesVariable: aName [
-	"Whether a variable is the compiler's own bookkeeping. A debugger that
-	knows says so; anything else shows everything it is given."
-
-	^ (debuggerClient respondsTo: #hidesVariable:)
-		and: [ debuggerClient hidesVariable: aName ]
 ]

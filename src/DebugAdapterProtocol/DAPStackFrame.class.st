@@ -47,7 +47,7 @@ DAPStackFrame class >> dapJsonMappingFor: aNeoJSONMapper [
 DAPStackFrame class >> presentationHintEnums [
 	"Enumerated types for the associated attribute"
 
-	^ #(normal label subtle )
+	^ #('normal' 'label' 'subtle' )
 ]
 
 { #category : #visiting }
@@ -133,6 +133,20 @@ DAPStackFrame >> endLine: anObject [
 ]
 
 { #category : #ui }
+DAPStackFrame >> formRangeIn: aSourceString [
+	"Where the form this frame is at begins and ends, when the debugger can
+	work it out from the source."
+
+	^ [ (client notNil
+		and: [ client debugger notNil
+			and: [ client debugger respondsTo: #formRangeIn:line: ] ])
+		ifTrue: [ client debugger formRangeIn: aSourceString line: self line ]
+		ifFalse: [ nil ] ]
+		on: Error
+		do: [ :e | nil ]
+]
+
+{ #category : #ui }
 DAPStackFrame >> gtSourceFor: aView [
 	<gtView>
 
@@ -169,6 +183,24 @@ DAPStackFrame >> gtVariablesFor: aView [
 		column: 'Key' text: [ :assoc | assoc key ];
 		column: 'Value' text: [ :assoc | assoc value ];
 		send: [ :assoc | assoc value ]
+]
+
+{ #category : #ui }
+DAPStackFrame >> highlightsWholeLine [
+	"Whether a frame's column says anything about the source being shown.
+
+	An adapter debugging what a compiler produced reports the column of the
+	generated code, and the file on screen is the code it was generated from:
+	the number is real but it belongs to another text, and using it starts the
+	highlight in the middle of a form or past the end of the line. A debugger
+	that knows this says so, and the whole line is marked instead."
+
+	^ [ client notNil and: [
+		client debugger notNil and: [
+			(client debugger respondsTo: #framesCarryColumns)
+				and: [ client debugger framesCarryColumns not ] ] ] ]
+		on: Error
+		do: [ :e | false ]
 ]
 
 { #category : #accessing }
@@ -366,7 +398,7 @@ DAPStackFrame >> sourceCode [
 	^ self source sourceCode
 ]
 
-{ #category : #'ui' }
+{ #category : #ui }
 DAPStackFrame >> sourceText [
 	"Answer the receiver's source code, with the current form highlighted.
 
@@ -439,36 +471,4 @@ DAPStackFrame >> variablesDictionary [
 			scopeDictionary at: variable name put: variable ] ].
 	^ dictionary 
 
-]
-
-{ #category : #'ui' }
-DAPStackFrame >> highlightsWholeLine [
-	"Whether a frame's column says anything about the source being shown.
-
-	An adapter debugging what a compiler produced reports the column of the
-	generated code, and the file on screen is the code it was generated from:
-	the number is real but it belongs to another text, and using it starts the
-	highlight in the middle of a form or past the end of the line. A debugger
-	that knows this says so, and the whole line is marked instead."
-
-	^ [ client notNil and: [
-		client debugger notNil and: [
-			(client debugger respondsTo: #framesCarryColumns)
-				and: [ client debugger framesCarryColumns not ] ] ] ]
-		on: Error
-		do: [ :e | false ]
-]
-
-{ #category : #'ui' }
-DAPStackFrame >> formRangeIn: aSourceString [
-	"Where the form this frame is at begins and ends, when the debugger can
-	work it out from the source."
-
-	^ [ (client notNil
-		and: [ client debugger notNil
-			and: [ client debugger respondsTo: #formRangeIn:line: ] ])
-		ifTrue: [ client debugger formRangeIn: aSourceString line: self line ]
-		ifFalse: [ nil ] ]
-		on: Error
-		do: [ :e | nil ]
 ]
