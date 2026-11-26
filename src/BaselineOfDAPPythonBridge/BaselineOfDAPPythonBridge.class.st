@@ -10,7 +10,7 @@ BaselineOfDAPPythonBridge >> baseline: spec [
 	spec for: #'common' do: [
 		spec
 			baseline: 'DebugAdapterProtocol' with: [
-				spec repository: 'github://feenkcom/pharo-debugadapterprotocol:v0.6.16/src' ].
+				spec repository: 'github://feenkcom/pharo-debugadapterprotocol:v0.6.17/src' ].
 		spec
 			baseline: 'PythonBridge' with: [
 				spec repository: 'github://feenkcom/PythonBridge:v0.5.331/src' ].
